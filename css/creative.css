@@ -16,16 +16,16 @@ body {
 
 hr {
     max-width: 50px;
-    border-color: #f05f40;
+    border-color: #E9F0E7;
     border-width: 3px;
 }
 
 hr.light {
-    border-color: #fff;
+    border-color: #000000;
 }
 
 a {
-    color: #f05f40;
+    color: #000000;
     -webkit-transition: all .35s;
     -moz-transition: all .35s;
     transition: all .35s;
@@ -33,7 +33,7 @@ a {
 
 a:hover,
 a:focus {
-    color: #eb3812;
+    color: rgba(0,0,0,.8);
 }
 
 h1,
@@ -42,7 +42,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: 'Raleway','Helvetica Neue',Arial,sans-serif;
+    font-family: 'Garamond','Helvetica Neue',Arial, serif;
 }
 
 p {
@@ -52,7 +52,7 @@ p {
 }
 
 .bg-primary {
-    background-color: grey;
+    background: none;
 }
 
 .bg-dark {
@@ -61,7 +61,7 @@ p {
 }
 
 .text-faded {
-    color: rgba(255,255,255,.7);
+    color: rgba(0,0,0,.7);
 }
 
 section {
@@ -128,7 +128,7 @@ aside {
 
 @media(min-width:768px) {
     .navbar-default {
-        background-color: whitesmoke;
+        background-color: white;
         padding-top: 12px;
         width: 30px;
         height: 30px;
@@ -282,6 +282,11 @@ header .header-content .header-content-inner p {
     position: relative;
     margin: 0 auto;
     max-width: 650px;
+    margin-left: 30px;
+    margin-top: 40px;
+    margin-bottom: 10px;
+    margin-right: 30px;
+    background-color: none;
 }
 
 .portfolio-box .portfolio-box-caption {
@@ -293,7 +298,7 @@ header .header-content .header-content-inner p {
     text-align: center;
     color: #fff;
     opacity: 0;
-    background: rgba(240,95,64,.9);
+    background: rgba(255,255,255,.8);
     -webkit-transition: all .35s;
     -moz-transition: all .35s;
     transition: all .35s;
@@ -310,11 +315,11 @@ header .header-content .header-content-inner p {
 .portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-category,
 .portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-name {
     padding: 0 15px;
-    font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
+    font-family: 'Garamond','Helvetica Neue',Arial,serif;
+    color: grey;
 }
 
 .portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-category {
-    text-transform: uppercase;
     font-size: 14px;
     font-weight: 600;
 }
@@ -460,7 +465,7 @@ fieldset[disabled] .btn-primary.active {
     border: 0;
     border-radius: 300px;
     text-transform: uppercase;
-    font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
+    font-family: 'Garamond','Helvetica Neue',Arial,sans-serif;
     font-weight: 700;
 }
 
@@ -527,6 +532,78 @@ div.nameBorder{
     width: 100px;
     height: 100px;
 }
+
+
+h1.section-heading {
+    text-align: left;
+    font-family: Garamond; 
+    letter-spacing: 20px;
+    color: black;
+}
+
+p.text-faded {
+    text-align: left;
+    font-family: Avenir;
+    letter-spacing: 1px;
+    padding-right: 100px;
+    line-height: 150%;
+
+}
+
+.no-padding {
+    background: none;
+    font-family: Garamond;
+}
+
+#contact {
+    background: none;
+    border-top: 20px;
+}
+
+.project-name {
+    font-family: Garamond;
+}
+
+.portfolio-box-caption-content p{
+    font-family: "Raleway";
+}
+
+
+
+/*D3 ANIMATIONS*/
+
+svg {
+    position: fixed;
+    top: 0px;
+    left:0px;
+    z-index: -1;
+    background-color: rgba(0,0,0,.1);
+}
+
+.bar {
+    animation-duration: 10s;
+    animation-name: blink;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+}
+@keyframes blink {
+    from {
+        opacity: .3;
+    }
+    to {
+        opacity: 0;
+    }
+}
+@keyframes drop {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
 
 
 
