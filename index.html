@@ -85,9 +85,9 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <h1 class="section-heading">Art || Code</h1>
-                    <p class="text-faded">Start Bootstrap has everything you need to get your new website up and running in no time! All of the templates and themes on Start Bootstrap are open source, free to download, and easy to use. No strings attached!</p>
+                <div class="col-lg-8 col-lg-offset-4 text-center">
+                    <h1 class="title-heading"> Casey Haber</h1>
+                    <p class="text-faded">Can we understand Aesthetics by assuming that the subjective world is of a logical, mathematical nature?</p>
                     <!--<a href="#" class="btn btn-default btn-xl">Get Started!</a>-->
                 </div>
             </div>
@@ -144,31 +144,31 @@
     <section class="no-padding" id="portfolio">
         <div class="container-fluid">
             <div class="row no-gutter">
-                <div class="col-lg-4 col-sm-6">
-                    <a href="#" class="portfolio-box">
-                        <img src="img/portfolio/1.jpg" class="img-responsive" alt="">
+                <div class="col-lg-4 col-sm-8">
+                    <a href="3d" class="portfolio-box">
+                        <img src="img/portfolio/PosterSeries.png" class="img-responsive" alt="">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    Category
+                                    Graphic Design
                                 </div>
                                 <div class="project-name">
-                                    Project Name
+                                    Type History Poster Series
                                 </div>
                             </div>
                         </div>
                     </a>
                 </div>
-                <div class="col-lg-4 col-sm-6">
+                <div class="col-md-6 col-sm-6">
                     <a href="#" class="portfolio-box">
-                        <img src="img/portfolio/2.jpg" class="img-responsive" alt="">
+                        <img src="img/portfolio/serveLocal.jpg" class="img-responsive" alt="">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    Category
+                                    Logo Design
                                 </div>
                                 <div class="project-name">
-                                    Project Name
+                                    Serve Local
                                 </div>
                             </div>
                         </div>
@@ -204,7 +204,7 @@
                         </div>
                     </a>
                 </div>
-                <div class="col-lg-4 col-sm-6">
+                <div class="col-lg-4 col-sm-6 col-md-offset-4">
                     <a href="#" class="portfolio-box">
                         <img src="img/portfolio/5.jpg" class="img-responsive" alt="">
                         <div class="portfolio-box-caption">
@@ -219,9 +219,9 @@
                         </div>
                     </a>
                 </div>
-                <div class="col-lg-4 col-sm-6">
+                <div class="col-lg-4 col-sm-6 col-md-offset-4">
                     <a href="#" class="portfolio-box">
-                        <img src="img/portfolio/serveLocal.jpg" class="img-responsive" alt="">
+                        <img src="img/portfolio/1.jpg" class="img-responsive" alt="">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
@@ -252,16 +252,12 @@
     <section id="contact">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <h2 class="section-heading">Let's Get In Touch!</h2>
-                    <hr class="primary">
-                    <p>Ready to start your next project with us? That's great! Give us a call or send us an email and we will get back to you as soon as possible!</p>
-                </div>
-                <div class="col-lg-4 col-lg-offset-2 text-center">
+
+                <div class="col-lg-2 col-lg-offset-0 text-center">
                     <i class="fa fa-github fa-3x wow bounceIn"></i> 
                     <p><a href="http://www.github.com/caHaber" target="_blank">caHaber</a></p>
                 </div>
-                <div class="col-lg-4 text-center">
+                <div class="col-lg-2 text-center">
                     <i class="fa fa-envelope-o fa-3x wow bounceIn" data-wow-delay=".1s"></i>
                     <p><a href="mailto:haber.casey@gmail.com">haber.casey@gmail.com</a></p>
                 </div>
@@ -285,8 +281,8 @@
               .attr("top", "0px")
               .append("g")
               .attr("id", "plot")
-              .attr("width", "1300")
-              .attr("height", "800");
+              .attr("width", "" + plotWidth)
+              .attr("height", "" + plotHeight);
 
         var cor = [];
 
@@ -294,19 +290,19 @@
 
           var flag = 0;
           var i;
-          for (i = 0; i < 300; i++) {
-            var x = ((Math.random() * 1300) + 1);
-            var y = ((Math.random() * 800) + 1);
+          for (i = 0; i < 200; i++) {
+            var x = ((Math.random() * plotWidth) + 1);
+            var y = ((Math.random() * plotHeight) + 1);
 
             var value = Math.random() * 0xFF | 0;
             var grayscale = (value << 16) | (value << 8) | value;
             var c = '#' + grayscale.toString(16);
             
-            var d = '#' + Math.floor(Math.random() * 16777215).toString(16);
+            var d = ((Math.random() * 10) + 4);
             var ran = ((Math.random() * 9) + 3);
             cor.push([x, y, c, d,ran]);
             flag++;
-            if (flag > 298) callback();
+            if (flag > 198) callback();
           }
 
         }
@@ -326,7 +322,11 @@
             })
             .attr("width", function(d) {
                 return d[4]
-            })
+            });
+
+          bars.transition()
+            .delay(1000)
+            .duration(.00001)
             .attr("rx","100%")
             .attr("ry","100%")
             .attr("y", function(d) {
@@ -337,8 +337,10 @@
             })
             .attr("fill", function(d) {
               return d[2]
+            })
+            .style("animation-duration", function(d) {
+              return d[3] + "s"
             });
-
         };
 
 load(loadData);

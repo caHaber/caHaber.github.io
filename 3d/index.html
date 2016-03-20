@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Hello, World! • A-Frame</title>
+    <meta name="description" content="Hello, World! • A-Frame">
+    <script src="https://aframe.io/releases/0.1.2/aframe.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+    <!--
+      <a-sphere position="0 1.25 -1" radius="1.25" color="#EF2D5E" id="circle"></a-sphere>
+      <a-cube position="-1 0.5 1" rotation="0 45 0" width="1" height="1" depth="1" color="#4CC3D9"></a-cube>
+      <a-cylinder position="1 0.75 1" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>-->
+      <a-plane rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
+
+      <a-sky color="#ECECEC"></a-sky>
+    </a-scene>
+
+  <script>
+      
+        
+
+      /*obj.transition().delay(2000).duration(5000)
+        .attr("width","1")
+        .attr("height","4")
+        .attr("color","blue");
+
+      obj.transition().delay(7000).duration(5000)
+        .attr("width","10")
+        .attr("height",".5")
+        .attr("color","plum");*/
+
+        cor = [];
+
+      function load(callback) {
+
+          var flag = 0;
+          var i;
+          for (i = 0; i < 50; i++) {
+            var width = ((Math.random() * .25) + 0);
+            var height = ((Math.random() * .5) + 0);
+
+            var value = Math.random() * 0xFF | 0;
+            var grayscale = (value << 16) | (value << 8) | value;
+            var c = '#' + grayscale.toString(16);
+            
+            var d = ((Math.random() * 3) + -1);
+            var f = ((Math.random() * 3) + -1);
+            var e = ((Math.random() * 3) + -1);
+            var colRan = '#' + Math.floor(Math.random() * 16777215).toString(16);
+            cor.push([width, height, c, d,f,e,colRan]);
+            flag++;
+            if (flag > 49) callback();
+          }
+
+        }
+
+        var loadData = function() {
+              var cubes = d3.select("a-scene").selectAll("a-cube")
+                .data(cor)
+                  .enter()
+                  .append("a-cube")
+                  .attr("position", function(d){
+                    return d[3] + " " + d[4] + " " + d[5]
+                  })
+                  .attr("width", function(d) {
+                    return d[0]
+                  })
+                  .attr("height",function(d){
+                    return d[1]
+                  })
+                  .attr("color",function(d){
+                    return d[2]
+                  });
+
+
+              cubes.transition().delay(1000).duration(5000)
+                .attr("color",function(d){
+                    return d[6]
+                })
+                .attr("width", function(d) {
+                    return d[3]
+                  })
+                  .attr("height",function(d){
+                    return d[4]
+                  });
+
+
+
+           };
+
+load(loadData);
+
+
+  </script>
+  </body>
+</html>
