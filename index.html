@@ -37,8 +37,7 @@
 </head>
 
 <script>
-var pulseFlag = true;
-var floatFlag = true;
+
 
 
 
@@ -47,23 +46,13 @@ function clearPaths(){
     pat.remove();
 }
 function pulse(){
-    if(pulseFlag){
         svg.selectAll("path").classed("pulse",true);
-        pulseFlag = false;
-    } else {
-        svg.selectAll("path").classed("pulse",false);
-        pulseFlag = true;
-    }
 
 }
 function float(){
-    if(floatFlag){
+
         svg.selectAll("path").classed("floating",true);
-        floatFlag = false;
-    } else {
-        svg.selectAll("path").classed("floating",false);
-        floatFlag = true;
-    }
+
 }
 
 function plum(){
