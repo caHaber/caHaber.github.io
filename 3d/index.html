@@ -32,13 +32,14 @@
         .attr("height",".5")
         .attr("color","plum");*/
 
-        cor = [];
+        
 
       function load(callback) {
 
           var flag = 0;
           var i;
-          for (i = 0; i < 50; i++) {
+          cor = [];
+          for (i = 0; i < 100; i++) {
             var width = ((Math.random() * .25) + 0);
             var height = ((Math.random() * .5) + 0);
 
@@ -52,30 +53,31 @@
             var colRan = '#' + Math.floor(Math.random() * 16777215).toString(16);
             cor.push([width, height, c, d,f,e,colRan]);
             flag++;
-            if (flag > 49) callback();
+            if (flag > 99) callback(cor);
           }
 
         }
 
-        var loadData = function() {
-              var cubes = d3.select("a-scene").selectAll("a-cube")
+        var loadData = function(cor) {
+              var cubes = d3.select("a-scene").selectAll("a-curvedimage")
                 .data(cor)
                   .enter()
-                  .append("a-cube")
+                  .append("a-curvedimage")
+                  .attr("src","ch_cutout.png")
                   .attr("position", function(d){
                     return d[3] + " " + d[4] + " " + d[5]
                   })
-                  .attr("width", function(d) {
+                  .attr("radius", function(d) {
                     return d[0]
                   })
                   .attr("height",function(d){
                     return d[1]
                   })
-                  .attr("color",function(d){
-                    return d[2]
+                  .attr("theta-length",function(d){
+                    return d[0]
                   });
 
-
+/*
               cubes.transition().delay(1000).duration(5000)
                 .attr("color",function(d){
                     return d[6]
@@ -85,7 +87,7 @@
                   })
                   .attr("height",function(d){
                     return d[4]
-                  });
+                  });*/
 
 
 

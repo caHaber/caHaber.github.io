@@ -6,8 +6,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="Personal Website">
+    <meta name="author" content="Casey Haber">
 
     <title>Casey Haber</title>
 
@@ -20,11 +20,10 @@
     <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" type="text/css">
 
     <!-- Plugin CSS -->
-    <link rel="stylesheet" href="css/animate.min.css" type="text/css">
-
+<link rel="stylesheet" href="css/main.css" type="text/css">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/creative.css" type="text/css">
-
+    <!-- <link rel="stylesheet" href="css/creative.css" type="text/css"> -->
+<script src="js/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -36,319 +35,131 @@
 
 </head>
 
+<script>
+function clearPaths(){
+    var pat= svg.selectAll("path");
+    pat.remove();
+}
+
+function plum(){
+    var pat = svg.selectAll("path").transition().duration(1000).style("fill","plum");
+}
+function purple(){
+    var pat = svg.selectAll("path").transition().duration(1000).style("fill","purple");
+}
+function lightblue(){
+    var pat = svg.selectAll("path").transition().duration(1000).style("fill","lightblue");
+}
+function cornsilk(){
+    var pat = svg.selectAll("path").transition().duration(1000).style("fill","cornsilk");
+}
+function azure(){
+    var pat = svg.selectAll("path").transition().duration(1000).style("fill","azure");
+}
+function whitesmoke(){
+    var pat = svg.selectAll("path").transition().duration(1000).style("fill","whitesmoke");
+}
+
+
+</script>
+
 <body id="page-top">
-    
+    <!-- <div id="save">Submit Artistic Exploration to Casey Haber</div>
+    <div id="svgdataurl"> </div> -->
 
-    
-<!--
-    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
-        <div class="container-fixed">
-             Brand and toggle get grouped for better mobile display
-            <div class="navbar-header">
-                <div class="nameBorder">
-                    <a class="PageScroll" href="#page-top">Casey Haber</a>
-                </div>
-            </div>
 
-  
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a class="page-scroll" href="#about">Cv</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-       
-    </nav>
+<!-- <canvas id="canv" width="640" height="250"></canvas> -->
 
-     -->
-<!-- 
-    <header>
-        <div class="header-content">
-            <div class="header-content-inner">
-                <h3></h1>
-                <br>
-                <p></p>
-            </div>
-        </div>
-    </header>
--->
-    <section class="bg-primary" id="about">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-center">
-                        <!--Correct Place for biopic -->
-                    <div id="bioPic">
-                       <!-- <img src="../img/Profile_good.jpg"> -->
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-4 text-center">
-                    <h1 class="title-heading"> Casey Haber</h1>
-                    <p class="text-faded">Can we understand Aesthetics by assuming that the subjective world is of a logical, mathematical nature?</p>
-                    <!--<a href="#" class="btn btn-default btn-xl">Get Started!</a>-->
-                </div>
-            </div>
-        </div>
-    </section>
 
-<!--
-    <section id="services">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">At Your Service</h2>
-                    <hr class="primary">
-                </div>
-            </div>
-
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-6 text-center">
-                    <div class="service-box">
-                        <i class="fa fa-4x fa-diamond wow bounceIn text-primary"></i>
-                        <h3>Sturdy Templates</h3>
-                        <p class="text-muted">Our templates are updated regularly so they don't break.</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 text-center">
-                    <div class="service-box">
-                        <i class="fa fa-4x fa-paper-plane wow bounceIn text-primary" data-wow-delay=".1s"></i>
-                        <h3>Ready to Ship</h3>
-                        <p class="text-muted">You can use this theme as is, or you can make changes!</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 text-center">
-                    <div class="service-box">
-                        <i class="fa fa-4x fa-newspaper-o wow bounceIn text-primary" data-wow-delay=".2s"></i>
-                        <h3>Up to Date</h3>
-                        <p class="text-muted">We update dependencies to keep things fresh.</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 text-center">
-                    <div class="service-box">
-                        <i class="fa fa-4x fa-heart wow bounceIn text-primary" data-wow-delay=".3s"></i>
-                        <h3>Made with Love</h3>
-                        <p class="text-muted">You have to make your websites with love these days!</p>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
--->
-    <section class="no-padding" id="portfolio">
-        <div class="container-fluid">
-            <div class="row no-gutter">
-                <div class="col-lg-4 col-sm-8">
-                    <a href="3d" class="portfolio-box">
-                        <img src="img/portfolio/PosterSeries.png" class="img-responsive" alt="">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Graphic Design
-                                </div>
-                                <div class="project-name">
-                                    Type History Poster Series
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-6 col-sm-6">
-                    <a href="#" class="portfolio-box">
-                        <img src="img/portfolio/serveLocal.jpg" class="img-responsive" alt="">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Logo Design
-                                </div>
-                                <div class="project-name">
-                                    Serve Local
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="#" class="portfolio-box">
-                        <img src="img/portfolio/3.jpg" class="img-responsive" alt="">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    <p>Category</p>
-                                </div>
-                                <div class="project-name">
-                                    <h3>Project Name</h3>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="#" class="portfolio-box">
-                        <img src="img/portfolio/4.jpg" class="img-responsive" alt="">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Category
-                                </div>
-                                <div class="project-name">
-                                    Project Name
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6 col-md-offset-4">
-                    <a href="#" class="portfolio-box">
-                        <img src="img/portfolio/5.jpg" class="img-responsive" alt="">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Category
-                                </div>
-                                <div class="project-name">
-                                    Project Name
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6 col-md-offset-4">
-                    <a href="#" class="portfolio-box">
-                        <img src="img/portfolio/1.jpg" class="img-responsive" alt="">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Logo Design
-                                </div>
-                                <div class="project-name">
-                                    Serve Local
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-    <svg></svg>
-
-  <!--  <aside class="bg-dark">
-        <div class="container text-center">
-            <div class="call-to-action">
-                <h2>Free Download at Start Bootstrap!</h2>
-                <a href="#" class="btn btn-default btn-xl wow tada">Download Now!</a>
-            </div>
-        </div>
-    </aside>
--->
-  
     <section id="contact">
         <div class="container">
             <div class="row">
-
-                <div class="col-lg-2 col-lg-offset-0 text-center">
-                    <i class="fa fa-github fa-3x wow bounceIn"></i> 
+<div class="col-md-1">
+    <div>
+        <h3> Casey Haber </h3>
+    </div>
+</div>
+                <div class="col-md-3 col-md-offset-1 text-center">
+                    <i class="fa fa-github fa-3x wow bounceIn"></i>
                     <p><a href="http://www.github.com/caHaber" target="_blank">caHaber</a></p>
                 </div>
-                <div class="col-lg-2 text-center">
+                <div class="col-md-3 col-md-offset-0 text-center">
                     <i class="fa fa-envelope-o fa-3x wow bounceIn" data-wow-delay=".1s"></i>
                     <p><a href="mailto:haber.casey@gmail.com">haber.casey@gmail.com</a></p>
                 </div>
+                <button onclick="clearPaths()">clear</button>
+                <button onclick="plum()">plum</button>
+                <button onclick="purple()">purple</button>
+                <button onclick="lightblue()">lightblue</button>
+                <button onclick="cornsilk()">cornsilk</button>
+                <button onclick="azure()">azure</button>
+                <button onclick="whitesmoke()">whitesmoke</button>
 
             </div>
 
         </div>
 
-    </section> 
+    </section>
+    <svg></svg>
+
     <script type="text/javascript">
 
         var body = d3.select("body").node().getBoundingClientRect();
 
-        var plotWidth = body.width;
-        var plotHeight = body.height;
+    var plotWidth = $( window ).width();
+    var plotHeight = $( window ).height();
 
-        var plot = d3.select("body").select("svg")
-              .attr("width", "" + plotWidth)
-              .attr("height", "" + plotHeight)
-              .attr("position", "fixed")
-              .attr("top", "0px")
-              .append("g")
-              .attr("id", "plot")
-              .attr("width", "" + plotWidth)
-              .attr("height", "" + plotHeight);
 
-        var cor = [];
+              var activeLine;
 
-        function load(callback) {
+      var renderPath = d3.svg.line()
+          .x(function(d) { return d[0]; })
+          .y(function(d) { return d[1]; })
+          .interpolate("basis");
 
-          var flag = 0;
-          var i;
-          for (i = 0; i < 200; i++) {
-            var x = ((Math.random() * plotWidth) + 1);
-            var y = ((Math.random() * plotHeight) + 1);
+      var svg = d3.select("svg").attr("width",plotWidth).attr("height",plotHeight-200)
+          .call(d3.behavior.drag()
+            .on("dragstart", dragstarted)
+            .on("drag", dragged)
+            .on("dragend", dragended));
 
-            var value = Math.random() * 0xFF | 0;
-            var grayscale = (value << 16) | (value << 8) | value;
-            var c = '#' + grayscale.toString(16);
-            
-            var d = ((Math.random() * 10) + 4);
-            var ran = ((Math.random() * 9) + 3);
-            cor.push([x, y, c, d,ran]);
-            flag++;
-            if (flag > 198) callback();
-          }
+      function dragstarted() {
+        activeLine = svg.append("path").datum([]).attr("class", "line");
+      }
 
-        }
+      function dragged() {
+        activeLine.datum().push(d3.mouse(this));
+        activeLine.attr("d", renderPath);
+        activeLine.transition().style("fill","orange").style("stroke-width",10);
+      }
 
-        var loadData = function() {
-          console.log(cor);
+      function dragended() {
+        activeLine = null;
+      }
 
-          var bars = plot.append("g")
-            .attr("id", "bars")
-            .selectAll("rect")
-            .data(cor) 
-        .enter()
-            .append("rect")
-            .attr("class", "bar")
-            .attr("x", function(d) {
-              return d[0]
-            })
-            .attr("width", function(d) {
-                return d[4]
-            });
+      var myCanvas = document.getElementById('#canv');
 
-          bars.transition()
-            .delay(1000)
-            .duration(.00001)
-            .attr("rx","100%")
-            .attr("ry","100%")
-            .attr("y", function(d) {
-              return d[1]
-            })
-            .attr("height", function(d) {
-                return d[4];
-            })
-            .attr("fill", function(d) {
-              return d[2]
-            })
-            .style("animation-duration", function(d) {
-              return d[3] + "s"
-            });
-        };
 
-load(loadData);
+
+    //   d3.select("#save").on("click", function(){
+    //     var html = svg
+    //           .attr("version", 1.1)
+    //           .attr("xmlns", "http://www.w3.org/2000/svg")
+    //           .node().parentNode.innerHTML;
+      //
+    //     //console.log(html);
+    //     var imgsrc = 'data:image/svg+xml;base64,'+ btoa(html);
+    //     var img = '<img src="'+imgsrc+'">';
+    //     d3.select("#svgdataurl").html(img);
+      //
+    //   });
 
 
     </script>
+
+
     <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
@@ -359,7 +170,6 @@ load(loadData);
     <script src="js/wow.min.js"></script>
 
     <!-- Custom Theme JavaScript -->
-    <script src="js/creative.js"></script>
 
 </body>
 

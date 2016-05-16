@@ -1,0 +1,29 @@
+body {
+    font-family: 'Roboto',sans-serif;
+}
+
+
+path.line {
+  fill: red;
+  stroke: black;
+  stroke-width: 2px;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+section#contact {
+    width: auto;
+    height: auto;
+    margin: 0 auto;
+}
+
+svg {
+    background-color: lightgrey;
+    stroke: lightgrey;
+    stroke-width: 1px;
+}
+
+button {
+    margin: 3px;
+    padding: 3px;
+}
