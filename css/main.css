@@ -27,3 +27,7 @@ button {
     margin: 3px;
     padding: 3px;
 }
+
+button.anim {
+    color: red;
+}
