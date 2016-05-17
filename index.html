@@ -46,32 +46,41 @@ function clearPaths(){
     pat.remove();
 }
 function pulse(){
-        svg.selectAll("path").classed("pulse",true);
+        svg.selectAll("path.line.prev").classed("pulse",true);
 
 }
 function float(){
 
-        svg.selectAll("path").classed("floating",true);
+        svg.selectAll("path.line.prev").classed("floating",true);
+
+}
+
+function toss(){
+
+        svg.selectAll("path.line.prev").classed("tossing",true);
 
 }
 
 function plum(){
-    var pat = svg.selectAll("path").transition().duration(1000).style("fill","plum");
+    var pat = svg.selectAll("path.line.prev").transition().duration(1000).style("fill","plum");
 }
 function purple(){
-    var pat = svg.selectAll("path").transition().duration(1000).style("fill","purple");
+    var pat = svg.selectAll("path.line.prev").transition().duration(1000).style("fill","purple");
 }
 function lightblue(){
-    var pat = svg.selectAll("path").transition().duration(1000).style("fill","lightblue");
+    var pat = svg.selectAll("path.line.prev").transition().duration(1000).style("fill","lightblue");
 }
 function cornsilk(){
-    var pat = svg.selectAll("path").transition().duration(1000).style("fill","cornsilk");
+    var pat = svg.selectAll("path.line.prev").transition().duration(1000).style("fill","cornsilk");
 }
 function azure(){
-    var pat = svg.selectAll("path").transition().duration(1000).style("fill","azure");
+    var pat = svg.selectAll("path.line.prev").transition().duration(1000).style("fill","azure");
 }
 function whitesmoke(){
-    var pat = svg.selectAll("path").transition().duration(1000).style("fill","whitesmoke");
+    var pat = svg.selectAll("path.line.prev").transition().duration(1000).style("fill","whitesmoke");
+}
+function red(){
+    var pat = svg.selectAll("path.line.prev").transition().duration(1000).style("fill","red");
 }
 
 
@@ -98,8 +107,9 @@ function whitesmoke(){
                     <i class="fa fa-envelope-o fa-3x wow bounceIn" data-wow-delay=".1s"></i>
                     <p><a href="mailto:haber.casey@gmail.com">haber.casey@gmail.com</a></p>
                 </div>
-                <button class="anim" onclick="pulse()">Pulse Lines</button>
-                <button class="anim" onclick="float()">Float Lines</button>
+                <button class="anim" onclick="pulse()">Pulse Line</button>
+                <button class="anim" onclick="float()">Float Line</button>
+                <button class="anim" onclick="toss()">Toss Line</button>
                 <button onclick="clearPaths()">clear</button>
                 <button onclick="plum()">plum</button>
                 <button onclick="purple()">purple</button>
@@ -107,6 +117,7 @@ function whitesmoke(){
                 <button onclick="cornsilk()">cornsilk</button>
                 <button onclick="azure()">azure</button>
                 <button onclick="whitesmoke()">whitesmoke</button>
+                <button onclick="red()">red</button>
 
             </div>
 
@@ -122,7 +133,7 @@ function whitesmoke(){
     var plotWidth = $( window ).width();
     var plotHeight = $( window ).height();
 
-
+            var prevLine;
               var activeLine;
 
       var renderPath = d3.svg.line()
@@ -135,18 +146,23 @@ function whitesmoke(){
             .on("dragstart", dragstarted)
             .on("drag", dragged)
             .on("dragend", dragended));
+            var lines
 
       function dragstarted() {
         activeLine = svg.append("path").datum([]).attr("class", "line");
       }
 
       function dragged() {
+        var color = getRandomColor();
         activeLine.datum().push(d3.mouse(this));
         activeLine.attr("d", renderPath);
-        activeLine.transition().style("fill","orange").style("stroke-width",10);
+        activeLine.transition().style("fill",color).style("stroke-width",5);
       }
 
       function dragended() {
+        prevLine = activeLine;
+        svg.selectAll("path.line.prev").classed("prev",false);
+        prevLine.classed("prev",true);
         activeLine = null;
       }
 
@@ -166,6 +182,14 @@ function whitesmoke(){
     //     d3.select("#svgdataurl").html(img);
       //
     //   });
+
+    function getRandomColor() {
+  var length = 6;
+  var chars = '0123456789ABCDEF';
+  var hex = '#';
+  while(length--) hex += chars[(Math.random() * 16) | 0];
+  return hex;
+}
 
 
     </script>
