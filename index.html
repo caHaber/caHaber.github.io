@@ -96,10 +96,21 @@ function red(){
 </script>
 
 <body id="page-top">
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-md-offset-0">
+                <a class="waves-effect waves-light btn-floating blue" onclick="pulse()"><i class="fa fa-bolt" aria-hidden="true"></i></a>
+                <a class="waves-effect waves-light btn-floating blue" onclick="float()"><i class="fa fa-arrows-v" aria-hidden="true"></i></a>
+                <a class="waves-effect waves-light btn-floating blue" onclick="toss()"><i class="fa fa-leaf" aria-hidden="true"></i></a>
+            </div>
+        </div>
+    </div>
     <!-- <div id="save">Submit Artistic Exploration to Casey Haber</div>
     <div id="svgdataurl"> </div> -->
-<div class="blank">
-</div>
+<!-- <div class="blank">
+</div> -->
     <section id="contact">
         <div class="container">
 
@@ -107,16 +118,14 @@ function red(){
     <svg></svg>
 <div class="container">
     <div class="row">
-        <div class="col-md-12 col-md-offset-0">
-            <a class="waves-effect waves-light btn blue" onclick="pulse()">Pulse Line</a>
-            <a class="waves-effect waves-light btn blue" onclick="float()">Float Line</a>
-            <a class="waves-effect waves-light btn blue" onclick="toss()">Toss Line</a>
-        </div>
+
         <div class="col-md-12 col-md-offset-0">
             <a class="waves-effect waves-light btn red" onclick="clearPaths()"> CLEAR </a>
+        </div>
+        <div class="col-md-10 col-md-offset-0">
             <a class="waves-effect waves-light btn" onclick="plum()">plum</a>
-            <a class="waves-effect waves-light btn" onclick="purple()">purple</a>
-            <a class="waves-effect waves-light btn" onclick="lightblue()">lightblue</a>
+            <a class="waves-effect waves-light btn purple" onclick="purple()">purple</a>
+            <a class="waves-effect waves-light btn blue lighten-3" onclick="lightblue()">lightblue</a>
             <a class="waves-effect waves-light btn" onclick="cornsilk()">cornsilk</a>
             <a class="waves-effect waves-light btn" onclick="azure()">azure</a>
             <a class="waves-effect waves-light btn" onclick="whitesmoke()">whitesmoke</a>
