@@ -25,16 +25,33 @@ svg {
     stroke-width: 1px;
 }
 
-button {
-    margin: 3px;
-    padding: 3px;
-}
-
-button.anim {
-    color: red;
-}
 
 div.blank {
     width: auto;
     height: 50px;
+}
+
+a.btn-floating {
+    margin: 3px;
+}
+
+a.btn {
+    margin: 5px;;
+}
+
+.btn, .btn-large, .btn-flat {
+    padding: 0 .5rem !important;
+
+ }
+
+ a.btn.amber {color: grey }
+  a.btn.cyan {color: grey }
+   a.btn.grey {color: grey }
+    a.btn.transparent {color: grey }
+
+
+
+p.instruct {
+    font-size: 1.5em;
+    padding-top: 10px;
 }

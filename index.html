@@ -33,6 +33,7 @@
 <script src="js/jquery.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+    <script src="js/d3.sketchy.js"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -48,23 +49,76 @@
 
 var transDuration = 500;
 
+var newPath = d3.svg.line()
+    .x(function(d) { return d[0]; })
+    .y(function(d) { return d[1]; })
+    .interpolate("interpolate");
+
+
 function clearPaths(){
     var pat= svg.selectAll("path");
+
     pat.remove();
 }
+
+
+
 function pulse(){
-        svg.selectAll("path.line.prev").classed("pulse",true);
-
+    var me = svg.select("path.line.prev");
+    if(me.classed("pulse")){
+        me.classed("pulse",false);
+        return;
+    }
+    if(me.classed("tossing")){
+        me.classed("tossing",false);
+        me.classed("pulse",true);
+        return;
+    }
+    if(me.classed("floating")){
+        me.classed("floating",false);
+        me.classed("pulse",true);
+        return;
+    }
+    me.classed("pulse",true);
 }
-function float(){
 
-        svg.selectAll("path.line.prev").classed("floating",true);
+function float(){
+        var me = svg.select("path.line.prev");
+        if(me.classed("floating")){
+            me.classed("floating",false);
+            return;
+        }
+        if(me.classed("tossing")){
+            me.classed("tossing",false);
+            me.classed("floating",true);
+            return;
+        }
+        if(me.classed("pulse")){
+            me.classed("pulse",false);
+            me.classed("floating",true);
+            return;
+        }
+        me.classed("floating",true);
 
 }
 
 function toss(){
-
-        svg.selectAll("path.line.prev").classed("tossing",true);
+    var me = svg.select("path.line.prev");
+    if(me.classed("tossing")){
+        me.classed("tossing",false);
+        return;
+    }
+    if(me.classed("floating")){
+        me.classed("floating",false);
+        me.classed("tossing",true);
+        return;
+    }
+    if(me.classed("pulse")){
+        me.classed("pulse",false);
+        me.classed("tossing",true);
+        return;
+    }
+    me.classed("tossing",true);
 
 }
 
@@ -89,6 +143,13 @@ function whitesmoke(){
 function red(){
     var pat = svg.selectAll("path.line.prev").transition().duration(transDuration).style("fill","red");
 }
+function green(){
+    var pat = svg.selectAll("path.line.prev").transition().duration(transDuration).style("fill","#69f0ae");
+}
+function trans(){
+    var pat = svg.selectAll("path.line.prev").transition().duration(transDuration).style("fill","none");
+}
+
 
 
 </script>
@@ -98,11 +159,25 @@ function red(){
 
     <div class="container">
         <div class="row">
-            <div class="col-md-12 col-md-offset-0">
+            <div class="col-md-6 col-md-offset-0">
                 <a class="waves-effect waves-light btn-floating blue" onclick="pulse()"><i class="fa fa-bolt" aria-hidden="true"></i></a>
                 <a class="waves-effect waves-light btn-floating blue" onclick="float()"><i class="fa fa-arrows-v" aria-hidden="true"></i></a>
                 <a class="waves-effect waves-light btn-floating blue" onclick="toss()"><i class="fa fa-leaf" aria-hidden="true"></i></a>
+                <!-- <a class="waves-effect waves-light btn-floating blue" onclick="extend()"><i class="" aria-hidden="true"></i></a> -->
+                <a class="waves-effect waves-light btn red" onclick="clearPaths()"> CLEAR </a>
             </div>
+            <div class="col-md-6 col-md-offset-0">
+                <p class="instruct"> Click shape to erase </p>
+            </div>
+            <!-- <div class="col-md-6 col-md-offset-6">
+                <form action="sketch()">
+                    <p>
+                      <input type="checkbox" id="sketchy" class="filled-in"/>
+                      <label for="sketchy">Sketchy!</label>
+                    </p>
+                </form>
+            </div> -->
+
         </div>
     </div>
     <!-- <div id="save">Submit Artistic Exploration to Casey Haber</div>
@@ -117,17 +192,20 @@ function red(){
 <div class="container">
     <div class="row">
 
-        <div class="col-md-12 col-md-offset-0">
-            <a class="waves-effect waves-light btn red" onclick="clearPaths()"> CLEAR </a>
+        <div class="col-md-2 col-md-offset-4">
+
         </div>
         <div class="col-md-10 col-md-offset-0">
-            <a class="waves-effect waves-light btn" onclick="plum()">plum</a>
+            <a class="waves-effect waves-light btn purple lighten-3" onclick="plum()">plum</a>
             <a class="waves-effect waves-light btn purple" onclick="purple()">purple</a>
             <a class="waves-effect waves-light btn blue lighten-3" onclick="lightblue()">lightblue</a>
-            <a class="waves-effect waves-light btn" onclick="cornsilk()">cornsilk</a>
-            <a class="waves-effect waves-light btn" onclick="azure()">azure</a>
-            <a class="waves-effect waves-light btn" onclick="whitesmoke()">whitesmoke</a>
-            <a class="waves-effect waves-light btn" onclick="red()">red</a>
+            <a class="waves-effect waves-light btn amber lighten-5" onclick="cornsilk()">cornsilk</a>
+            <a class="waves-effect waves-light btn cyan lighten-5" onclick="azure()">azure</a>
+            <a class="waves-effect waves-light btn grey lighten-5" onclick="whitesmoke()">whitesmoke</a>
+            <a class="waves-effect waves-light btn red" onclick="red()">red</a>
+            <a class="waves-effect waves-light btn green accent-2" onclick="green()">green</a>
+            <a class="waves-effect waves-light btn transparent" onclick="trans()">no fill</a>
+
         </div>
         <div class="col-md-12 col-md-offset-1 text-center">
             <div>
@@ -166,18 +244,26 @@ function red(){
             .on("dragend", dragended));
             var lines
 
+
+
       function dragstarted() {
         activeLine = svg.append("path").datum([]).attr("class", "line");
       }
 
       function dragged() {
         var color = getRandomColor();
+
+
         activeLine.datum().push(d3.mouse(this));
-        activeLine.attr("d", renderPath);
-        activeLine.transition().style("fill",color).style("stroke-width",5);
+        activeLine.attr("d", renderPath).on("click", click);;
+
+
+
+        activeLine.transition().style("fill",color).style("stroke-width",4);
       }
 
       function dragended() {
+
         prevLine = activeLine;
         svg.selectAll("path.line.prev").classed("prev",false);
         prevLine.classed("prev",true);
@@ -186,7 +272,31 @@ function red(){
 
       var myCanvas = document.getElementById('#canv');
 
+      function click(d) {
+        this.parentNode.appendChild(this);
 
+        var me = d3.select(this);
+        if(me.classed("pulse")){
+            me.classed("pulse",false);
+        }
+        if(me.classed("tossing")){
+            me.classed("tossing",false);
+        }
+        if(me.classed("floating")){
+            me.classed("floating",false);
+        }
+
+            me
+          .style("pointer-events", "none")
+        // .transition()
+        //   .duration(2750)
+        //   .attr("transform", "scale(0)rotate(180)")
+        .transition()
+          .duration(750)
+          .attr("transform", "translate(385,45)scale(0)")
+          .style("fill-opacity", 0)
+          .remove();
+    }
 
     //   d3.select("#save").on("click", function(){
     //     var html = svg
@@ -202,11 +312,11 @@ function red(){
     //   });
 
     function getRandomColor() {
-  var length = 6;
-  var chars = '0123456789ABCDEF';
-  var hex = '#';
-  while(length--) hex += chars[(Math.random() * 16) | 0];
-  return hex;
+      var length = 6;
+      var chars = '0123456789ABCDEF';
+      var hex = '#';
+      while(length--) hex += chars[(Math.random() * 16) | 0];
+      return hex;
 }
 
 
