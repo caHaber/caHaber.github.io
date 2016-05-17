@@ -58,10 +58,8 @@ var newPath = d3.svg.line()
 function clearPaths(){
     var pat= svg.selectAll("path");
 
+
     pat.style("pointer-events", "none")
-  // .transition()
-  //   .duration(2750)
-  //   .attr("transform", "scale(0)rotate(180)")
   .transition()
     .duration(750)
     .attr("transform", "translate(385,45)scale(0)")
@@ -160,6 +158,8 @@ function trans(){
 
 
 
+
+
 </script>
 
 <body id="page-top">
@@ -177,6 +177,17 @@ function trans(){
             <div class="col-md-6 col-md-offset-0">
                 <p class="instruct"> Click shape to erase </p>
             </div>
+
+            <form action="#" id="radios">
+                <p>
+                  <input class="with-gap" name="group1" type="radio" id="basis" value="basis" checked/>
+                  <label class="label" for="basis">Normal</label>
+                </p>
+              <p>
+                <input class="with-gap" name="group1" type="radio" id="step-after" value="step-after" />
+                <label class="label" for="step-after">Stepped</label>
+              </p>
+            </form>
             <!-- <div class="col-md-6 col-md-offset-6">
                 <form action="sketch()">
                     <p>
@@ -237,17 +248,31 @@ function trans(){
     <script type="text/javascript">
 
         var body = d3.select("body").node().getBoundingClientRect();
-
+        var interType = "basis";
     var plotWidth = $( window ).width();
     var plotHeight = $( window ).height();
 
             var prevLine;
               var activeLine;
 
-      var renderPath = d3.svg.line()
-          .x(function(d) { return d[0]; })
-          .y(function(d) { return d[1]; })
-          .interpolate("basis");
+              var renderPath = d3.svg.line()
+                  .x(function(d) { return d[0]; })
+                  .y(function(d) { return d[1]; })
+
+              d3.select("#step-after").on("change", function() {
+                      interType = "step-after";
+                      renderPath = d3.svg.line()
+                          .x(function(d) { return d[0]; })
+                          .y(function(d) { return d[1]; }).interpolate(interType);
+
+                    });
+            d3.select("#basis").on("change", function() {
+                interType = "basis";
+                renderPath = d3.svg.line()
+                    .x(function(d) { return d[0]; })
+                    .y(function(d) { return d[1]; }).interpolate(interType);
+              });
+
 
       var svg = d3.select("svg").attr("width",plotWidth).attr("height",plotHeight - 100)
           .call(d3.behavior.drag()

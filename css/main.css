@@ -55,3 +55,14 @@ p.instruct {
     font-size: 1.5em;
     padding-top: 10px;
 }
+
+#radios {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+}
+
+.label {
+    font-weight: 100;
+    color: black;
+}
