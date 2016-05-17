@@ -2,8 +2,8 @@
 
 #Casey Haber's Website#
 
-##Fork and build off!
-##Email me your art!
+##Fork and build a creative exploration!
+##Send me your art-piece!
 
 ### Tools 
 
