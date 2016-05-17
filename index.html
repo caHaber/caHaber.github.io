@@ -58,7 +58,15 @@ var newPath = d3.svg.line()
 function clearPaths(){
     var pat= svg.selectAll("path");
 
-    pat.remove();
+    pat.style("pointer-events", "none")
+  // .transition()
+  //   .duration(2750)
+  //   .attr("transform", "scale(0)rotate(180)")
+  .transition()
+    .duration(750)
+    .attr("transform", "translate(385,45)scale(0)")
+    .style("fill-opacity", 0)
+    .remove();
 }
 
 
