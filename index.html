@@ -20,11 +20,20 @@
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=EB+Garamond" />
     <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" type="text/css">
 
+
+    <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+
+  <!-- Compiled and minified JavaScript -->
+
+
+
     <!-- Plugin CSS -->
 <link rel="stylesheet" href="css/main.css" type="text/css">
     <!-- Custom CSS -->
     <!-- <link rel="stylesheet" href="css/creative.css" type="text/css"> -->
 <script src="js/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -39,7 +48,7 @@
 <script>
 
 
-
+var transDuration = 500;
 
 function clearPaths(){
     var pat= svg.selectAll("path");
@@ -62,25 +71,25 @@ function toss(){
 }
 
 function plum(){
-    var pat = svg.selectAll("path.line.prev").transition().duration(1000).style("fill","plum");
+    var pat = svg.selectAll("path.line.prev").transition().duration(transDuration).style("fill","plum");
 }
 function purple(){
-    var pat = svg.selectAll("path.line.prev").transition().duration(1000).style("fill","purple");
+    var pat = svg.selectAll("path.line.prev").transition().duration(transDuration).style("fill","purple");
 }
 function lightblue(){
-    var pat = svg.selectAll("path.line.prev").transition().duration(1000).style("fill","lightblue");
+    var pat = svg.selectAll("path.line.prev").transition().duration(transDuration).style("fill","lightblue");
 }
 function cornsilk(){
-    var pat = svg.selectAll("path.line.prev").transition().duration(1000).style("fill","cornsilk");
+    var pat = svg.selectAll("path.line.prev").transition().duration(transDuration).style("fill","cornsilk");
 }
 function azure(){
-    var pat = svg.selectAll("path.line.prev").transition().duration(1000).style("fill","azure");
+    var pat = svg.selectAll("path.line.prev").transition().duration(transDuration).style("fill","azure");
 }
 function whitesmoke(){
-    var pat = svg.selectAll("path.line.prev").transition().duration(1000).style("fill","whitesmoke");
+    var pat = svg.selectAll("path.line.prev").transition().duration(transDuration).style("fill","whitesmoke");
 }
 function red(){
-    var pat = svg.selectAll("path.line.prev").transition().duration(1000).style("fill","red");
+    var pat = svg.selectAll("path.line.prev").transition().duration(transDuration).style("fill","red");
 }
 
 
@@ -89,35 +98,29 @@ function red(){
 <body id="page-top">
     <!-- <div id="save">Submit Artistic Exploration to Casey Haber</div>
     <div id="svgdataurl"> </div> -->
-
-
+<div class="blank">
+</div>
     <section id="contact">
         <div class="container">
-            <div class="row">
-<div class="col-md-1">
-    <div>
-        <h3> Casey Haber </h3>
-    </div>
-</div>
-                <div class="col-md-3 col-md-offset-1 text-center">
+            <div class="row labels">
+
+
+
+                <div class="col-md-12 col-md-offset-1 text-center">
+                    <div>
+                        <h3> Casey Haber </h3>
+
                     <i class="fa fa-github fa-3x wow bounceIn"></i>
                     <p><a href="http://www.github.com/caHaber" target="_blank">caHaber</a></p>
-                </div>
-                <div class="col-md-3 col-md-offset-0 text-center">
+
+
                     <i class="fa fa-envelope-o fa-3x wow bounceIn" data-wow-delay=".1s"></i>
                     <p><a href="mailto:haber.casey@gmail.com">haber.casey@gmail.com</a></p>
+                    </div>
                 </div>
-                <button class="anim" onclick="pulse()">Pulse Line</button>
-                <button class="anim" onclick="float()">Float Line</button>
-                <button class="anim" onclick="toss()">Toss Line</button>
-                <button onclick="clearPaths()">clear</button>
-                <button onclick="plum()">plum</button>
-                <button onclick="purple()">purple</button>
-                <button onclick="lightblue()">lightblue</button>
-                <button onclick="cornsilk()">cornsilk</button>
-                <button onclick="azure()">azure</button>
-                <button onclick="whitesmoke()">whitesmoke</button>
-                <button onclick="red()">red</button>
+
+
+
 
             </div>
 
@@ -125,6 +128,26 @@ function red(){
 
     </section>
     <svg></svg>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 col-md-offset-0">
+            <a class="waves-effect waves-light btn blue" onclick="pulse()">Pulse Line</a>
+            <a class="waves-effect waves-light btn blue" onclick="float()">Float Line</a>
+            <a class="waves-effect waves-light btn blue" onclick="toss()">Toss Line</a>
+        </div>
+        <div class="col-md-12 col-md-offset-0">
+            <a class="waves-effect waves-light btn red" onclick="clearPaths()"> CLEAR </a>
+            <a class="waves-effect waves-light btn" onclick="plum()">plum</a>
+            <a class="waves-effect waves-light btn" onclick="purple()">purple</a>
+            <a class="waves-effect waves-light btn" onclick="lightblue()">lightblue</a>
+            <a class="waves-effect waves-light btn" onclick="cornsilk()">cornsilk</a>
+            <a class="waves-effect waves-light btn" onclick="azure()">azure</a>
+            <a class="waves-effect waves-light btn" onclick="whitesmoke()">whitesmoke</a>
+            <a class="waves-effect waves-light btn" onclick="red()">red</a>
+        </div>
+        </div>
+</div>
+</div>
 
     <script type="text/javascript">
 
@@ -141,7 +164,7 @@ function red(){
           .y(function(d) { return d[1]; })
           .interpolate("basis");
 
-      var svg = d3.select("svg").attr("width",plotWidth).attr("height",plotHeight-200)
+      var svg = d3.select("svg").attr("width",plotWidth).attr("height",plotHeight- 200)
           .call(d3.behavior.drag()
             .on("dragstart", dragstarted)
             .on("drag", dragged)

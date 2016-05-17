@@ -12,9 +12,10 @@ path.line {
 }
 
 section#contact {
-    width: auto;
+    /*width: auto;
     height: auto;
-    margin: 0 auto;
+    margin: 0 auto;*/
+    position: fixed !important;
 }
 
 svg {
@@ -30,4 +31,9 @@ button {
 
 button.anim {
     color: red;
+}
+
+div.blank {
+    width: auto;
+    height: 50px;
 }
