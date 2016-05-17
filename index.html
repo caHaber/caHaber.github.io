@@ -102,29 +102,6 @@ function red(){
 </div>
     <section id="contact">
         <div class="container">
-            <div class="row labels">
-
-
-
-                <div class="col-md-12 col-md-offset-1 text-center">
-                    <div>
-                        <h3> Casey Haber </h3>
-
-                    <i class="fa fa-github fa-3x wow bounceIn"></i>
-                    <p><a href="http://www.github.com/caHaber" target="_blank">caHaber</a></p>
-
-
-                    <i class="fa fa-envelope-o fa-3x wow bounceIn" data-wow-delay=".1s"></i>
-                    <p><a href="mailto:haber.casey@gmail.com">haber.casey@gmail.com</a></p>
-                    </div>
-                </div>
-
-
-
-
-            </div>
-
-        </div>
 
     </section>
     <svg></svg>
@@ -145,8 +122,19 @@ function red(){
             <a class="waves-effect waves-light btn" onclick="whitesmoke()">whitesmoke</a>
             <a class="waves-effect waves-light btn" onclick="red()">red</a>
         </div>
+        <div class="col-md-12 col-md-offset-1 text-center">
+            <div>
+                <h3> Casey Haber </h3>
+
+            <i class="fa fa-github fa-3x wow bounceIn"></i>
+            <p><a href="http://www.github.com/caHaber" target="_blank">caHaber</a></p>
+
+
+            <i class="fa fa-envelope-o fa-3x wow bounceIn" data-wow-delay=".1s"></i>
+            <p><a href="mailto:haber.casey@gmail.com">haber.casey@gmail.com</a></p>
+            </div>
         </div>
-</div>
+    </div>
 </div>
 
     <script type="text/javascript">
@@ -164,7 +152,7 @@ function red(){
           .y(function(d) { return d[1]; })
           .interpolate("basis");
 
-      var svg = d3.select("svg").attr("width",plotWidth).attr("height",plotHeight- 200)
+      var svg = d3.select("svg").attr("width",plotWidth).attr("height",plotHeight - 100)
           .call(d3.behavior.drag()
             .on("dragstart", dragstarted)
             .on("drag", dragged)
