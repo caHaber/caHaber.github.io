@@ -2,6 +2,9 @@
 
 #Casey Haber's Website#
 
+##Fork and build off!
+##Email me your art!
+
 ### Tools 
 
 [Bootstrap](http://getbootstrap.com/) framework created by [Mark Otto](https://twitter.com/mdo) and [Jacob Thorton](https://twitter.com/fat).
