@@ -5,7 +5,7 @@ body {
 
 
 path.line {
-  fill: red;
+  fill: whitesmoke;
   stroke: black;
   stroke-width: 2px;
   stroke-linejoin: round;
@@ -27,6 +27,12 @@ svg {
 
 h6{
     font-weight: 100;
+}
+
+div#cp2 {
+    position: fixed;
+    bottom: 20px;;
+    left: 20px;
 }
 
 
@@ -69,4 +75,8 @@ p.instruct {
 .label {
     font-weight: 100;
     color: black;
+}
+
+div.colorpicker-alpha{
+    visibility: hidden;
 }
