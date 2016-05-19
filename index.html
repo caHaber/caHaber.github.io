@@ -298,7 +298,7 @@ function toss(){
     var plotWidth = $( window ).width();
     var plotHeight = $( window ).height();
 
-    
+
 
 var color = '#FF9690';
            $('#cp2').colorpicker({
@@ -421,6 +421,9 @@ if(flag){
         }
         if(me.classed("floating")){
             me.classed("floating",false);
+        }
+        if(me.classed("bounce")){
+            me.classed("bounce",false);
         }
 
             me
