@@ -63,6 +63,12 @@ function clearPaths(){
     var pat = svg.selectAll("path");
     pat.classed("pulse",false).classed("bounce",false).classed("tossing",false).classed("floating",false);
 
+    svg.selectAll("circle")
+    .transition()
+      .duration(750)
+      .attr("transform", "translate(385,45)scale(0)")
+      .style("fill-opacity", 0)
+      .remove();
 
     pat.style("pointer-events", "none")
   .transition()
@@ -298,6 +304,8 @@ function toss(){
     var plotWidth = $( window ).width();
     var plotHeight = $( window ).height();
 
+var allLines = d3.select("svg").selectAll("path.line");
+
 
 
 var color = '#FF9690';
@@ -341,8 +349,8 @@ var flag = false;
                           .y(function(d) { return d[1]; }).interpolate(interType);
 
                       renderFlath = d3.svg.line()
-                          .x(function(d) { return d[1] + xChange; })
-                          .y(function(d) { return d[0] - yChange; }).interpolate(interType);
+                          .x(function(d) { return -d[0] + plotWidth; })
+                          .y(function(d) { return d[1]}).interpolate(interType);
 
                     });
             d3.select("#basis").on("change", function() {
@@ -351,9 +359,13 @@ var flag = false;
                     .x(function(d) { return d[0]; })
                     .y(function(d) { return d[1]; }).interpolate(interType);
                 renderFlath = d3.svg.line()
-                    .x(function(d) { return d[1] + xChange; })
-                    .y(function(d) { return d[0] - yChange; }).interpolate(interType);
+                .x(function(d) { return -d[0] + plotWidth; })
+                .y(function(d) { return d[1]}).interpolate(interType);
+
               });
+
+
+
 
 
       var svg = d3.select("svg").attr("width",plotWidth).attr("height",plotHeight - 100)
@@ -364,17 +376,78 @@ var flag = false;
             var lines
 
 
+    var root,force;
+    var nodes = d3.range(150).map(function() { return {radius: Math.random() * 12 + 4}; });
+
+    drawCircles();
+
+    function drawCircles(){
+
+        // https://bl.ocks.org/mbostock/3231298 Incredible
+
+
+                force = d3.layout.force()
+                    .gravity(.009)
+                    // .charge(function(d, i) { return i ? 0 : -2000; })
+                    .charge(3)
+                    .nodes(nodes)
+                    .size([plotWidth, plotHeight]);
+
+                    var root = nodes[0];
+
+                    root.radius = 50;
+                    root.fixed = true;
+
+                    force.start();
+
+                    svg.selectAll("circle")
+                        .data(nodes.slice(1))
+                      .enter().append("circle")
+                        .attr("r", function(d) { return d.radius; })
+                        .style("fill", function(d, i) { return getRandomColor(); });
+
+                    force.on("tick", function(e) {
+                      var q = d3.geom.quadtree(nodes),
+                          i = 0,
+                          n = nodes.length;
+
+                      while (++i < n) q.visit(collide(nodes[i]));
+
+                      svg.selectAll("circle")
+                          .attr("cx", function(d) { return d.x; })
+                          .attr("cy", function(d) { return d.y; });
+                    });
+
+
+
+    }
+
+
+
+
 
       function dragstarted() {
         activeLine = svg.append("path").datum([]).attr("class", "line");
         activeLine2 = svg.append("path").datum([]).attr("class", "line");
+
+        // var nodes = d3.range(Math.random() * 100).map(function() { return {radius: Math.random() * 12 + 4}; });
+
+
       }
 
       function dragged() {
+          var p1 = d3.mouse(this);
+          var root = nodes[0];
+            root.px = p1[0];
+            root.py = p1[1];
+            force.resume();
         // var color = getRandomColor();
 
 
         activeLine.datum().push(d3.mouse(this));
+
+//Moving Force Circles
+
 
         activeLine.attr("d", renderPath).on("click", click);
 
@@ -393,12 +466,17 @@ if(flag){
 
       function dragended() {
 
+
+
         prevLine = activeLine;
         prevLine2 = activeLine2;
         svg.selectAll("path.line.prev").classed("prev",false);
         prevLine.classed("prev",true);
         prevLine2.classed("prev",true);
         activeLine = null;
+        drawCircles();
+
+
       }
 
       var myCanvas = document.getElementById('#canv');
@@ -432,18 +510,31 @@ if(flag){
           .remove();
     }
 
-    //   d3.select("#save").on("click", function(){
-    //     var html = svg
-    //           .attr("version", 1.1)
-    //           .attr("xmlns", "http://www.w3.org/2000/svg")
-    //           .node().parentNode.innerHTML;
-      //
-    //     //console.log(html);
-    //     var imgsrc = 'data:image/svg+xml;base64,'+ btoa(html);
-    //     var img = '<img src="'+imgsrc+'">';
-    //     d3.select("#svgdataurl").html(img);
-      //
-    //   });
+
+
+function collide(node) {
+  var r = node.radius + 16,
+      nx1 = node.x - r,
+      nx2 = node.x + r,
+      ny1 = node.y - r,
+      ny2 = node.y + r;
+  return function(quad, x1, y1, x2, y2) {
+    if (quad.point && (quad.point !== node)) {
+      var x = node.x - quad.point.x,
+          y = node.y - quad.point.y,
+          l = Math.sqrt(x * x + y * y),
+          r = node.radius + quad.point.radius;
+      if (l < r) {
+        l = (l - r) / l * .5;
+        node.x -= x *= l;
+        node.y -= y *= l;
+        quad.point.x += x;
+        quad.point.y += y;
+      }
+    }
+    return x1 > nx2 || x2 < nx1 || y1 > ny2 || y2 < ny1;
+  };
+}
 
     function getRandomColor() {
       var length = 6;
