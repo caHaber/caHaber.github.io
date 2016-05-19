@@ -298,12 +298,19 @@ var flag = false;
                           .x(function(d) { return d[0]; })
                           .y(function(d) { return d[1]; }).interpolate(interType);
 
+                      renderFlath = d3.svg.line()
+                          .x(function(d) { return d[1] + xChange; })
+                          .y(function(d) { return d[0] - yChange; }).interpolate(interType);
+
                     });
             d3.select("#basis").on("change", function() {
                 interType = "basis";
                 renderPath = d3.svg.line()
                     .x(function(d) { return d[0]; })
                     .y(function(d) { return d[1]; }).interpolate(interType);
+                renderFlath = d3.svg.line()
+                    .x(function(d) { return d[1] + xChange; })
+                    .y(function(d) { return d[0] - yChange; }).interpolate(interType);
               });
 
 
