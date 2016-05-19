@@ -666,8 +666,8 @@ bounce
 	animation-name: bounce;
 	-webkit-animation-name: bounce;
 
-	animation-duration: 1.6s;
-	-webkit-animation-duration: 1.6s;
+	animation-duration: 2s;
+	-webkit-animation-duration: 2s;
 
 	animation-timing-function: ease;
 	-webkit-animation-timing-function: ease;
@@ -675,11 +675,14 @@ bounce
 	transform-origin: 50% 100%;
 	-ms-transform-origin: 50% 100%;
 	-webkit-transform-origin: 50% 100%;
+
+	animation-iteration-count: infinite;
+	-webkit-animation-iteration-count: infinite;
 }
 
 @keyframes bounce {
 	0% {
-		transform: translateY(0%) scaleY(0.6);
+		transform: translateY(0%) scaleY(1);
 	}
 	60%{
 		transform: translateY(-100%) scaleY(1.1);

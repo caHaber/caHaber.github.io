@@ -56,7 +56,8 @@ var newPath = d3.svg.line()
 
 
 function clearPaths(){
-    var pat= svg.selectAll("path");
+    var pat = svg.selectAll("path");
+    pat.classed("pulse",false).classed("bounce",false).classed("tossing",false).classed("floating",false);
 
 
     pat.style("pointer-events", "none")
@@ -65,6 +66,7 @@ function clearPaths(){
     .attr("transform", "translate(385,45)scale(0)")
     .style("fill-opacity", 0)
     .remove();
+
 }
 
 
@@ -85,8 +87,39 @@ function pulse(){
         me.classed("pulse",true);
         return;
     }
+    if(me.classed("bounce")){
+        me.classed("bounce",false);
+        me.classed("pulse",true);
+        return;
+    }
     me.classed("pulse",true);
 }
+
+function bounce(){
+    var me = svg.selectAll("path.line.prev");
+    if(me.classed("bounce")){
+        me.classed("bounce",false);
+        return;
+    }
+    if(me.classed("tossing")){
+        me.classed("tossing",false);
+        me.classed("bounce",true);
+        return;
+    }
+    if(me.classed("floating")){
+        me.classed("floating",false);
+        me.classed("bounce",true);
+        return;
+    }
+    if(me.classed("pulse")){
+        me.classed("pulse",false);
+        me.classed("bounce",true);
+        return;
+    }
+    me.classed("bounce",true);
+}
+
+
 
 function float(){
         var me = svg.selectAll("path.line.prev");
@@ -104,6 +137,12 @@ function float(){
             me.classed("floating",true);
             return;
         }
+        if(me.classed("bounce")){
+            me.classed("bounce",false);
+            me.classed("floating",true);
+            return;
+        }
+
         me.classed("floating",true);
 
 }
@@ -121,6 +160,11 @@ function toss(){
     }
     if(me.classed("pulse")){
         me.classed("pulse",false);
+        me.classed("tossing",true);
+        return;
+    }
+    if(me.classed("bounce")){
+        me.classed("bounce",false);
         me.classed("tossing",true);
         return;
     }
@@ -182,7 +226,7 @@ function trans(){
                 <a class="waves-effect waves-light btn-floating blue" onclick="pulse()"><i class="fa fa-bolt" aria-hidden="true"></i></a>
                 <a class="waves-effect waves-light btn-floating blue" onclick="float()"><i class="fa fa-arrows-v" aria-hidden="true"></i></a>
                 <a class="waves-effect waves-light btn-floating blue" onclick="toss()"><i class="fa fa-leaf" aria-hidden="true"></i></a>
-                <!-- <a class="waves-effect waves-light btn-floating blue" onclick="extend()"><i class="" aria-hidden="true"></i></a> -->
+                <a class="waves-effect waves-light btn-floating blue" onclick="bounce()"><i class="fa fa-forumbee" aria-hidden="true"></i></a>
                 <a class="waves-effect waves-light btn red" onclick="clearPaths()"> CLEAR </a>
             </div>
             <div class="col-md-3 col-md-offset-0">
