@@ -316,20 +316,14 @@ var color = '#FF9690';
               var activeLine;
               var activeLine2;
 
-              var xChange = 0;
-              var yChange = 0;
 
-              if(plotWidth > 800){
-                  xChange = 300;
-                  yChange = 300;
-              }
 
               var renderPath = d3.svg.line()
                   .x(function(d) { return d[0]; })
                   .y(function(d) { return d[1]; })
               var renderFlath = d3.svg.line()
-                  .x(function(d) { return d[1] + xChange; })
-                  .y(function(d) { return d[0] - yChange; })
+                  .x(function(d) { return -d[0] + plotWidth; })
+                  .y(function(d) { return d[1]; })
 
 var flag = false;
                 d3.select(".switch").on("change", function(){
