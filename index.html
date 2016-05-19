@@ -61,9 +61,11 @@ var newPath = d3.svg.line()
 
 function clearPaths(){
     var pat = svg.selectAll("path");
+    var c = svg.selectAll("circle");
     pat.classed("pulse",false).classed("bounce",false).classed("tossing",false).classed("floating",false);
+    c.classed("pulse",false).classed("bounce",false).classed("tossing",false).classed("floating",false);
 
-    svg.selectAll("circle")
+c
     .transition()
       .duration(750)
       .attr("transform", "translate(385,45)scale(0)")
@@ -83,103 +85,194 @@ function clearPaths(){
 
 function pulse(){
     var me = svg.selectAll("path.line.prev");
+    var c = svg.selectAll("circle");
+
+    if(c.classed("pulse")){
+        c.classed("pulse",false);
+    }
+    else if(c.classed("tossing")){
+        c.classed("tossing",false);
+        c.classed("pulse",true);
+
+    }
+    else if(c.classed("floating")){
+        c.classed("floating",false);
+        c.classed("pulse",true);
+    }
+    else if(c.classed("bounce")){
+        c.classed("bounce",false);
+        c.classed("pulse",true);
+
+    } else {
+        c.classed("pulse",true);
+    }
+
     if(me.classed("pulse")){
         me.classed("pulse",false);
-        return;
     }
-    if(me.classed("tossing")){
+    else if(me.classed("tossing")){
         me.classed("tossing",false);
         me.classed("pulse",true);
-        return;
+
     }
-    if(me.classed("floating")){
+    else if(me.classed("floating")){
         me.classed("floating",false);
         me.classed("pulse",true);
-        return;
     }
-    if(me.classed("bounce")){
+    else if(me.classed("bounce")){
         me.classed("bounce",false);
         me.classed("pulse",true);
-        return;
+
+    } else {
+        me.classed("pulse",true);
     }
-    me.classed("pulse",true);
+
 }
 
 function bounce(){
     var me = svg.selectAll("path.line.prev");
+
+    var circs = svg.selectAll("circle");
+    if(circs.classed("bounce")){
+        circs.classed("bounce",false);
+
+    }
+    else if(circs.classed("tossing")){
+        circs.classed("tossing",false);
+        circs.classed("bounce",true);
+    }
+    else if(circs.classed("floating")){
+        circs.classed("floating",false);
+        circs.classed("bounce",true);
+    }
+    else if(circs.classed("pulse")){
+        circs.classed("pulse",false);
+        circs.classed("bounce",true);
+    }
+    else { circs.classed("bounce",true); }
+
+
+
+
     if(me.classed("bounce")){
         me.classed("bounce",false);
-        return;
+
     }
-    if(me.classed("tossing")){
+    else if(me.classed("tossing")){
         me.classed("tossing",false);
         me.classed("bounce",true);
-        return;
     }
-    if(me.classed("floating")){
+    else if(me.classed("floating")){
         me.classed("floating",false);
         me.classed("bounce",true);
-        return;
     }
-    if(me.classed("pulse")){
+    else if(me.classed("pulse")){
         me.classed("pulse",false);
         me.classed("bounce",true);
-        return;
     }
-    me.classed("bounce",true);
+    else { me.classed("bounce",true); }
 }
 
 
 
 function float(){
         var me = svg.selectAll("path.line.prev");
-        if(me.classed("floating")){
-            me.classed("floating",false);
-            return;
+        var c = svg.selectAll("circle");
+
+        if(c.classed("floating")){
+            c.classed("floating",false);
+
         }
-        if(me.classed("tossing")){
-            me.classed("tossing",false);
-            me.classed("floating",true);
-            return;
+        else if(c.classed("tossing")){
+            c.classed("tossing",false);
+            c.classed("floating",true);
+
         }
-        if(me.classed("pulse")){
-            me.classed("pulse",false);
-            me.classed("floating",true);
-            return;
+        else if(c.classed("pulse")){
+            c.classed("pulse",false);
+            c.classed("floating",true);
+
         }
-        if(me.classed("bounce")){
-            me.classed("bounce",false);
-            me.classed("floating",true);
-            return;
+        else if(c.classed("bounce")){
+            c.classed("bounce",false);
+            c.classed("floating",true);
+
+        } else {
+            c.classed("floating",true);
         }
 
-        me.classed("floating",true);
+        if(me.classed("floating")){
+            me.classed("floating",false);
+
+        }
+        else if(me.classed("tossing")){
+            me.classed("tossing",false);
+            me.classed("floating",true);
+
+        }
+        else if(me.classed("pulse")){
+            me.classed("pulse",false);
+            me.classed("floating",true);
+
+        }
+        else if(me.classed("bounce")){
+            me.classed("bounce",false);
+            me.classed("floating",true);
+
+        } else {
+            me.classed("floating",true);
+        }
+
 
 }
 
 function toss(){
     var me = svg.selectAll("path.line.prev");
+    var c = svg.selectAll("circle");
+
+    if(c.classed("tossing")){
+        c.classed("tossing",false);
+
+    }
+    else if(c.classed("floating")){
+        c.classed("floating",false);
+        c.classed("tossing",true);
+
+    }
+    else if(c.classed("pulse")){
+        c.classed("pulse",false);
+        c.classed("tossing",true);
+
+    }
+    else if(c.classed("bounce")){
+        c.classed("bounce",false);
+        c.classed("tossing",true);
+
+    } else {
+        c.classed("tossing",true);
+    }
+
     if(me.classed("tossing")){
         me.classed("tossing",false);
-        return;
+
     }
-    if(me.classed("floating")){
+    else if(me.classed("floating")){
         me.classed("floating",false);
         me.classed("tossing",true);
-        return;
+
     }
-    if(me.classed("pulse")){
+    else if(me.classed("pulse")){
         me.classed("pulse",false);
         me.classed("tossing",true);
-        return;
+
     }
-    if(me.classed("bounce")){
+    else if(me.classed("bounce")){
         me.classed("bounce",false);
         me.classed("tossing",true);
-        return;
-    }
-    me.classed("tossing",true);
 
+    } else {
+        me.classed("tossing",true);
+    }
 }
 
 // function plum(){
@@ -227,7 +320,18 @@ function toss(){
 
     <div class="container">
         <div class="row">
-            <div class="col-md-4 col-md-offset-0">
+            <div class="col-md-2 col-md-offset-0">
+                <div class="switch force">
+                    <h6> Bubbles!!! </h6>
+                  <label>
+                    Off
+                    <input type="checkbox">
+                    <span class="lever"></span>
+                    On
+                  </label>
+                </div>
+            </div>
+            <div class="col-md-2 col-md-offset-0">
                 <div class="switch">
                     <h6> Mirror Mode </h6>
                   <label>
@@ -298,6 +402,7 @@ function toss(){
 </div>
 
     <script type="text/javascript">
+    var forceFlag = false;
 
         var body = d3.select("body").node().getBoundingClientRect();
         var interType = "basis";
@@ -333,12 +438,28 @@ var color = '#FF9690';
                   .x(function(d) { return -d[0] + plotWidth; })
                   .y(function(d) { return d[1]; })
 
-var flag = false;
+                  var flag = false;
                 d3.select(".switch").on("change", function(){
                     if (flag){
                         flag = false;
                     }else {
+
                         flag = true;
+                    }
+                });
+
+                d3.select(".force").on("change", function(){
+                    if (forceFlag){
+                        forceFlag = false;
+                        svg.selectAll("circle")
+                        .transition()
+                          .duration(750)
+                          .attr("transform", "translate(385,45)scale(0)")
+                          .style("fill-opacity", 0)
+                          .remove();
+                    }else {
+                        drawCircles();
+                        forceFlag = true;
                     }
                 });
 
@@ -379,7 +500,7 @@ var flag = false;
     var root,force;
     var nodes = d3.range(150).map(function() { return {radius: Math.random() * 12 + 4}; });
 
-    drawCircles();
+
 
     function drawCircles(){
 
@@ -389,13 +510,14 @@ var flag = false;
                 force = d3.layout.force()
                     .gravity(.009)
                     // .charge(function(d, i) { return i ? 0 : -2000; })
-                    .charge(3)
+                    .charge(1)
+                    .friction(.99)
                     .nodes(nodes)
                     .size([plotWidth, plotHeight]);
 
                     var root = nodes[0];
 
-                    root.radius = 50;
+                    root.radius = 100;
                     root.fixed = true;
 
                     force.start();
@@ -436,11 +558,15 @@ var flag = false;
       }
 
       function dragged() {
-          var p1 = d3.mouse(this);
-          var root = nodes[0];
-            root.px = p1[0];
-            root.py = p1[1];
-            force.resume();
+
+          if(forceFlag){
+              var p1 = d3.mouse(this);
+              var root = nodes[0];
+                root.px = p1[0];
+                root.py = p1[1];
+                force.start();
+          }
+
         // var color = getRandomColor();
 
 
@@ -474,7 +600,10 @@ if(flag){
         prevLine.classed("prev",true);
         prevLine2.classed("prev",true);
         activeLine = null;
-        drawCircles();
+        if(forceFlag){
+            drawCircles();
+        }
+
 
 
       }
