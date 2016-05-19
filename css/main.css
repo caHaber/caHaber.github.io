@@ -25,6 +25,10 @@ svg {
     stroke-width: 1px;
 }
 
+h6{
+    font-weight: 100;
+}
+
 
 div.blank {
     width: auto;
