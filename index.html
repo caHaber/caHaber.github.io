@@ -168,6 +168,14 @@ function trans(){
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-md-offset-0">
+                <div class="switch">
+                  <label>
+                    Off
+                    <input type="checkbox">
+                    <span class="lever"></span>
+                    On
+                  </label>
+                </div>
                 <a class="waves-effect waves-light btn-floating blue" onclick="pulse()"><i class="fa fa-bolt" aria-hidden="true"></i></a>
                 <a class="waves-effect waves-light btn-floating blue" onclick="float()"><i class="fa fa-arrows-v" aria-hidden="true"></i></a>
                 <a class="waves-effect waves-light btn-floating blue" onclick="toss()"><i class="fa fa-leaf" aria-hidden="true"></i></a>
@@ -254,10 +262,23 @@ function trans(){
 
             var prevLine;
               var activeLine;
+              var activeLine2;
 
               var renderPath = d3.svg.line()
                   .x(function(d) { return d[0]; })
                   .y(function(d) { return d[1]; })
+              var renderFlath = d3.svg.line()
+                  .x(function(d) { return d[1] + 400; })
+                  .y(function(d) { return d[0] - 400; })
+
+var flag = false;
+                d3.select(".switch").on("change", function(){
+                    if (flag){
+                        flag = false;
+                    }else {
+                        flag = true;
+                    }    
+                });
 
               d3.select("#step-after").on("change", function() {
                       interType = "step-after";
@@ -285,6 +306,7 @@ function trans(){
 
       function dragstarted() {
         activeLine = svg.append("path").datum([]).attr("class", "line");
+        activeLine2 = svg.append("path").datum([]).attr("class", "line");
       }
 
       function dragged() {
@@ -292,11 +314,19 @@ function trans(){
 
 
         activeLine.datum().push(d3.mouse(this));
-        activeLine.attr("d", renderPath).on("click", click);;
 
+        activeLine.attr("d", renderPath).on("click", click);
+
+if(flag){
+    console.log(flag);
+    activeLine2.datum().push(d3.mouse(this));
+    activeLine2.attr("d",renderFlath ).on("click", click);
+        activeLine2.transition().style("fill",color).style("stroke-width",4);
+}
 
 
         activeLine.transition().style("fill",color).style("stroke-width",4);
+
       }
 
       function dragended() {
