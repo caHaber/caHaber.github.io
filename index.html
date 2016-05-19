@@ -52,11 +52,12 @@
 
 
 var transDuration = 500;
-
 var newPath = d3.svg.line()
     .x(function(d) { return d[0]; })
     .y(function(d) { return d[1]; })
     .interpolate("interpolate");
+
+    var forceFlag = false;
 
 
 function clearPaths(){
@@ -86,7 +87,7 @@ function clearPaths(){
 function pulse(){
     var me = svg.selectAll("path.line.prev");
     var c = svg.selectAll("circle");
-
+if(forceFlag){
     if(c.classed("pulse")){
         c.classed("pulse",false);
     }
@@ -106,7 +107,7 @@ function pulse(){
     } else {
         c.classed("pulse",true);
     }
-
+}
     if(me.classed("pulse")){
         me.classed("pulse",false);
     }
@@ -133,6 +134,10 @@ function bounce(){
     var me = svg.selectAll("path.line.prev");
 
     var circs = svg.selectAll("circle");
+
+if(forceFlag){
+
+
     if(circs.classed("bounce")){
         circs.classed("bounce",false);
 
@@ -150,7 +155,7 @@ function bounce(){
         circs.classed("bounce",true);
     }
     else { circs.classed("bounce",true); }
-
+}
 
 
 
@@ -178,7 +183,7 @@ function bounce(){
 function float(){
         var me = svg.selectAll("path.line.prev");
         var c = svg.selectAll("circle");
-
+if(forceFlag){
         if(c.classed("floating")){
             c.classed("floating",false);
 
@@ -200,6 +205,7 @@ function float(){
         } else {
             c.classed("floating",true);
         }
+}
 
         if(me.classed("floating")){
             me.classed("floating",false);
@@ -229,27 +235,30 @@ function float(){
 function toss(){
     var me = svg.selectAll("path.line.prev");
     var c = svg.selectAll("circle");
+    if(forceFlag){
 
-    if(c.classed("tossing")){
-        c.classed("tossing",false);
 
-    }
-    else if(c.classed("floating")){
-        c.classed("floating",false);
-        c.classed("tossing",true);
+        if(c.classed("tossing")){
+            c.classed("tossing",false);
 
-    }
-    else if(c.classed("pulse")){
-        c.classed("pulse",false);
-        c.classed("tossing",true);
+        }
+        else if(c.classed("floating")){
+            c.classed("floating",false);
+            c.classed("tossing",true);
 
-    }
-    else if(c.classed("bounce")){
-        c.classed("bounce",false);
-        c.classed("tossing",true);
+        }
+        else if(c.classed("pulse")){
+            c.classed("pulse",false);
+            c.classed("tossing",true);
 
-    } else {
-        c.classed("tossing",true);
+        }
+        else if(c.classed("bounce")){
+            c.classed("bounce",false);
+            c.classed("tossing",true);
+
+        } else {
+            c.classed("tossing",true);
+        }
     }
 
     if(me.classed("tossing")){
@@ -343,11 +352,15 @@ function toss(){
                 </div>
             </div>
             <div class="col-md-5 col-md-offset-0">
-                <a class="waves-effect waves-light btn-floating blue" onclick="pulse()"><i class="fa fa-bolt" aria-hidden="true"></i></a>
-                <a class="waves-effect waves-light btn-floating blue" onclick="float()"><i class="fa fa-arrows-v" aria-hidden="true"></i></a>
-                <a class="waves-effect waves-light btn-floating blue" onclick="toss()"><i class="fa fa-leaf" aria-hidden="true"></i></a>
-                <a class="waves-effect waves-light btn-floating blue" onclick="bounce()"><i class="fa fa-forumbee" aria-hidden="true"></i></a>
-                <a class="waves-effect waves-light btn red" onclick="clearPaths()"> CLEAR </a>
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-0">
+                        <a class="waves-effect waves-light btn-floating blue" onclick="pulse()"><i class="fa fa-bolt" aria-hidden="true"></i></a>
+                        <a class="waves-effect waves-light btn-floating blue" onclick="float()"><i class="fa fa-arrows-v" aria-hidden="true"></i></a>
+                        <a class="waves-effect waves-light btn-floating blue" onclick="toss()"><i class="fa fa-leaf" aria-hidden="true"></i></a>
+                        <a class="waves-effect waves-light btn-floating blue" onclick="bounce()"><i class="fa fa-forumbee" aria-hidden="true"></i></a>
+                        <a class="waves-effect waves-light btn red" onclick="clearPaths()"> CLEAR </a>
+                    </div>
+                </div>
             </div>
             <div class="col-md-3 col-md-offset-0">
                 <p class="instruct"> Click to erase </p>
@@ -402,7 +415,7 @@ function toss(){
 </div>
 
     <script type="text/javascript">
-    var forceFlag = false;
+
 
         var body = d3.select("body").node().getBoundingClientRect();
         var interType = "basis";
