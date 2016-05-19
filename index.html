@@ -61,16 +61,16 @@ var newPath = d3.svg.line()
 
 function clearPaths(){
     var pat = svg.selectAll("path");
-    var c = svg.selectAll("circle");
+    // var c = svg.selectAll("circle");
     pat.classed("pulse",false).classed("bounce",false).classed("tossing",false).classed("floating",false);
-    c.classed("pulse",false).classed("bounce",false).classed("tossing",false).classed("floating",false);
+    // c.classed("pulse",false).classed("bounce",false).classed("tossing",false).classed("floating",false);
 
-c
-    .transition()
-      .duration(750)
-      .attr("transform", "translate(385,45)scale(0)")
-      .style("fill-opacity", 0)
-      .remove();
+    // c
+    // .transition()
+    //   .duration(750)
+    //   .attr("transform", "translate(385,45)scale(0)")
+    //   .style("fill-opacity", 0)
+    //   .remove();
 
     pat.style("pointer-events", "none")
   .transition()
@@ -600,9 +600,9 @@ if(flag){
         prevLine.classed("prev",true);
         prevLine2.classed("prev",true);
         activeLine = null;
-        if(forceFlag){
-            drawCircles();
-        }
+        // if(forceFlag){
+        //     drawCircles();
+        // }
 
 
 
