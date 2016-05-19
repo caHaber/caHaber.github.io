@@ -70,7 +70,7 @@ function clearPaths(){
 
 
 function pulse(){
-    var me = svg.select("path.line.prev");
+    var me = svg.selectAll("path.line.prev");
     if(me.classed("pulse")){
         me.classed("pulse",false);
         return;
@@ -89,7 +89,7 @@ function pulse(){
 }
 
 function float(){
-        var me = svg.select("path.line.prev");
+        var me = svg.selectAll("path.line.prev");
         if(me.classed("floating")){
             me.classed("floating",false);
             return;
@@ -109,7 +109,7 @@ function float(){
 }
 
 function toss(){
-    var me = svg.select("path.line.prev");
+    var me = svg.selectAll("path.line.prev");
     if(me.classed("tossing")){
         me.classed("tossing",false);
         return;
@@ -261,6 +261,7 @@ function trans(){
     var plotHeight = $( window ).height();
 
             var prevLine;
+            var prevLine2;
               var activeLine;
               var activeLine2;
 
@@ -277,7 +278,7 @@ var flag = false;
                         flag = false;
                     }else {
                         flag = true;
-                    }    
+                    }
                 });
 
               d3.select("#step-after").on("change", function() {
@@ -332,8 +333,10 @@ if(flag){
       function dragended() {
 
         prevLine = activeLine;
+        prevLine2 = activeLine2;
         svg.selectAll("path.line.prev").classed("prev",false);
         prevLine.classed("prev",true);
+        prevLine2.classed("prev",true);
         activeLine = null;
       }
 
