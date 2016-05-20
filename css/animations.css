@@ -862,8 +862,8 @@ pullUp
 	animation-name: pullUp;
 	-webkit-animation-name: pullUp;
 
-	animation-duration: 1.1s;
-	-webkit-animation-duration: 1.1s;
+	animation-duration: 2.1s;
+	-webkit-animation-duration: 2.1s;
 
 	animation-timing-function: ease-out;
 	-webkit-animation-timing-function: ease-out;
@@ -931,8 +931,8 @@ pullDown
 	animation-name: pullDown;
 	-webkit-animation-name: pullDown;
 
-	animation-duration: 1.1s;
-	-webkit-animation-duration: 1.1s;
+	animation-duration: 1.6s;
+	-webkit-animation-duration: 1.6s;
 
 	animation-timing-function: ease-out;
 	-webkit-animation-timing-function: ease-out;
@@ -958,6 +958,7 @@ pullDown
 	100% {
 		transform: scaleY(0.98);
 	}
+
 	80% {
 		transform: scaleY(1.01);
 	}
@@ -985,6 +986,9 @@ pullDown
 	80% {
 		-webkit-transform: scaleY(1.01);
 	}
+	/*60% {
+		-webkit-transform: scaleY(0.90);
+	}*/
 	100% {
 		-webkit-transform: scaleY(1);
 	}
