@@ -1,10 +1,8 @@
 html,body {
-font-family: 'Open Sans', sans-serif;
+font-family: 'Libre Baskerville', serif;
     background-color: #AA0000;
     color: whitesmoke;
     font-weight: 300;
-    letter-spacing: .05em;
-    line-height: 1.2em;
 }
 
 section#start{
