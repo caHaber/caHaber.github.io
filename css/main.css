@@ -33,8 +33,13 @@ h6{
     font-weight: 100;
 }
 
+h3 {
+    font-weight: 100;
+}
+
 div#cp2 {
     position: fixed;
+
     bottom: 20px;;
     left: 20px;
 }
@@ -83,4 +88,14 @@ p.instruct {
 
 div.colorpicker-alpha{
     visibility: hidden;
+}
+
+a.git, a:link {
+    color: grey;
+}
+
+a.git:hover, a:hover {
+    color: maroon;
+    text-decoration: none;
+
 }

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Midterm Website for CS360">
+    <meta name="author" content="Casey Haber">
+
+    <title>Casey Haber Final</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel='shortcut icon' href='img/favicon.ico' type='image/x-icon'/>
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+    <section id="start">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-4">
+                    <h1> Highlighting Academic Gaps </h1>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="second">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-md-offset-0">
+                    <img id="case" src="img/chProfile.jpg">
+                    <p class="bio">
+                    My Name is Casey Haber and I am a sophomore at University of San Francisco. I grew up in Seattle and have always loved the west coast.I study computer science and design. I intend to create new innovative interactions and experiences by utilizing the power of highly integrative systems. We must learn to cultivate and grow the creativity that exists in every person.
+                    </p>
+                    <div id="site">
+                        <a id="site" href="http://www.cahaber.me" target="_blank_">www.cahaber.me</a>
+                    <p><a href="mailto:haber.casey@gmail.com">haber.casey@gmail.com</a></p>
+
+
+                    </div>
+                </div>
+                <div class="col-md-5 col-md-offset-1">
+
+                    <h3> Dataset Info: </h3>
+                        <hr>
+                    <p class="detail">
+                        The dataset I am visualizing is of demographic and academic student proxy data from Seattle Public Schools. The specific geo-zone can be seen <a href="https://www.seattleu.edu/suyi/neighborhood/">here </a>.
+ The original dataset included over 1,200 rows of student data, but I chose to focus on k-8th grade students and thus filtered out grades 9-12. The demographic attributes include:  grade, home language, ethnicity, school id federal race, country of origin. The academic data contains standardized state test scores and suspension/expulsion records.
+                             <hr>
+                    Brief Description of Geo-Zone:
+                    <br>
+                    <ul><li>Academic Achievement Gap: Persistence of an academic achievement gap between students from different socio- economic backgrounds. In 2008-2009 there was a 40% difference in the WASL passing rate in Math and Science between low-income and middle/upper income students at Garfield High School.</li>
+<li>Poverty: 36% of neighborhood residents live at or below the federal poverty level.</li>
+<li>Demographic shifts: Significant demographic shifts challenge neighborhood residents to form community.</li>
+        </ul>
+                    </p>
+                </div>
+            <div class="row">
+                <div class="col-md-6 col-md-offset-2">
+                    <h3> Content Avalailable per Student </h3>
+                    <iframe src="img/GoodDemo.html" width=600 height=400 frameborder=0 ></iframe>
+                    <p>*Not linking full data because of the privacy issues surrounding student proxy data </p>
+                </div>
+            </div>
+            <div class="col-md-5 col-md-offset-2">
+                    <h3> Data Preprocessing: </h3>
+                        <hr>
+                    <p class="detail">
+                        My preprocessing was done entirely with a data-manipulation language based off R called
+                        <a href="https://github.com/hadley/dplyr"> Dplyr</a>. Dplyr is used as the transformation handler
+                         in <a href="https://exploratory.io/"> Exploratory.io </a> which is the tool that I used. I kept in Grade, Home Language, Ethnicity, School ID (did not use school id). Then I created two aggregated columns for Average State Math Percentile and State Reading percentile. Those columns were based off the winter and spring test percentile because that had the least missing entries. I filtered out students that were not in K-8 as well.
+                    </p>
+                    <p>* R Script
+                    <iframe src="img/rscript.html" width=600 height=200 frameborder=0 ></iframe>
+                </div>
+                <div class="col-md-8 col-md-offset-2">
+                    <h2> Motivation: </h2>
+                    <hr>
+                    <p class="detail">
+                My motivation comes from my connection to this dataset. I went to the same high school as many of these students will end up going to. However, the educational outcomes and experiences displayed in the visualization differ from my own. This disparity is wrong at nature and leaves low-income students of color with limited life options. We can and should provide students with more opportunities and support. We can fulfill the promise of public education in this country, which is to provide all citizens with an equal chance to succeed.
+            </p>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+<section id="viz">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-0">
+                <p class="instruct"> Click and drag to highlight </p>
+            </div>
+            <div class="col-md-6 col-md-offset-0">
+                <p class="instruct"> Hover to Highlight </p>
+            </div>
+            <div class="col-md-12 col-md-offset-0">
+
+                <iframe src="final/index.html" width=105% height=800 frameborder=0 scrolling="no"></iframe>
+
+
+            </div>
+            <div class="col-md-8 col-md-offset-2">
+                <h2 class="motive"> Findings: </h2>
+                <hr>
+                <p class="detail motive">
+                    My visualization very quickly establishes the gap in educational outcomes between racial and socioeconomic groups.  But more importantly the exploration should really begin to highlight outlying regions. Specifically does one racial group need more reading support because of English is not spoken inside the home? The gap is apparent but this is a tool for educators to find inconsistencies that must be fixed. The one thing that must be added is comparing across years.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+    <footer>
+        <div class="container text-center">
+
+            <p>Copyright &copy; Casey Aaron Haber 2016</p>
+
+
+        </div>
+    </footer>
+
+    <!-- <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.easing.min.js"></script> -->
+
+</body>
+
+</html>

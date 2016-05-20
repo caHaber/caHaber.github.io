@@ -1,0 +1,1033 @@
+SchoolYear,StudentID,LastName,FirstName,CurrentEnrollmentSchoolName,CurrentGrade,Gender,RaceEthnicity,ELLEligible,ELLServed,IEP,HomeLanguage,OnTrackToGraduate
+2014Ð15,6083589,,,Madrona K-8 School,3rd,Male,Caucasian,N,N,N,English,n/a
+2014Ð15,3387411,,,Bailey Gatzert Elementary,5th,Male,Caucasian,N,N,Ñ,English,n/a
+2014Ð15,3890418,,,Bryant Elementary,1st,Female,Asian,N,N,Ñ,Cantonese,n/a
+2014Ð15,6940551,,,Stevens Elementary,1st,Male,African American or Black,N,N,Y,English,n/a
+2014Ð15,6937589,,,Bailey Gatzert Elementary,3rd,Male,African American or Black,N,N,N,Somali,n/a
+2014Ð15,7100001,,,Garfield High School,11th,Female,African American or Black,N,N,N,Oromo (Ethiopia),On Track
+2014Ð15,6180554,,,Bailey Gatzert Elementary,3rd,Female,African American or Black,Y,Y,N,Somali,n/a
+2014Ð15,7964154,,,Garfield High School,9th,Male,Asian,N,N,N,English,On Track
+2014Ð15,6319413,,,Leschi Elementary,5th,Female,African American or Black,N,N,Y,English,n/a
+2014Ð15,3521418,,,Thurgood Marshall Elementary,K,Female,Caucasian,Y,Y,Ñ,Russian,n/a
+2014Ð15,7056321,,,Washington Middle School,7th,Female,Asian,N,N,N,Vietnamese,n/a
+2014Ð15,6783703,,,Washington Middle School,8th,Female,African American or Black,N,N,N,Amharic,n/a
+2014Ð15,3864745,,,Thurgood Marshall Elementary,2nd,Male,Asian,Y,Y,Y,Vietnamese,n/a
+2014Ð15,3693794,,,Bailey Gatzert Elementary,1st,Male,African American or Black,N,N,N,English,n/a
+2014Ð15,7560338,,,Garfield High School,12th,Female,African American or Black,N,N,N,English,On Track
+2014Ð15,7353300,,,Washington Middle School,7th,Male,African American or Black,N,N,Y,English,n/a
+2014Ð15,7272558,,,Interagency Academy,11th,Female,Hispanic,N,N,N,Spanish,Off Track
+2014Ð15,3631449,,,Bailey Gatzert Elementary,K,Male,Hispanic,N,N,Ñ,English,n/a
+2014Ð15,7375107,,,Washington Middle School,8th,Male,African American or Black,N,N,N,English,n/a
+2014Ð15,3679744,,,Bailey Gatzert Elementary,1st,Male,Hispanic,Y,Y,N,Spanish,n/a
+2014Ð15,3317442,,,Garfield High School,12th,Male,Multiracial,N,N,Ñ,English,On Track
+2014Ð15,3501780,,,Washington Middle School,7th,Male,African American or Black,N,N,N,English,n/a
+2014Ð15,6892557,,,Stevens Elementary,2nd,Male,African American or Black,N,N,Y,English,n/a
+2014Ð15,6586599,,,Bailey Gatzert Elementary,K,Male,Hispanic,Y,Y,N,English,n/a
+2014Ð15,6542700,,,Bailey Gatzert Elementary,5th,Male,Asian,N,N,N,Toishanese,n/a
+2014Ð15,7368854,,,Washington Middle School,7th,Female,African American or Black,Y,Y,N,Somali,n/a
+2014Ð15,3652416,,,Lowell Elementary,K,Male,Multiracial,N,N,Ñ,English,n/a
+2014Ð15,6988706,,,Leschi Elementary,5th,Female,Asian,Y,Y,N,Tagalog,n/a
+2014Ð15,7290602,,,Garfield High School,9th,Female,Hispanic,N,N,N,Spanish,On Track
+2014Ð15,3205749,,,John Muir Elementary,4th,Female,Caucasian,N,N,N,English,n/a
+2014Ð15,3079411,,,Bailey Gatzert Elementary,K,Female,Asian,Y,Y,Ñ,Tagalog,n/a
+2014Ð15,7055001,,,West Seattle High School,10th,Male,Asian,N,N,Y,English,On Track
+2014Ð15,3116780,,,Madrona K-8 School,2nd,Male,Hispanic,N,N,N,English,n/a
+2014Ð15,7452225,,,Rainier Beach High School,12th,Female,African American or Black,N,N,N,English,On Track
+2014Ð15,7121959,,,Garfield High School,11th,Male,African American or Black,N,N,N,Amharic,On Track
+2014Ð15,3444742,,,Washington Middle School,7th,Male,African American or Black,N,N,Y,English,n/a
+2014Ð15,3472719,,,Bailey Gatzert Elementary,3rd,Female,Hispanic,N,N,N,English,n/a
+2014Ð15,3695710,,,Garfield High School,11th,Female,African American or Black,Y,Y,N,Somali,On Track
+2014Ð15,7375870,,,Washington Middle School,6th,Female,Hispanic,N,N,N,Spanish,n/a
+2014Ð15,3693419,,,Garfield High School,11th,Male,Asian,Y,Y,Ñ,Vietnamese,Off Track
+2014Ð15,6084584,,,TOPS K-8 School,3rd,Male,African American or Black,N,N,N,Tigrinya (Tigrigna),n/a
+2014Ð15,6298551,,,Pathfinder K-8 School,5th,Male,Caucasian,N,N,N,English,n/a
+2014Ð15,3621449,,,Garfield High School,10th,Female,African American or Black,Y,Y,Ñ,Somali,On Track
+2014Ð15,6892720,,,Madrona K-8 School,5th,Female,African American or Black,Y,Y,N,Oromo (Ethiopia),n/a
+2014Ð15,7911950,,,Garfield High School,11th,Male,African American or Black,N,N,N,English,On Track
+2014Ð15,3155750,,,John Muir Elementary,2nd,Female,African American or Black,Y,Y,N,Somali,n/a
+2014Ð15,3310790,,,Bailey Gatzert Elementary,1st,Male,African American or Black,N,N,N,Somali,n/a
+2014Ð15,7077960,,,Garfield High School,10th,Female,Asian,N,N,N,English,On Track
+2014Ð15,3677744,,,Bailey Gatzert Elementary,1st,Male,Hispanic,Y,Y,Y,Spanish,n/a
+2014Ð15,7205601,,,Washington Middle School,8th,Female,Hispanic,Y,Y,N,Spanish,n/a
+2014Ð15,3792743,,,Bailey Gatzert Elementary,1st,Male,Asian,Y,Y,N,Vietnamese,n/a
+2014Ð15,7866116,,,Garfield High School,9th,Female,Asian,N,N,N,English,On Track
+2014Ð15,7205860,,,Washington Middle School,6th,Male,African American or Black,N,N,N,English,n/a
+2014Ð15,3802716,,,TOPS K-8 School,2nd,Female,Asian,Y,Y,Y,Mandarin,n/a
+2014Ð15,6306718,,,Thurgood Marshall Elementary,5th,Male,Hispanic,N,N,N,Spanish,n/a
+2014Ð15,3255412,,,Madrona K-8 School,1st,Female,African American or Black,N,N,Ñ,English,n/a
+2014Ð15,7628007,,,Interagency Academy,12th,Female,African American or Black,N,N,Y,English,Off Track
+2014Ð15,3464749,,,Bailey Gatzert Elementary,3rd,Female,African American or Black,N,N,N,English,n/a
+2014Ð15,3032750,,,Stevens Elementary,2nd,Male,Multiracial,N,N,N,English,n/a
+2014Ð15,3340414,,,Bailey Gatzert Elementary,K,Female,Asian,Y,Y,Ñ,Vietnamese,n/a
+2014Ð15,3819753,,,Montlake Elementary,2nd,Male,Multiracial,N,N,N,English,n/a
+2014Ð15,7478275,,,Garfield High School,12th,Female,Multiracial,N,N,N,English,On Track
+2014Ð15,7370934,,,Garfield High School,10th,Male,African American or Black,N,N,N,English,Off Track
+2014Ð15,3042796,,,Bailey Gatzert Elementary,1st,Female,Asian,Y,Y,N,Cantonese,n/a
+2014Ð15,6779704,,,Bailey Gatzert Elementary,5th,Male,African American or Black,N,N,N,English,n/a
+2014Ð15,6744703,,,Washington Middle School,8th,Male,Asian,Y,Y,N,Cantonese,n/a
+2014Ð15,7271133,,,Garfield High School,12th,Female,Hispanic,N,N,N,Spanish,On Track
+2014Ð15,6006709,,,Garfield High School,9th,Female,Caucasian,N,N,Y,English,On Track
+2014Ð15,7089335,,,Garfield High School,12th,Female,Asian,N,N,N,Toishanese,On Track
+2014Ð15,3824746,,,Louisa Boren STEM K-8 School,4th,Male,African American or Black,N,N,Y,English,n/a
+2014Ð15,7656230,,,Garfield High School,12th,Female,African American or Black,N,N,N,English,On Track
+2014Ð15,3815730,,,Bailey Gatzert Elementary,4th,Female,African American or Black,Y,Y,N,Somali,n/a
+2014Ð15,7716106,,,Washington Middle School,8th,Male,Hispanic,N,N,Y,English,n/a
+2014Ð15,3368742,,,Bailey Gatzert Elementary,3rd,Female,African American or Black,N,N,N,English,n/a
+2014Ð15,6104492,,,Stevens Elementary,4th,Female,Hispanic,N,N,N,Spanish,n/a
+2014Ð15,3545789,,,Garfield High School,11th,Female,Caucasian,N,N,N,English,On Track
+2014Ð15,6197457,,,Garfield High School,12th,Male,Asian,Y,Y,N,Toishanese,On Track
+2014Ð15,7284970,,,Garfield High School,9th,Female,African American or Black,N,N,Y,English,On Track
+2014Ð15,7373511,,,Middle College High School,12th,Female,Asian,N,N,N,Vietnamese,Off Track
+2014Ð15,3013750,,,Bailey Gatzert Elementary,1st,Male,African American or Black,N,N,N,English,n/a
+2014Ð15,6170531,,,Leschi Elementary,2nd,Male,Caucasian,Y,Y,N,Oromo (Ethiopia),n/a
+2014Ð15,7472892,,,Washington Middle School,6th,Male,Caucasian,N,N,N,English,n/a
+2014Ð15,3056791,,,Bailey Gatzert Elementary,1st,Female,Multiracial,N,N,N,English,n/a
+2014Ð15,6827555,,,TOPS K-8 School,2nd,Female,Asian,Y,Y,N,Toishanese,n/a
+2014Ð15,6668441,,,Bailey Gatzert Elementary,4th,Female,African American or Black,N,N,N,English,n/a
+2014Ð15,3867780,,,Bailey Gatzert Elementary,1st,Female,African American or Black,Y,Y,N,Somali,n/a
+2014Ð15,7003626,,,Washington Middle School,7th,Male,Asian,N,N,Y,English,n/a
+2014Ð15,6797776,,,Madrona K-8 School,5th,Female,African American or Black,Y,Y,N,Somali,n/a
+2014Ð15,3580749,,,Madrona K-8 School,5th,Female,Multiracial,N,N,N,English,n/a
+2014Ð15,3544413,,,Washington Middle School,8th,Male,African American or Black,Y,Y,Ñ,Amharic,n/a
+2014Ð15,3257412,,,Madrona K-8 School,7th,Male,African American or Black,N,N,Ñ,English,n/a
+2014Ð15,3326795,,,Bailey Gatzert Elementary,1st,Female,Caucasian,Y,Y,N,Khmer,n/a
+2014Ð15,3824415,,,Leschi Elementary,K,Male,African American or Black,N,N,Ñ,English,n/a
+2014Ð15,6627761,,,Leschi Elementary,5th,Female,African American or Black,N,N,N,English,n/a
+2014Ð15,7034960,,,Garfield High School,10th,Female,African American or Black,N,N,N,English,On Track
+2014Ð15,7131880,,,Washington Middle School,6th,Female,African American or Black,N,N,Y,English,n/a
+2014Ð15,6252514,,,Washington Middle School,8th,Female,Hispanic,Y,Y,N,Spanish,n/a
+2014Ð15,3159754,,,Washington Middle School,6th,Male,African American or Black,Y,Y,N,Tigrinya (Tigrigna),n/a
+2014Ð15,3056415,,,Bailey Gatzert Elementary,K,Male,African American or Black,Y,Y,Ñ,Oromo (Ethiopia),n/a
+2014Ð15,7581951,,,Interagency Academy,12th,Female,Asian,N,N,N,Lao,Off Track
+2014Ð15,6664584,,,Garfield High School,10th,Male,Asian,Y,Y,N,Mandarin,On Track
+2014Ð15,3898417,,,Nova High School,10th,Female,Multiracial,N,N,Ñ,English,On Track
+2014Ð15,6473559,,,Bailey Gatzert Elementary,1st,Male,Asian,Y,Y,N,Cantonese,n/a
+2014Ð15,3271732,,,TOPS K-8 School,1st,Male,Asian,Y,Y,N,Mandarin,n/a
+2014Ð15,3098755,,,Bailey Gatzert Elementary,2nd,Male,African American or Black,Y,Y,N,Amharic,n/a
+2014Ð15,6970489,,,Thurgood Marshall Elementary,4th,Female,Asian,N,N,N,Cantonese,n/a
+2014Ð15,3284414,,,John Muir Elementary,4th,Male,Caucasian,N,N,Y,English,n/a
+2014Ð15,7267108,,,Madrona K-8 School,7th,Male,American Indian,N,N,N,English,n/a
+2014Ð15,7172169,,,Washington Middle School,8th,Female,Asian,N,N,N,English,n/a
+2014Ð15,3263412,,,Madrona K-8 School,2nd,Female,Multiracial,N,N,Ñ,English,n/a
+2014Ð15,3936749,,,Garfield High School,9th,Female,African American or Black,N,N,N,Oromo (Ethiopia),On Track
+2014Ð15,7244173,,,Orca K-8 School,8th,Female,Caucasian,N,N,N,English,n/a
+2014Ð15,6070477,,,TOPS K-8 School,3rd,Female,Asian,Y,Y,Y,Cantonese,n/a
+2014Ð15,6207466,,,Bailey Gatzert Elementary,4th,Female,Asian,N,N,N,Tagalog,n/a
+2014Ð15,3678744,,,Leschi Elementary,1st,Male,African American or Black,Y,Y,N,Oromo (Ethiopia),n/a
+2014Ð15,3365796,,,Garfield High School,11th,Male,African American or Black,N,N,Y,English,On Track
+2014Ð15,3538417,,,Washington Middle School,6th,Female,Caucasian,N,N,Ñ,English,n/a
+2014Ð15,3984756,,,Bailey Gatzert Elementary,3rd,Female,Asian,N,N,N,Mandarin,n/a
+2014Ð15,7479943,,,Garfield High School,11th,Male,Asian,N,N,N,Tagalog,On Track
+2014Ð15,6309510,,,Interagency Academy,9th,Male,Hispanic,N,N,N,Spanish,On Track
+2014Ð15,3094411,,,Bailey Gatzert Elementary,K,Male,Asian,Y,Y,Ñ,Toishanese,n/a
+2014Ð15,3725413,,,Thurgood Marshall Elementary,K,Female,Caucasian,N,N,Ñ,English,n/a
+2014Ð15,7877596,,,South Lake High School,12th,Female,African American or Black,N,N,N,English,Off Track
+2014Ð15,7841126,,,Washington Middle School,8th,Male,Asian,N,N,N,Vietnamese,n/a
+2014Ð15,7586218,,,Nova High School,10th,Female,Asian,N,N,N,Vietnamese,Off Track
+2014Ð15,6716745,,,Washington Middle School,6th,Male,African American or Black,N,N,N,English,n/a
+2014Ð15,7718333,,,Washington Middle School,7th,Male,Caucasian,N,N,N,Russian,n/a
+2014Ð15,3406739,,,Leschi Elementary,1st,Male,Asian,Y,Y,N,Indonesian,n/a
+2014Ð15,6978713,,,Washington Middle School,6th,Male,Hispanic,N,N,N,Spanish,n/a
+2014Ð15,6091728,,,Garfield High School,12th,Male,African American or Black,N,N,N,Somali,On Track
+2014Ð15,6768595,,,Bailey Gatzert Elementary,2nd,Female,Hispanic,Y,Y,Y,Spanish,n/a
+2014Ð15,7305324,,,TOPS K-8 School,7th,Male,Hispanic,Y,Y,Y,Spanish,n/a
+2014Ð15,7117806,,,Garfield High School,9th,Female,Asian,Y,Y,N,Toishanese,On Track
+2014Ð15,3003447,,,Bailey Gatzert Elementary,2nd,Male,African American or Black,Y,Y,Ñ,Somali,n/a
+2014Ð15,7487957,,,Garfield High School,11th,Male,Hispanic,N,N,N,Spanish,On Track
+2014Ð15,7894299,,,Garfield High School,12th,Female,Hispanic,N,N,N,English,On Track
+2014Ð15,7827966,,,Garfield High School,9th,Female,Asian,N,N,N,Mandarin,On Track
+2014Ð15,3257447,,,Washington Middle School,7th,Female,Caucasian,N,N,Ñ,English,n/a
+2014Ð15,6494482,,,Bailey Gatzert Elementary,4th,Male,African American or Black,Y,Y,Y,Somali,n/a
+2014Ð15,6170421,,,Bailey Gatzert Elementary,4th,Male,African American or Black,N,N,N,English,n/a
+2014Ð15,3746415,,,Bailey Gatzert Elementary,K,Male,African American or Black,Y,Y,Ñ,Somali,n/a
+2014Ð15,7356660,,,Garfield High School,9th,Female,African American or Black,N,N,N,Tigrinya (Tigrigna),On Track
+2014Ð15,7477295,,,South Lake High School,12th,Female,African American or Black,N,N,N,English,On Track
+2014Ð15,3248447,,,Bailey Gatzert Elementary,3rd,Male,Caucasian,Y,Y,Ñ,Arabic,n/a
+2014Ð15,7591328,,,Bailey Gatzert Elementary,5th,Male,Asian,Y,Y,N,Vietnamese,n/a
+2014Ð15,7140362,,,Washington Middle School,7th,Female,Asian,Y,Y,N,Vietnamese,n/a
+2014Ð15,7969302,,,TOPS K-8 School,7th,Male,African American or Black,N,N,Y,English,n/a
+2014Ð15,7400328,,,Washington Middle School,7th,Male,Asian,N,N,N,Vietnamese,n/a
+2014Ð15,7199244,,,Garfield High School,12th,Female,African American or Black,N,N,N,English,On Track
+2014Ð15,7188946,,,Garfield High School,11th,Male,Hispanic,N,N,Y,Tagalog,On Track
+2014Ð15,7617668,,,Washington Middle School,8th,Male,African American or Black,N,N,N,Amharic,n/a
+2014Ð15,3426747,,,Bailey Gatzert Elementary,2nd,Male,Multiracial,N,N,N,Chin,n/a
+2014Ð15,3118786,,,Madrona K-8 School,2nd,Female,Multiracial,N,N,N,English,n/a
+2014Ð15,3420796,,,Bailey Gatzert Elementary,1st,Male,Asian,Y,Y,N,Toishanese,n/a
+2014Ð15,3356796,,,Leschi Elementary,K,Female,African American or Black,Y,Y,N,Oromo (Ethiopia),n/a
+2014Ð15,6870775,,,Garfield High School,9th,Female,Asian,N,N,N,Vietnamese,On Track
+2014Ð15,3426796,,,Bailey Gatzert Elementary,1st,Male,Asian,Y,Y,N,Toishanese,n/a
+2014Ð15,6065755,,,Washington Middle School,7th,Female,African American or Black,N,N,Y,English,n/a
+2014Ð15,7627961,,,Garfield High School,10th,Female,Asian,N,N,N,Cantonese,On Track
+2014Ð15,3939795,,,Bailey Gatzert Elementary,1st,Male,Multiracial,N,N,N,English,n/a
+2014Ð15,3945752,,,Leschi Elementary,2nd,Female,Caucasian,N,N,N,English,n/a
+2014Ð15,7454840,,,Lowell Elementary,2nd,Male,African American or Black,N,N,Y,English,n/a
+2014Ð15,3225735,,,Bailey Gatzert Elementary,K,Male,Hispanic,Y,Y,N,Spanish,n/a
+2014Ð15,6761413,,,Washington Middle School,6th,Female,Asian,N,N,N,Toishanese,n/a
+2014Ð15,3464737,,,Bailey Gatzert Elementary,1st,Female,African American or Black,N,N,N,Somali,n/a
+2014Ð15,3572791,,,Bailey Gatzert Elementary,K,Female,Asian,Y,Y,Y,Vietnamese,n/a
+2014Ð15,3474795,,,Leschi Elementary,1st,Male,Caucasian,N,N,N,English,n/a
+2014Ð15,7197134,,,South Shore K-8 School,7th,Male,African American or Black,N,N,Y,English,n/a
+2014Ð15,3584785,,,Garfield High School,11th,Male,Asian,Y,Y,N,Cantonese,On Track
+2014Ð15,3704755,,,Garfield High School,9th,Male,Caucasian,N,N,N,English,On Track
+2014Ð15,3464734,,,Bailey Gatzert Elementary,2nd,Female,Asian,N,N,N,Tagalog,n/a
+2014Ð15,7055265,,,South Lake High School,11th,Female,African American or Black,N,N,N,English,On Track
+2014Ð15,7282906,,,Garfield High School,10th,Male,Hispanic,N,N,N,Spanish,On Track
+2014Ð15,7805622,,,Garfield High School,9th,Male,Asian,N,N,N,Cantonese,On Track
+2014Ð15,7401094,,,Garfield High School,12th,Male,Multiracial,N,N,N,English,On Track
+2014Ð15,7492159,,,Madrona K-8 School,7th,Male,Hispanic,Y,Y,Y,Spanish,n/a
+2014Ð15,3362447,,,Washington Middle School,7th,Male,Multiracial,N,N,Ñ,English,n/a
+2014Ð15,3891782,,,Bailey Gatzert Elementary,2nd,Female,Multiracial,N,N,N,English,n/a
+2014Ð15,7624122,,,Orca K-8 School,8th,Female,Multiracial,N,N,N,English,n/a
+2014Ð15,3244718,,,Bailey Gatzert Elementary,5th,Female,African American or Black,Y,Y,Y,Somali,n/a
+2014Ð15,7622145,,,Garfield High School,9th,Female,African American or Black,N,N,N,Oromo (Ethiopia),On Track
+2014Ð15,3933419,,,Bailey Gatzert Elementary,1st,Male,African American or Black,N,N,Ñ,English,n/a
+2014Ð15,6249446,,,Orca K-8 School,5th,Male,Caucasian,N,N,N,English,n/a
+2014Ð15,6313482,,,TOPS K-8 School,4th,Male,Asian,N,N,N,Cantonese,n/a
+2014Ð15,3291713,,,Madrona K-8 School,K,Male,Caucasian,N,N,Y,English,n/a
+2014Ð15,3482715,,,Bailey Gatzert Elementary,3rd,Male,African American or Black,Y,Y,N,Oromo (Ethiopia),n/a
+2014Ð15,3142418,,,Cascade Parent Partnership,8th,Male,Caucasian,N,N,Ñ,English,n/a
+2014Ð15,3950787,,,Stevens Elementary,K,Female,African American or Black,Y,Y,Y,Somali,n/a
+2014Ð15,6568583,,,John Muir Elementary,3rd,Male,African American or Black,N,N,N,English,n/a
+2014Ð15,7653826,,,McClure Middle School,8th,Female,African American or Black,N,N,N,English,n/a
+2014Ð15,6363554,,,Interagency Academy,11th,Male,African American or Black,N,N,N,English,Off Track
+2014Ð15,6811555,,,Bailey Gatzert Elementary,3rd,Female,African American or Black,N,N,N,Tigrinya (Tigrigna),n/a
+2014Ð15,3230788,,,Garfield High School,11th,Female,Asian,Y,Y,N,Cantonese,On Track
+2014Ð15,7599295,,,Garfield High School,12th,Male,Asian,N,N,N,English,On Track
+2014Ð15,7690335,,,Washington Middle School,6th,Male,African American or Black,N,N,N,English,n/a
+2014Ð15,3665786,,,Garfield High School,9th,Male,African American or Black,Y,Y,N,Somali,On Track
+2014Ð15,3862758,,,Leschi Elementary,2nd,Male,African American or Black,N,N,N,Amharic,n/a
+2014Ð15,7862087,,,Garfield High School,12th,Female,Asian,N,N,N,Cambodian,On Track
+2014Ð15,3185715,,,Bailey Gatzert Elementary,3rd,Female,African American or Black,N,N,N,English,n/a
+2014Ð15,3898418,,,Bailey Gatzert Elementary,K,Female,African American or Black,N,N,Ñ,English,n/a
+2014Ð15,3490793,,,Washington Middle School,7th,Female,African American or Black,N,N,N,English,n/a
+2014Ð15,6329583,,,Thurgood Marshall Elementary,3rd,Female,Hispanic,Y,Y,N,Spanish,n/a
+2014Ð15,3304795,,,Montlake Elementary,1st,Male,Multiracial,N,N,N,German,n/a
+2014Ð15,6415588,,,Garfield High School,9th,Male,African American or Black,N,N,Y,English,On Track
+2014Ð15,7699336,,,Washington Middle School,7th,Male,Asian,N,N,Y,English,n/a
+2014Ð15,6913413,,,McGilvra Elementary,5th,Female,African American or Black,N,N,N,English,n/a
+2014Ð15,3093418,,,Washington Middle School,8th,Female,Asian,N,N,Ñ,English,n/a
+2014Ð15,7194127,,,Washington Middle School,8th,Male,Hispanic,N,N,N,Spanish,n/a
+2014Ð15,7105211,,,Interagency Academy,11th,Male,American Indian,N,N,N,English,On Track
+2014Ð15,3137757,,,Thurgood Marshall Elementary,2nd,Male,African American or Black,N,N,N,French,n/a
+2014Ð15,7509115,,,Garfield High School,9th,Male,Hispanic,N,N,N,English,On Track
+2014Ð15,7404800,,,South Lake High School,11th,Female,Multiracial,N,N,N,English,On Track
+2014Ð15,7301196,,,Garfield High School,9th,Female,African American or Black,N,N,N,Amharic,On Track
+2014Ð15,7800117,,,Garfield High School,9th,Female,Caucasian,Y,Y,Y,Russian,On Track
+2014Ð15,3300733,,,Lowell Elementary,1st,Male,Multiracial,N,N,N,English,n/a
+2014Ð15,7691338,,,Washington Middle School,6th,Male,Caucasian,N,N,Y,English,n/a
+2014Ð15,3584449,,,Bailey Gatzert Elementary,1st,Male,African American or Black,Y,Y,Ñ,Somali,n/a
+2014Ð15,7483667,,,Garfield High School,12th,Female,Asian,N,N,N,Vietnamese,On Track
+2014Ð15,7336259,,,Cleveland STEM High School,11th,Female,African American or Black,N,N,N,English,On Track
+2014Ð15,3782783,,,Garfield High School,12th,Male,African American or Black,Y,Y,N,Tigrinya (Tigrigna),On Track
+2014Ð15,3338782,,,Bailey Gatzert Elementary,5th,Male,Multiracial,N,N,N,English,n/a
+2014Ð15,3861410,,,Leschi Elementary,K,Female,African American or Black,Y,Y,Ñ,Oromo (Ethiopia),n/a
+2014Ð15,6094744,,,Washington Middle School,6th,Male,Hispanic,N,N,Y,English,n/a
+2014Ð15,7594961,,,Garfield High School,10th,Male,Asian,N,N,N,Toishanese,On Track
+2014Ð15,3442742,,,Rainier Beach High School,12th,Female,African American or Black,Y,Y,N,Oromo (Ethiopia),On Track
+2014Ð15,7238947,,,Garfield High School,11th,Female,Asian,N,N,N,Vietnamese,On Track
+2014Ð15,3256447,,,Viewlands Elementary,5th,Female,African American or Black,N,N,Ñ,English,n/a
+2014Ð15,7583839,,,Washington Middle School,6th,Male,Asian,Y,Y,N,Cantonese,n/a
+2014Ð15,7648663,,,Garfield High School,11th,Male,African American or Black,N,N,N,Amharic,On Track
+2014Ð15,7800851,,,Interagency Academy,8th,Male,Hispanic,N,N,N,Spanish,n/a
+2014Ð15,3988717,,,Bailey Gatzert Elementary,3rd,Male,African American or Black,N,N,N,English,n/a
+2014Ð15,3572415,,,Bailey Gatzert Elementary,K,Female,African American or Black,Y,Y,Ñ,Somali,n/a
+2014Ð15,7947292,,,Garfield High School,12th,Female,Asian,N,N,N,Vietnamese,On Track
+2014Ð15,3132793,,,Bailey Gatzert Elementary,K,Female,African American or Black,Y,Y,Y,English,n/a
+2014Ð15,7730847,,,Madrona K-8 School,7th,Male,African American or Black,Y,Y,N,Somali,n/a
+2014Ð15,6669728,,,Bailey Gatzert Elementary,5th,Male,African American or Black,N,N,N,Somali,n/a
+2014Ð15,3281712,,,B.F. Day Elementary,3rd,Male,Asian,Y,Y,Y,Vietnamese,n/a
+2014Ð15,7053913,,,Garfield High School,12th,Female,Asian,N,N,N,Vietnamese,On Track
+2014Ð15,3664758,,,Martin Luther King Jr. Elementary,2nd,Male,African American or Black,Y,Y,N,Somali,n/a
+2014Ð15,3201414,,,Interagency Academy,12th,Male,Hispanic,N,N,Y,English,n/a
+2014Ð15,6751776,,,Kimball Elementary,5th,Male,African American or Black,Y,Y,N,Amharic,n/a
+2014Ð15,6015515,,,Hawthorne Elementary,2nd,Male,African American or Black,Y,Y,Y,Somali,n/a
+2014Ð15,3422796,,,TOPS K-8 School,1st,Female,Asian,Y,Y,N,Cantonese,n/a
+2014Ð15,7584825,,,Garfield High School,10th,Female,Asian,N,N,N,Toishanese,On Track
+2014Ð15,6828489,,,Bailey Gatzert Elementary,4th,Female,African American or Black,N,N,N,Somali,n/a
+2014Ð15,6151786,,,Washington Middle School,6th,Female,Caucasian,N,N,N,Kurdish,n/a
+2014Ð15,7068837,,,Washington Middle School,6th,Female,Caucasian,N,N,N,English,n/a
+2014Ð15,7822968,,,Garfield High School,10th,Male,Asian,Y,Y,Y,Vietnamese,On Track
+2014Ð15,3362713,,,McGilvra Elementary,3rd,Male,Asian,N,N,Y,English,n/a
+2014Ð15,6000715,,,Washington Middle School,6th,Male,Hispanic,N,N,N,Spanish,n/a
+2014Ð15,7269030,,,Garfield High School,12th,Female,African American or Black,N,N,N,English,On Track
+2014Ð15,3437733,,,Bailey Gatzert Elementary,1st,Male,Multiracial,N,N,N,English,n/a
+2014Ð15,6355717,,,Garfield High School,10th,Female,Hispanic,N,N,N,Spanish,On Track
+2014Ð15,3003751,,,Leschi Elementary,2nd,Female,African American or Black,Y,Y,N,Oromo (Ethiopia),n/a
+2014Ð15,7799884,,,Washington Middle School,8th,Male,African American or Black,N,N,N,Oromo (Ethiopia),n/a
+2014Ð15,3904795,,,Madrona K-8 School,1st,Male,African American or Black,Y,Y,N,Somali,n/a
+2014Ð15,7409305,,,Middle College High School,12th,Male,African American or Black,N,N,N,Oromo (Ethiopia),Off Track
+2014Ð15,6318781,,,Beacon Hill International School,5th,Male,Asian,N,N,N,Cantonese,n/a
+2014Ð15,3042789,,,Bailey Gatzert Elementary,3rd,Male,Asian,Y,Y,N,Toishanese,n/a
+2014Ð15,6392587,,,Van Asselt Elementary,3rd,Male,Asian,N,N,N,English,n/a
+2014Ð15,6858532,,,Cascade Parent Partnership,3rd,Male,African American or Black,N,N,N,English,n/a
+2014Ð15,6398510,,,Bailey Gatzert Elementary,4th,Female,Hispanic,Y,Y,N,Spanish,n/a
+2014Ð15,3262783,,,Bailey Gatzert Elementary,3rd,Male,African American or Black,Y,Y,N,Somali,n/a
+2014Ð15,6491407,,,Stevens Elementary,2nd,Male,African American or Black,N,N,Y,English,n/a
+2014Ð15,3933447,,,Washington Middle School,7th,Male,African American or Black,N,N,Ñ,English,n/a
+2014Ð15,3144745,,,Bailey Gatzert Elementary,3rd,Female,African American or Black,Y,Y,N,Somali,n/a
+2014Ð15,6421484,,,Bailey Gatzert Elementary,4th,Female,African American or Black,Y,Y,N,Oromo (Ethiopia),n/a
+2014Ð15,3582442,,,Bailey Gatzert Elementary,K,Female,African American or Black,Y,Y,Ñ,Somali,n/a
+2014Ð15,3649413,,,Thurgood Marshall Elementary,K,Male,Caucasian,N,N,Y,English,n/a
+2014Ð15,3344447,,,Bailey Gatzert Elementary,K,Male,African American or Black,Y,Y,Ñ,Somali,n/a
+2014Ð15,3548758,,,Dearborn Park International School,2nd,Male,African American or Black,Y,Y,N,Somali,n/a
+2014Ð15,6187717,,,Washington Middle School,6th,Female,Asian,N,N,N,Vietnamese,n/a
+2014Ð15,3945442,,,Bailey Gatzert Elementary,3rd,Male,Hispanic,Y,Y,Y,Spanish,n/a
+2014Ð15,6208778,,,Bailey Gatzert Elementary,3rd,Male,African American or Black,Y,Y,Y,Somali,n/a
+2014Ð15,7209119,,,Garfield High School,9th,Female,African American or Black,N,N,N,English,On Track
+2014Ð15,7247664,,,Garfield High School,9th,Female,Asian,N,N,N,Cantonese,On Track
+2014Ð15,6955747,,,Washington Middle School,7th,Female,Asian,N,N,N,Tagalog,n/a
+2014Ð15,3544792,,,Bailey Gatzert Elementary,2nd,Female,African American or Black,Y,Y,N,Somali,n/a
+2014Ð15,3676710,,,Garfield High School,12th,Female,African American or Black,Y,Y,N,Somali,Off Track
+2014Ð15,3724411,,,Leschi Elementary,K,Female,African American or Black,Y,Y,Ñ,Oromo (Ethiopia),n/a
+2014Ð15,3158418,,,Leschi Elementary,K,Female,African American or Black,Y,Y,Ñ,Oromo (Ethiopia),n/a
+2014Ð15,3326788,,,Bailey Gatzert Elementary,5th,Female,African American or Black,Y,Y,N,French,n/a
+2014Ð15,7600875,,,TOPS K-8 School,6th,Male,Asian,Y,Y,N,Cantonese,n/a
+2014Ð15,3917447,,,Bailey Gatzert Elementary,K,Male,Caucasian,N,N,Ñ,English,n/a
+2014Ð15,6124484,,,Washington Middle School,6th,Female,Asian,Y,Y,N,Cantonese,n/a
+2014Ð15,3844418,,,Bailey Gatzert Elementary,K,Male,Asian,Y,Y,Ñ,Vietnamese,n/a
+2014Ð15,3716411,,,Garfield High School,12th,Female,Asian,Y,Y,Ñ,Vietnamese,Off Track
+2014Ð15,7902890,,,TOPS K-8 School,7th,Male,African American or Black,N,N,Y,English,n/a
+2014Ð15,7171374,,,Garfield High School,9th,Male,African American or Black,N,N,N,English,On Track
+2014Ð15,7796119,,,Garfield High School,9th,Female,Caucasian,N,N,N,English,On Track
+2014Ð15,6983497,,,Leschi Elementary,4th,Male,African American or Black,N,N,N,English,n/a
+2014Ð15,3764798,,,John Muir Elementary,2nd,Female,Multiracial,N,N,N,English,n/a
+2014Ð15,7075878,,,Garfield High School,12th,Female,Asian,N,N,N,Mandarin,On Track
+2014Ð15,6479482,,,Bailey Gatzert Elementary,3rd,Male,African American or Black,Y,Y,N,Somali,n/a
+2014Ð15,7436278,,,Interagency Academy,10th,Male,Caucasian,N,N,N,English,Off Track
+2014Ð15,7526339,,,Garfield High School,9th,Male,African American or Black,N,N,N,English,On Track
+2014Ð15,6577594,,,Bailey Gatzert Elementary,2nd,Male,Caucasian,Y,Y,Y,English,n/a
+2014Ð15,7439653,,,Garfield High School,10th,Female,Hispanic,N,N,N,Spanish,On Track
+2014Ð15,3478442,,,Garfield High School,9th,Male,African American or Black,Y,Y,Ñ,Amharic,On Track
+2014Ð15,3401786,,,Washington Middle School,8th,Male,African American or Black,Y,Y,N,Tigrinya (Tigrigna),n/a
+2014Ð15,7929386,,,Washington Middle School,8th,Female,African American or Black,N,N,Y,English,n/a
+2014Ð15,6836438,,,McGilvra Elementary,3rd,Male,Asian,N,N,N,English,n/a
+2014Ð15,6087755,,,Garfield High School,12th,Male,African American or Black,N,N,Y,English,On Track
+2014Ð15,7952987,,,Garfield High School,11th,Female,Caucasian,N,N,N,English,On Track
+2014Ð15,7102360,,,Washington Middle School,7th,Female,African American or Black,N,N,N,English,n/a
+2014Ð15,3429749,,,Bailey Gatzert Elementary,3rd,Female,African American or Black,N,N,N,English,n/a
+2014Ð15,7014022,,,Garfield High School,12th,Male,African American or Black,N,N,N,English,On Track
+2014Ð15,7946081,,,Garfield High School,12th,Male,Hispanic,N,N,N,Spanish,On Track
+2014Ð15,3542411,,,Seattle World School,10th,Male,Asian,Y,Y,Ñ,Toishanese,On Track
+2014Ð15,7931338,,,Washington Middle School,7th,Male,Hispanic,N,N,N,Spanish,n/a
+2014Ð15,7638826,,,Garfield High School,10th,Male,African American or Black,N,N,N,English,On Track
+2014Ð15,7493862,,,Washington Middle School,6th,Male,Hispanic,N,N,N,Spanish,n/a
+2014Ð15,7928302,,,TOPS K-8 School,7th,Male,African American or Black,N,N,Y,English,n/a
+2014Ð15,7216389,,,Madrona K-8 School,8th,Female,American Indian,N,N,N,English,n/a
+2014Ð15,3067442,,,Garfield High School,11th,Male,Caucasian,N,N,Ñ,English,On Track
+2014Ð15,7286321,,,Washington Middle School,7th,Male,Multiracial,N,N,N,Vietnamese,n/a
+2014Ð15,3480796,,,Garfield High School,11th,Male,Asian,Y,Y,N,Toishanese,On Track
+2014Ð15,3183733,,,Madrona K-8 School,1st,Male,Multiracial,N,N,N,Lao,n/a
+2014Ð15,3661416,,,Bailey Gatzert Elementary,1st,Male,African American or Black,Y,Y,Ñ,Somali,n/a
+2014Ð15,7507145,,,Garfield High School,9th,Male,African American or Black,N,N,N,English,On Track
+2014Ð15,7705117,,,Garfield High School,9th,Male,Caucasian,N,N,N,English,On Track
+2014Ð15,6601407,,,Bailey Gatzert Elementary,4th,Female,African American or Black,Y,Y,N,Tigrinya (Tigrigna),n/a
+2014Ð15,3864419,,,Washington Middle School,6th,Female,African American or Black,N,N,Ñ,English,n/a
+2014Ð15,7069330,,,Washington Middle School,7th,Male,African American or Black,N,N,N,Oromo (Ethiopia),n/a
+2014Ð15,3908752,,,Leschi Elementary,2nd,Female,African American or Black,N,N,N,English,n/a
+2014Ð15,6774488,,,Washington Middle School,7th,Female,Asian,N,N,N,Toishanese,n/a
+2014Ð15,3494752,,,Stevens Elementary,3rd,Male,Caucasian,N,N,N,English,n/a
+2014Ð15,3782757,,,TOPS K-8 School,2nd,Female,Asian,N,N,N,Cantonese,n/a
+2014Ð15,6677765,,,Leschi Elementary,5th,Female,Hispanic,N,N,Y,English,n/a
+2014Ð15,6979583,,,Bailey Gatzert Elementary,3rd,Male,Asian,N,N,N,Lao,n/a
+2014Ð15,7730681,,,Garfield High School,12th,Female,African American or Black,Y,Y,N,Somali,On Track
+2014Ð15,7111837,,,Garfield High School,10th,Male,Asian,N,N,N,Burmese,On Track
+2014Ð15,3968410,,,Montlake Elementary,K,Male,Asian,N,N,Ñ,English,n/a
+2014Ð15,3692713,,,TOPS K-8 School,3rd,Male,Asian,N,N,N,Cantonese,n/a
+2014Ð15,6016486,,,Thurgood Marshall Elementary,3rd,Male,African American or Black,Y,Y,Y,Amharic,n/a
+2014Ð15,3331735,,,Bailey Gatzert Elementary,1st,Male,Asian,N,N,N,English,n/a
+2014Ð15,3384752,,,Kimball Elementary,2nd,Male,Asian,Y,Y,N,Vietnamese,n/a
+2014Ð15,7980803,,,Leschi Elementary,5th,Female,American Indian,N,N,Y,English,n/a
+2014Ð15,7506127,,,Washington Middle School,8th,Female,Asian,N,N,N,Vietnamese,n/a
+2014Ð15,7437225,,,Franklin High School,11th,Female,Hispanic,N,N,N,Spanish,On Track
+2014Ð15,7341841,,,Garfield High School,9th,Male,African American or Black,N,N,Y,Tigrinya (Tigrigna),On Track
+2014Ð15,3587749,,,Garfield High School,11th,Male,Multiracial,N,N,N,English,On Track
+2014Ð15,6358700,,,Leschi Elementary,5th,Male,African American or Black,Y,Y,N,Oromo (Ethiopia),n/a
+2014Ð15,3904783,,,Bailey Gatzert Elementary,2nd,Female,African American or Black,Y,Y,N,Tigrinya (Tigrigna),n/a
+2014Ð15,7783610,,,Garfield High School,9th,Female,African American or Black,N,N,N,Somali,On Track
+2014Ð15,7401312,,,Washington Middle School,8th,Male,African American or Black,N,N,Y,English,n/a
+2014Ð15,6367510,,,Bailey Gatzert Elementary,5th,Male,Hispanic,Y,Y,N,Spanish,n/a
+2014Ð15,6754555,,,Madrona K-8 School,3rd,Female,African American or Black,N,N,N,Somali,n/a
+2014Ð15,3830712,,,Olympic Hills Elementary,5th,Male,Caucasian,N,N,Y,English,n/a
+2014Ð15,7635967,,,South Lake High School,12th,Female,Caucasian,N,N,N,English,On Track
+2014Ð15,6140559,,,Washington Middle School,6th,Male,Asian,N,N,N,Vietnamese,n/a
+2014Ð15,7940372,,,TOPS K-8 School,7th,Female,African American or Black,N,N,N,English,n/a
+2014Ð15,7278305,,,Mercer International Middle School,6th,Female,Multiracial,N,N,N,English,n/a
+2014Ð15,3869780,,,Madrona K-8 School,2nd,Female,African American or Black,N,N,N,English,n/a
+2014Ð15,3117414,,,Bailey Gatzert Elementary,K,Female,Multiracial,N,N,Ñ,English,n/a
+2014Ð15,7258827,,,Bailey Gatzert Elementary,4th,Female,Asian,Y,Y,Y,Toishanese,n/a
+2014Ð15,3646757,,,Bailey Gatzert Elementary,2nd,Male,African American or Black,Y,Y,N,Somali,n/a
+2014Ð15,7872007,,,Garfield High School,12th,Female,Asian,N,N,N,Vietnamese,On Track
+2014Ð15,6903589,,,McGilvra Elementary,3rd,Female,African American or Black,N,N,Y,English,n/a
+2014Ð15,6352471,,,Laurelhurst Elementary,4th,Male,Caucasian,N,N,Y,English,n/a
+2014Ð15,7220871,,,Garfield High School,11th,Female,African American or Black,N,N,Y,Somali,On Track
+2014Ð15,3061790,,,Bailey Gatzert Elementary,K,Male,Hispanic,Y,Y,N,Spanish,n/a
+2014Ð15,7027145,,,Garfield High School,9th,Female,African American or Black,N,N,N,English,On Track
+2014Ð15,7581124,,,Washington Middle School,8th,Male,Caucasian,N,N,N,English,n/a
+2014Ð15,7981395,,,Interagency Academy,12th,Female,African American or Black,Y,Y,Y,Somali,Off Track
+2014Ð15,3043732,,,Bailey Gatzert Elementary,K,Female,African American or Black,Y,Y,N,Oromo (Ethiopia),n/a
+2014Ð15,7565245,,,Garfield High School,12th,Female,Asian,N,N,N,Cantonese,On Track
+2014Ð15,3780757,,,TOPS K-8 School,2nd,Male,Asian,N,N,N,Toishanese,n/a
+2014Ð15,6932481,,,Lowell Elementary,4th,Male,Asian,N,N,N,Vietnamese,n/a
+2014Ð15,3838411,,,Bailey Gatzert Elementary,K,Female,Asian,Y,Y,Ñ,Toishanese,n/a
+2014Ð15,3057755,,,Bailey Gatzert Elementary,2nd,Male,African American or Black,Y,Y,N,Somali,n/a
+2014Ð15,7686938,,,Interagency Academy,11th,Female,African American or Black,N,N,N,Oromo (Ethiopia),On Track
+2014Ð15,7389884,,,Washington Middle School,8th,Female,Asian,N,N,N,Vietnamese,n/a
+2014Ð15,3168417,,,Bailey Gatzert Elementary,1st,Male,Hispanic,N,N,Ñ,English,n/a
+2014Ð15,3522790,,,TOPS K-8 School,1st,Female,Multiracial,N,N,N,English,n/a
+2014Ð15,7687261,,,South Lake High School,12th,Female,African American or Black,N,N,N,English,Off Track
+2014Ð15,7122261,,,South Lake High School,12th,Male,African American or Black,N,N,N,Mandingo,On Track
+2014Ð15,7832164,,,Washington Middle School,7th,Female,Asian,N,N,N,Cantonese,n/a
+2014Ð15,7581993,,,Garfield High School,10th,Male,Hispanic,N,N,N,Spanish,On Track
+2014Ð15,6046731,,,Garfield High School,12th,Female,Asian,Y,Y,N,Cantonese,On Track
+2014Ð15,7362183,,,Washington Middle School,7th,Male,Asian,N,N,N,Vietnamese,n/a
+2014Ð15,3483442,,,Bailey Gatzert Elementary,K,Male,Asian,Y,Y,Ñ,English,n/a
+2014Ð15,3449796,,,Sand Point Elementary,1st,Male,Asian,Y,Y,N,Cantonese,n/a
+2014Ð15,7969492,,,Interagency Academy,12th,Male,African American or Black,N,N,N,Tigrinya (Tigrigna),Off Track
+2014Ð15,3658447,,,Bailey Gatzert Elementary,K,Female,African American or Black,N,N,Ñ,English,n/a
+2014Ð15,7776899,,,Garfield High School,9th,Female,Multiracial,N,N,N,English,On Track
+2014Ð15,7327963,,,Garfield High School,10th,Male,Asian,N,N,N,Vietnamese,On Track
+2014Ð15,3213751,,,Leschi Elementary,3rd,Male,African American or Black,Y,Y,N,Oromo (Ethiopia),n/a
+2014Ð15,7453170,,,Washington Middle School,8th,Male,African American or Black,N,N,N,English,n/a
+2014Ð15,3573417,,,Bailey Gatzert Elementary,K,Male,African American or Black,Y,Y,Ñ,Somali,n/a
+2014Ð15,7944971,,,Garfield High School,11th,Male,Asian,Y,Y,N,Cantonese,On Track
+2014Ð15,3846749,,,Madrona K-8 School,8th,Female,African American or Black,N,N,N,Somali,n/a
+2014Ð15,3006735,,,Bailey Gatzert Elementary,1st,Female,Hispanic,N,N,N,English,n/a
+2014Ð15,6014491,,,Garfield High School,11th,Female,Asian,N,N,N,Cantonese,On Track
+2014Ð15,3909795,,,Thurgood Marshall Elementary,1st,Male,African American or Black,Y,Y,N,Somali,n/a
+2014Ð15,3001751,,,Bailey Gatzert Elementary,2nd,Male,Asian,N,N,N,Cantonese,n/a
+2014Ð15,6586730,,,Thurgood Marshall Elementary,5th,Female,Caucasian,N,N,N,English,n/a
+2014Ð15,7677864,,,Washington Middle School,6th,Male,Hispanic,N,N,N,English,n/a
+2014Ð15,7170376,,,Garfield High School,12th,Female,Asian,N,N,N,Cantonese,On Track
+2014Ð15,3541413,,,Garfield High School,10th,Male,African American or Black,Y,Y,Ñ,Amharic,On Track
+2014Ð15,6079486,,,Thurgood Marshall Elementary,4th,Male,African American or Black,N,N,N,Amharic,n/a
+2014Ð15,7800624,,,Garfield High School,9th,Male,Caucasian,N,N,N,English,On Track
+2014Ð15,7535330,,,Washington Middle School,7th,Female,Asian,N,N,N,English,n/a
+2014Ð15,6021701,,,Bailey Gatzert Elementary,5th,Male,African American or Black,Y,Y,N,Oromo (Ethiopia),n/a
+2014Ð15,7518314,,,Garfield High School,9th,Female,Caucasian,N,N,N,English,On Track
+2014Ð15,7315907,,,Garfield High School,10th,Male,Multiracial,N,N,Y,English,On Track
+2014Ð15,6252476,,,Dearborn Park International School,4th,Female,African American or Black,Y,Y,N,Somali,n/a
+2014Ð15,7353893,,,Washington Middle School,6th,Male,Asian,Y,Y,Y,Vietnamese,n/a
+2014Ð15,7359643,,,Garfield High School,10th,Female,Asian,N,N,N,Vietnamese,On Track
+2014Ð15,3226755,,,Bailey Gatzert Elementary,2nd,Male,Asian,Y,Y,N,Toishanese,n/a
+2014Ð15,6533772,,,Washington Middle School,8th,Female,African American or Black,N,N,N,Somali,n/a
+2014Ð15,6499487,,,Bailey Gatzert Elementary,3rd,Male,Asian,N,N,Y,English,n/a
+2014Ð15,6557435,,,Leschi Elementary,4th,Male,African American or Black,N,N,Y,English,n/a
+2014Ð15,6519493,,,Garfield High School,12th,Female,Asian,Y,Y,N,Cantonese,On Track
+2014Ð15,7741168,,,TOPS K-8 School,8th,Female,Asian,N,N,N,Cantonese,n/a
+2014Ð15,6578478,,,Bailey Gatzert Elementary,4th,Male,African American or Black,N,N,Y,English,n/a
+2014Ð15,6404472,,,Bailey Gatzert Elementary,5th,Female,African American or Black,Y,Y,Y,Somali,n/a
+2014Ð15,6738725,,,TOPS K-8 School,5th,Female,Caucasian,N,N,N,English,n/a
+2014Ð15,3563742,,,Gatewood Elementary,3rd,Female,Caucasian,N,N,Y,English,n/a
+2014Ð15,7146300,,,Garfield High School,12th,Male,Asian,N,N,N,Cantonese,On Track
+2014Ð15,7217971,,,Garfield High School,11th,Male,African American or Black,N,N,Y,English,On Track
+2014Ð15,6941517,,,Washington Middle School,7th,Male,Hispanic,N,N,Y,English,n/a
+2014Ð15,7206969,,,Nathan Hale High School,11th,Female,Hispanic,N,N,N,English,On Track
+2014Ð15,7391884,,,Garfield High School,11th,Male,Asian,N,N,N,Vietnamese,On Track
+2014Ð15,6865785,,,Leschi Elementary,5th,Female,African American or Black,N,N,N,English,n/a
+2014Ð15,3458757,,,Thurgood Marshall Elementary,2nd,Male,African American or Black,Y,Y,N,Somali,n/a
+2014Ð15,6244792,,,Stevens Elementary,5th,Male,Hispanic,N,N,N,Spanish,n/a
+2014Ð15,6668470,,,Stevens Elementary,3rd,Male,Hispanic,Y,Y,N,Spanish,n/a
+2014Ð15,3131751,,,Leschi Elementary,2nd,Female,Caucasian,N,N,N,English,n/a
+2014Ð15,7042033,,,Garfield High School,11th,Male,Hispanic,N,N,N,Spanish,On Track
+2014Ð15,6407454,,,TOPS K-8 School,4th,Male,Asian,Y,Y,N,Toishanese,n/a
+2014Ð15,3780735,,,Bailey Gatzert Elementary,K,Female,African American or Black,N,N,N,English,n/a
+2014Ð15,3283414,,,Leschi Elementary,2nd,Female,Caucasian,N,N,Ñ,Portuguese,n/a
+2014Ð15,6997780,,,Middle College High School,11th,Male,African American or Black,Y,Y,N,Somali,Off Track
+2014Ð15,3386417,,,Interagency Academy,12th,Male,Hispanic,N,N,Ñ,English,Off Track
+2014Ð15,6500583,,,Bailey Gatzert Elementary,3rd,Male,Asian,N,N,N,Tagalog,n/a
+2014Ð15,6440517,,,Cleveland STEM High School,12th,Male,African American or Black,N,N,Y,English,On Track
+2014Ð15,3232413,,,Bailey Gatzert Elementary,2nd,Male,African American or Black,Y,Y,Ñ,Somali,n/a
+2014Ð15,3894758,,,Queen Anne Elementary,2nd,Male,Caucasian,N,N,Y,English,n/a
+2014Ð15,7987305,,,Washington Middle School,7th,Female,Caucasian,N,N,N,English,n/a
+2014Ð15,7482001,,,South Lake High School,12th,Female,Hispanic,N,N,N,English,Off Track
+2014Ð15,3259412,,,Madrona K-8 School,1st,Male,Multiracial,N,N,Ñ,English,n/a
+2014Ð15,6095715,,,Bailey Gatzert Elementary,3rd,Male,African American or Black,N,N,Y,English,n/a
+2014Ð15,3960410,,,Montlake Elementary,K,Male,Asian,N,N,Ñ,English,n/a
+2014Ð15,3329419,,,Nova High School,12th,Female,Caucasian,N,N,Ñ,English,On Track
+2014Ð15,3089757,,,Bailey Gatzert Elementary,2nd,Male,Hispanic,Y,Y,N,Spanish,n/a
+2014Ð15,7933559,,,Rainier Beach High School,12th,Male,Asian,Y,Y,Y,Vietnamese,Off Track
+2014Ð15,7385965,,,Garfield High School,10th,Female,Hispanic,N,N,N,Spanish,On Track
+2014Ð15,3581757,,,Lowell Elementary,2nd,Female,African American or Black,N,N,N,Amharic,n/a
+2014Ð15,7119347,,,Washington Middle School,7th,Female,Asian,N,N,N,Vietnamese,n/a
+2014Ð15,6783494,,,Bailey Gatzert Elementary,4th,Male,Hispanic,Y,Y,N,Spanish,n/a
+2014Ð15,7833168,,,Washington Middle School,8th,Male,Asian,N,N,N,Cantonese,n/a
+2014Ð15,6507436,,,Leschi Elementary,4th,Male,Caucasian,N,N,N,English,n/a
+2014Ð15,7038946,,,Garfield High School,11th,Male,Asian,N,N,N,Cantonese,On Track
+2014Ð15,7017990,,,Garfield High School,11th,Male,African American or Black,N,N,N,Amharic,On Track
+2014Ð15,3859447,,,Bailey Gatzert Elementary,K,Female,African American or Black,Y,Y,Ñ,Somali,n/a
+2014Ð15,6855775,,,Bailey Gatzert Elementary,5th,Male,African American or Black,N,N,N,Somali,n/a
+2014Ð15,7853244,,,Garfield High School,12th,Male,Hispanic,N,N,N,Spanish,On Track
+2014Ð15,7253149,,,Washington Middle School,8th,Female,Caucasian,N,N,N,English,n/a
+2014Ð15,3323790,,,Bailey Gatzert Elementary,1st,Male,Hispanic,N,N,N,Spanish,n/a
+2014Ð15,3612788,,,Washington Middle School,7th,Male,Multiracial,N,N,N,Vietnamese,n/a
+2014Ð15,7422801,,,Garfield High School,10th,Female,Caucasian,N,N,N,English,On Track
+2014Ð15,6884542,,,Thurgood Marshall Elementary,4th,Female,African American or Black,N,N,N,Somali,n/a
+2014Ð15,7916975,,,Garfield High School,11th,Female,African American or Black,N,N,N,English,On Track
+2014Ð15,6413712,,,Kimball Elementary,5th,Male,African American or Black,N,N,N,English,n/a
+2014Ð15,7706837,,,Washington Middle School,6th,Female,Hispanic,N,N,N,Spanish,n/a
+2014Ð15,3721796,,,Leschi Elementary,1st,Male,Caucasian,N,N,N,English,n/a
+2014Ð15,7212888,,,Garfield High School,11th,Female,Asian,N,N,N,English,On Track
+2014Ð15,6321709,,,Leschi Elementary,5th,Female,Caucasian,N,N,N,English,n/a
+2014Ð15,3044789,,,Washington Middle School,8th,Female,Asian,Y,Y,N,Toishanese,n/a
+2014Ð15,3947417,,,Garfield High School,11th,Male,African American or Black,N,N,Ñ,English,On Track
+2014Ð15,6454444,,,Bailey Gatzert Elementary,4th,Female,Hispanic,N,N,N,English,n/a
+2014Ð15,6614786,,,Washington Middle School,8th,Male,Multiracial,N,N,N,English,n/a
+2014Ð15,6246791,,,Bailey Gatzert Elementary,5th,Female,Hispanic,N,N,N,Spanish,n/a
+2014Ð15,6199743,,,Garfield High School,10th,Female,African American or Black,N,N,N,Somali,On Track
+2014Ð15,6084559,,,Franklin High School,12th,Female,Asian,Y,Y,N,Cantonese,Off Track
+2014Ð15,6245775,,,Stevens Elementary,5th,Male,Asian,Y,Y,N,Cantonese,n/a
+2014Ð15,7496942,,,Garfield High School,11th,Male,Asian,N,N,N,English,On Track
+2014Ð15,7879622,,,Garfield High School,9th,Male,Asian,N,N,N,Cantonese,On Track
+2014Ð15,7621164,,,Garfield High School,12th,Female,Hispanic,N,N,N,English,On Track
+2014Ð15,3666412,,,Bailey Gatzert Elementary,3rd,Female,Asian,Y,Y,Ñ,Mandarin,n/a
+2014Ð15,6729796,,,Bailey Gatzert Elementary,5th,Male,African American or Black,Y,Y,N,Oromo (Ethiopia),n/a
+2014Ð15,3502780,,,Bailey Gatzert Elementary,5th,Female,African American or Black,N,N,N,English,n/a
+2014Ð15,7657380,,,Washington Middle School,8th,Male,African American or Black,N,N,N,English,n/a
+2014Ð15,7326142,,,Garfield High School,9th,Male,Hispanic,N,N,N,Tagalog,On Track
+2014Ð15,6742400,,,Leschi Elementary,5th,Male,African American or Black,N,N,Y,English,n/a
+2014Ð15,3885739,,,Bailey Gatzert Elementary,1st,Female,Asian,Y,Y,N,Cantonese,n/a
+2014Ð15,6284716,,,Washington Middle School,6th,Female,African American or Black,N,N,N,English,n/a
+2014Ð15,3327788,,,Garfield High School,11th,Male,Hispanic,N,N,N,English,On Track
+2014Ð15,7988805,,,Garfield High School,12th,Female,Hispanic,Y,Y,N,Spanish,On Track
+2014Ð15,6828475,,,TOPS K-8 School,4th,Female,Asian,Y,Y,N,Toishanese,n/a
+2014Ð15,6651764,,,Washington Middle School,8th,Male,African American or Black,Y,Y,N,Somali,n/a
+2014Ð15,3015410,,,Leschi Elementary,K,Female,African American or Black,Y,Y,Ñ,Oromo (Ethiopia),n/a
+2014Ð15,3275447,,,Bailey Gatzert Elementary,K,Female,African American or Black,N,N,Ñ,English,n/a
+2014Ð15,3286419,,,Bailey Gatzert Elementary,1st,Male,African American or Black,Y,Y,Ñ,Oromo (Ethiopia),n/a
+2014Ð15,3935794,,,Bailey Gatzert Elementary,K,Female,Caucasian,N,N,N,English,n/a
+2014Ð15,7470818,,,Washington Middle School,7th,Male,African American or Black,N,N,N,Oromo (Ethiopia),n/a
+2014Ð15,6512478,,,Bailey Gatzert Elementary,4th,Female,African American or Black,N,N,N,Somali,n/a
+2014Ð15,3694757,,,Bailey Gatzert Elementary,2nd,Female,African American or Black,N,N,N,Oromo (Ethiopia),n/a
+2014Ð15,3016744,,,Bailey Gatzert Elementary,5th,Female,Asian,Y,Y,N,Vietnamese,n/a
+2014Ð15,6654770,,,B.F. Day Elementary,5th,Male,Asian,N,N,N,Vietnamese,n/a
+2014Ð15,3172418,,,Seattle World School,10th,Female,African American or Black,N,N,Ñ,English,On Track
+2014Ð15,3498793,,,Washington Middle School,7th,Female,African American or Black,N,N,N,English,n/a
+2014Ð15,3958418,,,Madrona K-8 School,K,Male,Caucasian,N,N,Ñ,English,n/a
+2014Ð15,3020717,,,Lowell Elementary,3rd,Male,Caucasian,N,N,Y,English,n/a
+2014Ð15,3489742,,,Bailey Gatzert Elementary,3rd,Male,African American or Black,N,N,N,English,n/a
+2014Ð15,3463788,,,Madrona K-8 School,2nd,Male,Multiracial,N,N,N,English,n/a
+2014Ð15,3810718,,,Interagency Academy,12th,Female,Caucasian,N,N,N,English,Off Track
+2014Ð15,3428796,,,TOPS K-8 School,1st,Male,Asian,Y,Y,N,Cantonese,n/a
+2014Ð15,3843442,,,Bailey Gatzert Elementary,K,Female,African American or Black,Y,Y,Ñ,Somali,n/a
+2014Ð15,3965752,,,TOPS K-8 School,2nd,Female,Asian,N,N,N,Cantonese,n/a
+2014Ð15,3867413,,,Bailey Gatzert Elementary,K,Female,African American or Black,Y,Y,Ñ,Somali,n/a
+2014Ð15,7750333,,,Cascade Parent Partnership,7th,Male,African American or Black,N,N,N,English,n/a
+2014Ð15,3875753,,,Madrona K-8 School,2nd,Male,African American or Black,Y,Y,N,Somali,n/a
+2014Ð15,7825381,,,Garfield High School,9th,Male,Caucasian,N,N,N,English,On Track
+2014Ð15,3884780,,,Bailey Gatzert Elementary,2nd,Male,African American or Black,Y,Y,N,Somali,n/a
+2014Ð15,7015927,,,Interagency Academy,10th,Male,African American or Black,N,N,N,English,Off Track
+2014Ð15,3855417,,,Lowell Elementary,K,Female,African American or Black,N,N,Ñ,English,n/a
+2014Ð15,7174356,,,Washington Middle School,8th,Male,Hispanic,N,N,N,English,n/a
+2014Ð15,3813714,,,Garfield High School,12th,Female,African American or Black,N,N,N,English,On Track
+2014Ð15,7835259,,,Interagency Academy,12th,Female,African American or Black,N,N,N,Oromo (Ethiopia),On Track
+2014Ð15,3775416,,,Bailey Gatzert Elementary,K,Female,African American or Black,N,N,Ñ,English,n/a
+2014Ð15,3345790,,,Bailey Gatzert Elementary,1st,Female,African American or Black,N,N,N,Amharic,n/a
+2014Ð15,7184252,,,South Lake High School,10th,Male,Asian,N,N,N,Cantonese,Off Track
+2014Ð15,6089492,,,Garfield High School,9th,Male,Asian,N,N,N,English,On Track
+2014Ð15,7447964,,,Garfield High School,10th,Female,Hispanic,Y,Y,N,Spanish,On Track
+2014Ð15,3243418,,,Lowell Elementary,K,Male,African American or Black,N,N,Ñ,English,n/a
+2014Ð15,7827378,,,Washington Middle School,6th,Male,Hispanic,N,N,N,Spanish,n/a
+2014Ð15,7809946,,,Garfield High School,11th,Male,Asian,N,N,N,Cebuano,On Track
+2014Ð15,7587950,,,Garfield High School,11th,Male,African American or Black,N,N,N,Oromo (Ethiopia),On Track
+2014Ð15,3044745,,,Bailey Gatzert Elementary,2nd,Female,African American or Black,N,N,N,Somali,n/a
+2014Ð15,7331823,,,Washington Middle School,6th,Male,African American or Black,N,N,N,English,n/a
+2014Ð15,3308780,,,South Shore K-8 School,1st,Male,African American or Black,N,N,Y,English,n/a
+2014Ð15,6932476,,,Bailey Gatzert Elementary,4th,Female,African American or Black,N,N,N,English,n/a
+2014Ð15,6475436,,,Garfield High School,9th,Female,African American or Black,Y,Y,N,Amharic,On Track
+2014Ð15,7839397,,,Washington Middle School,7th,Male,African American or Black,N,N,N,English,n/a
+2014Ð15,3295780,,,Bailey Gatzert Elementary,2nd,Male,Asian,Y,Y,N,Cambodian,n/a
+2014Ð15,6133701,,,Washington Middle School,8th,Female,Asian,Y,Y,N,Japanese,n/a
+2014Ð15,3050412,,,Washington Middle School,8th,Male,African American or Black,N,N,Ñ,English,n/a
+2014Ð15,3939752,,,John Muir Elementary,2nd,Female,Caucasian,N,N,N,English,n/a
+2014Ð15,3923419,,,Garfield High School,9th,Female,Asian,Y,Y,Ñ,Cantonese,On Track
+2014Ð15,7939148,,,Washington Middle School,7th,Female,African American or Black,N,N,Y,English,n/a
+2014Ð15,7443864,,,Washington Middle School,6th,Male,Asian,N,N,N,English,n/a
+2014Ð15,7880949,,,Garfield High School,11th,Female,Asian,N,N,N,Tagalog,On Track
+2014Ð15,3344442,,,Washington Middle School,7th,Female,Multiracial,N,N,Ñ,English,n/a
+2014Ð15,3930710,,,Garfield High School,12th,Female,African American or Black,Y,Y,N,Amharic,Off Track
+2014Ð15,7280139,,,Garfield High School,11th,Male,Asian,N,N,N,Mandarin,On Track
+2014Ð15,6704781,,,TOPS K-8 School,5th,Male,African American or Black,N,N,N,English,n/a
+2014Ð15,3092411,,,Bailey Gatzert Elementary,K,Female,Asian,Y,Y,Ñ,Tagalog,n/a
+2014Ð15,6270587,,,TOPS K-8 School,3rd,Male,Asian,N,N,N,Cantonese,n/a
+2014Ð15,6033748,,,Rainier Beach High School,12th,Male,African American or Black,Y,Y,N,Somali,Off Track
+2014Ð15,6933475,,,Bailey Gatzert Elementary,4th,Male,African American or Black,N,N,N,Somali,n/a
+2014Ð15,7552628,,,Garfield High School,9th,Female,Hispanic,N,N,N,Spanish,On Track
+2014Ð15,6881423,,,Leschi Elementary,4th,Female,Multiracial,N,N,N,English,n/a
+2014Ð15,7365696,,,Garfield High School,10th,Female,Hispanic,N,N,N,Spanish,On Track
+2014Ð15,7463944,,,Garfield High School,11th,Female,Hispanic,N,N,N,Spanish,On Track
+2014Ð15,6008728,,,Garfield High School,9th,Male,Asian,Y,Y,N,Cantonese,On Track
+2014Ð15,7761281,,,Garfield High School,12th,Male,Asian,N,N,Y,Vietnamese,On Track
+2014Ð15,7594222,,,Garfield High School,11th,Male,Hispanic,N,N,N,English,On Track
+2014Ð15,3628786,,,Bailey Gatzert Elementary,4th,Male,African American or Black,Y,Y,N,Somali,n/a
+2014Ð15,6918700,,,Washington Middle School,8th,Male,African American or Black,Y,Y,Y,Somali,n/a
+2014Ð15,7465112,,,Garfield High School,9th,Female,Multiracial,N,N,N,English,On Track
+2014Ð15,7585996,,,Garfield High School,11th,Male,Asian,N,N,N,Vietnamese,On Track
+2014Ð15,3102745,,,Garfield High School,11th,Male,African American or Black,N,N,N,Somali,On Track
+2014Ð15,3444796,,,Daniel Bagley Elementary,1st,Male,Asian,N,N,N,Cantonese,n/a
+2014Ð15,3898751,,,Lowell Elementary,2nd,Male,Multiracial,N,N,Y,English,n/a
+2014Ð15,3623749,,,Bailey Gatzert Elementary,3rd,Female,African American or Black,Y,Y,N,Somali,n/a
+2014Ð15,7108975,,,Franklin High School,11th,Female,African American or Black,N,N,N,English,On Track
+2014Ð15,3289746,,,Bailey Gatzert Elementary,1st,Male,African American or Black,Y,Y,Y,Oromo (Ethiopia),n/a
+2014Ð15,6678701,,,Washington Middle School,6th,Male,Asian,N,N,N,Japanese,n/a
+2014Ð15,3623718,,,Bailey Gatzert Elementary,3rd,Male,African American or Black,N,N,N,English,n/a
+2014Ð15,3687443,,,Interagency Academy,10th,Male,Caucasian,N,N,Y,English,n/a
+2014Ð15,6618789,,,Garfield High School,11th,Female,Caucasian,N,N,N,English,On Track
+2014Ð15,6011748,,,Garfield High School,12th,Female,African American or Black,N,N,N,Somali,On Track
+2014Ð15,7453315,,,Garfield High School,9th,Male,African American or Black,N,N,N,English,On Track
+2014Ð15,7973959,,,Garfield High School,11th,Female,Hispanic,N,N,N,Spanish,On Track
+2014Ð15,3603447,,,Washington Middle School,8th,Male,Hispanic,N,N,Y,English,n/a
+2014Ð15,3180748,,,Bailey Gatzert Elementary,1st,Male,African American or Black,N,N,N,Somali,n/a
+2014Ð15,7651809,,,Washington Middle School,6th,Female,Caucasian,N,N,N,English,n/a
+2014Ð15,3695757,,,Bailey Gatzert Elementary,2nd,Male,African American or Black,Y,Y,N,Somali,n/a
+2014Ð15,3290411,,,Middle College High School,12th,Female,African American or Black,N,N,Ñ,English,On Track
+2014Ð15,6963724,,,McGilvra Elementary,5th,Male,Asian,N,N,N,Mandarin,n/a
+2014Ð15,6366445,,,Leschi Elementary,5th,Female,African American or Black,N,N,N,English,n/a
+2014Ð15,6177535,,,Lowell Elementary,3rd,Female,Hispanic,N,N,N,English,n/a
+2014Ð15,3479715,,,Leschi Elementary,3rd,Male,African American or Black,N,N,N,English,n/a
+2014Ð15,7465924,,,Interagency Academy,10th,Female,African American or Black,N,N,Y,English,On Track
+2014Ð15,7935696,,,Garfield High School,10th,Male,Asian,N,N,N,Vietnamese,On Track
+2014Ð15,6102764,,,Lowell Elementary,5th,Male,African American or Black,N,N,N,English,n/a
+2014Ð15,7147829,,,Washington Middle School,6th,Female,Asian,N,N,N,Mandarin,n/a
+2014Ð15,7127814,,,Bailey Gatzert Elementary,5th,Male,Asian,Y,Y,Y,Vietnamese,n/a
+2014Ð15,3389751,,,Bailey Gatzert Elementary,2nd,Male,Caucasian,N,N,N,English,n/a
+2014Ð15,6302593,,,Thurgood Marshall Elementary,3rd,Male,African American or Black,N,N,N,English,n/a
+2014Ð15,6287424,,,Leschi Elementary,5th,Female,African American or Black,N,N,N,English,n/a
+2014Ð15,3796413,,,Bailey Gatzert Elementary,3rd,Female,African American or Black,Y,Y,Ñ,Somali,n/a
+2014Ð15,7068123,,,Garfield High School,11th,Female,Hispanic,N,N,N,Spanish,On Track
+2014Ð15,6426586,,,Bailey Gatzert Elementary,3rd,Female,Asian,N,N,Y,English,n/a
+2014Ð15,3678413,,,Bailey Gatzert Elementary,2nd,Male,African American or Black,N,N,Ñ,English,n/a
+2014Ð15,7776346,,,Madrona K-8 School,7th,Female,African American or Black,N,N,N,English,n/a
+2014Ð15,3124786,,,Roxhill Elementary,5th,Male,African American or Black,N,N,Y,English,n/a
+2014Ð15,3899742,,,Bailey Gatzert Elementary,3rd,Female,Hispanic,N,N,N,Spanish,n/a
+2014Ð15,7522330,,,Washington Middle School,7th,Female,Asian,N,N,N,English,n/a
+2014Ð15,6956585,,,Interagency Academy,11th,Male,African American or Black,N,N,N,English,Off Track
+2014Ð15,7037952,,,Cleveland STEM High School,11th,Male,Asian,N,N,N,Vietnamese,On Track
+2014Ð15,7633283,,,Garfield High School,12th,Female,Asian,N,N,N,Vietnamese,On Track
+2014Ð15,6906462,,,Lowell Elementary,4th,Male,African American or Black,N,N,N,English,n/a
+2014Ð15,3540417,,,Nova High School,11th,Female,Caucasian,N,N,Ñ,English,On Track
+2014Ð15,3956758,,,Bailey Gatzert Elementary,K,Male,African American or Black,N,N,Y,English,n/a
+2014Ð15,3645712,,,TOPS K-8 School,4th,Female,Asian,N,N,N,Toishanese,n/a
+2014Ð15,7743961,,,Garfield High School,10th,Male,Asian,N,N,N,Mandarin,On Track
+2014Ð15,6940484,,,Bailey Gatzert Elementary,4th,Male,African American or Black,N,N,N,English,n/a
+2014Ð15,3039412,,,John Muir Elementary,1st,Male,Caucasian,Y,Y,Ñ,Spanish,n/a
+2014Ð15,7722980,,,Garfield High School,11th,Male,Caucasian,N,N,N,English,On Track
+2014Ð15,7018116,,,Garfield High School,9th,Male,African American or Black,N,N,N,Tigrinya (Tigrigna),On Track
+2014Ð15,3729414,,,Bailey Gatzert Elementary,K,Male,Hispanic,Y,Y,N,Spanish,n/a
+2014Ð15,3600713,,,Garfield High School,9th,Female,African American or Black,N,N,N,Amharic,On Track
+2014Ð15,6461743,,,Washington Middle School,6th,Female,African American or Black,N,N,N,English,n/a
+2014Ð15,7316693,,,Seattle World School,12th,Female,Asian,N,N,N,Toishanese,Off Track
+2014Ð15,7585849,,,Madrona K-8 School,7th,Male,African American or Black,N,N,N,English,n/a
+2014Ð15,3378739,,,Leschi Elementary,1st,Male,African American or Black,N,N,N,English,n/a
+2014Ð15,3441795,,,Bailey Gatzert Elementary,1st,Male,African American or Black,Y,Y,N,Tigrinya (Tigrigna),n/a
+2014Ð15,3884741,,,South Shore K-8 School,3rd,Male,American Indian,Y,N,Y,English,n/a
+2014Ð15,3424419,,,Garfield High School,12th,Female,Asian,Y,Y,Ñ,Vietnamese,Off Track
+2014Ð15,7830811,,,Washington Middle School,6th,Male,Asian,Y,Y,Y,Cantonese,n/a
+2014Ð15,3058714,,,Madrona K-8 School,3rd,Male,African American or Black,N,N,N,English,n/a
+2014Ð15,6774713,,,Washington Middle School,8th,Male,African American or Black,Y,Y,N,Amharic,n/a
+2014Ð15,3377413,,,TOPS K-8 School,1st,Female,Asian,Y,Y,Ñ,Cantonese,n/a
+2014Ð15,3141797,,,Leschi Elementary,K,Male,African American or Black,N,N,Y,English,n/a
+2014Ð15,7328845,,,McClure Middle School,8th,Female,Hispanic,N,N,Y,Spanish,n/a
+2014Ð15,6842787,,,Garfield High School,11th,Male,Asian,N,N,N,Toishanese,On Track
+2014Ð15,3775735,,,Lowell Elementary,1st,Female,African American or Black,N,N,N,English,n/a
+2014Ð15,3897758,,,Leschi Elementary,2nd,Female,Caucasian,N,N,N,English,n/a
+2014Ð15,3300415,,,Bailey Gatzert Elementary,K,Male,African American or Black,Y,Y,Ñ,Oromo (Ethiopia),n/a
+2014Ð15,3462796,,,John Hay Elementary,1st,Male,Asian,Y,N,N,Mandarin,n/a
+2014Ð15,3894799,,,Seattle World School,11th,Female,African American or Black,Y,Y,N,Somali,On Track
+2014Ð15,7085069,,,Franklin High School,11th,Male,Asian,Y,Y,Y,Vietnamese,On Track
+2014Ð15,6001455,,,TOPS K-8 School,4th,Female,Asian,Y,Y,N,Mandarin,n/a
+2014Ð15,7274870,,,Washington Middle School,6th,Male,Asian,N,N,N,Cantonese,n/a
+2014Ð15,7589846,,,Aki Kurose Middle School,7th,Male,Asian,N,N,N,English,n/a
+2014Ð15,3382413,,,Bailey Gatzert Elementary,1st,Male,African American or Black,N,N,Ñ,English,n/a
+2014Ð15,6785496,,,Stevens Elementary,4th,Male,Hispanic,Y,Y,N,Spanish,n/a
+2014Ð15,7208244,,,Garfield High School,12th,Female,Asian,N,N,N,Cantonese,On Track
+2014Ð15,3541796,,,Stevens Elementary,1st,Male,African American or Black,N,N,N,English,n/a
+2014Ð15,3737416,,,Bailey Gatzert Elementary,K,Female,African American or Black,Y,Y,Ñ,Somali,n/a
+2014Ð15,3407732,,,Leschi Elementary,1st,Female,Caucasian,N,N,N,English,n/a
+2014Ð15,6191449,,,TOPS K-8 School,6th,Female,Asian,N,N,N,Toishanese,n/a
+2014Ð15,7122958,,,Garfield High School,10th,Female,Asian,N,N,N,English,On Track
+2014Ð15,7740310,,,Washington Middle School,8th,Female,Hispanic,N,N,N,Spanish,n/a
+2014Ð15,6479729,,,TOPS K-8 School,5th,Female,Asian,N,N,N,Cantonese,n/a
+2014Ð15,3005781,,,Bailey Gatzert Elementary,2nd,Male,African American or Black,N,N,N,English,n/a
+2014Ð15,7517170,,,Washington Middle School,8th,Male,Asian,N,N,N,Cantonese,n/a
+2014Ð15,6544537,,,Leschi Elementary,3rd,Male,Asian,Y,Y,N,Vietnamese,n/a
+2014Ð15,7466801,,,Washington Middle School,7th,Female,Caucasian,N,N,N,English,n/a
+2014Ð15,3869447,,,Bailey Gatzert Elementary,K,Male,African American or Black,N,N,Ñ,English,n/a
+2014Ð15,3813412,,,Bailey Gatzert Elementary,4th,Male,African American or Black,N,N,Ñ,English,n/a
+2014Ð15,3231738,,,Bailey Gatzert Elementary,2nd,Male,Asian,Y,Y,N,Vietnamese,n/a
+2014Ð15,7032867,,,Washington Middle School,6th,Male,African American or Black,N,N,N,Oromo (Ethiopia),n/a
+2014Ð15,7990395,,,Aki Kurose Middle School,8th,Male,African American or Black,Y,Y,Y,Somali,n/a
+2014Ð15,6680484,,,Hawthorne Elementary,4th,Male,Asian,N,N,N,Vietnamese,n/a
+2014Ð15,7769001,,,Interagency Academy,12th,Female,Hispanic,N,N,N,Spanish,On Track
+2014Ð15,7164855,,,South Shore K-8 School,7th,Female,African American or Black,N,N,N,English,n/a
+2014Ð15,6856444,,,Garfield High School,11th,Male,African American or Black,Y,Y,N,Tigrinya (Tigrigna),On Track
+2014Ð15,7456885,,,Garfield High School,12th,Female,African American or Black,Y,Y,N,Somali,On Track
+2014Ð15,3224749,,,Garfield High School,12th,Female,African American or Black,N,N,N,Tigrinya (Tigrigna),On Track
+2014Ð15,7642334,,,Washington Middle School,6th,Female,Caucasian,N,N,N,English,n/a
+2014Ð15,3618412,,,Garfield High School,12th,Female,African American or Black,N,N,Ñ,English,On Track
+2014Ð15,3094412,,,Bailey Gatzert Elementary,1st,Male,African American or Black,Y,Y,Ñ,Somali,n/a
+2014Ð15,7060255,,,Garfield High School,12th,Female,African American or Black,N,N,N,Oromo (Ethiopia),On Track
+2014Ð15,6701796,,,TOPS K-8 School,3rd,Male,African American or Black,N,N,Y,English,n/a
+2014Ð15,3653443,,,Bailey Gatzert Elementary,K,Male,African American or Black,N,N,Ñ,English,n/a
+2014Ð15,3545447,,,Washington Middle School,7th,Male,African American or Black,N,N,Ñ,English,n/a
+2014Ð15,7365807,,,Garfield High School,11th,Female,African American or Black,N,N,Y,English,On Track
+2014Ð15,7589999,,,West Seattle High School,11th,Female,Multiracial,N,N,N,English,On Track
+2014Ð15,3291781,,,Garfield High School,11th,Female,Caucasian,N,N,N,English,On Track
+2014Ð15,7433342,,,Stevens Elementary,5th,Male,Hispanic,Y,Y,Y,Spanish,n/a
+2014Ð15,7246032,,,Garfield High School,12th,Male,Hispanic,N,N,N,Spanish,On Track
+2014Ð15,6665789,,,Garfield High School,11th,Male,Caucasian,N,N,N,English,On Track
+2014Ð15,7497157,,,Washington Middle School,6th,Female,Multiracial,N,N,Y,English,n/a
+2014Ð15,6598776,,,Lowell Elementary,4th,Female,Asian,N,N,N,Vietnamese,n/a
+2014Ð15,6868424,,,Washington Middle School,6th,Female,African American or Black,N,N,N,English,n/a
+2014Ð15,6185517,,,Bailey Gatzert Elementary,4th,Female,African American or Black,N,N,N,English,n/a
+2014Ð15,3954757,,,TOPS K-8 School,2nd,Male,African American or Black,N,N,N,English,n/a
+2014Ð15,3182758,,,Leschi Elementary,2nd,Female,Caucasian,N,N,N,French,n/a
+2014Ð15,7234884,,,Washington Middle School,7th,Male,African American or Black,Y,Y,N,Oromo (Ethiopia),n/a
+2014Ð15,3363412,,,Bailey Gatzert Elementary,1st,Male,African American or Black,N,N,Ñ,English,n/a
+2014Ð15,6906748,,,Washington Middle School,6th,Male,Caucasian,N,N,N,English,n/a
+2014Ð15,7248949,,,Garfield High School,11th,Male,Asian,N,N,N,Cantonese,On Track
+2014Ð15,3426712,,,Montlake Elementary,3rd,Male,Asian,N,N,N,English,n/a
+2014Ð15,6535519,,,Garfield High School,10th,Female,Asian,Y,Y,N,Cantonese,On Track
+2014Ð15,7415348,,,Garfield High School,10th,Male,African American or Black,Y,Y,Y,Somali,On Track
+2014Ð15,7889941,,,Garfield High School,11th,Female,Asian,N,N,N,Cantonese,On Track
+2014Ð15,3600795,,,Leschi Elementary,1st,Female,African American or Black,N,N,N,English,n/a
+2014Ð15,7410801,,,Washington Middle School,7th,Male,Caucasian,N,N,N,English,n/a
+2014Ð15,6364740,,,Washington Middle School,6th,Male,African American or Black,N,N,N,Somali,n/a
+2014Ð15,7122931,,,Garfield High School,9th,Female,African American or Black,N,N,N,Somali,On Track
+2014Ð15,3434742,,,Washington Middle School,6th,Female,Asian,Y,Y,N,Tagalog,n/a
+2014Ð15,3361418,,,Bailey Gatzert Elementary,K,Male,Asian,Y,Y,Ñ,Vietnamese,n/a
+2014Ð15,7321854,,,Garfield High School,9th,Male,African American or Black,N,N,N,Somali,On Track
+2014Ð15,7857174,,,Washington Middle School,8th,Female,Asian,N,N,N,Vietnamese,n/a
+2014Ð15,3927418,,,Seattle World School,10th,Male,Asian,Y,Y,Y,Cantonese,On Track
+2014Ð15,3200412,,,Madrona K-8 School,6th,Male,African American or Black,N,N,Y,English,n/a
+2014Ð15,7928964,,,Garfield High School,10th,Female,Asian,N,N,N,Cantonese,On Track
+2014Ð15,7180878,,,Garfield High School,11th,Female,Asian,N,N,N,Toishanese,On Track
+2014Ð15,7321389,,,Garfield High School,10th,Female,Asian,N,N,N,English,On Track
+2014Ð15,7231808,,,Leschi Elementary,4th,Male,African American or Black,N,N,N,English,n/a
+2014Ð15,7231986,,,Garfield High School,10th,Female,Caucasian,N,N,N,English,On Track
+2014Ð15,7688947,,,Garfield High School,11th,Female,African American or Black,N,N,N,Oromo (Ethiopia),On Track
+2014Ð15,6193471,,,Bailey Gatzert Elementary,4th,Male,Asian,N,N,N,Vietnamese,n/a
+2014Ð15,3249795,,,Interagency Academy,12th,Female,Caucasian,N,N,N,English,Off Track
+2014Ð15,6254725,,,Garfield High School,9th,Female,Asian,Y,Y,N,Cantonese,On Track
+2014Ð15,6908776,,,Bailey Gatzert Elementary,5th,Male,Asian,N,N,N,Vietnamese,n/a
+2014Ð15,7015129,,,Washington Middle School,8th,Female,Hispanic,N,N,N,Spanish,n/a
+2014Ð15,7963699,,,Interagency Academy,8th,Female,African American or Black,N,N,N,English,n/a
+2014Ð15,3383413,,,Bailey Gatzert Elementary,3rd,Female,African American or Black,N,N,Ñ,English,n/a
+2014Ð15,7768019,,,Nova High School,12th,Male,Asian,N,N,N,Vietnamese,Off Track
+2014Ð15,3015716,,,Garfield High School,10th,Female,African American or Black,N,N,N,English,On Track
+2014Ð15,7295688,,,TOPS K-8 School,8th,Male,African American or Black,N,N,Y,English,n/a
+2014Ð15,6609770,,,B.F. Day Elementary,5th,Female,Asian,Y,Y,N,Vietnamese,n/a
+2014Ð15,3544411,,,Garfield High School,10th,Female,Asian,Y,Y,Ñ,Toishanese,On Track
+2014Ð15,3094732,,,Leschi Elementary,1st,Male,Caucasian,N,N,N,English,n/a
+2014Ð15,3980442,,,Garfield High School,12th,Female,Caucasian,N,N,Ñ,English,On Track
+2014Ð15,7000929,,,Garfield High School,10th,Male,African American or Black,N,N,N,English,On Track
+2014Ð15,3930716,,,Bailey Gatzert Elementary,3rd,Male,African American or Black,N,N,N,Somali,n/a
+2014Ð15,6316700,,,Bailey Gatzert Elementary,5th,Male,African American or Black,N,N,N,Somali,n/a
+2014Ð15,3271447,,,Bailey Gatzert Elementary,2nd,Male,African American or Black,N,N,Ñ,English,n/a
+2014Ð15,7443355,,,Salmon Bay School,8th,Male,Caucasian,N,N,Y,English,n/a
+2014Ð15,3807419,,,Rainier View Elementary,1st,Female,African American or Black,N,N,Ñ,English,n/a
+2014Ð15,7418100,,,Washington Middle School,8th,Female,African American or Black,Y,Y,N,Somali,n/a
+2014Ð15,3452416,,,Madrona K-8 School,K,Male,Caucasian,N,N,Ñ,English,n/a
+2014Ð15,7122183,,,Garfield High School,12th,Male,Asian,N,N,N,Toishanese,On Track
+2014Ð15,3651737,,,TOPS K-8 School,2nd,Male,Asian,Y,Y,N,Toishanese,n/a
+2014Ð15,6697701,,,Garfield High School,9th,Female,Asian,N,N,N,Japanese,On Track
+2014Ð15,7552826,,,TOPS K-8 School,6th,Female,African American or Black,N,N,N,Oromo (Ethiopia),n/a
+2014Ð15,7571651,,,Garfield High School,10th,Male,African American or Black,N,N,N,English,On Track
+2014Ð15,7987104,,,Washington Middle School,8th,Female,Caucasian,N,N,N,English,n/a
+2014Ð15,6010492,,,Middle College High School,11th,Male,Asian,N,N,N,English,Off Track
+2014Ð15,7085122,,,Garfield High School,10th,Male,Asian,N,N,N,Min Nan,On Track
+2014Ð15,6993400,,,Washington Middle School,7th,Male,Asian,N,N,N,Vietnamese,n/a
+2014Ð15,7232331,,,Washington Middle School,7th,Male,Hispanic,N,N,N,Spanish,n/a
+2014Ð15,7783253,,,Garfield High School,12th,Female,African American or Black,N,N,N,Somali,On Track
+2014Ð15,7689380,,,Washington Middle School,8th,Female,African American or Black,N,N,N,English,n/a
+2014Ð15,6439472,,,Washington Middle School,8th,Female,African American or Black,Y,Y,Y,Somali,n/a
+2014Ð15,3778442,,,Bailey Gatzert Elementary,K,Female,African American or Black,N,N,Ñ,English,n/a
+2014Ð15,7695271,,,Garfield High School,12th,Female,African American or Black,N,N,N,Somali,On Track
+2014Ð15,7916122,,,Washington Middle School,8th,Male,Caucasian,N,N,N,English,n/a
+2014Ð15,7972363,,,Washington Middle School,8th,Male,Asian,N,N,N,Vietnamese,n/a
+2014Ð15,7382142,,,Madrona K-8 School,8th,Female,African American or Black,N,N,Y,English,n/a
+2014Ð15,6393514,,,Bailey Gatzert Elementary,4th,Female,African American or Black,N,N,N,English,n/a
+2014Ð15,6044701,,,Leschi Elementary,5th,Female,African American or Black,Y,Y,N,Oromo (Ethiopia),n/a
+2014Ð15,7904606,,,Garfield High School,12th,Male,African American or Black,N,N,N,English,On Track
+2014Ð15,7907827,,,Washington Middle School,6th,Male,Caucasian,N,N,N,English,n/a
+2014Ð15,7948228,,,Interagency Academy,12th,Female,African American or Black,N,N,Y,English,Off Track
+2014Ð15,7495963,,,Garfield High School,10th,Male,Asian,N,N,N,Toishanese,On Track
+2014Ð15,3157411,,,Seattle World School,10th,Male,African American or Black,Y,Y,Ñ,Amharic,Off Track
+2014Ð15,6901473,,,Washington Middle School,6th,Female,African American or Black,N,N,N,English,n/a
+2014Ð15,3665795,,,Stevens Elementary,1st,Male,Hispanic,N,N,N,English,n/a
+2014Ð15,7190615,,,The Center School,10th,Female,Caucasian,N,N,N,English,On Track
+2014Ð15,3608798,,,Bailey Gatzert Elementary,1st,Male,African American or Black,N,N,N,English,n/a
+2014Ð15,3595449,,,Garfield High School,10th,Male,African American or Black,N,N,Ñ,English,On Track
+2014Ð15,7750932,,,Garfield High School,11th,Female,Hispanic,N,N,N,Spanish,On Track
+2014Ð15,7821335,,,Washington Middle School,8th,Male,African American or Black,N,N,N,Oromo (Ethiopia),n/a
+2014Ð15,3042715,,,Bailey Gatzert Elementary,3rd,Female,African American or Black,N,N,Y,English,n/a
+2014Ð15,7019385,,,Washington Middle School,8th,Female,African American or Black,N,N,N,English,n/a
+2014Ð15,3681737,,,Bailey Gatzert Elementary,1st,Female,African American or Black,Y,Y,N,Somali,n/a
+2014Ð15,7266285,,,Roosevelt High School,12th,Female,Asian,N,N,N,Cantonese,On Track
+2014Ð15,6565750,,,Bailey Gatzert Elementary,5th,Male,Hispanic,Y,Y,N,Spanish,n/a
+2014Ð15,7683622,,,Garfield High School,9th,Male,Asian,N,N,N,Cantonese,On Track
+2014Ð15,3720411,,,Leschi Elementary,1st,Female,African American or Black,Y,Y,Ñ,Oromo (Ethiopia),n/a
+2014Ð15,6382729,,,Washington Middle School,7th,Female,African American or Black,Y,Y,Y,Somali,n/a
+2014Ð15,7641996,,,Interagency Academy,10th,Male,African American or Black,N,N,Y,English,Off Track
+2014Ð15,6926517,,,Bailey Gatzert Elementary,5th,Male,Hispanic,Y,Y,Y,English,n/a
+2014Ð15,3448419,,,Garfield High School,12th,Female,African American or Black,N,N,Ñ,English,On Track
+2014Ð15,7813869,,,Washington Middle School,6th,Male,Hispanic,N,N,N,Spanish,n/a
+2014Ð15,3337782,,,Bailey Gatzert Elementary,3rd,Female,Multiracial,N,N,Y,English,n/a
+2014Ð15,3624449,,,Washington Middle School,7th,Female,African American or Black,Y,Y,Ñ,Somali,n/a
+2014Ð15,6961541,,,Interagency Academy,12th,Male,African American or Black,N,N,Y,English,Off Track
+2014Ð15,6182472,,,Garfield High School,9th,Male,Multiracial,N,N,N,English,On Track
+2014Ð15,6280429,,,Bailey Gatzert Elementary,4th,Female,African American or Black,Y,Y,Ñ,Somali,n/a
+2014Ð15,6644556,,,Leschi Elementary,2nd,Male,African American or Black,Y,Y,N,Oromo (Ethiopia),n/a
+2014Ð15,3919793,,,Garfield High School,11th,Female,Asian,Y,Y,N,Cantonese,On Track
+2014Ð15,3878788,,,Bailey Gatzert Elementary,2nd,Male,Asian,N,N,N,Vietnamese,n/a
+2014Ð15,6560530,,,Leschi Elementary,3rd,Male,Caucasian,N,N,N,English,n/a
+2014Ð15,3197746,,,Bailey Gatzert Elementary,3rd,Male,African American or Black,Y,Y,N,Somali,n/a
+2014Ð15,7460315,,,Washington Middle School,8th,Male,African American or Black,N,N,N,English,n/a
+2014Ð15,6430726,,,Bailey Gatzert Elementary,5th,Female,African American or Black,Y,Y,N,Oromo (Ethiopia),n/a
+2014Ð15,6601489,,,Thurgood Marshall Elementary,4th,Female,Asian,N,N,N,Cantonese,n/a
+2014Ð15,3881412,,,Bailey Gatzert Elementary,4th,Female,African American or Black,N,N,Ñ,English,n/a
+2014Ð15,7729909,,,Roosevelt High School,11th,Female,African American or Black,N,N,N,Oromo (Ethiopia),On Track
+2014Ð15,3193417,,,Rainier Beach High School,11th,Male,African American or Black,N,N,Ñ,English,On Track
+2014Ð15,7066547,,,South Lake High School,12th,Male,African American or Black,N,N,N,English,Off Track
+2014Ð15,3740413,,,Dearborn Park International School,K,Male,Asian,N,N,Ñ,English,n/a
+2014Ð15,3339413,,,Leschi Elementary,1st,Male,Multiracial,N,N,Ñ,English,n/a
+2014Ð15,3120780,,,Bailey Gatzert Elementary,5th,Female,African American or Black,Y,Y,N,Somali,n/a
+2014Ð15,3444753,,,Bailey Gatzert Elementary,K,Male,African American or Black,Y,Y,N,Swahili,n/a
+2014Ð15,7798170,,,Garfield High School,11th,Female,Asian,Y,Y,N,Toishanese,On Track
+2014Ð15,3946719,,,Bailey Gatzert Elementary,3rd,Female,Multiracial,N,N,Y,English,n/a
+2014Ð15,3427714,,,Bailey Gatzert Elementary,4th,Female,Asian,Y,Y,Y,Cantonese,n/a
+2014Ð15,3604741,,,Bailey Gatzert Elementary,3rd,Female,African American or Black,Y,Y,N,Somali,n/a
+2014Ð15,7540244,,,Garfield High School,12th,Female,Asian,N,N,N,Cantonese,On Track
+2014Ð15,3574416,,,McGilvra Elementary,K,Female,Asian,N,N,Ñ,English,n/a
+2014Ð15,7806812,,,Garfield High School,11th,Male,Asian,N,N,N,Vietnamese,On Track
+2014Ð15,3005751,,,Washington Middle School,6th,Female,African American or Black,N,N,N,Oromo (Ethiopia),n/a
+2014Ð15,7988838,,,Washington Middle School,6th,Female,Asian,N,N,N,Vietnamese,n/a
+2014Ð15,7451529,,,Middle College High School,12th,Male,African American or Black,N,N,N,Tigrinya (Tigrigna),Off Track
+2014Ð15,3637713,,,Leschi Elementary,3rd,Male,Asian,Y,Y,N,Indonesian,n/a
+2014Ð15,7416855,,,Garfield High School,9th,Male,African American or Black,N,N,N,English,On Track
+2014Ð15,6552486,,,TOPS K-8 School,4th,Male,Asian,N,N,Y,Mandarin,n/a
+2014Ð15,3270412,,,Washington Middle School,6th,Female,African American or Black,N,N,Y,English,n/a
+2014Ð15,7694925,,,Garfield High School,9th,Male,African American or Black,N,N,Y,English,On Track
+2014Ð15,3245447,,,Garfield High School,10th,Male,Caucasian,N,N,Ñ,English,On Track
+2014Ð15,3941447,,,Bailey Gatzert Elementary,2nd,Female,African American or Black,N,N,Ñ,English,n/a
+2014Ð15,6584462,,,Leschi Elementary,5th,Female,African American or Black,N,N,N,English,n/a
+2014Ð15,7405964,,,Garfield High School,10th,Female,Asian,N,N,N,Cantonese,On Track
+2014Ð15,3900758,,,Bailey Gatzert Elementary,2nd,Male,Asian,N,N,N,English,n/a
+2014Ð15,7328961,,,Garfield High School,10th,Female,Asian,N,N,N,Cantonese,On Track
+2014Ð15,7290280,,,Garfield High School,12th,Male,Asian,N,N,N,English,On Track
+2014Ð15,7275940,,,Garfield High School,11th,Female,Hispanic,N,N,N,English,On Track
+2014Ð15,7637972,,,Garfield High School,10th,Male,Hispanic,N,N,N,English,On Track
+2014Ð15,7767882,,,Washington Middle School,6th,Female,Multiracial,N,N,N,English,n/a
+2014Ð15,3350416,,,Leschi Elementary,K,Female,Caucasian,N,N,Ñ,English,n/a
+2014Ð15,3613791,,,Bailey Gatzert Elementary,1st,Male,Hispanic,N,N,N,English,n/a
+2014Ð15,7459397,,,Washington Middle School,7th,Male,African American or Black,N,N,Y,English,n/a
+2014Ð15,6507462,,,Queen Anne Elementary,4th,Male,Caucasian,N,N,N,English,n/a
+2014Ð15,3199746,,,Bailey Gatzert Elementary,4th,Female,African American or Black,N,N,Y,Swahili,n/a
+2014Ð15,7389289,,,Garfield High School,12th,Female,Asian,N,N,N,English,On Track
+2014Ð15,7811280,,,Garfield High School,12th,Female,Asian,N,N,N,Tagalog,On Track
+2014Ð15,7512656,,,Garfield High School,12th,Male,Asian,N,N,N,English,On Track
+2014Ð15,6825715,,,Washington Middle School,6th,Female,African American or Black,N,N,N,Oromo (Ethiopia),n/a
+2014Ð15,3461442,,,Garfield High School,9th,Female,Asian,Y,Y,Ñ,Tagalog,On Track
+2014Ð15,6452470,,,Garfield High School,10th,Male,Asian,Y,Y,N,Toishanese,On Track
+2014Ð15,3352758,,,Leschi Elementary,2nd,Male,Caucasian,N,N,N,English,n/a
+2014Ð15,7670828,,,Leschi Elementary,5th,Male,Multiracial,N,N,N,French,n/a
+2014Ð15,3018732,,,Bailey Gatzert Elementary,1st,Male,Asian,Y,Y,N,Toishanese,n/a
+2014Ð15,3317449,,,Bailey Gatzert Elementary,1st,Male,Asian,Y,Y,Ñ,Cantonese,n/a
+2014Ð15,6027553,,,Garfield High School,12th,Male,Asian,Y,Y,N,Toishanese,On Track
+2014Ð15,7715983,,,Garfield High School,11th,Female,Asian,N,N,N,Vietnamese,On Track
+2014Ð15,7592642,,,Garfield High School,9th,Female,Asian,N,N,N,English,On Track
+2014Ð15,3156745,,,Bailey Gatzert Elementary,4th,Female,African American or Black,N,N,N,Somali,n/a
+2014Ð15,3919753,,,Bailey Gatzert Elementary,2nd,Female,Hispanic,N,N,N,English,n/a
+2014Ð15,6253466,,,Washington Middle School,8th,Female,Asian,N,N,N,Tagalog,n/a
+2014Ð15,7639395,,,Interagency Academy,10th,Male,African American or Black,Y,Y,Y,Somali,On Track
+2014Ð15,7664336,,,TOPS K-8 School,7th,Male,Asian,N,N,N,Toishanese,n/a
+2014Ð15,3893788,,,Bailey Gatzert Elementary,5th,Female,Asian,Y,Y,N,Mandarin,n/a
+2014Ð15,7246871,,,Washington Middle School,8th,Female,African American or Black,N,N,N,Somali,n/a
+2014Ð15,7116998,,,Garfield High School,10th,Male,Caucasian,N,N,N,English,On Track
+2014Ð15,3904754,,,Bailey Gatzert Elementary,2nd,Female,African American or Black,Y,Y,N,Somali,n/a
+2014Ð15,3663794,,,Bailey Gatzert Elementary,1st,Female,Asian,Y,Y,N,Cantonese,n/a
+2014Ð15,3448796,,,Lowell Elementary,1st,Male,Asian,Y,Y,N,Cantonese,n/a
+2014Ð15,7107374,,,Bailey Gatzert Elementary,5th,Male,Hispanic,Y,Y,Y,Spanish,n/a
+2014Ð15,6665742,,,Bailey Gatzert Elementary,5th,Male,Asian,Y,Y,N,Vietnamese,n/a
+2014Ð15,3223749,,,Washington Middle School,8th,Female,African American or Black,N,N,N,Tigrinya (Tigrigna),n/a
+2014Ð15,7978961,,,Garfield High School,10th,Male,Asian,N,N,N,Vietnamese,On Track
+2014Ð15,7044901,,,Garfield High School,10th,Female,Hispanic,N,N,N,Spanish,On Track
+2014Ð15,6602406,,,B.F. Day Elementary,4th,Female,Caucasian,N,N,N,English,n/a
+2014Ð15,6662423,,,TOPS K-8 School,4th,Male,African American or Black,N,N,N,English,n/a
+2014Ð15,7039238,,,Franklin High School,12th,Male,Multiracial,N,N,Y,English,On Track
+2014Ð15,7065366,,,Washington Middle School,7th,Male,Asian,N,N,N,Cantonese,n/a
+2014Ð15,3633714,,,Bailey Gatzert Elementary,3rd,Female,African American or Black,N,N,N,Oromo (Ethiopia),n/a
+2014Ð15,3925418,,,Bailey Gatzert Elementary,K,Male,Asian,Y,Y,Ñ,Vietnamese,n/a
+2014Ð15,6362758,,,Orca K-8 School,6th,Male,Multiracial,N,N,N,English,n/a
+2014Ð15,7656195,,,Washington Middle School,7th,Female,Asian,N,N,N,English,n/a
+2014Ð15,3330782,,,Bailey Gatzert Elementary,3rd,Female,Multiracial,N,N,Y,English,n/a
+2014Ð15,3612732,,,Bailey Gatzert Elementary,1st,Female,Multiracial,N,N,N,English,n/a
+2014Ð15,7997167,,,Washington Middle School,8th,Male,Asian,N,N,N,Vietnamese,n/a
+2014Ð15,3123786,,,Denny International Middle School,6th,Female,African American or Black,N,N,Ñ,English,n/a
+2014Ð15,3853714,,,Garfield High School,11th,Female,Asian,N,N,N,English,On Track
+2014Ð15,7038811,,,Garfield High School,9th,Male,Asian,N,N,N,Toishanese,On Track
+2014Ð15,3723793,,,Franklin High School,12th,Female,African American or Black,N,N,N,Kinyarwanda,On Track
+2014Ð15,7147322,,,Garfield High School,10th,Female,Asian,N,N,N,Cantonese,On Track
+2014Ð15,3219793,,,Bailey Gatzert Elementary,3rd,Male,African American or Black,Y,Y,N,Arabic,n/a
+2014Ð15,6844552,,,Washington Middle School,6th,Female,Asian,Y,Y,N,Vietnamese,n/a
+2014Ð15,7910156,,,McClure Middle School,8th,Male,Asian,N,N,Y,English,n/a
+2014Ð15,3626786,,,Washington Middle School,7th,Female,African American or Black,Y,Y,N,Somali,n/a
+2014Ð15,7440885,,,Washington Middle School,7th,Female,African American or Black,Y,Y,Y,Somali,n/a
+2014Ð15,7969650,,,Garfield High School,9th,Female,Hispanic,N,N,N,English,On Track
+2014Ð15,7676657,,,Garfield High School,11th,Male,African American or Black,Y,Y,Y,Somali,On Track
+2014Ð15,6353457,,,Washington Middle School,8th,Male,Caucasian,N,N,N,English,n/a
+2014Ð15,6025559,,,Garfield High School,10th,Male,Asian,Y,Y,N,Cantonese,On Track
+2014Ð15,6801700,,,Garfield High School,10th,Female,Asian,N,N,N,Toishanese,On Track
+2014Ð15,3237447,,,Interagency Academy,12th,Male,Caucasian,N,N,Ñ,English,n/a
+2014Ð15,7980898,,,Washington Middle School,6th,Female,Hispanic,N,N,N,Spanish,n/a
+2014Ð15,6148594,,,Lowell Elementary,3rd,Female,African American or Black,Y,Y,N,Arabic,n/a
+2014Ð15,3389413,,,Bailey Gatzert Elementary,2nd,Male,African American or Black,N,N,Ñ,English,n/a
+2014Ð15,7649602,,,Garfield High School,9th,Female,African American or Black,N,N,N,Somali,On Track
+2014Ð15,3494789,,,Dearborn Park International School,2nd,Female,Asian,Y,Y,N,Vietnamese,n/a
+2014Ð15,7121298,,,Garfield High School,11th,Male,Asian,N,N,N,English,On Track
+2014Ð15,3533758,,,Montlake Elementary,2nd,Male,Caucasian,N,N,N,English,n/a
+2014Ð15,7674926,,,Garfield High School,10th,Female,African American or Black,N,N,N,English,On Track
+2014Ð15,7540123,,,Garfield High School,9th,Female,African American or Black,N,N,N,English,On Track
+2014Ð15,3216414,,,Garfield High School,11th,Male,African American or Black,N,N,Ñ,English,On Track
+2014Ð15,3473442,,,Bailey Gatzert Elementary,K,Male,Asian,N,N,Ñ,English,n/a
+2014Ð15,7530164,,,Garfield High School,10th,Female,Multiracial,N,N,N,Vietnamese,On Track
+2014Ð15,3096416,,,Bailey Gatzert Elementary,K,Male,African American or Black,N,N,Ñ,Somali,n/a
+2014Ð15,7462808,,,Garfield High School,10th,Female,African American or Black,Y,Y,N,Somali,On Track
+2014Ð15,3485418,,,Bailey Gatzert Elementary,3rd,Female,African American or Black,Y,Y,Ñ,Amharic,n/a
+2014Ð15,6511588,,,Bailey Gatzert Elementary,4th,Female,African American or Black,N,N,N,English,n/a
+2014Ð15,3315739,,,TOPS K-8 School,1st,Male,Asian,Y,Y,N,Cantonese,n/a
+2014Ð15,6078555,,,Interagency Academy,12th,Female,African American or Black,N,N,N,English,Off Track
+2014Ð15,3665419,,,Washington Middle School,8th,Male,Asian,Y,Y,Ñ,Cantonese,n/a
+2014Ð15,7802970,,,Garfield High School,10th,Male,African American or Black,N,N,Y,English,On Track
+2014Ð15,7769693,,,Nova High School,9th,Male,African American or Black,N,N,Y,English,On Track
+2014Ð15,7433955,,,Garfield High School,11th,Female,Asian,N,N,N,English,On Track
+2014Ð15,7344664,,,Garfield High School,9th,Female,African American or Black,N,N,N,Oromo (Ethiopia),On Track
+2014Ð15,6882724,,,Bailey Gatzert Elementary,5th,Male,Hispanic,N,N,N,English,n/a
+2014Ð15,7641909,,,Garfield High School,9th,Male,African American or Black,N,N,N,English,On Track
+2014Ð15,7078280,,,Garfield High School,12th,Female,Asian,N,N,N,Mandarin,On Track
+2014Ð15,7342893,,,Washington Middle School,6th,Female,Asian,N,N,N,Vietnamese,n/a
+2014Ð15,7284658,,,Garfield High School,10th,Male,African American or Black,N,N,N,English,On Track
+2014Ð15,6010728,,,Washington Middle School,8th,Female,African American or Black,N,N,N,Somali,n/a
+2014Ð15,7958695,,,Garfield High School,11th,Female,Asian,N,N,N,Vietnamese,On Track
+2014Ð15,6399536,,,TOPS K-8 School,3rd,Male,Caucasian,N,N,N,English,n/a
+2014Ð15,7709155,,,Garfield High School,9th,Female,African American or Black,N,N,N,English,On Track
+2014Ð15,7905975,,,Interagency Academy,11th,Female,African American or Black,N,N,N,English,On Track
+2014Ð15,3415415,,,Bailey Gatzert Elementary,K,Female,African American or Black,Y,Y,Ñ,Somali,n/a
+2014Ð15,7206300,,,Washington Middle School,6th,Female,Caucasian,N,N,N,English,n/a
+2014Ð15,7096385,,,Garfield High School,9th,Female,Caucasian,N,N,N,English,On Track
+2014Ð15,7458208,,,Interagency Academy,11th,Male,African American or Black,N,N,N,English,On Track
+2014Ð15,7713170,,,South Lake High School,10th,Male,Asian,Y,Y,N,Toishanese,On Track
+2014Ð15,7769346,,,Garfield High School,9th,Female,Asian,N,N,N,Cantonese,On Track
+2014Ð15,3590442,,,Bailey Gatzert Elementary,2nd,Male,Hispanic,Y,Y,Ñ,Spanish,n/a
+2014Ð15,3123751,,,Bailey Gatzert Elementary,2nd,Male,Hispanic,Y,Y,N,Spanish,n/a
+2014Ð15,6079580,,,Stevens Elementary,3rd,Male,African American or Black,N,N,N,English,n/a
+2014Ð15,6604474,,,Madrona K-8 School,4th,Female,African American or Black,N,N,N,English,n/a
+2014Ð15,6243701,,,Bailey Gatzert Elementary,5th,Female,African American or Black,Y,Y,N,Oromo (Ethiopia),n/a
+2014Ð15,7873352,,,Garfield High School,10th,Female,African American or Black,N,N,N,English,On Track
+2014Ð15,7783245,,,Garfield High School,12th,Male,Asian,N,N,N,English,On Track
+2014Ð15,3782796,,,Leschi Elementary,1st,Female,Caucasian,N,N,N,English,n/a
+2014Ð15,7145259,,,Franklin High School,12th,Male,Hispanic,Y,Y,Y,Spanish,On Track
+2014Ð15,7942200,,,Garfield High School,12th,Female,Caucasian,N,N,N,English,On Track
+2014Ð15,6775454,,,Leschi Elementary,4th,Female,African American or Black,N,N,N,Amharic,n/a
+2014Ð15,6509532,,,Cascade Parent Partnership,1st,Female,African American or Black,N,N,N,English,n/a
+2014Ð15,7058873,,,Garfield High School,12th,Female,Asian,Y,Y,N,Cantonese,On Track
+2014Ð15,3853780,,,Bailey Gatzert Elementary,2nd,Female,African American or Black,N,N,N,Wolof,n/a
+2014Ð15,7724650,,,Private School Services,7th,Male,Caucasian,N,N,Y,English,n/a
+2014Ð15,3343419,,,Bailey Gatzert Elementary,3rd,Female,Hispanic,Y,Y,Ñ,Spanish,n/a
+2014Ð15,6813440,,,Bailey Gatzert Elementary,4th,Male,African American or Black,N,N,N,English,n/a
+2014Ð15,3138745,,,Washington Middle School,8th,Male,African American or Black,Y,Y,Y,Somali,n/a
+2014Ð15,7070087,,,Garfield High School,12th,Male,African American or Black,N,N,N,Tigrinya (Tigrigna),On Track
+2014Ð15,3440786,,,Bailey Gatzert Elementary,3rd,Male,African American or Black,N,N,N,English,n/a
+2014Ð15,3026749,,,Washington Middle School,6th,Male,Hispanic,N,N,N,Spanish,n/a
+2014Ð15,3161415,,,Bailey Gatzert Elementary,K,Male,African American or Black,N,Y,Ñ,Tigrinya (Tigrigna),n/a
+2014Ð15,3729447,,,Seattle World School,7th,Male,Asian,N,Y,Ñ,Vietnamese,n/a
+2014Ð15,6186594,,,Garfield High School,9th,Male,Asian,N,N,N,Cantonese,On Track
+2014Ð15,7365382,,,Garfield High School,11th,Male,Asian,Y,Y,Y,Lao,On Track
+2014Ð15,3582788,,,Bailey Gatzert Elementary,2nd,Female,African American or Black,N,N,N,French,n/a
+2014Ð15,6402582,,,Montlake Elementary,3rd,Male,Asian,N,N,N,Cantonese,n/a
+2014Ð15,7028813,,,Garfield High School,11th,Female,Asian,N,N,N,Cantonese,On Track
+2014Ð15,7111956,,,Garfield High School,11th,Female,African American or Black,N,N,N,Tigrinya (Tigrigna),On Track
+2014Ð15,6313764,,,Washington Middle School,6th,Female,African American or Black,N,N,N,Somali,n/a
+2014Ð15,3443796,,,TOPS K-8 School,1st,Female,Asian,N,N,N,Cantonese,n/a
+2014Ð15,6861754,,,Interagency Academy,11th,Male,Caucasian,N,N,Y,Arabic,On Track
+2014Ð15,3594732,,,Bailey Gatzert Elementary,1st,Male,Multiracial,N,N,N,English,n/a
+2014Ð15,6605400,,,Seattle World School,12th,Male,Asian,Y,Y,Ñ,Vietnamese,Off Track
+2014Ð15,7138842,,,Orca K-8 School,7th,Female,Caucasian,N,N,Y,English,n/a
+2014Ð15,7228280,,,Garfield High School,12th,Female,Hispanic,N,N,N,Spanish,On Track
+2014Ð15,6358530,,,Garfield High School,11th,Male,Asian,N,N,N,Cantonese,On Track
+2014Ð15,3928418,,,Bailey Gatzert Elementary,4th,Male,Asian,Y,Y,Ñ,Cantonese,n/a
+2014Ð15,7895638,,,Garfield High School,10th,Male,Hispanic,N,N,N,Spanish,On Track
+2014Ð15,6611425,,,Lowell Elementary,4th,Male,Caucasian,N,N,N,English,n/a
+2014Ð15,6640721,,,Thurgood Marshall Elementary,5th,Female,Hispanic,N,N,N,Spanish,n/a
+2014Ð15,6237454,,,Lowell Elementary,4th,Male,Asian,Y,Y,N,Cantonese,n/a
+2014Ð15,7307844,,,Garfield High School,12th,Male,Asian,N,N,N,English,On Track
+2014Ð15,7137664,,,Garfield High School,9th,Male,Asian,N,N,N,Cantonese,On Track
+2014Ð15,7186915,,,Nova High School,11th,Female,Asian,N,N,N,English,On Track
+2014Ð15,6179739,,,Kimball Elementary,5th,Male,Hispanic,N,N,N,Spanish,n/a
+2014Ð15,3288412,,,Bailey Gatzert Elementary,2nd,Male,African American or Black,N,N,Ñ,English,n/a
+2014Ð15,3975735,,,Madrona K-8 School,1st,Male,Multiracial,N,N,N,English,n/a
+2014Ð15,7366306,,,Rainier Beach High School,12th,Female,African American or Black,N,N,N,Amharic,On Track
+2014Ð15,7815984,,,Garfield High School,11th,Female,Asian,N,N,N,Cantonese,On Track
+2014Ð15,3303415,,,Bailey Gatzert Elementary,K,Male,African American or Black,Y,Y,Ñ,Tigrinya (Tigrigna),n/a
+2014Ð15,3832712,,,Eckstein Middle School,8th,Male,Caucasian,N,N,Y,English,n/a
+2014Ð15,6692537,,,Stevens Elementary,3rd,Female,Caucasian,Y,Y,Y,Spanish,n/a
+2014Ð15,7916654,,,Garfield High School,10th,Female,Multiracial,N,N,N,English,On Track
+2014Ð15,6075475,,,TOPS K-8 School,4th,Male,African American or Black,N,N,N,Amharic,n/a
+2014Ð15,7499818,,,Garfield High School,9th,Male,African American or Black,N,N,N,Oromo (Ethiopia),On Track
+2014Ð15,7830351,,,Garfield High School,11th,Female,Asian,N,N,N,Cantonese,On Track
+2014Ð15,6981729,,,Washington Middle School,6th,Female,African American or Black,Y,Y,N,Somali,n/a
+2014Ð15,3334418,,,Madrona K-8 School,K,Female,Caucasian,N,N,Ñ,English,n/a
+2014Ð15,7088933,,,Garfield High School,11th,Male,Multiracial,N,N,N,English,On Track
+2014Ð15,7918978,,,Interagency Academy,10th,Male,African American or Black,N,N,N,English,Off Track
+2014Ð15,3283415,,,Bailey Gatzert Elementary,K,Male,Caucasian,N,N,Ñ,English,n/a
+2014Ð15,7706915,,,Garfield High School,11th,Male,African American or Black,N,N,N,Somali,On Track
+2014Ð15,3115742,,,Garfield High School,10th,Female,Asian,N,N,N,English,On Track
+2014Ð15,7804963,,,Garfield High School,10th,Female,Asian,N,N,N,Vietnamese,On Track
+2014Ð15,3225447,,,Bailey Gatzert Elementary,2nd,Female,Caucasian,Y,Y,Ñ,Arabic,n/a
+2014Ð15,6903729,,,Washington Middle School,8th,Male,African American or Black,Y,Y,Y,Somali,n/a
+2014Ð15,3625449,,,Washington Middle School,8th,Female,African American or Black,Y,Y,Ñ,Somali,n/a
+2014Ð15,3629786,,,Garfield High School,12th,Female,African American or Black,Y,Y,N,Somali,On Track
+2014Ð15,7879696,,,Garfield High School,9th,Female,Hispanic,N,N,Y,Spanish,On Track
+2014Ð15,7925664,,,Garfield High School,9th,Male,Asian,N,N,N,Vietnamese,On Track
+2014Ð15,3905749,,,Washington Middle School,8th,Male,African American or Black,N,N,N,Oromo (Ethiopia),n/a
+2014Ð15,3062790,,,Bailey Gatzert Elementary,K,Male,Multiracial,Y,Y,N,Mandarin,n/a
+2014Ð15,7088971,,,Garfield High School,11th,Female,Hispanic,N,N,Y,English,On Track
+2014Ð15,7312815,,,Washington Middle School,7th,Female,African American or Black,N,N,N,Somali,n/a
+2014Ð15,3704741,,,Bailey Gatzert Elementary,2nd,Female,Hispanic,Y,Y,N,Spanish,n/a
+2014Ð15,7449606,,,West Seattle High School,9th,Male,Hispanic,N,N,N,English,On Track
+2014Ð15,3660714,,,Leschi Elementary,3rd,Female,African American or Black,N,N,N,English,n/a
+2014Ð15,3818447,,,Nova High School,12th,Female,Multiracial,N,N,Ñ,English,On Track
+2014Ð15,6337548,,,Bailey Gatzert Elementary,4th,Female,African American or Black,Y,Y,N,Somali,n/a
+2014Ð15,3462410,,,Bailey Gatzert Elementary,K,Female,Hispanic,Y,Y,Ñ,Spanish,n/a
+2014Ð15,6041774,,,Leschi Elementary,5th,Female,African American or Black,N,N,N,English,n/a
+2014Ð15,3705788,,,Garfield High School,11th,Female,Asian,N,N,N,Cantonese,On Track
+2014Ð15,3492419,,,Bailey Gatzert Elementary,1st,Male,African American or Black,N,N,Ñ,English,n/a
+2014Ð15,7957321,,,Washington Middle School,7th,Male,Asian,N,N,N,Cantonese,n/a
+2014Ð15,7222208,,,Garfield High School,12th,Female,African American or Black,N,N,N,English,On Track
+2014Ð15,7328640,,,Interagency Academy,10th,Male,African American or Black,N,N,N,English,On Track
+2014Ð15,3989732,,,Bailey Gatzert Elementary,1st,Female,African American or Black,N,N,N,English,n/a
+2014Ð15,7128580,,,Middle College High School,12th,Female,African American or Black,N,N,N,English,Off Track
+2014Ð15,7984664,,,Garfield High School,9th,Female,Asian,N,N,N,Vietnamese,On Track
+2014Ð15,6840444,,,Washington Middle School,7th,Female,African American or Black,Y,Y,Y,Tigrinya (Tigrigna),n/a
+2014Ð15,7946393,,,Interagency Academy,11th,Male,African American or Black,N,N,N,Somali,On Track
+2014Ð15,3212751,,,Leschi Elementary,4th,Female,African American or Black,Y,Y,N,Oromo (Ethiopia),n/a
+2014Ð15,7116230,,,Garfield High School,12th,Male,African American or Black,N,N,N,English,On Track
+2014Ð15,6129559,,,Seattle World School,12th,Male,Asian,Y,Y,N,Vietnamese,Off Track
+2014Ð15,3385410,,,Beacon Hill International School,K,Female,Asian,N,N,Ñ,Vietnamese,n/a
+2014Ð15,7541187,,,Garfield High School,12th,Female,Asian,N,N,N,Cantonese,On Track
+2014Ð15,3817712,,,Leschi Elementary,3rd,Male,African American or Black,N,N,N,English,n/a
+2014Ð15,6905514,,,Bailey Gatzert Elementary,3rd,Female,African American or Black,N,N,N,English,n/a
+2014Ð15,3645796,,,Garfield High School,11th,Female,Asian,Y,Y,N,Cantonese,On Track
+2014Ð15,3646443,,,Interagency Academy,12th,Male,Multiracial,N,N,Ñ,English,n/a
+2014Ð15,7825665,,,Garfield High School,9th,Male,Asian,N,N,N,Vietnamese,On Track
+2014Ð15,3933415,,,Bailey Gatzert Elementary,K,Female,African American or Black,Y,Y,Ñ,Somali,n/a
+2014Ð15,3614788,,,Washington Middle School,7th,Male,Asian,N,N,N,Vietnamese,n/a
+2014Ð15,7653113,,,Garfield High School,11th,Female,African American or Black,N,N,Y,English,On Track
+2014Ð15,3644755,,,Garfield High School,12th,Female,Asian,N,N,N,Cantonese,On Track
+2014Ð15,3828411,,,Bailey Gatzert Elementary,2nd,Female,Hispanic,Y,Y,Ñ,Spanish,n/a
+2014Ð15,3329758,,,Bailey Gatzert Elementary,1st,Male,Caucasian,N,N,N,English,n/a
+2014Ð15,6101705,,,Stevens Elementary,5th,Male,Hispanic,Y,Y,N,Spanish,n/a
+2014Ð15,7164837,,,Washington Middle School,8th,Male,Asian,N,N,N,Burmese,n/a
+2014Ð15,3577443,,,Bailey Gatzert Elementary,K,Male,Asian,N,N,Ñ,English,n/a
+2014Ð15,3828783,,,Bailey Gatzert Elementary,K,Male,Hispanic,Y,Y,N,English,n/a
+2014Ð15,6107422,,,Bailey Gatzert Elementary,5th,Female,Asian,N,N,N,Toishanese,n/a
+2014Ð15,3080731,,,South Shore K-8 School,4th,Male,African American or Black,N,N,N,English,n/a

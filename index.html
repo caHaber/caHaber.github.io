@@ -398,13 +398,13 @@ function toss(){
     <svg></svg>
 <div class="container">
     <div class="row">
-        <div class="col-md-12 col-md-offset-1 text-center">
+        <div class="col-md-12 col-md-offset-0 text-center">
             <div id="cp2" class="inl-bl"></div>
             <div>
                 <h3> Casey Haber </h3>
 
             <i class="fa fa-github fa-3x wow bounceIn"></i>
-            <p><a href="http://www.github.com/caHaber" target="_blank">caHaber</a></p>
+            <p><a class="git" href="http://www.github.com/caHaber" target="_blank">caHaber</a></p>
 
 
             <i class="fa fa-envelope-o fa-3x wow bounceIn" data-wow-delay=".1s"></i>
@@ -501,7 +501,9 @@ var color = '#FF9690';
 
 
 
-      var svg = d3.select("svg")
+      var svg = d3.select("svg").attr("width",plotWidth).attr("height",plotHeight - 100)
+
+    //   var plot = svg.append("svg").attr("id","plot")
       .attr("width",plotWidth).attr("height",plotHeight - 100)
           .call(d3.behavior.drag()
             .on("dragstart", dragstarted)

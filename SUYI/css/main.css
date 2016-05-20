@@ -1,0 +1,64 @@
+html,body {
+font-family: 'Open Sans', sans-serif;
+    background-color: #AA0000;
+    color: whitesmoke
+}
+
+section#start{
+    background-image: url('https://www.seattleu.edu/media/youth-initiative/images/SUYI-Map-for-Web.fw237d.png');
+    padding: 40px;
+}
+
+section#second {
+    padding: 20px;
+}
+
+section#viz {
+    padding: 20px;
+    background-color: white
+}
+
+img#case {
+    max-width: 300px;
+}
+h1 {
+    color: #AA0000
+}
+a{
+    color: black;
+}
+
+a:link{
+    color:white;
+    text-decoration: none;
+}
+a:hover{
+    color:cornsilk;
+}
+
+p.motive {
+    color: black;
+}
+
+h2.motive {
+    color: black;
+}
+
+div#site > a {
+    color: white;
+    font-weight:300;
+    font-size: 2em;
+}
+
+div#site > a:hover{
+color:cornsilk;
+}
+
+div#site{
+    padding-left: 20px;
+    padding-top: 20px;
+}
+
+p.instruct{
+    color:black;
+}

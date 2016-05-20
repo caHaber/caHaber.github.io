@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<style>
+
+body {
+  font: 10px sans-serif;
+
+}
+
+
+
+
+circle.hidden {
+  fill: #ccc !important;
+}
+
+.extent {
+  fill: #000;
+  fill-opacity: .125;
+  stroke: #fff;
+}
+
+.tooltip {
+    font-size: 12px;
+}
+
+h5{
+
+  font-size: 1.5em;
+  font-weight: 200;
+  padding-right: 120px;
+}
+
+h1,h3 {
+    padding-right: 120px;
+}
+
+div#caption{
+  position: absolute;
+  top: 0px;
+  left: 990px;
+  width: 300px;
+  height: 400px;
+}
+
+
+/*
+circle {
+    stroke: cornsilk;
+}*/
+/*rect {
+    stroke: blue;
+    stroke-width: 2px;
+}*/
+
+/*p,h3{
+  padding-right: 600px;
+}*/
+
+
+svg {
+  background-color: whitesmoke;
+}
+
+
+.area {
+  fill: steelblue;
+  clip-path: url(#clip);
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: white;
+  stroke-width:2;
+}
+
+.axis line {
+    shape-rendering: crispEdges;
+}
+
+path.domain {
+    stroke: grey;
+    stroke-width: .5px;
+}
+
+
+/*g#plot {
+  background-color: lightgrey;
+}*/
+
+</style>
+<script src="//d3js.org/d3.v3.min.js"></script>
+<script src="util.js"></script>
+<script src="loaders.js"></script>
+<script src="fisheye.js"></script>
+<script src="https://d3js.org/d3-collection.v0.1.min.js"></script>
+<script src="https://d3js.org/d3-dispatch.v0.4.min.js"></script>
+<script src="https://d3js.org/d3-quadtree.v0.7.min.js"></script>
+<script src="https://d3js.org/d3-timer.v0.4.min.js"></script>
+<script src="https://d3js.org/d3-force.v0.6.min.js"></script>
+<script src="https://d3js.org/d3-axis.v0.3.min.js"></script>
+</head>
+<body>
+  <svg></svg>
+
+<script>
+
+
+
+barData = [];
+
+
+var config = {
+    width:  600,
+    height: 500,
+    margin: 10,
+};
+
+
+
+var svg = d3.select("body").select("svg")
+  .attr("width",config.width).attr("height",config.height);
+
+var plot =  svg.append("g").attr("id","plot")
+        .attr({
+          "width" : config["width"]/2,
+          "height" : config["height"]
+        }).attr("transform", util.translate(30,-30));
+
+
+        var bg =  d3.select("body").append("svg").attr("width",350).attr("height",500).append("g").attr("id","bg")
+                .attr({
+                  "width" : 300,
+                  "height" : 400
+              }).attr("transform", util.translate(30,0));
+
+
+
+var beeWidth = 500;
+var beeHeight = 100;
+var beeYmargin = 20;
+
+var focus =  d3.select("body").append("svg").attr("width",beeWidth+50).attr("height",beeHeight+50).append("g").attr("id","focus")
+              .attr({
+                "width" : beeWidth,
+                "height" : beeHeight
+            }).attr("transform", util.translate(30,0));
+
+var focus2 =  d3.select("body").append("svg").attr("width",beeWidth+50).attr("height",beeHeight+50).append("g").attr("id","focus")
+            .attr({
+              "width" : beeWidth,
+              "height" : beeHeight
+          }).attr("transform", util.translate(30,0));
+
+var focus3 =  d3.select("body").append("svg").attr("width",beeWidth+50).attr("height",beeHeight+50).append("g").attr("id","focus")
+        .attr({
+          "width" : beeWidth,
+          "height" : beeHeight
+      }).attr("transform", util.translate(30,0));
+
+var focus4 =  d3.select("body").append("svg").attr("width",beeWidth+50).attr("height",beeHeight+50).append("g").attr("id","focus")
+        .attr({
+          "width" : beeWidth,
+          "height" : beeHeight
+      }).attr("transform", util.translate(30,0));
+
+
+            //   var fisheye = d3.fisheye.circular()
+            //   .radius(100);
+              //
+              //
+// var raceColor = ['#1f78b4','#33a02c','#e31a1c','#ff7f00',#6a3d9a];
+var raceColor = ['#e41a1c','#377eb8','#4daf4a','#984ea3','#ff7f00'];
+var raceDomain = ["African-American", "Asian", "Hispanic", "White","Other"];
+
+//BEESWARM GLOBAL VARIABLES FOR BRUSHING
+    var xBees = d3.scale.linear()
+        .range([0,500])
+        .domain([0,100]);
+
+    var xAxis = d3.svg.axis()
+          .scale(xBees)
+          .orient("bottom").tickSize(-beeHeight);
+
+
+var circles;
+var brush;
+var bars;
+var flag= false;
+
+      loadFRL();
+
+      var color = d3.scale.ordinal().range(raceColor);
+      color.domain(raceDomain);
+
+
+
+//Function is given one school obj than transforms to 2d arrray
+function drawBar(school){
+  var plotWidth = 300
+  var plotHeight = 400 + 20;
+
+
+  // focus.select("text#Status").style("visibility: hidden;");
+
+  // console.log(races,"races")
+  // console.log(keys,"k");
+  //
+  // console.log(data.values[0].values);
+
+  var x = d3.scale.ordinal()
+     .rangeRoundBands([0, (plotWidth - 20)], 0.2)
+
+var y = d3.scale.linear();
+  y.range([plotHeight , 20]);
+
+  x.domain(raceDomain);
+  y.domain([0,100]).nice();
+
+
+// ["brown","yellow","green","pink","blue"]
+ var color = d3.scale.ordinal().range(raceColor);
+ color.domain(raceDomain);
+
+
+  var xBars = d3.svg.axis()
+      .scale(x)
+      .orient("bottom");
+
+  var yBars = d3.svg.axis()
+      .scale(y)
+      .orient("left")
+      .tickFormat(d3.format(".2s")).tickSize(-plotWidth);
+
+
+
+      bg.append("g")
+          .attr("class", "x axis")
+          .attr("transform", "translate(0," + 420 + ")")
+          .call(xBars);
+
+      // Add the y-axis.
+      bg.append("g")
+          .attr("class", "y axis")
+          .call(yBars);
+
+
+ var enter = bg.selectAll("rect")
+  .data(school)
+ .enter();
+
+ bars =  enter.append("rect")
+  .attr("fill", function(d) {return "#bbbbbb";})
+    // .attr("fill", "#bbbbbb")
+  .attr("x", function(d) { return x(d.key);})
+  .attr("width", x.rangeBand())
+  .attr("y", function(d){ return y(d.values[0])})
+  .attr("height", function(d){ return plotHeight - y(d.values[0])})
+  .classed({"selected": false});
+
+
+  var labels = enter.append("text")
+    .attr("class", "label")
+    .attr("id", function(d) { return "y" + d.key; })
+    .attr("x", function(d) { return x(d.key) + x.rangeBand() / 2.0;})
+    .attr("y", function(d) { return y(d.values[0]);})
+    .attr("dy", "-5px")
+    .attr("text-anchor", "middle")
+    .text(function(d) { return d.values[3].length; });
+
+    labels.style("visibility", "visible");
+
+      // make label for hovered bar visible
+
+
+      // make label invisible once no longer hovering over bar
+    //   bars.transition().delay(1000).duration(2000).attr("fill", "#bbbbbb");
+
+
+      bars.on("mouseover", function(d) {
+
+        //   if (!flag){
+        //       bg.selectAll("rect").transition().attr("fill", "#bbbbbb");
+        //   }
+          flag = true;
+        //   bars.transition().attr("fill", "#bbbbbb");
+        //   bg.select("text#y" + d.key).style("visibility", "visible");
+          var me = d3.select(this);
+// console.log(me);
+            d3.select(brushCell).call(brush.clear());
+
+          if (!me.classed("selected")) {
+            me.transition().attr("fill", color(d.key));
+
+            var others = bg.selectAll(".selected");
+            others.classed("selected", false);
+            others.transition().attr("fill", "#bbbbbb");
+
+            me.classed("selected",true);
+
+            d3.selectAll("circle").classed("hidden", function(s){
+                return s.Ethnicity !== d.key;
+            });
+
+          }
+      });
+
+      bars.on("mouseout", function(d) {
+          var me = d3.select(this);
+          me.classed("selected", false);
+          me.transition().attr("fill", "#bbbbbb");
+          d3.selectAll("circle").classed("hidden",false);
+      });
+
+      var crimes = color.domain().reverse();
+
+      var legend = bg.append("g").attr("id","legend").attr("transform", util.translate(0,30))
+      .selectAll(".legend")
+                    .data(crimes)
+                .enter().append("g")
+                    .attr("class", "legend")
+                    .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+
+                legend.append("rect")
+                      .attr("x", 300 - 18)
+                      .attr("width", 18)
+                      .attr("height", 18)
+                      .style("fill", color);
+
+                legend.append("text")
+                      .attr("x", 300 - 24)
+                      .attr("y", 14)
+                      .style("text-anchor", "end")
+                      .text(function(d) { return d;});
+
+
+                      var title = bg.append("text")
+                          .attr("x", 0)
+                          .attr("y", 0 )
+                          .attr("class","title")
+                          .text("Aggergated Average for Math and Reading Percentile")
+                          .attr('transform', 'translate(' + 35 + ',' + 480 + ')');
+
+
+}
+
+
+
+
+
+
+
+
+//https://bl.ocks.org/mbostock/1667367 Bostock focus plus context
+//Change focus to the name of the second plot
+
+function drawPointScatter(dataset) {
+    var plotHeight = 400;
+    var plotWidth = 400;
+
+
+    var x = d3.scale.linear().domain([0,100])
+    .range([0, plotWidth]),
+
+    y = d3.scale.linear().domain([0,100])
+    .range([plotHeight, 0]);
+
+    var color = d3.scale.ordinal().range(raceColor);
+    color.domain(raceDomain);
+
+
+
+    var size = d3.scale.sqrt()
+        .domain([0,8])
+        .range([2,3]);
+
+    var xAxis = d3.svg.axis()
+        .scale(x).ticks(10).tickFormat(d3.format(",d")).tickSize(-plotHeight)
+        .orient("bottom");
+
+    var yAxis = d3.svg.axis()
+        .scale(y).ticks(10).tickFormat(d3.format(",d")).tickSize(-plotWidth)
+        .orient("left");
+
+
+        // var xd = d3.extent(dataset, function(d) { return d.ReadingPercentTotal });
+        // var yd = d3.extent(dataset, function(d) { return d.MathPercentTotal; });
+    x.domain([0,100]).nice();
+    y.domain([0,100]).nice();
+
+    brush = d3.svg.brush()
+        .x(x)
+        .y(y)
+        .on("brushstart", brushstart)
+        .on("brush", brushmove)
+        .on("brushend", brushend);
+
+    plot.append("g")
+                    .attr("class", "x axis")
+                    .attr("transform", "translate(0," + plotHeight  + ")")
+                    .call(xAxis);
+
+
+    plot.append("g")
+        .attr("class", "y axis")
+        .call(yAxis);
+
+var g = plot.append("g").attr("id","circles");
+
+
+    circles = g.selectAll(".series")
+        .data(dataset)
+      .enter().append("circle")
+        .attr("class", "point")
+        .attr("id", function(d,i){return "circle" + i})
+        .attr({
+          "stroke-width" : "0px",
+          "stroke" : "gray"
+        })
+      //   .attr("id", function(d){return d["SchoolName"]})
+        .attr("fill", function(d){return color(d["Ethnicity"])})
+        .attr("r", 3)
+        // .attr("r", 3)
+        .attr("cx", function(d) {
+            return x(d.ReadingPercentTotal); })
+        .attr("cy", function(d) {
+            return y(d.MathPercentTotal); }).classed("hidden", false);
+
+
+            // Add the y-axis.
+
+plot.call(brush);
+
+    var nTitle = plot.append("text")
+        .attr("x", 0)
+        .attr("y", 0 )
+        .attr("class","axisN")
+        .text("Reading Test Percentile")
+        .attr('transform', 'translate(' + 125 + ',' + 435 + ')');
+
+        var yTitle = plot.append("text")
+            .attr("x", 0)
+            .attr("y", 0 )
+            .attr("class","axisN")
+            .text("Math Test Percentile")
+            .attr('transform', 'translate(' + -115 + ',' + 175 + ')');
+
+
+
+        plot.attr("transform", "translate(120,20)");
+
+
+}
+
+
+
+
+
+
+function drawBees(data,focus, grade) {
+
+    // console.log(data,"beeswarm");
+
+    var  margin = {top: 40, right: 40, bottom: 40, left: 40};
+
+    var formatValue = d3.format(",d");
+
+
+
+  var color = d3.scale.ordinal().range(raceColor);
+  color.domain(raceDomain);
+
+
+
+
+  var simulation = d3_force.forceSimulation(data)
+      .force("x", d3_force.forceX(function(d) {return xBees(d.ReadingPercentTotal) }).strength(1))
+      .force("y", d3_force.forceY(beeHeight / 2))
+      .force("collide",d3_force.forceCollide(4))
+      .stop();
+
+// console.log(simulation,"sims");
+  for (var i = 0; i < 120; ++i) simulation.tick();
+
+ var g = focus.append("g")
+      .attr("class", "axis axis--x")
+      .attr("transform", "translate(0," + beeHeight + ")")
+      .call(xAxis);
+
+      var cells = focus.append("g").attr("id","circs").selectAll("circle").data(data).enter();
+
+      var tooltip = focus.append("text")
+          .attr("class", "tooltip")
+          .attr("text-anchor", "start")
+          .attr("x", 100 / 2)
+          .attr("y", 100 / 2)
+          .attr("dx", "-60px")
+          .attr("dy", "-8px")
+          .text("");
+
+          var tooltip2 = focus.append("text")
+              .attr("class", "tooltip")
+              .attr("text-anchor", "start")
+              .attr("x", 100 / 2)
+              .attr("y", 100 / 2)
+              .attr("dx", "-60px")
+              .attr("dy", "-20px")
+              .text("");
+
+        tooltip.style("visibility", "hidden");
+        tooltip2.style("visibility", "hidden");
+
+  cells.append("circle")
+    .attr("id", function(d,i) {return "circle" + i })
+      .attr("r", 3)
+      .attr("cx", function(d) { return d.x; })
+      .attr("cy", function(d) { return d.y; })
+      .attr("fill", function(d) { return color(d["Ethnicity"]); })
+      .classed("hidden", false)
+      .on("mouseover", function(d) {
+          var me = d3.select(this);
+          me.attr("r","5")
+          .attr("stroke","grey").attr("stroke-width","1px");
+        tooltip.attr("x", d.x);
+        tooltip.attr("y", d.y);
+        tooltip.text("Language: " + d.HomeLanguage);
+        tooltip.style("visibility", "visible");
+
+        tooltip2.attr("x", d.x);
+        tooltip2.attr("y", d.y);
+        tooltip2.text("Math Percentile: "+ d.MathPercentTotal);
+        tooltip2.style("visibility", "visible");
+  })
+.on("mouseout", function(d) {
+    var me = d3.select(this);
+    me.attr("r","3").attr("stroke","none");
+    tooltip.text("");
+       tooltip.style("visibility", "hidden");
+
+       tooltip2.text("");
+          tooltip2.style("visibility", "hidden");
+});
+
+
+  // cell.append("path")
+  //     .attr("d", function(d) { return "M" + d.join("L") + "Z"; });
+  //
+  // cell.append("title")
+  //     .text(function(d) { return d.data.id + "\n" + formatValue(d.x); });
+
+
+
+           var nTitle = focus.append("text")
+               .attr("x", 0)
+               .attr("y", 0 )
+               .attr("class","axisN")
+               .text(grade + " : " + "Reading Test Percentile")
+               .attr('transform', 'translate(' + 65 + ',' + 135 + ')');
+
+
+
+}
+
+
+
+  var brushCell;
+
+  // Clear the previously-active brush, if any.
+  function brushstart(p) {
+      bg.selectAll("rect").transition().attr("fill", "#bbbbbb");
+    if (brushCell !== this) {
+      d3.select(brushCell).call(brush.clear());
+      brushCell = this;
+    }
+  }
+
+  // Highlight the selected circles.
+  function brushmove(p) {
+    var e = brush.extent();
+    d3.selectAll("circle").classed("hidden", function(d) {
+                return e[0][0] > d.ReadingPercentTotal || d.ReadingPercentTotal > e[1][0]
+                    || e[0][1] > d.MathPercentTotal || d.MathPercentTotal > e[1][1];
+        })
+
+
+    // drawBar();
+  }
+
+  // If the brush is empty, select all circles.
+  function brushend() {
+
+    if (brush.empty()){
+        bg.selectAll("rect").transition().attr("fill", "#bbbbbb");
+        d3.selectAll("svg").selectAll(".hidden").classed("hidden", false);
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+<div id="caption">
+<h1>Seattle University Youth Initiative Academic and Demographic Data<br> 2011-2012 </h1>
+<h3>Student proxy data provided by Seattle Public Schools (via SUYI) </h3>
+<h5>
+    <ul>
+        <li>
+17,500 residents in the  Bailey Gatzert neighborhood</li><hr>
+<li> 35% live at or below the poverty level </li><hr>
+<li> 55% are members of racial-ethnic minority groups or mixed race </li><hr>
+<li> 10% (~1,750) are youth under the age of 18 years </li>
+</ul>
+ </h5>
+</div>
+
+
+</html>

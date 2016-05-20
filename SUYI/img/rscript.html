@@ -1,0 +1,31 @@
+<link href="txtstyle.css" rel="stylesheet" type="text/css" /> <hr>
+
+setwd("/Users/cabertron/.exploratory/projects/Final_360f5f6c9747/data")
+<hr>
+read_delim("Data_SY11-12.csv" , ",", quote = "\"", skip = 0 , col_names = TRUE , na = c("","NA"), n_max=-1 , locale=locale(encoding = "ASCII") , progress = FALSE) %>%
+`_tam_cleanDataFrame`() %>%
+<hr>
+mutate(MathPercentTotal = (`Math Percentile Rank      Wtr 12` + `Math Percentile Rank      Spr 12`)/2 ) %>%
+<hr>
+mutate(ReadingPercentTotal = (`Reading Percentile Rank      Wtr 12` + `Reading Percentile Rank      Spr 12`)/2 ) %>%
+<hr>
+select(SchID,Grade,HomeLanguage,`Federal Race Code`,ReadingPercentTotal,MathPercentTotal) %>%
+<hr>
+filter(Grade == "0" | Grade == "1" | Grade == "2" | Grade == "3" | Grade == "4" | Grade == "5" | Grade == "6" | Grade == "7" | Grade == "8" ) %>%
+<hr>
+mutate(`Federal Race Code`, `Federal Race Code` = ifelse(`Federal Race Code` == "B","African-American",`Federal Race Code`)) %>%
+<hr>
+mutate(`Federal Race Code`, `Federal Race Code` = ifelse(`Federal Race Code` == "A","Asian",`Federal Race Code`)) %>%
+<hr>
+mutate(`Federal Race Code`, `Federal Race Code` = ifelse(`Federal Race Code` == "H","Hispanic",`Federal Race Code`)) %>%
+<hr>
+mutate(`Federal Race Code`, `Federal Race Code` = ifelse(`Federal Race Code` == "W","White",`Federal Race Code`))
+<hr>
+# Definition of _tam_cleanDataFrame function. It cleans up the imported data frame.
+`_tam_cleanDataFrame` = function(df){
+  df %>%
+  # tibble::repair_name repairs column names such as columns with NA in its name.
+  repair_names() %>%
+  # Drop columns whose data type is 'data.frame', which causes error in further analysis.
+  .[!sapply(., is.data.frame)]
+}
