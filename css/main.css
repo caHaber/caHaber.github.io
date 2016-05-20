@@ -12,6 +12,10 @@ path.line {
   stroke-linecap: round;
 }
 
+circle{
+    stroke:none;
+}
+
 section#contact {
     /*width: auto;
     height: auto;
