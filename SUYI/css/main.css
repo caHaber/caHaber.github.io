@@ -1,7 +1,10 @@
 html,body {
 font-family: 'Open Sans', sans-serif;
     background-color: #AA0000;
-    color: whitesmoke
+    color: whitesmoke;
+    font-weight: 300;
+    letter-spacing: .05em;
+    line-height: 1.2em;
 }
 
 section#start{
@@ -10,17 +13,29 @@ section#start{
 }
 
 section#second {
-    padding: 20px;
+    padding-top: 20px;
 }
 
 section#viz {
     padding: 20px;
+    margin-top: 30px;
+
+    -webkit-box-shadow: 0px -48px 109px -41px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px -48px 109px -41px rgba(0,0,0,0.75);
+    box-shadow: 0px -48px 109px -41px rgba(0,0,0,0.75);
     background-color: white
 }
 
 img#case {
     max-width: 300px;
+    /*-webkit-box-shadow: 0px 10px 141px -22px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 10px 141px -22px rgba(0,0,0,0.75);
+    box-shadow: 0px 10px 141px -22px rgba(0,0,0,0.75);*/
 }
+p.bio {
+    padding-top: 30px;
+}
+
 h1 {
     color: #AA0000
 }
@@ -61,4 +76,26 @@ div#site{
 
 p.instruct{
     color:black;
+}
+
+div#title{
+    width: auto;
+    height: auto;
+    padding: 20px;
+    background-color: cornsilk;
+    border-radius: 20px;
+
+    -webkit-box-shadow: 0px 36px 109px -41px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 36px 109px -41px rgba(0,0,0,0.75);
+    box-shadow: 0px 36px 109px -41px rgba(0,0,0,0.75);
+}
+
+/*iframe.notes {
+    -webkit-box-shadow: 0px 10px 141px -22px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 10px 141px -22px rgba(0,0,0,0.75);
+    box-shadow: 0px 10px 141px -22px rgba(0,0,0,0.75);
+}*/
+
+p.addon {
+    padding-top: 20px;
 }
