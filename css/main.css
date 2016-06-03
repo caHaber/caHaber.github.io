@@ -131,3 +131,15 @@ section {
     height: 300px;
     width: auto;
 }
+
+span.high {
+    transition: color 1.5s;
+    -webkit-transition: color 1.5s;
+
+}
+
+span.high:hover{
+    color: whitesmoke;
+
+
+}
