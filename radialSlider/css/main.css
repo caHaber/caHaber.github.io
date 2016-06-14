@@ -1,0 +1,145 @@
+body {
+    font-family: 'Roboto',sans-serif;
+    font-weight: 100 !important;
+}
+
+
+path.line {
+  fill: whitesmoke;
+  stroke: black;
+  stroke-width: 2px;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+circle{
+    stroke:none;
+}
+
+section#contact {
+    /*width: auto;
+    height: auto;
+    margin: 0 auto;*/
+    position: fixed !important;
+}
+
+svg {
+    background-color: lightgrey;
+    stroke: lightgrey;
+    stroke-width: 1px;
+}
+
+h6,h5{
+    font-weight: 100;
+}
+
+h1 {
+    font-size: 7em;
+}
+
+h3 {
+    font-weight: 100;
+}
+
+div#cp2 {
+    position: fixed;
+
+    bottom: 20px;;
+    left: 20px;
+}
+
+
+div.blank {
+    width: auto;
+    height: 50px;
+}
+
+a.btn-floating {
+    margin: 3px;
+}
+
+a.btn {
+    margin: 2px;;
+}
+
+.btn, .btn-large, .btn-flat {
+    padding: 0 .5rem !important;
+
+ }
+
+ a.btn.amber {color: grey }
+  a.btn.cyan {color: grey }
+   a.btn.grey {color: grey }
+    a.btn.transparent {color: grey }
+
+
+
+p.instruct {
+    font-size: 1.5em;
+    padding-top: 10px;
+}
+
+#radios {
+    /*position: fixed;
+    top: 20px;
+    right: 20px;*/
+}
+
+.label {
+    font-weight: 100;
+    color: black;
+}
+
+div.colorpicker-alpha{
+    visibility: hidden;
+}
+
+a.git, a:link {
+    color: grey;
+}
+
+a.git:hover, a:hover {
+    color: maroon;
+    text-decoration: none;
+
+}
+
+
+.colorpicker .colorpicker-saturation {
+  width: 50px;
+  height: 50px;
+}
+.colorpicker .colorpicker-hue,
+.colorpicker .colorpicker-alpha {
+  width: 10px;
+  height: 50px;
+}
+.colorpicker .colorpicker-color,
+.colorpicker .colorpicker-color div{
+  height: 10px;
+}
+
+.colorpicker.colorpicker-with-alpha {
+    min-width: 80px !important;
+}
+
+svg {
+    margin-left: 50px;
+}
+
+section {
+    height: 300px;
+    width: auto;
+}
+
+span.high {
+    transition: color 1.5s;
+    -webkit-transition: color 1.5s;
+
+}
+
+span.high:hover{
+    color: whitesmoke;
+
+
+}

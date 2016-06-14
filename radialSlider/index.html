@@ -29,8 +29,6 @@
     <!-- Plugin CSS -->
 <link rel="stylesheet" href="css/main.css" type="text/css">
 <link rel="stylesheet" href="css/materialize-colorpicker.min.css" type="text/css">
-
-
     <!-- Custom CSS -->
     <!-- <link rel="stylesheet" href="css/creative.css" type="text/css"> -->
 <script src="js/jquery.js"></script>
@@ -474,12 +472,12 @@ var color = '#FF9690';
 
 
 
-              var renderPath = d3.svg.area()
-                  .x0(function(d) { return d[0]; })
-                  .y1(function(d) { return d[1]; })
-              var renderFlath = d3.svg.area()
-                  .x0(function(d) { return -d[0] + plotWidth; })
-                  .y1(function(d) { return d[1]; })
+              var renderPath = d3.svg.line()
+                  .x(function(d) { return d[0]; })
+                  .y(function(d) { return d[1]; })
+              var renderFlath = d3.svg.line()
+                  .x(function(d) { return -d[0] + plotWidth; })
+                  .y(function(d) { return d[1]; })
 
                 var flag = false;
 
@@ -523,7 +521,6 @@ var color = '#FF9690';
                 renderPath = d3.svg.line()
                     .x(function(d) { return d[0]; })
                     .y(function(d) { return d[1]; }).interpolate(interType);
-
                 renderFlath = d3.svg.line()
                 .x(function(d) { return -d[0] + plotWidth; })
                 .y(function(d) { return d[1]}).interpolate(interType);
