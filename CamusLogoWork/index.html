@@ -21,7 +21,9 @@ path:hover {
     fill:white;
 }
 
-
+.st9:hover {
+    fill:#1D76BB;
+}
 
 line {
   stroke: none;
@@ -354,8 +356,9 @@ force
     });
 
 
-    if(e.alpha <= .0051){}
+    if(e.alpha <= .0051){force.resume();}
         // addNodes();
+
     //END OF FORCE TICK
   });
 
