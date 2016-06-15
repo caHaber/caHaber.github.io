@@ -60,6 +60,10 @@ button.reset {
   width: 200px;
   float: right;
 }
+
+
+
+
 </style>
 <style type="text/css">
 	.st0{fill:#D7DE27;}
@@ -93,6 +97,7 @@ button.reset {
 <script src="//d3js.org/topojson.v1.min.js"></script>
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script> -->
 <!-- <script src="https://d3js.org/d3.v4.0.0-alpha.40.min.js"></script> -->
+
 <script>
 
 
@@ -105,6 +110,15 @@ var path = d3.geo.path(),
     force = d3.layout.force().size([width, height])
 
         // force2 = d3.layout.force().size([width, height]);
+
+        var dotSide = 7,
+            dotSep   = 1,
+            logoXPadding = 2 * dotSide,
+            logoYPadding = 2 * dotSide,
+            h = Math.floor(logoXPadding / 2) - 0.5 * dotSide;
+            v = Math.floor(height - logoYPadding / 2) - 0.5 * dotSide;
+
+
 
 var params = {
     charge: { min: -1000, max: 100, step: 5, value: -190 },
@@ -155,6 +169,7 @@ d3.xml("LogoBlack.svg", "image/svg+xml", function(error, xml) {
 });
 
 function draw() {
+
     var nodes = [];
     var links = [];
 
@@ -182,7 +197,6 @@ function draw() {
          })
          .attr("class",function(d){
              return d.classList[0];
-
          });
 
 
@@ -206,11 +220,12 @@ function draw() {
                       return d.classList[0];
                   });
 
-console.log(circles,"circs")
-console.log(paths,"paths")
 
   var arrCircles = [];
   var arrPaths = [];
+
+
+
 
 
   oldCircles[0].forEach(function(s){
@@ -222,6 +237,7 @@ console.log(paths,"paths")
       if (centroid.some(isNaN)) return;
         centroid.x = centroid[0];
         centroid.y = centroid[1];
+        centroid.fixed = !0,
 
         //DECIDE WHAT TO MAKE AS THE "FEATURE" cant get a real feature
         centroid.feature = me.node();
@@ -238,6 +254,7 @@ console.log(paths,"paths")
       if (centroid.some(isNaN)) return;
         centroid.x = centroid[0];
         centroid.y = centroid[1];
+        // centroid.fixed = !0,
 
         //DECIDE WHAT TO MAKE AS THE "FEATURE" cant get a real feature
         centroid.feature = me.attr("d");
@@ -246,12 +263,14 @@ console.log(paths,"paths")
 
       nodes.push(centroid);
   })
-  console.log(nodes);
+
+
 
 // var total = nodes.push(circles);
 // console.log(total,"both");
 
-  d3.geom.voronoi().links(nodes).forEach(function(link) {
+  d3.geom.voronoi().links(nodes).forEach(function(link,i) {
+      if(i < 1) return;
     var dx = link.source.x - link.target.x,
         dy = link.source.y - link.target.y;
     link.distance = Math.sqrt(dx * dx + dy * dy);
@@ -259,22 +278,43 @@ console.log(paths,"paths")
   });
 
 
-console.log(links,"links")
-console.log(nodes);
+
+
 
 svg.select("g.oldPaths").remove();
 svg.select("g.oldCircles").remove();
 
+console.log(nodes);
+
+nodes.unshift({x: 1e4, y: 1e4}); // insert root node
+var root = nodes[0];
+root.radius = 2;
+root.fixed = true;
 
 force
-      .gravity(params.gravity.value)
+    //   .gravity(params.gravity.value)
       .nodes(nodes)
       .links(links)
-        .linkStrength(params.linkStrength.value)
-        .friction(params.friction.value)
-        .charge(params.charge.value)
-      .linkDistance(function(d) { return d.distance; })
+    //     .linkStrength(params.linkStrength.value)
+    //     .friction(params.friction.value)
+    //     .charge(function(d, i) { return i ? 0 : -200; })
+      .linkDistance(function(d,i) {if(i===0) return; return d.distance + 4; })
+
+
+      .gravity(0)
+    .charge(function(d, i) { return i ? 0 : -150; })
+        // .linkDistance(0.1)
+
+
+
+
+
+
+
       .start();
+
+
+
 
   // force2
   //       .gravity(.05)
@@ -296,35 +336,36 @@ force
     flag = false;
 
 
-  var link = svg.selectAll("line")
-      .data(links)
-    .enter().append("line")
-      .attr("x1", function(d) { return d.source.x; })
-      .attr("y1", function(d) { return d.source.y; })
-      .attr("x2", function(d) { return d.target.x; })
-      .attr("y2", function(d) { return d.target.y; });
+  // var link = svg.selectAll("line")
+  //     .data(links)
+  //   .enter().append("line")
+  //     .attr("x1", function(d) { return d.source.x; })
+  //     .attr("y1", function(d) { return d.source.y; })
+  //     .attr("x2", function(d) { return d.target.x; })
+  //     .attr("y2", function(d) { return d.target.y; });
 
   var node = svg.selectAll("g")
       .data(nodes);
 
     node.enter().append("g")
-      .attr("transform", function(d) { return "translate(" + -d.x + "," + -d.y + ")"; })
+      .attr("transform", function(d) {return "translate(" + -d.x + "," + -d.y + ")"; })
       .call(drag)
     .append("path")
-      .attr("transform", function(d) {if(d.feature[0] === "M") return "translate(" + d.x + "," + d.y + ")"; })
-      .attr("d", function(d) { if(d.feature[0] === "M") return d.feature ;})
-      .attr("class", function(d) {if(d.feature[0] === "M") return d.class});
+    //   .attr("transform", function(d,i) {if (typeof d != 'undefined')return; if(d.feature[0] === "M") return "translate(" + d.x + "," + d.y + ")"; })
+      .attr("d", function(d,i) { if(i === 0) return; if(d.feature[0] === "M") return d.feature ;})
+      .attr("class", function(d,i) {if(i === 0) return; if(d.feature[0] === "M") return d.class});
 
 
     node = node.append("g")
       .call(drag)
      .append("circle")
-        .attr("cx", function(d) {if(d.feature[0] !== "M") return d.feature.cx.baseVal.value; })
-        .attr("cy", function(d) {if(d.feature[0] !== "M") return d.feature.cy.baseVal.value; })
-        .attr("r", function(d) {if(d.feature[0] !== "M")  return d.feature.r.baseVal.value})
-        .attr("class",function(d){
+        .attr("cx", function(d,i) {if(i === 0) return; if(d.feature[0] !== "M") return d.feature.cx.baseVal.value; })
+        .attr("cy", function(d,i) {if(i === 0) return; if(d.feature[0] !== "M") return d.feature.cy.baseVal.value; })
+        .attr("r", function(d,i) {if(i === 0) return; if(d.feature[0] !== "M")  return d.feature.r.baseVal.value})
+        .attr("class",function(d,i){
+            if(i === 0) return;
             if(d.feature[0] !== "M")
-            return d.feature.classList[0];
+            return d.feature.classList[0] + " " + "ball";
         });
 
 
@@ -341,22 +382,83 @@ force
     //      .attr("r", function(d) {
     //          return d.r.baseVal.value});
 
+
+//http://bl.ocks.org/mbostock/3750558
+//Sticky force on the words/balls
+// d3.selectAll("circle.ball").classed("fixed",function(d)
+//     {d.fixed = true });
+//
+//  d3.selectAll("path.st9").classed("fixed",function(d)
+//     {d.fixed = true });
+
+
+//http://bl.ocks.org/espinielli/874de501ebf175d84fef PRU logo
+svg
+  .on("mousemove", mausIn)
+  .on("touchmove", mausIn)
+  .on("mouseout", mausOut)
+  .on("touchend", mausOut);
+
+function mausOut() {
+  var p1 = d3.mouse(this);
+  root.px = root.py = 1e4;
+  force.resume();
+}
+
+function mausIn() {
+  var p1 = d3.mouse(this);
+  root.px = p1[0];
+  root.py = p1[1];
+  force.resume();
+}
+
+
   force.on("tick", function(e) {
-    link.attr("x1", function(d) { return d.source.x; })
-        .attr("y1", function(d) { return d.source.y; })
-        .attr("x2", function(d) { return d.target.x; })
-        .attr("y2", function(d) { return d.target.y; });
 
-    d3.selectAll("path").attr("transform", function(d) {
+     var q = d3.geom.quadtree(nodes),
+    i = 0,
+    n = nodes.length;
+
+  // while (++i < n) q.visit(collide(nodes[i]));
+
+    // link.attr("x1", function(d) {
+    //     if(isNaN(d.y)) return;
+    //     if(isNaN(d.y)) return;
+    //     return d.source.x; })
+    //     .attr("y1", function(d) {
+    //         if(isNaN(d.y)) return;
+    //         if(isNaN(d.y)) return;
+    //         return d.source.y; })
+    //     .attr("x2", function(d) {
+    //         if(isNaN(d.y)) return;
+    //         if(isNaN(d.y)) return;
+    //         return d.target.x; })
+    //     .attr("y2", function(d) {
+    //         if(isNaN(d.y)) return;
+    //         if(isNaN(d.y)) return;
+    //         return d.target.y; });
+
+
+
+    d3.selectAll("path").attr("transform", function(d,i) {
+        if(isNaN(d.x) || isNaN(d.y)) return;
+        // if(d.radius === 100) return;/
+        // var me = d3.select(this);
+        //
+        // if(!coolFlag)
+        // console.log(me);
+        // coolFlag = true
       return "translate(" + d.x + "," + d.y + ")";
     });
 
-    d3.selectAll("circle").attr("transform", function(d) {
+    d3.selectAll("circle").attr("transform", function(d,i) {
+        if(isNaN(d.x)) return;
+        if(isNaN(d.y)) return;
       return "translate(" + d.x + "," + d.y + ")";
     });
 
 
-    if(e.alpha <= .0051){force.resume();}
+    // if(e.alpha <= .0051){force.resume();}
         // addNodes();
 
     //END OF FORCE TICK
@@ -452,6 +554,10 @@ function dragend(d) {
        ny1 = node.y - r,
        ny2 = node.y + r;
    return function(quad, x1, y1, x2, y2) {
+       if(x1 === NaN) return;
+       if(x2 === NaN) return;
+       if(y1 === NaN) return;
+       if(y2 === NaN) return;
      if (quad.point && (quad.point !== node)) {
        var x = node.x - quad.point.x,
            y = node.y - quad.point.y,
