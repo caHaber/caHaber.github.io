@@ -269,8 +269,7 @@ function draw() {
 // var total = nodes.push(circles);
 // console.log(total,"both");
 
-  d3.geom.voronoi().links(nodes).forEach(function(link,i) {
-      if(i < 1) return;
+  d3.geom.voronoi().links(nodes).forEach(function(link) {
     var dx = link.source.x - link.target.x,
         dy = link.source.y - link.target.y;
     link.distance = Math.sqrt(dx * dx + dy * dy);
@@ -298,7 +297,7 @@ force
     //     .linkStrength(params.linkStrength.value)
     //     .friction(params.friction.value)
     //     .charge(function(d, i) { return i ? 0 : -200; })
-      .linkDistance(function(d,i) {if(i===0) return; return d.distance + 4; })
+      .linkDistance(function(d,i) {return d.distance; })
 
 
       .gravity(0)

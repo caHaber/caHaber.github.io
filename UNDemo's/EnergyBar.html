@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+
+
+#x-axis text,
+#y-axis text {
+  font-size: 10pt;
+}
+
+/* path: axis line, line: tick marks */
+
+#x-axis line {
+  fill: none;
+  stroke: none;
+}
+
+rect {
+    fill: lightblue;
+}
+
+path.domain {
+    fill: none;
+}
+#x-axis path,
+#y-axis path,
+#y-axis line {
+  fill: black;
+
+  /* use stroke, not border, for svg elements */
+  stroke: #bbbbbb;
+  stroke-width: 0;
+}
+
+</style>
+<body>
+<script src="//d3js.org/d3.v3.min.js"></script>
+<script>
+
+var width = 1000,
+    height = 1000;
+
+var svg = d3.select("body").append("svg")
+    .attr({
+        width : width,
+        height : height
+    });
+
+    var plot = svg.append("svg")
+        .attr({
+            width : width -20,
+            height : height -20
+        });
+
+    var x = d3.scale.ordinal()
+    .rangeRoundBands([0, width], .1);
+
+      var y = d3.scale.linear()
+          .range([height - 200, 0]);
+
+      var color = d3.scale.category10();
+
+      var xAxis = d3.svg.axis()
+          .scale(x)
+          .orient("bottom");
+
+      var yAxis = d3.svg.axis()
+          .scale(y)
+          .orient("left")
+          .tickSize(width);
+
+var center = [500,500];
+
+    var tooltip = svg.append("text").attr("id", "tooltip");
+
+    tooltip.attr({
+      "x": center[0],
+      "y": center[1],
+      "text-anchor": "end",
+      "dx": -5,
+      "dy": -5
+    }).style({
+      "visibility": "hidden"
+    })
+    .text("N/A");
+
+d3.csv("ElectricSolarPower.csv",  function(error, data) {
+  if (error) throw error;
+  console.log(data);
+
+ var nested = d3.nest()
+    .key(function(d) {return d["Country or Area"];})
+    .rollup(function(d) {
+        var value = 0;
+        d.forEach(function(s){
+            value +=  +s.Quantity
+        })
+        console.log(value);
+        if(value > 1000)
+        return value;
+    }).entries(data);
+
+
+    console.log(nested);
+
+    x.domain(nested.map(function(d){if(d.values > 1000) return d.key}));
+    y.domain(d3.extent(nested, function(d) { return d.values; })).nice();
+
+
+draw(nested);
+});
+
+function draw(data){
+    plot.append("g")
+          .attr("class", "x-axis")
+          .attr("transform", "translate(0," + (height -200) + ")")
+          .call(xAxis)
+          .selectAll("text")
+            .attr("y", 0)
+            .attr("x", 9)
+            .attr("dy", ".35em")
+            .attr("transform", "rotate(90)")
+                      .style("text-anchor", "start")
+            // .attr("transform", "translate(0," + 20 + ")")
+        .append("text")
+          .attr("class", "label")
+          .attr("x", width)
+          .attr("y", -6)
+          .style("text-anchor", "end");
+
+
+
+      plot.selectAll(".bar")
+          .data(data)
+        .enter().append("rect")
+          .attr("class", "bar")
+          .attr("x", function(d) { return x(d.key); })
+          .attr("y", function(d) { return y(d.values); })
+          .attr("height", function(d) { return height - y(d.values) - 200; })
+          .attr("width", x.rangeBand())
+          .on("mouseover", function(d) {
+              var me = d3.select(this);
+              me.classed({"active": true});
+
+              tooltip.html( d.values +  "<br/> ");
+              tooltip.style({"visibility": "visible"});
+
+              // move selected path to front
+        })
+        .on("mousemove", function(d) {
+          // get coordinates according to "plot" group
+          var coords = d3.mouse(svg.node());
+          tooltip.attr({"x": coords[0], "y": coords[1]});
+        })
+        .on("mouseout", function(d) {
+          var me = d3.select(this);
+          me.classed({"active": false});
+          tooltip.style({"visibility": "hidden"});
+        });
+        //   .style("fill", function(d) { return color(d["Country or Area"]); });
+
+
+        plot.append("g")
+            .attr("class", "y-axis")
+            .call(yAxis)
+          .append("text")
+            .attr("class", "label")
+          //   .attr("transform", "rotate(-90)")
+            .attr("y", 6)
+            .attr("dy", ".71em")
+            .style("text-anchor", "start")
+            .text("Total Power Capacity Supplied By public Solar Plants (1 unit = 1000 Kilowatts)")
+
+
+            d3.select("body").append("text")
+               .attr("class", "label")
+               .attr("transform", "translate(0,900)")
+               .attr("y", 1)
+               .attr("dy", "5.71em")
+               .style("text-anchor", "start")
+               .text("*source: http://data.un.org/Data.aspx?d=EDATA&f=cmID%3aEC%3btrID%3a13361")
+}
+
+function accessor(d) {
+    return d;
+}
+
+
+</script>

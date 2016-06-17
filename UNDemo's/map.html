@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+body {
+  background: #fcfcfa;
+}
+
+.stroke {
+  fill: none;
+  stroke: #000;
+  stroke-width: 3px;
+}
+
+.fill {
+  fill: #fff;
+}
+
+.graticule {
+  fill: none;
+  stroke: #777;
+  stroke-width: .5px;
+  stroke-opacity: .5;
+}
+
+.land {
+  fill: #222;
+}
+
+.boundary {
+  fill: none;
+  stroke: #fff;
+  stroke-width: .5px;
+}
+
+.q0-9 { fill:rgb(247,251,255); }
+.q1-9 { fill:rgb(222,235,247); }
+.q2-9 { fill:rgb(198,219,239); }
+.q3-9 { fill:rgb(158,202,225); }
+.q4-9 { fill:rgb(107,174,214); }
+.q5-9 { fill:rgb(66,146,198); }
+.q6-9 { fill:rgb(33,113,181); }
+.q7-9 { fill:rgb(8,81,156); }
+.q8-9 { fill:rgb(8,48,107); }
+
+</style>
+<body>
+    <script src="//d3js.org/d3.v3.min.js"></script>
+    <script src="//d3js.org/d3.geo.projection.v0.min.js"></script>
+    <script src="//d3js.org/topojson.v1.min.js"></script>
+<script>
+
+var width = 1000,
+    height = 1000;
+
+var rateById = d3.map();
+
+var svg = d3.select("body").append("svg")
+    .attr({
+        width : width,
+        height : height
+    });
+
+    var quantize = d3.scale.linear()
+        .range([0,100000]);
+
+        var fill = d3.scale.log()
+    .domain([10, 5000000])
+    .range(["brown", "steelblue"]);
+
+    var projection = d3.geo.kavrayskiy7()
+        .scale(170)
+        .translate([width / 2, height / 2])
+        .precision(.1);
+
+    var path = d3.geo.path()
+        .projection(projection);
+
+    var graticule = d3.geo.graticule();
+
+    svg.append("defs").append("path")
+        .datum({type: "Sphere"})
+        .attr("id", "sphere")
+        .attr("d", path);
+
+    svg.append("use")
+        .attr("class", "stroke")
+        .attr("xlink:href", "#sphere");
+
+    svg.append("use")
+        .attr("class", "fill")
+        .attr("xlink:href", "#sphere");
+
+    svg.append("path")
+        .datum(graticule)
+        .attr("class", "graticule")
+        .attr("d", path);
+
+
+        d3.json("custom.geo.json", function(error, world) {
+          if (error) throw error;
+          console.log(world);
+
+
+
+          d3.csv("ElectricSolarPower.csv",  function(error, data) {
+            if (error) throw error;
+            console.log(data);
+
+           var nested = d3.nest()
+              .key(function(d) {return d["Country or Area"];})
+              .rollup(function(d) {
+                  var value = 0;
+                  d.forEach(function(s){
+                      value +=  +s.Quantity
+                  })
+
+                  if(value > 1000)
+                  return value;
+              }).entries(data);
+
+            //   quantize.domain(d3.extent(nested, function(d) { return d.values; })).nice();;
+              //
+            //   console.log(quantize.domain());
+
+
+              draw(world,data);
+          });
+
+
+        });
+
+
+function draw(world,data) {
+
+
+
+
+    svg.selectAll(".country")
+        .data(world.features)
+      .enter().insert("path", ".graticule")
+        .attr("class", "country")
+        .attr("d", path)
+        .attr("class", function(d) { return fill(path.area(d)); });
+
+    svg.insert("path", ".graticule")
+        .datum(topojson.mesh(world, world.features, function(a, b) { return a !== b; }))
+        .attr("class", "boundary")
+        .attr("d", path);
+}
+
+        </script>
+</body>

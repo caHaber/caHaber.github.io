@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+
+
+#x-axis text,
+#y-axis text {
+  font-size: 10pt;
+}
+
+.bar:hover {
+  fill: brown;
+}
+
+/* path: axis line, line: tick marks */
+
+
+
+rect {
+    fill: lightblue;
+}
+
+path.domain {
+    fill: none;
+}
+
+#x-axis path,
+#y-axis path,
+#y-axis line {
+  fill: black;
+
+  /* use stroke, not border, for svg elements */
+  stroke: red;
+  stroke-width: 1;
+}
+
+line {
+    stroke: grey;
+    stroke-width: 1px;
+}
+
+</style>
+<body>
+<script src="//d3js.org/d3.v3.min.js"></script>
+<script>
+
+var width = 1000,
+    height = 1000;
+
+var svg = d3.select("body").append("svg")
+    .attr({
+        width : width,
+        height : height
+    });
+
+var year = 2013;
+
+    var plot = svg.append("g")
+        .attr({
+            width : width - 100,
+            height : height - 100
+        }).attr("transform", "translate(" + 100 + "," + (-100) + ")");
+
+        var plotHeight = height - 100,
+            plotWidth = width - 100;
+
+    var x = d3.scale.ordinal()
+    .rangeRoundBands([0, plotWidth], .1);
+
+      var y = d3.scale.linear()
+          .range([plotHeight, 0]);
+
+      var color = d3.scale.category10();
+
+      var xAxis = d3.svg.axis()
+          .scale(x)
+          .orient("bottom");
+
+      var yAxis = d3.svg.axis()
+          .scale(y)
+          .orient("left")
+          .ticks(10, ",")
+          .tickSize(-plotWidth);
+
+var center = [500,500];
+
+    var tooltip = svg.append("text").attr("id", "tooltip");
+
+    tooltip.attr({
+      "x": center[0],
+      "y": center[1],
+      "text-anchor": "end",
+      "dx": -5,
+      "dy": -5
+    }).style({
+      "visibility": "hidden"
+    })
+    .text("N/A");
+
+d3.csv("DropOutRatePrimary.csv",  function(error, data) {
+  if (error) throw error;
+  console.log(data);
+
+  var nested = d3.nest()
+     .key(function(d) {return d["Reference Area"];})
+     .rollup(function(d) {
+         var value = 0;
+         var total = 0;
+
+
+         d.forEach(function(s){
+             total++;
+             value +=  +s["Observation Value"]
+         })
+         // if(value > 100000000)
+        //  return (value/total);
+         return (value/total);
+     }).entries(data);
+
+
+    console.log(nested);
+
+    x.domain(nested.map(function(d){return d.key}));
+    y.domain(d3.extent(nested, function(d) { return d.values; })).nice();
+
+
+draw(nested);
+});
+
+function draw(data){
+    plot.append("g")
+          .attr("class", "x-axis")
+          .attr("transform", "translate(0," + (plotHeight) + ")")
+          .call(xAxis)
+          .selectAll("text")
+            .attr("y", 0)
+            .attr("x", 9)
+            .attr("dy", ".35em")
+            .attr("transform", "rotate(90)")
+                      .style("text-anchor", "start")
+            // .attr("transform", "translate(0," + 20 + ")")
+        .append("text")
+          .attr("class", "label")
+          .attr("x", plotWidth)
+          .attr("y", -6)
+          .style("text-anchor", "end");
+
+
+var format = d3.format("");
+
+      plot.selectAll(".bar")
+          .data(data)
+        .enter().append("rect")
+          .attr("class", "bar")
+          .attr("x", function(d) { return x(d.key); })
+          .attr("y", function(d) { return y(d.values); })
+          .attr("height", function(d) { return plotHeight - y(d.values); })
+          .attr("width", x.rangeBand())
+          .on("mouseover", function(d) {
+              var me = d3.select(this);
+              me.classed({"active": true});
+
+              tooltip.html(d.key + " : " + d.values +  "<br/> ");
+              tooltip.style({"visibility": "visible"});
+
+              // move selected path to front
+        })
+        .on("mousemove", function(d) {
+          // get coordinates according to "plot" group
+          var coords = d3.mouse(svg.node());
+          tooltip.attr({"x": coords[0], "y": coords[1]});
+        })
+        .on("mouseout", function(d) {
+          var me = d3.select(this);
+          me.classed({"active": false});
+          tooltip.style({"visibility": "hidden"});
+        });
+        //   .style("fill", function(d) { return color(d["Country or Area"]); });
+
+
+        plot.append("g")
+            .attr("class", "y-axis")
+            .call(yAxis)
+          .append("text")
+            .attr("class", "label")
+          //   .attr("transform", "rotate(-90)")
+            .attr("y", 6)
+            .attr("dy", ".71em")
+            .style("text-anchor", "start")
+            .text("Total Population")
+
+
+            d3.select("body").append("text")
+               .attr("class", "label")
+               .attr("transform", "translate(0,900)")
+               .attr("y", 1)
+               .attr("dy", "5.71em")
+               .style("text-anchor", "start")
+               .text("*source: http://data.un.org/Data.aspx?d=UNESCO&f=series%3aDR_1")
+
+
+               d3.select("body").append("text")
+                  .attr("class", "label")
+                  .attr("transform", "translate(0,900)")
+                  .attr("y", 1)
+                  .attr("dy", "5.71em")
+                  .style("text-anchor", "start")
+                  .text(year)
+}
+
+function accessor(d) {
+    console.log(d["Time Period"])
+    if(+d["Time Period"] === year)
+    return d;
+}
+
+
+</script>
