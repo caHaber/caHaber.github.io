@@ -83,7 +83,7 @@ line {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/1.10.0/d3-legend.min.js"></script>
 <script>
 
-var width = 1400,
+var width = 1200,
     height = 1000;
 
 var svg = d3.select("body").append("svg")
@@ -92,13 +92,11 @@ var svg = d3.select("body").append("svg")
         height : height
     });
 
-    var format = d3.format(",");
-
     var tip = d3.tip()
       .attr('class', 'd3-tip')
       .offset([-10, 0])
       .html(function(d) {
-        return  "<strong>Rural Population:</strong> <span style='color:red'>" + format(d.values.pop) + "</span><hr>" +
+        return  "<strong>Continent:</strong> <span style='color:red'>" + d.values.cont + "</span><hr>" +
          "<strong>Country:</strong> <span style='color:red'>" + d.key + "</span>";
 
       })
@@ -131,9 +129,12 @@ var year = 1979;
           .tickSize(-plotHeight);
 
 
+            var  f = d3.format("");
+
       var yAxis = d3.svg.axis()
           .scale(y)
           .orient("left")
+          .tickFormat(f)
           .ticks(10, ",")
           .tickSize(-plotWidth + 50);
 
@@ -143,7 +144,7 @@ var year = 1979;
           var zoomBeh = d3.behavior.zoom()
               .x(x)
               .y(y)
-              .scaleExtent([1, 10])
+              .scaleExtent([0, 10000])
               .on("zoom", zoom);
 
               var plot = svg.append("g")
@@ -188,7 +189,6 @@ d3.csv("result.csv", function(error, dataset){
            var value = {};
            value.lit = 0;
            value.drop = 0;
-           value.pop = 0;
            var total = 0;
         //    console.log(d);
            d.forEach(function(s){
@@ -197,13 +197,11 @@ d3.csv("result.csv", function(error, dataset){
             //    console.log(s["Value"],"vals")
             //     console.log(s["Observation Value"],"vals")
                value.lit +=  +s["Value"]
-               value.pop +=  +s["Population"]
                value.drop += +s["Observation Value"]
                value.cont = s["Continent"]
            })
           //  if(value > 50)
           value.lit = value.lit/total;
-          value.pop = value.pop/total;
           value.drop = value.drop/total;
           //  return (value);
            return (value);
@@ -216,7 +214,7 @@ d3.csv("result.csv", function(error, dataset){
         //    x.domain(nested.map(function(d){return d.values.drop}));
         //     x.domain([0,100]);
         //    y.domain(d3.extent(nested, function(d) { return d.values.lit; })).nice();
-           size.domain(d3.extent(nested, function(d) { return d.values.pop; })).nice();
+           size.domain(d3.extent(nested, function(d) { return d.values.drop; })).nice();
 
        draw(nested);
 
@@ -256,8 +254,10 @@ function draw(data){
               .attr("y", 6)
               .attr("dy", "-1.01em")
               .style("text-anchor", "start")
-              .text("Literacy Rate : Y-Axis ---- DropOut Rate : X-Axis ---- Rural Population : Size" )
+              .text("Literacy Rate : Y-Axis ------- DropOut Rate : X-Axis")
 
+
+var format = d3.format("%");
 
       plot.selectAll(".dot")
           .data(data)
@@ -270,7 +270,7 @@ function draw(data){
           .attr("cy", function(d) { return y(d.values.lit); })
         //   .attr("height", function(d) { return plotHeight - y(d.values); })
         //   .attr("width", x.rangeBand())
-        .attr("r",function(d){return size(d.values.pop)})
+        .attr("r",function(d){return size(d.values.drop)})
         .attr("fill",function(d){return color(d.values.cont)})
         .on('mouseover', tip.show)
         .on('mouseout', tip.hide);
@@ -323,29 +323,12 @@ function draw(data){
                   .shapePadding(10)
                   .scale(color);
 
-            var legendSize = d3.legend.size()
-                  .scale(size)
-                  .shape('circle')
-                  .shapePadding(15)
-                  .labelOffset(20)
-                  .labelFormat(format)
-                  .orient('vertical');
-
-
-            svg.append("g")
-                 .attr("class", "legend")
-                 .attr("transform", "translate(1000,80)");
-
-                 svg.append("g")
-                      .attr("class", "legendSize")
-                      .attr("transform", "translate(1000,280)");
-
+                  svg.append("g")
+         .attr("class", "legend")
+         .attr("transform", "translate(900,80)");
 
             svg.select(".legend")
               .call(legend);
-
-              svg.select(".legendSize")
-                .call(legendSize);
 }
 
 function zoom() {
