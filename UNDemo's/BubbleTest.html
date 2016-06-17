@@ -2,7 +2,10 @@
 <meta charset="utf-8">
 <style>
 
-
+body {
+    font-family: monospace;
+    font-size: 2em;
+}
 
 #x-axis text,
 #y-axis text {
@@ -13,9 +16,42 @@
   fill: brown;
 }
 
+circle{
+    stroke: whitesmoke;
+    stroke-width: .5px;
+}
+
 /* path: axis line, line: tick marks */
 
+/*http://bl.ocks.org/Caged/6476579*/
+.d3-tip {
+  line-height: 1;
+  font-weight: bold;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 2px;
+}
 
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.8);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}
+
+/* Style northward tooltips differently */
+.d3-tip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+}
 
 rect {
     fill: lightblue;
@@ -35,16 +71,19 @@ path.domain {
 }*/
 
 line {
-    stroke: grey;
-    stroke-width: 1px;
+    stroke: whitesmoke;
+    stroke-width: 3px;
 }
 
 </style>
 <body>
 <script src="//d3js.org/d3.v3.min.js"></script>
+<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+<!-- http://d3-legend.susielu.com/#usage -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/1.10.0/d3-legend.min.js"></script>
 <script>
 
-var width = 1000,
+var width = 1200,
     height = 1000;
 
 var svg = d3.select("body").append("svg")
@@ -53,78 +92,136 @@ var svg = d3.select("body").append("svg")
         height : height
     });
 
-// var year = 1979;
+    var tip = d3.tip()
+      .attr('class', 'd3-tip')
+      .offset([-10, 0])
+      .html(function(d) {
+        return  "<strong>Continent:</strong> <span style='color:red'>" + d.values.cont + "</span><hr>" +
+         "<strong>Country:</strong> <span style='color:red'>" + d.key + "</span>";
 
-    var plot = svg.append("g")
-        .attr({
-            width : width - 100,
-            height : height - 100
-        }).attr("transform", "translate(" + 100 + "," + (-100) + ")");
+      })
+
+
+
+var year = 1979;
+
+
 
         var plotHeight = height - 100,
             plotWidth = width - 100;
 
-    var x = d3.scale.ordinal()
-    .rangeRoundBands([0, plotWidth], .1);
 
-      var y = d3.scale.linear()
-          .range([plotHeight, 0]);
+
+    var x = d3.scale.linear()
+    .range([0, plotWidth - 50]);
+
+      var size = d3.scale.sqrt()
+          .range([8, 40]);
+
+          var y = d3.scale.linear()
+              .range([plotHeight, 0]);
 
       var color = d3.scale.category10();
 
       var xAxis = d3.svg.axis()
           .scale(x)
-          .orient("bottom");
+          .orient("bottom")
+          .tickSize(-plotHeight);
 
       var yAxis = d3.svg.axis()
           .scale(y)
           .orient("left")
           .ticks(10, ",")
-          .tickSize(-plotWidth);
+          .tickSize(-plotWidth + 50);
+
+              x.domain([0,100]);
+             y.domain([0,100]).nice();
+
+          var zoomBeh = d3.behavior.zoom()
+              .x(x)
+              .y(y)
+              .scaleExtent([0, 10000])
+              .on("zoom", zoom);
+
+              var plot = svg.append("g")
+                  .attr({
+                      width : width - 200,
+                      height : height - 100
+                  }).attr("transform", "translate(" + 100 + "," + (50) + ")")
+
+svg.call(zoomBeh);
+plot.call(tip);
 
 var center = [500,500];
 
-    var tooltip = svg.append("text").attr("id", "tooltip");
+    // var tooltip = svg.append("text").attr("id", "tooltip");
+    //
+    // tooltip.attr({
+    //   "x": center[0],
+    //   "y": center[1],
+    //   "text-anchor": "end",
+    //   "dx": -5,
+    //   "dy": -5
+    // }).style({
+    //   "visibility": "hidden"
+    // })
+    // .text("N/A");
 
-    tooltip.attr({
-      "x": center[0],
-      "y": center[1],
-      "text-anchor": "end",
-      "dx": -5,
-      "dy": -5
-    }).style({
-      "visibility": "hidden"
-    })
-    .text("N/A");
-
-d3.csv("DropOutRatePrimary.csv", function(error, data) {
-  if (error) throw error;
-  console.log(data);
-
-  var nested = d3.nest()
-    //  .key(function(d) {return d["Reference Area"];})
-     .key(function(d) {return d["Time Period"];})
-     .rollup(function(d) {
-         var value = 0;
-         var total = 0;
-         d.forEach(function(s){
-             total++;
-             value +=  +s["Observation Value"]
-         })
-        //  if(value > 50)
-        //  return (value);
-         return (value/total);
-     }).entries(data);
+    // queue()
+    //       .defer(d3.json, "usa4.topo.json")
+    //       .defer(d3.csv, "population.csv")//, function(d) {  rateById.set(d["GEO.id2"], +d["HD01_VD01"]); })
+    //       .await(draw);
 
 
-    console.log(nested);
 
-    x.domain(nested.map(function(d){return d.key}));
-    y.domain(d3.extent(nested, function(d) { return d.values; })).nice();
+d3.csv("result.csv", function(error, dataset){
+    if (error) throw error;
+    console.log(dataset,"primo");
+
+    var nested = d3.nest()
+       .key(function(d) {return d["Reference Area"];})
+    //    .key(function(d) {return d["Time Period"];})
+       .rollup(function(d) {
+           var value = {};
+           value.lit = 0;
+           value.drop = 0;
+           var total = 0;
+        //    console.log(d);
+           d.forEach(function(s){
+            //    console.log(s)
+               total++;
+            //    console.log(s["Value"],"vals")
+            //     console.log(s["Observation Value"],"vals")
+               value.lit +=  +s["Value"]
+               value.drop += +s["Observation Value"]
+               value.cont = s["Continent"]
+           })
+          //  if(value > 50)
+          value.lit = value.lit/total;
+          value.drop = value.drop/total;
+          //  return (value);
+           return (value);
+       }).entries(dataset);
+
+    //    console.log(litNested.slice(4),"lit rates")
+       console.log(nested);
+
+       color.domain(["Europe","South America","Africa","North America","Asia"])
+        //    x.domain(nested.map(function(d){return d.values.drop}));
+        //     x.domain([0,100]);
+        //    y.domain(d3.extent(nested, function(d) { return d.values.lit; })).nice();
+           size.domain(d3.extent(nested, function(d) { return d.values.drop; })).nice();
+
+       draw(nested);
 
 
-draw(nested);
+
 });
+
+
+
+
+
 
 function draw(data){
     plot.append("g")
@@ -133,79 +230,122 @@ function draw(data){
           .call(xAxis)
           .selectAll("text")
             .attr("y", 0)
-            .attr("x", 9)
-            .attr("dy", ".35em")
-            .attr("transform", "rotate(90)")
-                      .style("text-anchor", "start")
+            // .attr("x", 9)
+            .attr("dy", "1.35em")
+            // .attr("transform", "rotate(90)")
+                    //   .style("text-anchor", "start")
             // .attr("transform", "translate(0," + 20 + ")")
         .append("text")
           .attr("class", "label")
           .attr("x", plotWidth)
-          .attr("y", -6)
+        //   .attr("y", -6)
           .style("text-anchor", "end");
+
+          plot.append("g")
+              .attr("class", "y-axis")
+              .call(yAxis)
+            .append("text")
+              .attr("class", "label")
+            //   .attr("transform", "rotate(-90)")
+              .attr("y", 6)
+              .attr("dy", "-1.01em")
+              .style("text-anchor", "start")
+              .text("Literacy Rate : Y-Axis ------- DropOut Rate : X-Axis")
 
 
 var format = d3.format("");
 
-      plot.selectAll(".bar")
+      plot.selectAll(".dot")
           .data(data)
-        .enter().append("rect")
-          .attr("class", "bar")
-          .attr("x", function(d) { return x(d.key); })
-          .attr("y", function(d) { return y(d.values); })
-          .attr("height", function(d) { return plotHeight - y(d.values); })
-          .attr("width", x.rangeBand())
-          .on("mouseover", function(d) {
-              var me = d3.select(this);
-              me.classed({"active": true});
+        .enter().append("circle")
+          .attr("class", "dot")
+          .attr("cx", function(d) {
+        //   console.log(d[1],"1");
+        //   console.log(d[0],"0");
+          return x(d.values.drop); })
+          .attr("cy", function(d) { return y(d.values.lit); })
+        //   .attr("height", function(d) { return plotHeight - y(d.values); })
+        //   .attr("width", x.rangeBand())
+        .attr("r",function(d){return size(d.values.drop)})
+        .attr("fill",function(d){return color(d.values.cont)})
+        .on('mouseover', tip.show)
+        .on('mouseout', tip.hide);
 
-              tooltip.html(d.key + " : " + d.values +  "<br/> ");
-              tooltip.style({"visibility": "visible"});
 
-              // move selected path to front
-        })
-        .on("mousemove", function(d) {
-          // get coordinates according to "plot" group
-          var coords = d3.mouse(svg.node());
-          tooltip.attr({"x": coords[0], "y": coords[1]});
-        })
-        .on("mouseout", function(d) {
-          var me = d3.select(this);
-          me.classed({"active": false});
-          tooltip.style({"visibility": "hidden"});
-        });
+//Manuel tooltips
+        //   .on("mouseover", function(d) {
+        //       var me = d3.select(this);
+        //       me.classed({"active": true});
+        //
+        //       tooltip.html(d.key + " : " + d.values.drop +  "<br/> ");
+        //       tooltip.style({"visibility": "visible"});
+        //
+        //       // move selected path to front
+        // })
+        // .on("mousemove", function(d) {
+        //   // get coordinates according to "plot" group
+        //   var coords = d3.mouse(svg.node());
+        //   tooltip.attr({"x": coords[0], "y": coords[1]});
+        // })
+        // .on("mouseout", function(d) {
+        //   var me = d3.select(this);
+        //   me.classed({"active": false});
+        //   tooltip.style({"visibility": "hidden"});
+        // });
         //   .style("fill", function(d) { return color(d["Country or Area"]); });
 
 
-        plot.append("g")
-            .attr("class", "y-axis")
-            .call(yAxis)
-          .append("text")
-            .attr("class", "label")
-          //   .attr("transform", "rotate(-90)")
-            .attr("y", 6)
-            .attr("dy", ".71em")
-            .style("text-anchor", "start")
-            .text("Total Population")
+
 
 
             d3.select("body").append("text")
                .attr("class", "label")
-               .attr("transform", "translate(0,900)")
                .attr("y", 1)
                .attr("dy", "5.71em")
                .style("text-anchor", "start")
                .text("*source: http://data.un.org/Data.aspx?d=UNESCO&f=series%3aDR_1")
 
+               //
+            //    d3.select("body").append("text")
+            //       .attr("class", "label")
+            //       .attr("transform", "translate(0,300)")
+            //       .attr("y", 1)
+            //       .attr("dy", "5.71em")
+            //       .style("text-anchor", "start")
+            //       .text(year)
 
-               d3.select("body").append("text")
-                  .attr("class", "label")
-                  .attr("transform", "translate(0,300)")
-                  .attr("y", 1)
-                  .attr("dy", "5.71em")
-                  .style("text-anchor", "start")
-                  .text(year)
+            var legend = d3.legend.color()
+                .shape("path", d3.svg.symbol().type("circle").size(150)())
+                  .shapePadding(10)
+                  .scale(color);
+
+                  svg.append("g")
+         .attr("class", "legend")
+         .attr("transform", "translate(900,80)");
+
+            svg.select(".legend")
+              .call(legend);
 }
+
+function zoom() {
+  svg.select(".x-axis").call(xAxis);
+  svg.select(".y-axis").call(yAxis);
+
+  // size.domain([0, x.domain()[1]])
+  // console.log(size.domain())
+
+  svg.selectAll(".dot")
+  .attr("cx", function(d) {
+      return x(d.values.drop); })
+  .attr("cy", function(d) { return y(d.values.lit); });
+// .attr("r",function(d){return size(d.values.drop)});
+
+}
+
+function transform(d) {
+  return "translate(" + x(d.values.drop) + "," + y(d.values.lit) + ")";
+}
+
 
 function accessor(d) {
     if(+d["Time Period"] === year)
