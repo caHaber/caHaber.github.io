@@ -4,6 +4,7 @@
 
 body {
     font-family: monospace;
+    background-color: white;
 }
 
 #x-axis text,
@@ -195,8 +196,10 @@ function draw(data){
 
  var dots = plot.selectAll(".bar")
           .data(data)
-        .enter().append("rect") .on('mouseover', tip.show)
-          .on('mouseout', tip.hide).transition().delay(function(d,i){return i * 20})
+        .enter().append("rect")
+        .on('mouseover', tip.show)
+        .on('mouseout', tip.hide)
+        .transition().delay(function(d,i){return i * 20})
           .attr("class", "bar")
           .attr("x", function(d) { return x(d.key); })
           .attr("y", function(d) { return y(d.values.drop); })

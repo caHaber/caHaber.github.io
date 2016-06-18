@@ -4,6 +4,11 @@
 
 
 
+body {
+    font-family: monospace;
+    background-color: white;
+}
+
 #x-axis text,
 #y-axis text {
   font-size: 10pt;
@@ -15,11 +20,41 @@
 
 /* path: axis line, line: tick marks */
 
-
-
-rect {
-    fill: lightblue;
+/*http://bl.ocks.org/Caged/6476579*/
+.d3-tip {
+  line-height: 1;
+  font-weight: bold;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 2px;
 }
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.8);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}
+
+/* Style northward tooltips differently */
+.d3-tip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+}
+
+/* path: axis line, line: tick marks */
+
+
+
+
 
 path.domain {
     fill: none;
@@ -43,6 +78,7 @@ line {
 </style>
 <body>
 <script src="//d3js.org/d3.v3.min.js"></script>
+<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
 <script>
 
 var width = 1000,
@@ -60,7 +96,7 @@ var year = 2000;
         .attr({
             width : width - 100,
             height : height - 100
-        }).attr("transform", "translate(" + 100 + "," + (-100) + ")");
+        }).attr("transform", "translate(" + 100 + "," + (50) + ")");
 
         var plotHeight = height - 100,
             plotWidth = width - 100;
@@ -85,41 +121,51 @@ var year = 2000;
 
 var center = [500,500];
 
-    var tooltip = svg.append("text").attr("id", "tooltip");
+    var format = d3.format(",");
 
-    tooltip.attr({
-      "x": center[0],
-      "y": center[1],
-      "text-anchor": "end",
-      "dx": -5,
-      "dy": -5
-    }).style({
-      "visibility": "hidden"
-    })
-    .text("N/A");
+var tip = d3.tip()
+  .attr('class', 'd3-tip')
+  .offset([-10, 0])
+  .html(function(d) {
+    return  "<strong>Rural Population:</strong> <span style='color:red'>" + format(d.values.pop) + "</span><hr>" +
+     "<strong>Country:</strong> <span style='color:red'>" + d.key + "</span>";
+ });
 
-d3.csv("RuralPop.csv",  accessor,function(error, data) {
+ svg.call(tip);
+
+ var color = d3.scale.category10();
+
+d3.csv("RuralPopSort.csv", function(error, data) {
   if (error) throw error;
   console.log(data);
 
  var nested = d3.nest()
-    .key(function(d) {return d["Country or Area"];})
+    .key(function(d) {return d["Reference Area"];})
     .rollup(function(d) {
-        var value = 0;
+        var value = {};
+        value.pop = 0;
+
         var total = 0;
         d.forEach(function(s){
             total++;
-            value +=  +s.Value
+            value.cont = s["Continent"]
+            value.pop +=  +s["Population"]
         })
-        if(value > 10000000)
-        return (value/total);
+        // if(value.pop > 10000000)
+
+        value.pop = value.pop/total;
+        return (value);
     }).entries(data);
 
 
     console.log(nested);
 
-    x.domain(nested.map(function(d){if(d.values > 1000) return d.key}));
-    y.domain(d3.extent(nested, function(d) { return d.values; })).nice();
+    color.domain(["Europe","South America","Africa","North America","Asia"])
+
+    x.domain(nested.map(function(d){
+        // if(d.values.pop > 10000)
+        return d.key}));
+    y.domain([10000000,d3.max(nested, function(d) { return d.values.pop; })]).nice();
 
 
 draw(nested);
@@ -143,36 +189,19 @@ function draw(data){
           .attr("y", -6)
           .style("text-anchor", "end");
 
-var format = d3.format(".2s");
-var format = d3.format(",");
+
 
       plot.selectAll(".bar")
           .data(data)
         .enter().append("rect")
           .attr("class", "bar")
           .attr("x", function(d) { return x(d.key); })
-          .attr("y", function(d) { return y(d.values); })
-          .attr("height", function(d) { return plotHeight - y(d.values); })
+          .attr("y", function(d) { return y(d.values.pop); })
+          .attr("height", function(d) { return plotHeight - y(d.values.pop); })
           .attr("width", x.rangeBand())
-          .on("mouseover", function(d) {
-              var me = d3.select(this);
-              me.classed({"active": true});
-
-              tooltip.html( 	format(d.values) +  "<br/> ");
-              tooltip.style({"visibility": "visible"});
-
-              // move selected path to front
-        })
-        .on("mousemove", function(d) {
-          // get coordinates according to "plot" group
-          var coords = d3.mouse(svg.node());
-          tooltip.attr({"x": coords[0], "y": coords[1]});
-        })
-        .on("mouseout", function(d) {
-          var me = d3.select(this);
-          me.classed({"active": false});
-          tooltip.style({"visibility": "hidden"});
-        });
+            .attr("fill",function(d){return color(d.values.cont)})
+          .on('mouseover', tip.show)
+          .on('mouseout', tip.hide);
         //   .style("fill", function(d) { return color(d["Country or Area"]); });
 
 
@@ -185,7 +214,7 @@ var format = d3.format(",");
             .attr("y", 6)
             .attr("dy", ".71em")
             .style("text-anchor", "start")
-            .text("Total Population")
+            .text("Total Rural Population - Top ~20")
 
 
             d3.select("body").append("text")
@@ -197,13 +226,13 @@ var format = d3.format(",");
                .text("*source: http://data.un.org/Data.aspx?d=GenderStat&f=inID%3a1")
 
 
-               d3.select("body").append("text")
-                  .attr("class", "label")
-                  .attr("transform", "translate(0,900)")
-                  .attr("y", 1)
-                  .attr("dy", "5.71em")
-                  .style("text-anchor", "start")
-                  .text(year)
+            //    d3.select("body").append("text")
+            //       .attr("class", "label")
+            //       .attr("transform", "translate(0,900)")
+            //       .attr("y", 1)
+            //       .attr("dy", "5.71em")
+            //       .style("text-anchor", "start")
+            //       .text(year)
 }
 
 function accessor(d) {
