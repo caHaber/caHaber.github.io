@@ -1,0 +1,350 @@
+
+<!DOCTYPE html>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
+<!-- Popular / About Mike Bostock’s Block 899711
+Updated June 16, 2016
+Google Maps + D3
+
+Open
+index.html# -->
+
+<style>
+
+html, body, #map {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.stations, .stations svg {
+  position: absolute;
+}
+
+/*.stations svg {
+  left: 2000px;
+  top: 2000px;
+  font: 10px sans-serif;
+}*/
+
+tspan#year {
+    font-size: 7em;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+p#description {
+    font-size: 2em;
+    position: absolute;
+    top: 100px;
+    left: 20px;
+    margin-right: 60vw;
+}
+
+.stations circle {
+  opacity: .7;
+  stroke: lightgrey;
+  stroke-width: 1px;
+}
+
+path {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+/*.Quakes g {
+    position: absolute;
+    top: -4000px;
+    left: -4000px;
+}*/
+
+</style>
+
+<div id="map"></div>
+<script src="//maps.google.com/maps/api/js?key=AIzaSyAb-EuOjPGf7NtVHShXs34xiS0Nv37p9d4"></script>
+<script src="//d3js.org/d3.v3.min.js"></script>
+<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/1.10.0/d3-legend.min.js"></script>
+<!-- <script src="https://maps.googleapis.com/maps/api/js?&sensor=true"
+async defer></script> -->
+<script>
+var flag = 2006;
+// Create the Google Map…
+var map = new google.maps.Map(d3.select("#map").node(), {
+  zoom: 10,
+  center: new google.maps.LatLng(34.000829,-118.5058396),
+  mapTypeId: google.maps.MapTypeId.ROADMAP,
+  disableDefaultUI: true,
+  styles:[{"stylers": [{"saturation": -25},{"lightness": 25}]}]
+});
+var quantize = d3.scale.sqrt()
+    .domain([-150, 150])
+    .range([2,10]);
+
+    var color = d3.scale.ordinal()
+        .domain([-100, 100])
+        .range(['#d7191c','#fdae61','#ffffbf','#a6d96a','#1a9641']);
+
+        var format = d3.format(",");
+
+        var tip = d3.tip()
+          .attr('class', 'd3-tip')
+          .offset([-10, 0])
+          .html(function(d) {
+            return  "<strong>Population:</strong> <span style='color:red'>" + d["FY 05/06"] + "</span><hr>" +
+             "<strong>Country:</strong> <span style='color:red'>" + d + "</span>";
+         });
+
+var mapD;
+d3.json("la_city.json",function(err, mapD){
+    if (err) throw err;
+    mapD = mapD;
+    console.log(mapD);
+
+//END OF MAP LOAD
+
+
+
+var circles;
+// Load the station data. When the data comes back, create an overlay.
+d3.csv("WaterAverage.csv", function(error, data) {
+  if (error) throw error;
+
+var max = d3.extent(data,function(d){
+    return +d["FY 12/13"] - +d["FY 11/12"]});
+
+console.log(max);
+  var overlay = new google.maps.OverlayView();
+  // Add the container when the overlay is added to the map.
+  overlay.onAdd = function() {
+
+
+    var layer = d3.select(this.getPanes().overlayLayer).append("div")
+        .attr("class", "stations");
+
+        // var svg = layer.append("svg").attr({
+        //     "width": 4000,
+        //     "height": 4000
+        // });
+
+    // var zips = svg.append("g").attr("class", "Quakes").attr("transform","translate(-2000,-2000)");
+
+    // Draw each marker as a separate SVG element.
+    // We could use a single SVG, but what size would it have?
+    overlay.draw = function() {
+      var projection = this.getProjection(),
+          padding = 20;
+
+          var googleMapProjection = function (coordinates) {
+              var googleCoordinates = new google.maps.LatLng(coordinates[1], coordinates[0]);
+              var pixelCoordinates = projection.fromLatLngToDivPixel(googleCoordinates);
+              return [pixelCoordinates.x + 4000, pixelCoordinates.y + 4000];
+          }
+
+          var path = d3.geo.path()
+              .projection(googleMapProjection);
+
+
+
+console.log(mapD,"features");
+    //   var marker = layer.append("svg");
+
+console.log(mapD.features);
+
+     var pathGod = layer.selectAll("svg")
+          .data(mapD.features)
+          .each(transform) // update existing markers
+        .enter().append("svg")
+        // .attr({
+        //     "width": 1000,
+        //     "height": 1000
+        // })
+        .each(transform)
+           .attr("class", "marker");
+
+
+        pathGod.append("path").attr("d", path);
+
+    // console.log(marker);
+
+    // var paths = marker
+
+
+    //   // Add a circle.
+    // circles =  marker.append("circle")
+    //     //   .attr("r", function(d){return quantize(d["FY 05/06"])})
+    //     //   .attr("fill",function(d){return color(+d["FY 05/06"])})
+    //       .attr("cx", padding)
+    //       .attr("cy", padding);
+
+
+    // circles.transition().delay(2000).duration(3000)
+        //   .attr("r", function(d){return quantize(d["FY 10/11"])})
+        // //   .attr("fill",function(d){return color(+d["FY 10/11"])});
+        // .attr("fill","black");
+
+    //   Add a label.
+    //   marker.append("text")
+    //       .attr("x", padding + 7)
+    //       .attr("y", padding)
+    //       .attr("dy", ".31em")
+    //       .text(function(d) { return d; });
+
+    function _projection( lat, lng ) {
+      e = new google.maps.LatLng( lat, lng );
+      e = projection.fromLatLngToDivPixel(e);
+      return [ e.x - padding, e.y - padding]
+      // return [ e.x, e.y ]
+    }
+
+
+      function transform(d) {
+var lat = d.geometry.coordinates[0][0][0][0];
+var lng = d.geometry.coordinates[0][0][0][1];
+          e = _projection( lat, lng )
+          console.log(e);
+              return d3.select(this)
+                //   .style("left", e[0] + "px")
+                //   .style("top", e[1] + "px");
+                  .style("left", "300px")
+                  .style("top", "500px");
+
+      }
+    };
+  };
+
+
+
+  // Bind our overlay to the map…
+  overlay.setMap(map);
+  d3.select("html").append("p")
+        .attr("x", 0)
+        .attr("id","description")
+        .html(function(d,i) {
+           return  "This graph shows the water consumption over time. The size will grow larger if they used more water than the previous cycle." +
+           "The color represents the same. Red means they increased water usage in the last year";
+       });
+
+
+});
+
+});
+
+var pointCoverter = function(points){
+  var LatLng = points.replace("(", "").replace(")", "").split(", ");
+  var Lat = parseFloat(LatLng[0]);
+  var Lng = parseFloat(LatLng[1]);
+  return [Lng,Lat];
+}
+
+var autoCycle = setInterval(function (){
+    console.log(flag);
+    d3.selectAll("tspan").remove();
+
+    circles = d3.selectAll("circle");
+
+    d3.select("html").append("tspan")
+          .attr("x", 0)
+          .attr("id","year")
+          .html(function(d,i) {
+             return  (flag-1) + " - " + (flag);
+         });
+
+
+// console.log(+d["FY 08/09"] - +d["FY 07/08"])
+
+    switch(flag) {
+
+
+
+    //     case 2005:
+    //         circles.transition().duration(2000)
+    //         .attr("fill",function(d){return color(+d["FY 05/06"])})
+    //           .attr("r", function(d){return quantize(d["FY 05/06"])});
+      //
+    //           flag=2006;
+    //           break;
+      //
+    //   case 2006:
+    //       circles.transition().duration(2000)
+    //         .attr("r", function(d){return quantize(d["FY 06/07"])})
+    //         .attr("fill",function(d){return color(+d["FY 06/07"])});
+    //         flag=2007;
+    //         break;
+      //
+    //     case 2007:
+    //     circles.transition().duration(2000)
+    //       .attr("r", function(d){return quantize(d["FY 07/08"])})
+    //       .attr("fill",function(d){return color(+d["FY 07/08"])});
+    //       flag=2008;
+    //       break;
+      //
+    //       case 2008:
+    //       circles.transition().duration(2000)
+    //         .attr("r", function(d){return quantize(d["FY 08/09"])})
+    //         .attr("fill",function(d){return color(+d["FY 08/09"])});
+    //         flag=2009;
+    //         break;
+      //
+    //         case 2009:
+    //         circles.transition().duration(2000)
+    //           .attr("r", function(d){return quantize(d["FY 09/10"])})
+    //           .attr("fill",function(d){return color(+d["FY 09/10"])});
+    //           flag=2005;
+    //           break;
+
+  case 2006:
+      circles.transition().duration(2000)
+        .attr("r", function(d){return quantize(+d["FY 06/07"] - +d["FY 05/06"])})
+        .attr("fill",function(d){return color(+d["FY 06/07"] - +d["FY 05/06"])});
+        flag=2007;
+        break;
+
+    case 2007:
+    circles.transition().duration(2000)
+      .attr("r", function(d){return quantize(+d["FY 07/08"] - +d["FY 06/07"])})
+      .attr("fill",function(d){return color(+d["FY 07/08"] - +d["FY 06/07"])});
+      flag=2008;
+      break;
+
+      case 2008:
+      circles.transition().duration(2000)
+        .attr("r", function(d){return quantize(+d["FY 08/09"] - +d["FY 07/08"])})
+        .attr("fill",function(d){return color(+d["FY 08/09"] - +d["FY 07/08"])});
+        flag=2009;
+        break;
+
+        case 2009:
+        circles.transition().duration(2000)
+          .attr("r", function(d){return quantize(+d["FY 09/10"] - +d["FY 08/09"])})
+          .attr("fill",function(d){return color(+d["FY 09/10"] - +d["FY 08/09"])});
+          flag=2010;
+          break;
+
+          case 2010:
+          circles.transition().duration(2000)
+            .attr("r", function(d){return quantize(+d["FY 10/11"] - +d["FY 09/10"])})
+            .attr("fill",function(d){return color(+d["FY 10/11"] - +d["FY 09/10"])});
+            flag=2011;
+            break;
+
+            case 2011:
+            circles.transition().duration(2000)
+              .attr("r", function(d){return quantize(+d["FY 11/12"] - +d["FY 10/11"])})
+              .attr("fill",function(d){return color(+d["FY 11/12"] - +d["FY 10/11"])});
+              flag=2012;
+              break;
+
+              case 2012:
+              circles.transition().duration(2000)
+                .attr("r", function(d){return quantize(+d["FY 12/13"] - +d["FY 11/12"])})
+                .attr("fill",function(d){return color(+d["FY 12/13"] - +d["FY 11/12"])});
+                flag=2006;
+                break;
+    }
+}, 3000);
+
+</script>

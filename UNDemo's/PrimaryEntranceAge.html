@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+body {
+    font-family: monospace;
+    background-color: white;
+}
+
+#x-axis text,
+#y-axis text {
+  font-size: 10pt;
+}
+
+.bar:hover {
+  fill: brown;
+}
+
+/* path: axis line, line: tick marks */
+
+/*http://bl.ocks.org/Caged/6476579*/
+.d3-tip {
+  line-height: 1;
+  font-weight: bold;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 2px;
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.8);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}
+
+/* Style northward tooltips differently */
+.d3-tip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+}
+
+/*rect {
+    fill: lightblue;
+}*/
+
+path.domain {
+    fill: none;
+}
+
+#x-axis path,
+#y-axis path,
+#y-axis line {
+  fill: black;
+
+  /* use stroke, not border, for svg elements */
+  stroke: red;
+  stroke-width: 1;
+}
+
+line {
+    stroke: grey;
+    stroke-width: 1px;
+}
+
+</style>
+<body>
+<script src="//d3js.org/d3.v3.min.js"></script>
+<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+<script>
+
+var width = 1000,
+    height = 1000;
+
+var svg = d3.select("body").append("svg")
+    .attr({
+        width : width,
+        height : height
+    });
+
+var yearMin = 1950;
+var yearMax = 2000;
+
+    var plot = svg.append("g")
+        .attr({
+            width : width - 100,
+            height : height - 100
+        }).attr("transform", "translate(" + 100 + "," + (50) + ")");
+
+        var plotHeight = height - 100,
+            plotWidth = width - 100;
+
+    var x = d3.scale.ordinal()
+    .rangeRoundBands([0, plotWidth], .1);
+
+      var y = d3.scale.linear()
+          .range([plotHeight, 0]);
+
+      var color = d3.scale.category10();
+
+      var xAxis = d3.svg.axis()
+          .scale(x)
+          .orient("bottom");
+
+      var yAxis = d3.svg.axis()
+          .scale(y)
+          .orient("left")
+          .ticks(10, ",")
+          .tickSize(-plotWidth);
+
+var center = [500,500];
+
+ var color = d3.scale.category10();
+
+ var tip = d3.tip()
+   .attr('class', 'd3-tip')
+   .offset([-10, 0])
+   .html(function(d) {
+     return  "<strong>Primary Average Entrance Age:</strong> <span style='color:red'>" + d.values.drop + "</span><hr>" +
+      "<strong>Country:</strong> <span style='color:red'>" + d.key + "</span>";
+  });
+
+  plot.call(tip);
+
+d3.csv("PrimaryEntranceAge.csv", function(error, data) {
+  if (error) throw error;
+
+  var nested = d3.nest()
+     .key(function(d) {return d["Reference Area"];})
+     .rollup(function(d) {
+          var value = {};
+         value.drop = 0;
+         var total = 0;
+
+
+         d.forEach(function(s){
+             total++;
+             value.drop +=  +s["Observation Value"]
+               value.cont = s["Continent"]
+         })
+         // if(value > 100000000)
+        //  return (value/total);
+        value.drop = value.drop/total;
+         return (value);
+     }).entries(data);
+
+
+    // console.log(nested);
+     color.domain(["Europe","South America","Africa","North America","Asia"])
+    x.domain(nested.map(function(d){return d.key}));
+    // y.domain(d3.extent(nested, function(d) { return d.values.drop; })).nice();
+        y.domain([0,8]).nice();
+
+
+draw(nested);
+});
+
+function draw(data){
+    // plot.append("g")
+    //       .attr("class", "x-axis")
+    //       .attr("transform", "translate(0," + (plotHeight) + ")")
+    //       .call(xAxis)
+    //       .selectAll("text")
+    //         .attr("y", 0)
+    //         .attr("x", 9)
+    //         .attr("dy", ".35em")
+    //         .attr("transform", "rotate(90)")
+    //                   .style("text-anchor", "start")
+    //         // .attr("transform", "translate(0," + 20 + ")")
+    //     .append("text")
+    //       .attr("class", "label")
+    //       .attr("x", plotWidth)
+    //       .attr("y", -6)
+    //       .style("text-anchor", "end");
+
+          plot.append("g")
+              .attr("class", "y-axis")
+              .call(yAxis)
+            .append("text")
+              .attr("class", "label")
+            //   .attr("transform", "rotate(-90)")
+              .attr("y", 6)
+              .attr("dy", ".71em")
+              .style("text-anchor", "start")
+              .text("Average Starting Age for Primary School" )
+
+
+
+ var dots = plot.selectAll(".bar")
+          .data(data)
+        .enter().append("rect")
+        .on('mouseover', tip.show)
+        .on('mouseout', tip.hide)
+        .transition().delay(function(d,i){return i * 20})
+          .attr("class", "bar")
+          .attr("x", function(d) { return x(d.key); })
+          .attr("y", function(d) { return y(d.values.drop); })
+
+
+          .attr("height", function(d) { return plotHeight - y(d.values.drop); })
+          .attr("width", x.rangeBand())
+          .attr("fill",function(d){return color(d.values.cont)});
+
+
+        //   .style("fill", function(d) { return color(d["Country or Area"]); });
+
+
+
+
+
+            d3.select("body").append("text")
+               .attr("class", "label")
+               .attr("transform", "translate(0,900)")
+               .attr("y", 1)
+               .attr("dy", "5.71em")
+               .style("text-anchor", "start")
+               .text("*source: http://data.un.org/Data.aspx?d=UNESCO&f=series%3aDR_1")
+
+               //
+            //    d3.select("body").append("text")
+            //       .attr("class", "label")
+            //       .attr("transform", "translate(0,900)")
+            //       .attr("y", 1)
+            //       .attr("dy", "5.71em")
+            //       .style("text-anchor", "start")
+            //       .text(year)
+}
+
+function accessor(d) {
+    if(+d["Time Period"] <= yearMax && +d["Time Period"] >= yearMin)
+    return d;
+}
+
+
+</script>
+    <!-- <iframe src="PrimaryDuration.html" width="1400" height="1000"></iframe> -->
+</body>

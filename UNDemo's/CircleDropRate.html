@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+body {
+    font-family: monospace;
+    background-color: white;
+}
+
+#x-axis text,
+#y-axis text {
+  font-size: 10pt;
+}
+
+.label {
+    font-size: 2em;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+}
+
+.bar:hover {
+  fill: brown;
+}
+
+/* path: axis line, line: tick marks */
+
+/*http://bl.ocks.org/Caged/6476579*/
+.d3-tip {
+  line-height: 1;
+  font-weight: bold;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 2px;
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.8);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}
+
+/* Style northward tooltips differently */
+.d3-tip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+}
+
+/*rect {
+    fill: lightblue;
+}*/
+
+path.domain {
+    fill: none;
+}
+
+#x-axis path,
+#y-axis path,
+#y-axis line {
+  fill: black;
+
+  /* use stroke, not border, for svg elements */
+  stroke: red;
+  stroke-width: 1;
+}
+
+line {
+    stroke: grey;
+    stroke-width: 1px;
+}
+
+</style>
+<body>
+<script src="//d3js.org/d3.v3.min.js"></script>
+<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+<script>
+
+var width = 1000,
+    height = 1000;
+
+var svg = d3.select("body").append("svg")
+    .attr({
+        width : width,
+        height : height
+    });
+
+var yearMin = 1950;
+var yearMax = 2000;
+
+
+var diameter = 960,
+    format = d3.format(",d"),
+    color = d3.scale.category20c();
+
+var bubble = d3.layout.pack()
+    .sort(null)
+    .size([diameter, diameter])
+    .padding(3.5)
+    .value(function(d){return d.values.drop});
+
+    var plot = svg.append("g")
+        .attr({
+            width : width - 100,
+            height : height - 100
+        }).attr("transform", "translate(" + 100 + "," + (50) + ")");
+
+        var plotHeight = height - 100,
+            plotWidth = width - 100;
+
+
+      var color = d3.scale.category10();
+
+
+
+var center = [500,500];
+
+ var color = d3.scale.category10();
+
+ var tip = d3.tip()
+   .attr('class', 'd3-tip')
+   .offset([-10, 0])
+   .html(function(d) {
+     return  "<strong>Drop Percentage:</strong> <span style='color:red'>" + d.values.drop + "</span><hr>" +
+      "<strong>Country:</strong> <span style='color:red'>" + d.key + "</span>";
+  });
+
+  svg.call(tip);
+
+d3.csv("DropOutWithCont.csv", function(error, data) {
+  if (error) throw error;
+  // console.log(data);
+
+  var nested = d3.nest()
+     .key(function(d) {return d["Reference Area"];})
+     .rollup(function(d) {
+         var value = {}
+         value.drop = 0;
+         var total = 0;
+
+
+         d.forEach(function(s){
+             total++;
+             value.drop +=  +s["Observation Value"]
+             value.cont = s["Continent"]
+         })
+         // if(value > 100000000)
+        //  return (value/total);
+        value.drop = value.drop/total;
+         return (value);
+     }).entries(data);
+
+//
+    // console.log(nested);
+     color.domain(["Europe","South America","Africa","North America","Asia"])
+
+var nodes = bubble.nodes({children:nested}).filter(function(d) { return !d.children; });
+console.log(nodes);
+        var node = svg.selectAll(".node")
+      .data(nodes)
+    .enter().append("g")
+      .attr("class", "node").on('mouseover', tip.show)
+              .on('mouseout', tip.hide)
+      .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+
+
+  node.append("title")
+      .text(function(d) { return d.key + ": " + d.value; });
+
+  node.append("circle")
+      .attr("r", function(d) { return d.r; })
+      .style("fill", function(d) { return color(d.values.cont); });
+
+  node.append("text")
+      .attr("dy", ".3em")
+      .style("text-anchor", "middle")
+      .text(function(d) { return d.key; });
+
+      d3.select("body").append("text")
+         .attr("class", "label")
+         .attr("transform", "translate(0,900)")
+         .attr("y", 1)
+         .attr("dy", "5.71em")
+         .style("text-anchor", "start")
+         .text("The Rate at Which Kids Drop PrimarySchool is equal to Size of Bubble")
+
+
+// draw(nested);
+});
+
+
+function comparator(a, b) {
+  return b.value - a.value;
+}
+</script>
+</body>

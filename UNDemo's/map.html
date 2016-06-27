@@ -23,9 +23,6 @@ body {
   stroke-opacity: .5;
 }
 
-.land {
-  fill: #222;
-}
 
 .boundary {
   fill: none;
@@ -33,7 +30,7 @@ body {
   stroke-width: .5px;
 }
 
-.q0-9 { fill:rgb(247,251,255); }
+/*.q0-9 { fill:rgb(247,251,255); }
 .q1-9 { fill:rgb(222,235,247); }
 .q2-9 { fill:rgb(198,219,239); }
 .q3-9 { fill:rgb(158,202,225); }
@@ -41,7 +38,7 @@ body {
 .q5-9 { fill:rgb(66,146,198); }
 .q6-9 { fill:rgb(33,113,181); }
 .q7-9 { fill:rgb(8,81,156); }
-.q8-9 { fill:rgb(8,48,107); }
+.q8-9 { fill:rgb(8,48,107); }*/
 
 </style>
 <body>
@@ -61,8 +58,9 @@ var svg = d3.select("body").append("svg")
         height : height
     });
 
-    var quantize = d3.scale.linear()
-        .range([0,100000]);
+    var quantize = d3.scale.quantize()
+        .domain([0, 100])
+        .range(['#f7fcfd','#e5f5f9','#ccece6','#99d8c9','#66c2a4','#41ae76','#238b45','#006d2c','#00441b']);
 
         var fill = d3.scale.log()
     .domain([10, 5000000])
@@ -96,6 +94,7 @@ var svg = d3.select("body").append("svg")
         .attr("class", "graticule")
         .attr("d", path);
 
+var rateById = d3.map();
 
         d3.json("custom.geo.json", function(error, world) {
           if (error) throw error;
@@ -115,16 +114,19 @@ var svg = d3.select("body").append("svg")
                       value +=  +s.Quantity
                   })
 
+                  rateById.set(d["Country or Area"], value);
+
                   if(value > 1000)
                   return value;
               }).entries(data);
+
 
             //   quantize.domain(d3.extent(nested, function(d) { return d.values; })).nice();;
               //
             //   console.log(quantize.domain());
 
 
-              draw(world,data);
+              draw(world,nested);
           });
 
 
@@ -134,19 +136,32 @@ var svg = d3.select("body").append("svg")
 function draw(world,data) {
 
 
+    svg.append("g")
+    .attr("class", "counties")
+  .selectAll("path")
+    .data(world.features)
+  .enter().append("path")
+    .attr("class", function(d) {console.log(d);return quantize(rateById.get(d.value)); })
+    .attr("d", path);
+
+svg.append("path")
+    .datum(topojson.mesh(world, world.features, function(a, b) { return a !== b; }))
+    .attr("class", "states")
+    .attr("d", path);
 
 
-    svg.selectAll(".country")
-        .data(world.features)
-      .enter().insert("path", ".graticule")
-        .attr("class", "country")
-        .attr("d", path)
-        .attr("class", function(d) { return fill(path.area(d)); });
-
-    svg.insert("path", ".graticule")
-        .datum(topojson.mesh(world, world.features, function(a, b) { return a !== b; }))
-        .attr("class", "boundary")
-        .attr("d", path);
+    //
+    // svg.selectAll(".country")
+    //     .data(world.features)
+    //   .enter().insert("path", ".graticule")
+    //     .attr("class", "country")
+    //     .attr("d", path)
+    //     .attr("class", function(d) { return fill(path.area(d)); });
+    //
+    // svg.insert("path", ".graticule")
+    //     .datum(topojson.mesh(world, world.features, function(a, b) { return a !== b; }))
+    //     .attr("class", "boundary")
+    //     .attr("d", path);
 }
 
         </script>

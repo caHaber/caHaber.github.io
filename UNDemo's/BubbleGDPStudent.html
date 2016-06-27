@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+body {
+    font-family: monospace;
+    background-color: white;
+    font-size: 2em;
+}
+
+#x-axis text,
+#y-axis text {
+  font-size: 10pt;
+}
+
+.bar:hover {
+  fill: brown;
+}
+
+circle{
+    stroke: whitesmoke;
+    stroke-width: .5px;
+    opacity: .7;
+}
+
+/* path: axis line, line: tick marks */
+
+/*http://bl.ocks.org/Caged/6476579*/
+.d3-tip {
+  line-height: 1;
+  font-weight: bold;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 2px;
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.8);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}
+
+/* Style northward tooltips differently */
+.d3-tip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+}
+
+rect {
+    fill: lightblue;
+}
+
+path.domain {
+    fill: none;
+}
+
+/*#x-axis path,
+#y-axis path,
+#y-axis line {
+  fill: black;
+
+  stroke: red;
+  stroke-width: 1;
+}*/
+
+line {
+    stroke: whitesmoke;
+    stroke-width: 3px;
+}
+
+</style>
+<body>
+<script src="//d3js.org/d3.v3.min.js"></script>
+<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+<!-- http://d3-legend.susielu.com/#usage -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/1.10.0/d3-legend.min.js"></script>
+<script>
+
+var width = 1400,
+    height = 1000;
+
+var svg = d3.select("body").append("svg")
+    .attr({
+        width : width,
+        height : height
+    });
+
+    var format = d3.format(",");
+
+    var tip = d3.tip()
+      .attr('class', 'd3-tip')
+      .offset([-10, 0])
+      .html(function(d) {
+        return  "<strong>Population:</strong> <span style='color:red'>" + format(d.values.pop) + "</span><hr>" +
+         "<strong>Country:</strong> <span style='color:red'>" + d.key + "</span>";
+
+      })
+
+
+
+var year = 1979;
+
+
+
+        var plotHeight = height - 100,
+            plotWidth = width - 100;
+
+
+
+    var x = d3.scale.linear()
+    .range([0, plotWidth - 50]);
+
+      var size = d3.scale.sqrt()
+          .range([8, 40]);
+
+          var y = d3.scale.linear()
+              .range([plotHeight, 0]);
+
+      var color = d3.scale.category10();
+
+      var xAxis = d3.svg.axis()
+          .scale(x)
+          .orient("bottom")
+          .tickSize(-plotHeight);
+
+
+      var yAxis = d3.svg.axis()
+          .scale(y)
+          .orient("left")
+          .ticks(10, ",")
+          .tickSize(-plotWidth + 50);
+
+              x.domain([0,100]);
+             y.domain([0,100]).nice();
+
+          var zoomBeh = d3.behavior.zoom()
+              .x(x)
+              .y(y)
+              .scaleExtent([1, 10])
+              .on("zoom", zoom);
+
+              var plot = svg.append("g")
+                  .attr({
+                      width : width - 200,
+                      height : height - 100
+                  }).attr("transform", "translate(" + 100 + "," + (50) + ")")
+
+svg.call(zoomBeh);
+plot.call(tip);
+
+var center = [500,500];
+
+    // var tooltip = svg.append("text").attr("id", "tooltip");
+    //
+    // tooltip.attr({
+    //   "x": center[0],
+    //   "y": center[1],
+    //   "text-anchor": "end",
+    //   "dx": -5,
+    //   "dy": -5
+    // }).style({
+    //   "visibility": "hidden"
+    // })
+    // .text("N/A");
+
+    // queue()
+    //       .defer(d3.json, "usa4.topo.json")
+    //       .defer(d3.csv, "population.csv")//, function(d) {  rateById.set(d["GEO.id2"], +d["HD01_VD01"]); })
+    //       .await(draw);
+
+
+
+d3.csv("resultWithGDPStudent.csv", function(error, dataset){
+    if (error) throw error;
+    console.log(dataset,"primo");
+
+    var nested = d3.nest()
+       .key(function(d) {return d["Reference Area"];})
+    //    .key(function(d) {return d["Time Period"];})
+       .rollup(function(d) {
+           var value = {};
+           value.lit = 0;
+           value.drop = 0;
+           value.pop = 0;
+           var total = 0;
+        //    console.log(d);
+           d.forEach(function(s){
+            //    console.log(s)
+               total++;
+            //    console.log(s["Value"],"vals")
+            //     console.log(s["Observation Value"],"vals")
+               value.drop +=  +s["Observation Value_x"]
+               value.pop +=  +s["Population"]
+               value.lit += +s["Observation Value_y"]
+               value.cont = s["Continent"]
+           })
+          //  if(value > 50)
+          value.lit = value.lit/total;
+          value.pop = value.pop/total;
+          value.drop = value.drop/total;
+          //  return (value);
+           return (value);
+       }).entries(dataset);
+
+    //    console.log(litNested.slice(4),"lit rates")
+       console.log(nested);
+
+       color.domain(["Europe","South America","Africa","North America","Asia"])
+        //    x.domain(nested.map(function(d){return d.values.drop}));
+        //     x.domain([0,100]);
+        //    y.domain(d3.extent(nested, function(d) { return d.values.lit; })).nice();
+           size.domain(d3.extent(nested, function(d) { return d.values.pop; })).nice();
+
+       draw(nested);
+
+
+
+});
+
+
+
+
+
+
+function draw(data){
+    plot.append("g")
+          .attr("class", "x-axis")
+          .attr("transform", "translate(0," + (plotHeight) + ")")
+          .call(xAxis)
+          .selectAll("text")
+            .attr("y", 0)
+            // .attr("x", 9)
+            .attr("dy", "1.35em")
+            // .attr("transform", "rotate(90)")
+                    //   .style("text-anchor", "start")
+            // .attr("transform", "translate(0," + 20 + ")")
+        .append("text")
+          .attr("class", "label")
+          .attr("x", plotWidth)
+        //   .attr("y", -6)
+          .style("text-anchor", "end");
+
+          plot.append("g")
+              .attr("class", "y-axis")
+              .call(yAxis)
+            .append("text")
+              .attr("class", "label")
+            //   .attr("transform", "rotate(-90)")
+              .attr("y", 6)
+              .attr("dy", "-1.01em")
+              .style("text-anchor", "start")
+              .text("Amount Spent on Student GDP%: Y-Axis ---- DropOut Rate : X-Axis ---- Population : Size" )
+
+
+      plot.selectAll(".dot")
+          .data(data)
+        .enter().append("circle")
+          .attr("class", "dot")
+          .attr("cx", function(d) {
+        //   console.log(d[1],"1");
+        //   console.log(d[0],"0");
+          return x(d.values.drop); })
+          .attr("cy", function(d) { return y(d.values.lit); })
+        //   .attr("height", function(d) { return plotHeight - y(d.values); })
+        //   .attr("width", x.rangeBand())
+        .attr("r",function(d){return size(d.values.pop)})
+        .attr("fill",function(d){return color(d.values.cont)})
+        .on('mouseover', tip.show)
+        .on('mouseout', tip.hide);
+
+
+//Manuel tooltips
+        //   .on("mouseover", function(d) {
+        //       var me = d3.select(this);
+        //       me.classed({"active": true});
+        //
+        //       tooltip.html(d.key + " : " + d.values.drop +  "<br/> ");
+        //       tooltip.style({"visibility": "visible"});
+        //
+        //       // move selected path to front
+        // })
+        // .on("mousemove", function(d) {
+        //   // get coordinates according to "plot" group
+        //   var coords = d3.mouse(svg.node());
+        //   tooltip.attr({"x": coords[0], "y": coords[1]});
+        // })
+        // .on("mouseout", function(d) {
+        //   var me = d3.select(this);
+        //   me.classed({"active": false});
+        //   tooltip.style({"visibility": "hidden"});
+        // });
+        //   .style("fill", function(d) { return color(d["Country or Area"]); });
+
+
+
+
+
+            d3.select("body").append("text")
+               .attr("class", "label")
+               .attr("y", 1)
+               .attr("dy", "5.71em")
+               .style("text-anchor", "start")
+               .text("*source: http://data.un.org/Data.aspx?d=UNESCO&f=series%3aDR_1")
+
+               //
+            //    d3.select("body").append("text")
+            //       .attr("class", "label")
+            //       .attr("transform", "translate(0,300)")
+            //       .attr("y", 1)
+            //       .attr("dy", "5.71em")
+            //       .style("text-anchor", "start")
+            //       .text(year)
+
+            var legend = d3.legend.color()
+                .shape("path", d3.svg.symbol().type("circle").size(150)())
+                  .shapePadding(10)
+                  .scale(color);
+
+            var legendSize = d3.legend.size()
+                  .scale(size)
+                  .shape('circle')
+                  .shapePadding(15)
+                  .labelOffset(20)
+                  .labelFormat(format)
+                  .orient('vertical');
+
+
+            svg.append("g")
+                 .attr("class", "legend")
+                 .attr("transform", "translate(1000,80)");
+
+                 svg.append("g")
+                      .attr("class", "legendSize")
+                      .attr("transform", "translate(1000,280)");
+
+
+            svg.select(".legend")
+              .call(legend);
+
+              svg.select(".legendSize")
+                .call(legendSize);
+}
+
+function zoom() {
+  svg.select(".x-axis").call(xAxis);
+  svg.select(".y-axis").call(yAxis);
+
+  // size.domain([0, x.domain()[1]])
+  // console.log(size.domain())
+
+  svg.selectAll(".dot")
+  .attr("cx", function(d) {
+      return x(d.values.drop); })
+  .attr("cy", function(d) { return y(d.values.lit); });
+// .attr("r",function(d){return size(d.values.drop)});
+
+}
+
+function transform(d) {
+  return "translate(" + x(d.values.drop) + "," + y(d.values.lit) + ")";
+}
+
+
+function accessor(d) {
+    if(+d["Time Period"] === year)
+    return d;
+}
+
+
+</script>

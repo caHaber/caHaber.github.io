@@ -130,9 +130,9 @@ var center = [500,500];
 
   plot.call(tip);
 
-d3.csv("DropOutWithCont.csv", accessor, function(error, data) {
+d3.csv("DropOutWithCont.csv",function(error, data) {
   if (error) throw error;
-  console.log(data);
+  // console.log(data);
 
   var nested = d3.nest()
      .key(function(d) {return d["Reference Area"];})
@@ -154,7 +154,7 @@ d3.csv("DropOutWithCont.csv", accessor, function(error, data) {
      }).entries(data);
 
 
-    console.log(nested);
+    // console.log(nested);
  color.domain(["Europe","South America","Africa","North America","Asia"])
     x.domain(nested.map(function(d){return d.key}));
     y.domain(d3.extent(nested, function(d) { return d.values.drop; })).nice();
@@ -207,7 +207,7 @@ function draw(data){
 
           .attr("height", function(d) { return plotHeight - y(d.values.drop); })
           .attr("width", x.rangeBand())
-          .attr("fill",function(d){return color(d.values.cont)})
+          .attr("fill",function(d){return color(d.values.cont)});
 
 
         //   .style("fill", function(d) { return color(d["Country or Area"]); });
@@ -225,17 +225,11 @@ function draw(data){
                .text("*source: http://data.un.org/Data.aspx?d=UNESCO&f=series%3aDR_1")
 
 
-               d3.select("body").append("text")
-                  .attr("class", "label")
-                  .attr("transform", "translate(0,900)")
-                  .attr("y", 1)
-                  .attr("dy", "5.71em")
-                  .style("text-anchor", "start")
-                  .text(year)
+
 }
 
 function accessor(d) {
-    console.log(d["Time Period"])
+    // console.log(d["Time Period"])
     if(+d["Time Period"] <= yearMax && +d["Time Period"] >= yearMin)
     return d;
 }

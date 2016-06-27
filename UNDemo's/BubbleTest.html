@@ -20,6 +20,7 @@ body {
 circle{
     stroke: whitesmoke;
     stroke-width: .5px;
+    opacity: .7;
 }
 
 /* path: axis line, line: tick marks */
@@ -99,7 +100,7 @@ var svg = d3.select("body").append("svg")
       .attr('class', 'd3-tip')
       .offset([-10, 0])
       .html(function(d) {
-        return  "<strong>Rural Population:</strong> <span style='color:red'>" + format(d.values.pop) + "</span><hr>" +
+        return  "<strong>Population:</strong> <span style='color:red'>" + format(d.values.pop) + "</span><hr>" +
          "<strong>Country:</strong> <span style='color:red'>" + d.key + "</span>";
 
       })
@@ -178,9 +179,9 @@ var center = [500,500];
 
 
 
-d3.csv("result.csv", function(error, dataset){
+d3.csv("resultWithPersonnel.csv", function(error, dataset){
     if (error) throw error;
-    console.log(dataset,"primo");
+    // console.log(dataset,"primo");
 
     var nested = d3.nest()
        .key(function(d) {return d["Reference Area"];})
@@ -197,9 +198,9 @@ d3.csv("result.csv", function(error, dataset){
                total++;
             //    console.log(s["Value"],"vals")
             //     console.log(s["Observation Value"],"vals")
-               value.lit +=  +s["Value"]
+               value.drop +=  +s["Observation Value_x"]
                value.pop +=  +s["Population"]
-               value.drop += +s["Observation Value"]
+               value.lit += +s["Observation Value_y"]
                value.cont = s["Continent"]
            })
           //  if(value > 50)
@@ -211,7 +212,7 @@ d3.csv("result.csv", function(error, dataset){
        }).entries(dataset);
 
     //    console.log(litNested.slice(4),"lit rates")
-       console.log(nested);
+    //    console.log(nested);
 
        color.domain(["Europe","South America","Africa","North America","Asia"])
         //    x.domain(nested.map(function(d){return d.values.drop}));
@@ -257,7 +258,7 @@ function draw(data){
               .attr("y", 6)
               .attr("dy", "-1.01em")
               .style("text-anchor", "start")
-              .text("Literacy Rate : Y-Axis ---- DropOut Rate : X-Axis ---- Rural Population : Size" )
+              .text("Personnel Salaries as % of Total Expenditure: Y-Axis ---- DropOut Rate : X-Axis ---- Population : Size" )
 
 
       plot.selectAll(".dot")
