@@ -109,15 +109,23 @@ html, body, #map {
 }
 
 div#notes{
-    position: absolute;
+    position: absolute;;
+    top: 140vh;
+    right:20px;
+    margin-left: 80vw;
+}
+
+div#beeNotes{
+    position: absolute;;
     top: 20px;
     right:20px;
     margin-left: 80vw;
 }
 
+
 svg#legendDiv{
     position: absolute;
-    top: 1000px;
+    top: 120vh;
     right:20px;
     margin-left: 70vw;
 }
@@ -125,7 +133,8 @@ svg#legendDiv{
 tspan#year {
     font-size: 2em;
     position: absolute;
-    bottom: 20px;
+    top: 20px;
+    background-color: whitesmoke;
     left: 20px;
 }
 
@@ -135,6 +144,7 @@ tspan#year {
 <script src="//d3js.org/d3.v3.min.js"></script>
 <div id="map"></div>
 <div id="notes"></div>
+<div id="beeNotes"></div>
 <script src="//maps.google.com/maps/api/js?key=AIzaSyAb-EuOjPGf7NtVHShXs34xiS0Nv37p9d4"></script>
 <script src="map.js"></script>
 <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
@@ -165,7 +175,7 @@ var color = d3.scale.quantize()
 var format = d3.format(",");
 
 var size = d3.scale.sqrt()
-  .range([4, 8]);
+  .range([4, 10]);
 
  var y = d3.scale.linear()
     .range([beeHeight, 0]);
@@ -355,8 +365,8 @@ focus.call(tip);
                    .text(function(d){
                        if(x === "sum") return "Total Water Used from 2005-2013"
                        + " *Hundred Cubic Feet (HCF) of water";
-                       if(x === "popTotal") return "Total Population of Area";
-                       if(x === "age") return "Median Age of Area";
+                       if(x === "popTotal") return "Total Population of Zipcode";
+                       if(x === "age") return "Median Age of Zipcode";
                        if(x === "houseSize") return "Average Size of Household";
                    })
                    .attr('transform', 'translate(' + 165 + ',' + 135 + ')');
@@ -432,4 +442,4 @@ function accessor(d){
 <script>
 drawGeo();
 </script>
-<a href="gMap.html"> -> </a>
+<a href="Bubble.html"> Next Viz </a>

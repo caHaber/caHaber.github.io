@@ -153,9 +153,16 @@ console.log(data,"geo");
         .attr("x", 0)
         .attr("id","description")
         .html(function(d,i) {
-           return  "This map shows Los Angeles water consumption over time. The size is a reflection of total water used during that financial year." +
-           "The color represents if that increased or decreased water usage from the year before. Red means they increased water usage in the last year";
+           return  "This map shows whether each Los Angeles zipcode's water consumption increased or decreased over each year. The size is a reflection of total water used during that financial year." +
+           "Wait for 2011-2012!!";
        });
+
+       d3.select("div#beeNotes").append("p")
+             .attr("x", 0)
+             .attr("id","description")
+             .html(function(d,i) {
+                return  "Each point is a zipcode. The size of each point shows the total population in the year 2010 (USCensus). Hover to see comparison across categories";
+            });
 
 var legendDiv = d3.select("html").append("svg").attr("id","legendDiv");
        var legend = d3.legend.color()
