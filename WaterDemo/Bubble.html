@@ -3,6 +3,7 @@
 <style>
 
 body {
+    padding: 80px;
     font-family: monospace;
     background-color: white;
     font-size: 2em;
@@ -352,7 +353,7 @@ function accessor(d){
         row.popTotal = +d["Total"]
         row.loc = d["zip"]
         row.sum += (+d["5/6"]) + (+d["6/7"]) + (+d["7/8"]) + (+d["8/9"])
-                    + (+d["9/10"]) + (+d["10/11"]) + (+d["11/12"]);            
+                    + (+d["9/10"]) + (+d["10/11"]) + (+d["11/12"]);
         return row;
 }
 

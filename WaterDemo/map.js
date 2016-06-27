@@ -64,7 +64,7 @@ function drawGeo(){
 var flag = 2006;
 // Create the Google Map…
 var map = new google.maps.Map(d3.select("#map").node(), {
-  zoom: 11,
+  zoom: 10,
   center: new google.maps.LatLng(34.000829,-118.5058396),
   mapTypeId: google.maps.MapTypeId.TERRAIN,
   disableDefaultUI: true,
@@ -72,21 +72,12 @@ var map = new google.maps.Map(d3.select("#map").node(), {
 });
 var quantize = d3.scale.sqrt()
     .domain([0, 110])
-    .range([8,15]);
+    .range([8,12]);
 
-    var color = d3.scale.ordinal()
-        .domain([-20, 20])
-        .range(['#d7191c','#fdae61','#ffffbf','#a6d96a','#1a9641']);
+    var color = d3.scale.threshold()
+        .domain([-100,-20,0,20,100])
+        .range(['#d7191c','#fdae61','#ffffbf','#a6d96a','#1a9641'].reverse());
 
-        var format = d3.format(",");
-
-        var tip = d3.tip()
-          .attr('class', 'd3-tip')
-          .offset([-10, 0])
-          .html(function(d) {
-            return  "<strong>Population:</strong> <span style='color:red'>" + d["FY 05/06"] + "</span><hr>" +
-             "<strong>Country:</strong> <span style='color:red'>" + d + "</span>";
-         });
 
 
 var circles;
@@ -166,35 +157,35 @@ console.log(data,"geo");
            "The color represents if that increased or decreased water usage from the year before. Red means they increased water usage in the last year";
        });
 
-// var legendDiv = d3.select("html").append("svg").attr("id","legendDiv");
-//        var legend = d3.legend.color()
-//            .shape("path", d3.svg.symbol().type("circle").size(150)())
-//              .shapePadding(10)
-//              .scale(color);
-//
-//        var legendSize = d3.legend.size()
-//              .scale(quantize)
-//              .shape('circle')
-//              .shapePadding(15)
-//              .labelOffset(20)
-//              .labelFormat(format)
-//              .orient('vertical');
-//
-//
-//        legendDiv.append("g")
-//             .attr("class", "legend")
-//             .attr("transform", "translate(100,80)");
-//
-//             legendDiv.append("g")
-//                  .attr("class", "legendSize")
-//                  .attr("transform", "translate(100,280)");
-//
-//
-//        legendDiv.select(".legend")
-//          .call(legend);
-//
-//          legendDiv.select(".legendSize")
-//            .call(legendSize);
+var legendDiv = d3.select("html").append("svg").attr("id","legendDiv");
+       var legend = d3.legend.color()
+           .shape("path", d3.svg.symbol().type("circle").size(150)())
+             .shapePadding(10)
+             .scale(color);
+
+    //    var legendSize = d3.legend.size()
+    //          .scale(quantize)
+    //          .shape('circle')
+    //          .shapePadding(15)
+    //          .labelOffset(20)
+    //          .labelFormat(format)
+    //          .orient('vertical');
+
+
+       legendDiv.append("g")
+            .attr("class", "legend")
+            .attr("transform", "translate(20,20)");
+
+            // legendDiv.append("g")
+            //      .attr("class", "legendSize")
+            //      .attr("transform", "translate(100,280)");
+
+
+       legendDiv.select(".legend")
+         .call(legend);
+         //
+        //  legendDiv.select(".legendSize")
+        //    .call(legendSize);
 
 
 });
@@ -226,42 +217,6 @@ var autoCycle = setInterval(function (){
     switch(flag) {
 
 
-
-    //     case 2005:
-    //         circles.transition().duration(2000)
-    //         .attr("fill",function(d){return color(+d["FY 05/06"])})
-    //           .attr("r", function(d){return quantize(d["FY 05/06"])});
-      //
-    //           flag=2006;
-    //           break;
-      //
-    //   case 2006:
-    //       circles.transition().duration(2000)
-    //         .attr("r", function(d){return quantize(d["FY 06/07"])})
-    //         .attr("fill",function(d){return color(+d["FY 06/07"])});
-    //         flag=2007;
-    //         break;
-      //
-    //     case 2007:
-    //     circles.transition().duration(2000)
-    //       .attr("r", function(d){return quantize(d["FY 07/08"])})
-    //       .attr("fill",function(d){return color(+d["FY 07/08"])});
-    //       flag=2008;
-    //       break;
-      //
-    //       case 2008:
-    //       circles.transition().duration(2000)
-    //         .attr("r", function(d){return quantize(d["FY 08/09"])})
-    //         .attr("fill",function(d){return color(+d["FY 08/09"])});
-    //         flag=2009;
-    //         break;
-      //
-    //         case 2009:
-    //         circles.transition().duration(2000)
-    //           .attr("r", function(d){return quantize(d["FY 09/10"])})
-    //           .attr("fill",function(d){return color(+d["FY 09/10"])});
-    //           flag=2005;
-    //           break;
 
   case 2006:
   if(!first){

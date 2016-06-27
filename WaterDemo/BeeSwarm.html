@@ -112,6 +112,13 @@ div#notes{
     position: absolute;
     top: 20px;
     right:20px;
+    margin-left: 80vw;
+}
+
+svg#legendDiv{
+    position: absolute;
+    top: 1000px;
+    right:20px;
     margin-left: 70vw;
 }
 
@@ -345,7 +352,13 @@ focus.call(tip);
                    .attr("x", 0)
                    .attr("y", 0 )
                    .attr("class","axisN")
-                   .text(x + " : " + "LA Water")
+                   .text(function(d){
+                       if(x === "sum") return "Total Water Used from 2005-2013"
+                       + " *Hundred Cubic Feet (HCF) of water";
+                       if(x === "popTotal") return "Total Population of Area";
+                       if(x === "age") return "Median Age of Area";
+                       if(x === "houseSize") return "Average Size of Household";
+                   })
                    .attr('transform', 'translate(' + 165 + ',' + 135 + ')');
 
 
