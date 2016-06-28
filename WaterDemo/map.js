@@ -75,7 +75,7 @@ var quantize = d3.scale.sqrt()
     .range([8,12]);
 
     var color = d3.scale.threshold()
-        .domain([-100,-20,0,20,100])
+        .domain([-100,-10,0,10,100])
         .range(['#d7191c','#fdae61','#ffffbf','#a6d96a','#1a9641'].reverse());
 
 
