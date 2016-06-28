@@ -480,12 +480,12 @@ var color = '#FF9690';
 
 
 
-              var renderPath = d3.svg.area()
-                  .x0(function(d) { return d[0]; })
-                  .y1(function(d) { return d[1]; })
-              var renderFlath = d3.svg.area()
-                  .x0(function(d) { return -d[0] + plotWidth; })
-                  .y1(function(d) { return d[1]; })
+              var renderPath = d3.svg.line()
+                  .x(function(d) { return d[0]; })
+                  .y(function(d) { return d[1]; })
+              var renderFlath = d3.svg.line()
+                  .x(function(d) { return -d[0] + plotWidth; })
+                  .y(function(d) { return d[1]; })
 
                 var flag = false;
 
