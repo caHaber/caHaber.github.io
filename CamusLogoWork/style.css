@@ -1,0 +1,27 @@
+circle {
+    color: white;
+    fill: white;
+}
+
+circle:hover {
+    fill:white;
+}
+
+path:hover {
+    fill:white;
+}
+
+.st9:hover {
+    fill:#1D76BB;
+}
+
+.st0{fill:#D7DE27;}
+.st1{fill:#D91F5D;}
+.st2{fill:#1D76BB;}
+.st3{fill:#90298D;}
+.st4{fill:#28A8E0;}
+.st5{fill:#059347;}
+.st6{fill:#F69321;}
+.st7{fill:#3BB34A;}
+.st8{fill:#F15B2A;}
+.st9{fill:#FFFFFF;}
