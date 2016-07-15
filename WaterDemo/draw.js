@@ -62,7 +62,7 @@ function drawPie(){
               .attr("transform", function(d) { return "translate(" + labelArc.centroid(d) + ")"; })
             //   .attr("dy", "-1em")
               .attr("dx", "-3em")
-              .attr("font-size",".5em")
+              .attr("font-size",".9em")
               .text(function(d) { return d.data.user; });
 
               texts.moveToFront()
