@@ -15,6 +15,10 @@ html, body {
     background-color:black;
 }
 
+
+.stations, .stations svg {
+  position: absolute;
+}
 .q0-9 { fill:rgb(247,251,255); }
 .q1-9 { fill:rgb(222,235,247); }
 .q2-9 { fill:rgb(198,219,239); }
@@ -25,42 +29,12 @@ html, body {
 .q7-9 { fill:rgb(8,81,156); }
 .q8-9 { fill:rgb(8,48,107); }
 
-.stations, .stations svg {
-  position: absolute;
-}
-
 /*.stations svg {
   left: 2000px;
   top: 2000px;
   font: 10px sans-serif;
 }*/
 
-tspan#year {
-    font-size: 7em;
-    position: absolute;
-    top: 20px;
-    left: 20px;
-}
-
-p#description {
-    font-size: 2em;
-    position: absolute;
-    top: 100px;
-    left: 20px;
-    margin-right: 60vw;
-}
-
-.stations circle {
-  opacity: .7;
-  stroke: lightgrey;
-  stroke-width: 1px;
-}
-
-path {
-    position: absolute;
-    fill:black;
-    stroke: none;
-}
 
 /*.Quakes g {
     position: absolute;
@@ -96,7 +70,7 @@ var width = 400,
 var rateById = d3.map();
 
 var quantize = d3.scale.quantize()
-    .domain([0,10,20,30,40,50,60,70,150])
+    .domain([0,50])
     .range(d3.range(9).map(function(i) { return "q" + i + "-9"; }));
 
 

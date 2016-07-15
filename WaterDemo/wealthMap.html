@@ -15,15 +15,15 @@ html, body {
     background-color:black;
 }
 
-.q0-9 { fill:rgb(247,251,255); }
-.q1-9 { fill:rgb(222,235,247); }
-.q2-9 { fill:rgb(198,219,239); }
-.q3-9 { fill:rgb(158,202,225); }
-.q4-9 { fill:rgb(107,174,214); }
-.q5-9 { fill:rgb(66,146,198); }
-.q6-9 { fill:rgb(33,113,181); }
-.q7-9 { fill:rgb(8,81,156); }
-.q8-9 { fill:rgb(8,48,107); }
+.q8-17 { fill:rgb(247,251,255); }
+.q7-17 { fill:rgb(222,235,247); }
+.q6-17 { fill:rgb(198,219,239); }
+.q5-17 { fill:rgb(158,202,225); }
+.q4-17 { fill:rgb(107,174,214); }
+.q3-17 { fill:rgb(66,146,198); }
+.q2-17 { fill:rgb(33,113,181); }
+.q1-17 { fill:rgb(8,81,156); }
+.q0-17 { fill:rgb(8,48,107); }
 
 .stations, .stations svg {
   position: absolute;
@@ -84,8 +84,8 @@ path {
 </body>
 
 <script>
-drawGeo();
 
+drawGeo();
 function drawGeo(){
 
 
@@ -93,11 +93,10 @@ function drawGeo(){
 var width = 400,
     height = 400;
 
-var rateById = d3.map();
 
 var quantize = d3.scale.quantize()
-    .domain([0,9000])
-    .range(d3.range(9).map(function(i) { return "q" + i + "-9"; }));
+    .domain([0,14])
+    .range(d3.range(9).map(function(i) { return "q" + i + "-17"; }));
 
 
 var projection2 = d3.geo.albersUsa()
@@ -117,16 +116,27 @@ var rateByZip = d3.map();
 
   queue()
       .defer(d3.json, "Zip.geojson")
-      .defer(d3.csv, "IncomeData/Income.csv", function(d) { rateByZip.set(d.name, accessor(d)) })
+      .defer(d3.csv, "IncomeData/BestSalary.csv" ,accessorMap)
       .await(draw2);
 
-console.log(rateByZip,"That fresh");
+// console.log(rateByZip,"That fresh");
 
 
-function draw2(error,data1) {
+function draw2(error,data1,data2) {
 
-    console.log(data1);
+    console.log(data1,"data1");
+    console.log(data2,"data2");
+    console.log(rateByZip,"heat");
 
+data2.forEach(function(s){
+    var sorted = s.sort(comparatorMap);
+    // console.log(sorted[8][1])
+    if(sorted.name=="90049") console.log(sorted,"RIGHT HERE");
+    // console.log(s[8][1]);
+    rateByZip.set(s.name, sorted[8][1]);
+})
+
+    console.log(rateByZip.get("90049"),"trueheat");
 
     var paths =  svg.append("g")
         .attr("class", "counties")
@@ -143,53 +153,41 @@ function draw2(error,data1) {
 
 }
 //THIS NEEDS TO CALCULATE MEDIAN BUT PAUSE...........?
-function accessor(d){
-    console.log(d);
-    return (+d["B19001017"]) + (+d["B19001016"]) + (+d["B19001015"]) + (+d["B19001014"]);
-}
+function accessorMap(d){
 
-function MedianAccessor(d){
-    // console.log(d);
-    var     a = [+d["B19001001"], "1"];
-    var     b = [+d["B19001002"], "2"];
-    var     c = [+d["B19001003"], "3"];
-    var    d = [+d["B19001004"], "4"];
-    var    e = [+d["B19001005"], "5"];
-    var     f = [+d["B19001006"], "6"];
-    var     g = [+d["B19001007"], "7"];
-    var     h = [+d["B19001008"], "8"];
-    var     i = [+d["B19001009"], "9"];
-    var     j = [+d["B19001010"], "10"];
-    var     k = [+d["B19001011"], "11"];
-    var     l = [+d["B19001012"], "12"];
-    var     m = [+d["B19001013"], "13"];
-    var     n = [+d["B19001014"], "14"];
-    var     o = [+d["B19001015"], "15"];
-    var     p = [+d["B19001016"], "16"];
-    var     q = [+d["B19001017"], "17"];
+var all = [[+d.b1,1],[+d.b2,2],
+    [+d.b3,3],[+d.b4,4],
+    [+d.b5,5],[+d.b6,6],
+    [+d.b7,7],[+d.b8,8],
+    [+d.b9,9],[+d.b10,10],
+    [+d.b11,11],[+d.b12,12],
+    [+d.b13,13],[+d.b14,14],
+    [+d.b15,15],[+d.b16,17],
+                [+d.b17,17]];
 
-    var all = [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q];
+    all.name = d.zip;
+
+if(all.name=="90049") console.log(all);
+// row.vals = all;
+// console.log(all.sort(comparator));
+//     rateByZip.set(d.name, all)
 
 // console.log(all);
-
-    all.sort(comparator);
-
-console.log(all,"all")
-
-    var z = all[2]
-    // console.log(z,"z");
-    return z;
+    return all;
+    // return (+d["B19001017"]) + (+d["B19001016"]) + (+d["B19001015"]) + (+d["B19001014"]);
 }
 
-function comparator(a,b){
-    if(isNaN(a[0])) a[0] = 0;
-    if(isNaN(b[0])) b[0] = 0;
-
-var val = b[0] - a[0];
-    if (val <= 0){
-        return b;
-    }else return a;
+function comparatorMap(a,b){
+    // if(isNaN(a[0])) a[0] = 0;
+    // if(isNaN(b[0])) b[0] = 0;
+    // console.log(a,b)
+    var val = a[0] - b[0];
+    if (val > 0){
+        return 1;
+    }else return -1;
 }
+
+
 
 </script>
 <iframe src="map.html" height="400px">
