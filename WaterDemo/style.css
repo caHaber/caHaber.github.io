@@ -13,7 +13,7 @@ section {
 
 
 /*Map background color*/
-div#map > svg , div#map2 > svg  { background-color: lightgrey; }
+div#map > svg , div#map2 > svg  { background-color: none; }
 
 
 
@@ -43,10 +43,10 @@ div#map > svg , div#map2 > svg  { background-color: lightgrey; }
 
 .counties > path {
     fill:none;
-    stroke: whitesmoke;
+    stroke: none;
     stroke-width: .3px;
 }
 
 .selected {
-    fill: red !important;
+    stroke: red !important;
 }

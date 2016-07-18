@@ -1,25 +1,27 @@
 
-function drawPie(){
-    var width = d3.select("div#title").node().getBoundingClientRect().width - 10,
-        height = 350;
+function drawPie(div){
+    var width = d3.select(div).node().getBoundingClientRect().width - 10,
+        height = 600;
 
-    var svg = d3.select("div#title").append("svg")
+    var svg = d3.select(div).append("svg")
         .attr({
             width : width,
             height : height
         });
 
         var color = d3.scale.ordinal()
-            .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
+            .range(['#a6cee3','#1f78b4','#b2df8a','#33a02c','#fb9a99','#e31a1c']);
 
 
-    var plotHeight = height - 30,
+    var plotHeight = height - 100,
         plotWidth = width - 150
 
  var radius = Math.min(plotWidth, plotHeight) / 2;
 
+var outerRadius = radius - 10;
+
  var arc = d3.svg.arc()
-     .outerRadius(radius - 10)
+     .outerRadius(outerRadius)
      .innerRadius(radius - 100);
 
  var labelArc = d3.svg.arc()
@@ -36,7 +38,7 @@ function drawPie(){
                 width : plotWidth,
                 height : plotWidth
             })
-            .attr("transform", "translate(" + plotWidth/2 + "," + plotHeight/2 + ")");
+            .attr("transform", "translate(" + plotWidth/2 + "," + (plotHeight/2 + 50) + ")");
 
         d3.csv("Water_Use_Breakdown_Chart.csv",accessor, function(error, data) {
           if (error) throw error;
@@ -56,14 +58,25 @@ function drawPie(){
 
           g.append("path")
               .attr("d", arc)
+              .attr("class",function(d){return  "" + (d.data.user).slice(0,3)})
               .style("fill", function(d) {return color(d.data.user); });
 
          var texts = g.append("text")
-              .attr("transform", function(d) { return "translate(" + labelArc.centroid(d) + ")"; })
-            //   .attr("dy", "-1em")
-              .attr("dx", "-3em")
+         .attr("transform", function(d) { //set the label's origin to the center of the arc
+                 var c = arc.centroid(d),
+                      x = c[0],
+                      y = c[1],
+                      // pythagorean theorem for hypotenuse
+                      h = Math.sqrt(x*x + y*y);
+                  return "translate(" + (x/h * radius) +  ',' +
+                     (y/h * radius) +  ")";
+            })
+              .attr("dx", "-1em")
+            //    .attr("dy", "1em")
               .attr("font-size",".9em")
-              .text(function(d) { return d.data.user; });
+               .attr("text-anchor","middle")
+
+              .text(function(d) { return d.data.user +  "" + d.data.value + " %"; });
 
               texts.moveToFront()
 
@@ -319,7 +332,7 @@ function drawWaterUse(){
 
 
 
-var width = d3.select("div#map").node().getBoundingClientRect().width - 100,
+var width = (d3.select("div#map").node().getBoundingClientRect().width - 100)/2,
     height = 400;
 
 
@@ -345,12 +358,16 @@ var svg = d3.select("div#map").append("svg")
 
 
 var rateById = d3.map();
+var rateByRegion = d3.map();
 
 
 
   queue()
       .defer(d3.json, "Zip.geojson")
-      .defer(d3.csv, "WaterWithPop.csv", function(d) { rateById.set(d.zip, waterAccessor(d)) })
+      .defer(d3.csv, "WaterWithPop.csv", function(d) {
+          rateByRegion.set(d.zip, d.region)
+          rateById.set(d.zip, waterAccessor(d))
+      })
       .await(draw2);
 
 // console.log(rateByZip);
@@ -363,7 +380,7 @@ function draw2(error,data1) {
       .selectAll("path")
         .data(data1.features)
       .enter().append("path")
-      .attr("class", function(d) { return "z" + (d.properties.geoid10) + " " + quantize(rateById.get(d.properties.geoid10)); })
+      .attr("class", function(d) { return "z" + rateByRegion.get(d.properties.geoid10) + " " + quantize(rateById.get(d.properties.geoid10)); })
         .attr("d", path);
 
 
@@ -501,126 +518,21 @@ function comparatorMap(a,b){
 }
 
 function waterAccessor(d) {
-    var temp = (+d["5/6"]) + (+d["6/7"]) + (+d["7/8"]) + (+d["8/9"]) + (+d["9/10"]) + (+d["10/11"]) + (+d["11/12"]);
+    var temp = (+d["05/06"]) + (+d["06/07"]) + (+d["07/08"]) + (+d["08/09"]) + (+d["09/10"]) + (+d["10/11"]) + (+d["11/12"]);
     return (temp/7);
 }
 
 
 
-function drawWaterBar() {
-    var width = d3.select("div#waterBar").node().getBoundingClientRect().width - 10,
-        height = 350;
-
-    var svg = d3.select("div#waterBar").append("svg")
-        .attr({
-            width : width,
-            height : height
-        });
-
-    var format = d3.format("%");
-
-        var color = d3.scale.ordinal()
-            .domain([0, 300])
-            .range(['#d7191c','#fdae61','#ffffbf','#a6d96a','#1a9641']);;
-
-    var plotHeight = height - 30,
-        plotWidth = width - 150
-
-        var plot = svg.append("g")
-            .attr({
-                width : plotWidth,
-                height : plotWidth
-            })
-            .attr("transform", "translate(" + 130 + "," + 10 + ")");
-
-            var y = d3.scale.ordinal()
-            .rangeRoundBands([0, plotHeight], .1);
-
-              var x = d3.scale.linear()
-                  .range([plotWidth, 0]);
-
-              var xAxis = d3.svg.axis()
-                  .scale(x)
-                //   .tickFormat(function(d) { return d + "%"; })
-                  .orient("bottom").tickSize(-plotHeight);
-
-
-              var yAxis = d3.svg.axis()
-                  .scale(y)
-                  .orient("left")
-                  ;
-
-
-    // var color = d3.scale.category10();
-
-    d3.csv("WaterWithPop.csv", waterAccessorBar, function(error, data) {
-        if (error) throw error;
-
-
-    data.sort(comparator);
-
-        // var zips = d3.nest()
-        //         .key(function(d) {return d["Location 1"]})
-        //         .entries(data);
-    var users = data.map(function(d){return d.zip});
-        x.domain([200,0]);
-        y.domain(users);
-
-
-        plot.append("g")
-          .attr("class", "x_axis")
-          .attr("class", "axis")
-          .attr("transform", "translate(0," + plotHeight + ")")
-          .call(xAxis)
-        //   .append("text")
-        //     // .attr("transform", "rotate(-90)")
-        //     .attr("y", 6)
-        //     .attr("dy", ".71em")
-        //     .style("text-anchor", "end")
-        //     .text("Percentage of Water Use (%)");
-
-      plot.append("g")
-          .attr("class", "y_axis")
-          .call(yAxis);
-
-
-    d3.selectAll(".y_axis text")
-        .attr("transform","rotate(-25)");
-    // console.log(zips);
-
-
-        var node = plot.selectAll("rect")
-          .data(data)
-        .enter().append("rect")
-          .attr("class",function(d){return "bar z" + (d.zip)})
-          .attr("x", 0)
-          .attr("width", function(d) { return  x(d.value)})
-          .attr("y", function(d) { return y(d.zip); })
-          .attr("height", y.rangeBand());
-        //   .on("mouseover",function(d){
-        //       var me = d3.select(this).attr("class");
-        //       var zip = me.substr(me.indexOf(' ')+1);
-        //       d3.selectAll("path." + zip).style("stroke","red")
-        //         .style("stroke-width","30px;")
-        //         .attr("color","black");
-        //       console.log();
-        //   });
-        //   .style("fill", function(d) { return color(d.sum); });
-
-
-
-
-
-    });
-}
-
 function waterAccessorBar(d) {
+
     row = {};
-    var temp = (+d["5/6"]) + (+d["6/7"]) + (+d["7/8"]) + (+d["8/9"]) + (+d["9/10"]) + (+d["10/11"]) + (+d["11/12"]);
+    var temp = (+d["05/06"]) + (+d["06/07"]) + (+d["07/08"]) + (+d["08/09"]) + (+d["09/10"]) + (+d["10/11"]) + (+d["11/12"]);
     row.value = temp/7;
     row.zip = d.zip;
+    row.region = d.region;
     // if(row.value > 50)
-    if(row.value > 50)
+    // if(row.value > 50)
     return row;
 }
 
@@ -675,12 +587,22 @@ function drawWaterBar() {
 
     data.sort(comparator);
 
-        // var zips = d3.nest()
-        //         .key(function(d) {return d["Location 1"]})
-        //         .entries(data);
-    var users = data.map(function(d){return d.zip});
-        x.domain([200,0]);
+        var zips = d3.nest()
+                .key(function(d) {return d.region})
+                .rollup(function(d){
+                    return d3.mean(d,function(val){return val.value })  })
+                .entries(data);
+
+                console.log(zips,"zippin");
+
+
+
+        var users = ["S","H","N","W","E"]
+
+        x.domain([60,0]);
         y.domain(users);
+
+        console.log(users)
 
 
         plot.append("g")
@@ -706,12 +628,12 @@ function drawWaterBar() {
 
 
         var node = plot.selectAll("rect")
-          .data(data)
+          .data(zips)
         .enter().append("rect")
-          .attr("class",function(d){return "bar z" + (d.zip)})
+          .attr("class",function(d){return "bar z" + (d.key)})
           .attr("x", 0)
-          .attr("width", function(d) { return  x(d.value)})
-          .attr("y", function(d) { return y(d.zip); })
+          .attr("width", function(d) {return  x(d.values)})
+          .attr("y", function(d) { return y(d.key); })
           .attr("height", y.rangeBand())
           .on("mouseover",function(d){
               var me = d3.select(this).attr("class");
@@ -790,13 +712,23 @@ function drawSalaryBar() {
     d3.csv("IncomeData/BestMedian.csv", salaryBarAccessor, function(error, data) {
         if (error) throw error;
 
-        // var zips = d3.nest()
-        //         .key(function(d) {return d["Location 1"]})
-        //         .entries(data);
-    var users = data.map(function(d){return (d.zip)});
+        var zips = d3.nest()
+                .key(function(d) {return d.region})
+                .rollup(function(d){
+                    return d3.mean(d,function(s){return s.median})
+                })
+                .entries(data);
 
-    users.sort(function(a,b){ return rateByZip.get(b) - rateByZip.get(a) })
 
+                console.log(zips,"heaters")
+
+
+
+    // var users = data.map(function(d){return (d.zip)});
+    //
+    // users.sort(function(a,b){ return rateByZip.get(b) - rateByZip.get(a) })
+
+    var users = ["S","E","H","N","W"];
 
 
 
@@ -829,13 +761,13 @@ function drawSalaryBar() {
 
     console.log(rateByZip,"heat zip fire");
         var node = plot.selectAll("rect")
-          .data(data)
+          .data(zips)
         .enter().append("rect")
           .attr("class",function(d){return "bar s" + (d.zip)})
           .attr("x", 0)
           .attr("width", function(d) {
-              return  x(rateByZip.get(d.zip))})
-          .attr("y", function(d) { return y(d.zip); })
+              return  x(d.values)})
+          .attr("y", function(d) { return y(d.key); })
           .attr("height", y.rangeBand())
           .on("mouseover",function(d){
               var me = d3.select(this).attr("class");
@@ -864,10 +796,10 @@ function drawSalaryBar() {
 }
 
 function salaryBarAccessor(d){
-    var rate = 90000;
-    // var rate = 30000;
-    // var rate = 100000;
-    if(rateByZip.get(d.zip) > rate)
+    // var rate = 90000;
+    // // var rate = 30000;
+    // // var rate = 100000;
+    // if(rateByZip.get(d.zip) > rate)
     return d;
 
 }

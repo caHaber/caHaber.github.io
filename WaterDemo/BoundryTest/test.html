@@ -3,8 +3,9 @@
     <script src="//d3js.org/queue.v1.min.js"></script>
     <script src="https://d3js.org/d3-voronoi.v1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/1.10.0/d3-legend.min.js"></script>
+    <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
 <style>
-.q0-9 { fill:rgb(247,251,255) !important; }
+/*.q0-9 { fill:rgb(247,251,255) !important; }
 .q1-9 { fill:rgb(222,235,247) !important; }
 .q2-9 { fill:rgb(198,219,239) !important; }
 .q3-9 { fill:rgb(158,202,225) !important; }
@@ -12,17 +13,66 @@
 .q5-9 { fill:rgb(66,146,198) !important; }
 .q6-9 { fill:rgb(33,113,181) !important; }
 .q7-9 { fill:rgb(8,81,156) !important; }
-.q8-9 { fill:rgb(8,48,107) !important; }
+.q8-9 { fill:rgb(8,48,107) !important; }*/
+
+
+
+.q0-9,
+.q1-9,
+.q2-9,
+.q3-9,
+.q4-9,
+.q5-9,
+.q6-9,
+.q7-9,
+.q8-9 { fill:grey !important;
+stroke: black }
 
 :not(counties){
     stroke:none;
+    stroke-width;
+    fill:none;
 }
 
 .counties {
     fill: red;
     opacity: .5;
-    stroke: black;
+    stroke: blue;
 }
+
+.d3-tip {
+  line-height: 1;
+  font-weight: bold;
+  padding: 6px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 1px;
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: .5;
+  color: rgba(0, 0, 0, 0.8);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}
+
+/* Style northward tooltips differently */
+.d3-tip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+}
+
+.selected {
+    fill: red !important;
+}
+
 </style>
 </head>
 <body>
@@ -35,6 +85,14 @@ function drawMap() {
 var width = d3.select("body").node().getBoundingClientRect().width - 100,
     height = 400;
 
+    var tip = d3.tip()
+      .attr('class', 'd3-tip')
+      .offset([-2, 0])
+      .html(function(d) {
+        return  "<strong>Zip:</strong> <span style='color:red'>" + d.properties.geoid10 + "</span><hr>";
+        //  "<strong>Country:</strong> <span style='color:red'>" + d.key + "</span>";
+
+      })
 
 var quantize = d3.scale.threshold()
     .domain([10,20,30,40,50,60,70,80,150])
@@ -43,6 +101,9 @@ var quantize = d3.scale.threshold()
 var color = d3.scale.threshold()
     .domain([0,10,20,30,40,50,60,70,150])
     .range(['#f7fbff','#deebf7','#c6dbef','#9ecae1','#6baed6','#4292c6','#2171b5','#08519c','#08306b'])
+
+
+var ords = d3.scale.category10();
 
 var projection2 = d3.geo.albersUsa()
     .scale(25500)
@@ -58,30 +119,27 @@ var svg = d3.select("body").append("svg")
 
 
 var rateById = d3.map();
-
+var rateByRegion = d3.map();
+//
+//
 
 
   queue()
       .defer(d3.json, "Zip.geojson")
-      .defer(d3.json, "la_city.json")
-      .defer(d3.csv, "WaterWithPop.csv", function(d) { rateById.set(d.zip, waterAccessor(d)) })
+      .defer(d3.json, "neighborhoods.geojson")
+      .defer(d3.csv, "BestMedian.csv", function(d) {
+          rateById.set(d.zip, waterAccessor(d));
+          rateByRegion.set(d.zip, d.region);
+       })
       .await(draw2);
 
 // console.log(rateByZip);
 
 
 function draw2(error,data1,data2) {
-
+console.log(rateByRegion)
     console.log(data1);
     console.log(data2);
-
-    var paths =  svg.append("g")
-        .attr("class", "counties")
-      .selectAll("path")
-        .data(data1.features)
-      .enter().append("path")
-      .attr("class", function(d) { return "z" + (d.properties.geoid10) + " " + quantize(rateById.get(d.properties.geoid10)); })
-        .attr("d", path);
 
 
     var counties = svg.append("g")
@@ -91,6 +149,34 @@ function draw2(error,data1,data2) {
     .enter().append("path")
     .attr("class","counties")
     .attr("d",path);
+
+// counties.call(tip);
+
+    var paths =  svg.append("g")
+        .attr("class", "counties")
+      .selectAll("path")
+        .data(data1.features)
+      .enter().append("path")
+      .attr("class", function(d) { return "z" + (d.properties.geoid10) + " " + quantize(rateById.get(d.properties.geoid10)); })
+        .attr("d", path)
+        // .on("mouseover",tip.show)
+        // .on("mouseout",tip.hide)
+        .style("fill","white")
+        // .style("fill",function(d){return ords(rateByRegion.get(d.properties.geoid10)) })
+        .on("click",function(d){
+            if(d3.select(this).classed("selected") == false) {
+                d3.select(this).classed("selected","true")
+            }
+            else {
+                d3.select(this).classed("selected",false);
+            }
+            // console.log(d3.select(this).classed("selected"))
+            //
+            console.log(d3.select(this).attr("class").slice(0,6));
+        })
+
+
+
 
     //     var legend = d3.legend.color()
     //         .shape("path", d3.svg.symbol().type("circle").size(150)())

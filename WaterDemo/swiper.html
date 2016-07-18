@@ -1,0 +1,249 @@
+
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/css/swiper.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/css/swiper.min.css">
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="//d3js.org/d3.v3.min.js"></script>
+<script src="//d3js.org/queue.v1.min.js"></script>
+<script src="https://d3js.org/d3-voronoi.v1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/1.10.0/d3-legend.min.js"></script>
+<script src="draw.js"></script>
+<link rel="stylesheet" href="animations.css">
+<link rel="stylesheet" href="style.css">
+
+<style>
+html, body {
+        position: relative;
+        height: 100%;
+    }
+    body {
+        background: black;
+        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        fill:white;
+        margin: 0;
+        padding: 0;
+    }
+    .swiper-container {
+        width: 80%;
+        height: 100%;
+    }
+
+    .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: black;
+        /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+    }
+
+
+    svg {
+        background-color: black;
+        border-radius:5px;
+    }
+
+
+
+    path.line {
+        fill: none;
+        stroke: steelblue;
+        stroke-width: 4px;
+    }
+
+    .y-axis line {
+      stroke: lightgrey;
+    }
+
+
+    .bar {
+     transition: fill .5s ease;
+      fill: lightblue;
+    }
+
+    rect#M,
+    rect#S {
+        transition: fill .5s ease;
+        fill: steelblue;
+    }
+    rect#M:hover,
+    rect#S:hover,
+    .bar:hover {
+      fill: red;
+    }
+
+    .y_axis,
+    .axis {
+      font: 10px sans-serif;
+    }
+
+
+
+    .y_axis path,
+    .axis path {
+        fill: none;
+    }
+
+
+    .axis line {
+      fill: none;
+      stroke: lightgrey;
+      shape-rendering: crispEdges;
+    }
+
+    .x_axis line {
+      stroke: whitesmoke;
+    }
+
+    div {
+        color: white;
+    }
+
+</style>
+
+<head>
+
+
+
+<body>
+    <!-- Slider main container -->
+<div class="swiper-container">
+    <div
+        class="parallax-bg"
+        style="background-image:url(http://lorempixel.com/900/600/nightlife/2/)"
+        data-swiper-parallax="-23%">
+    </div>
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper">
+        <!-- Slides -->
+        <div class="swiper-slide" id="title">
+            <div class="title" data-swiper-parallax="-100">The distribution of water use in Los Angeles</div>
+            <!-- Parallax subtitle -->
+            <!-- And parallax text with custom transition duration -->
+            <div class="text" data-swiper-parallax="-300" data-swiper-parallax-duration="600">
+              <p></p>
+            </div>
+        </div>
+        <div class="swiper-slide" id="title2">
+            <div class="title" data-swiper-parallax="-100">The distribution of water use in Los Angeles</div>
+            <!-- Parallax subtitle -->
+            <!-- And parallax text with custom transition duration -->
+            <div class="text" data-swiper-parallax="-300" data-swiper-parallax-duration="600">
+              <p></p>
+            </div>
+        </div>
+        <div class="swiper-slide" id="map">Slide 3</div>
+
+    </div>
+
+    <!-- If we need navigation buttons -->
+    <!-- <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div> -->
+
+    <div class="swiper-scrollbar"></div>
+
+</div>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/js/swiper.jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/js/swiper.min.js"></script>
+
+
+<script>
+var rateByZip = d3.map();
+
+
+// For appending child to front
+d3.selection.prototype.moveToFront = function() {
+  return this.each(function(){
+    this.parentNode.appendChild(this);
+  });
+};
+
+
+
+
+function accessor(d) {
+    var row = {};
+    var str = d.Percentage;
+    row.value = +(str).slice(0,str.length-1);
+    row.user = d["End User"];
+    return row;
+}
+
+function comparator(a, b) {
+  return b.value - a.value;
+}
+
+var mySwiper = new Swiper ('.swiper-container', {
+  // Optional parameters
+  direction: 'vertical',
+  loop: false,
+  speed: 1800,
+
+  // If we need pagination
+
+  // Navigation arrows
+  nextButton: '.swiper-button-next',
+  prevButton: '.swiper-button-prev',
+
+  scrollbar: '.swiper-scrollbar',
+  parallax: 'true',
+  effect: 'fade',
+
+
+
+})
+
+function toggleCircle(){
+    d3.selectAll("path.Ind").transition().duration(1500).style("fill","grey");
+    d3.selectAll("path.Ins").transition().duration(1500).style("fill","grey");
+    d3.selectAll("path.Los").transition().duration(1500).style("fill","grey");
+    d3.selectAll("path.Com").transition().duration(1500).style("fill","grey");
+}
+
+mySwiper.enableKeyboardControl();
+
+    console.log(mySwiper.activeIndex)
+
+    $(document).keydown(function(e) {
+        switch(e.which) {
+                case 38:
+                if(mySwiper.activeIndex == 0) {
+                    toggleCircle();
+                }
+                break;
+                case 40:
+                if(mySwiper.activeIndex == 1) {
+                    toggleCircle();
+                };
+                break;
+                default: return;
+
+        }
+            e.preventDefault();
+
+    })
+
+
+
+drawPie("div#title");
+drawPie("div#title2");
+// drawLine();
+drawWaterUse();
+
+</script>
+</body>
