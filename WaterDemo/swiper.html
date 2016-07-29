@@ -8,6 +8,7 @@
 <script src="//d3js.org/queue.v1.min.js"></script>
 <script src="https://d3js.org/d3-voronoi.v1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/1.10.0/d3-legend.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 <script src="draw.js"></script>
 <link rel="stylesheet" href="animations.css">
 <link rel="stylesheet" href="style.css">
@@ -18,22 +19,22 @@ html, body {
         height: 100%;
     }
     body {
-        background: black;
+        background: whitesmoke;
         font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
         font-size: 14px;
-        fill:white;
+        fill:black;
         margin: 0;
         padding: 0;
     }
     .swiper-container {
-        width: 80%;
+        width: 90%;
         height: 100%;
     }
 
     .swiper-slide {
         text-align: center;
         font-size: 18px;
-        background: black;
+        background: none;
         /* Center slide text vertically */
         display: -webkit-box;
         display: -ms-flexbox;
@@ -49,9 +50,30 @@ html, body {
         align-items: center;
     }
 
+    /*div#map2{
+        width: 100vw;
+    }*/
+polyline {
+    fill: none;
+    stroke: black;
+
+}
+
+    div.title {
+        width: 33vw;
+    }
+
+    div#waterBar{
+        width: 50vw;
+    }
+
+    div#salaryBar{
+        width: 50vw;
+    }
+
 
     svg {
-        background-color: black;
+        background-color: whitesmoke;
         border-radius:5px;
     }
 
@@ -137,24 +159,36 @@ html, body {
             </div>
         </div>
         <div class="swiper-slide" id="title2">
-            <div class="title" data-swiper-parallax="-100">The distribution of water use in Los Angeles</div>
+            <!-- <div class="title" data-swiper-parallax="-100">Over Time</div> -->
             <!-- Parallax subtitle -->
             <!-- And parallax text with custom transition duration -->
             <div class="text" data-swiper-parallax="-300" data-swiper-parallax-duration="600">
               <p></p>
             </div>
         </div>
-        <div class="swiper-slide" id="map">Slide 3</div>
+        <div class="swiper-slide" id="map">
+            <div id="waterBar" data-swiper-parallax="-100" data-swiper-parallax-duration="600" ></div>
+            <div class="text" data-swiper-parallax="-300" data-swiper-parallax-duration="600">
+              <p></p>
+            </div>
+        </div>
+        <div class="swiper-slide" id="map2">
+            <div id="salaryBar" data-swiper-parallax="-100" data-swiper-parallax-duration="600" ></div>
+            <div class="text" data-swiper-parallax="-300" data-swiper-parallax-duration="600">
+              <p></p>
+            </div>
+        </div>
 
     </div>
 
     <!-- If we need navigation buttons -->
     <!-- <div class="swiper-button-prev"></div>
     <div class="swiper-button-next"></div> -->
+<div class="swiper-scrollbar"></div>
 
-    <div class="swiper-scrollbar"></div>
 
 </div>
+
 
 
 
@@ -226,6 +260,7 @@ mySwiper.enableKeyboardControl();
                     toggleCircle();
                 }
                 break;
+
                 case 40:
                 if(mySwiper.activeIndex == 1) {
                     toggleCircle();
@@ -240,10 +275,16 @@ mySwiper.enableKeyboardControl();
 
 
 
-drawPie("div#title");
-drawPie("div#title2");
+// drawPie("div#title");
+// drawPie("div#title2");
+
 // drawLine();
-drawWaterUse();
+drawBar();
+// drawWaterUse();
+// drawWaterBar();
+//
+//
+// drawSalaryMap();
 
 </script>
 </body>

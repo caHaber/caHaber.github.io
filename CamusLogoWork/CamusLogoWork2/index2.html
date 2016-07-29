@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<style>
+body {
+    background-color: black;
+}
+
+circle {
+    color: white;
+    fill: white;
+}
+</style>
+<style type="text/css">
+	.st0{fill:#D7DE27;}
+	.st1{fill:#D91F5D;}
+	.st2{fill:#1D76BB;}
+	.st3{fill:#90298D;}
+	.st4{fill:#28A8E0;}
+	.st5{fill:#059347;}
+	.st6{fill:#F69321;}
+	.st7{fill:#3BB34A;}
+	.st8{fill:#F15B2A;}
+	.st9{fill:#FFFFFF;}
+
+</style>
+</head>
+<body>
+<script src="//d3js.org/d3.v3.min.js"></script>
+<script src="//d3js.org/topojson.v1.min.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script> -->
+<svg width="960" height="960"></svg>
+<!-- <script src="https://d3js.org/d3.v4.0.0-alpha.40.min.js"></script> -->
+<script src="https://d3js.org/d3-voronoi.v0.4.min.js"></script>
+<script>
+
+var voronoi = d3.voronoi();
+
+</script>
+<script>
+
+
+
+var nodes = [],
+    links = [],
+    width = 960,
+    height = 500;
+
+    var path = d3.geo.path(),
+        force = d3.layout.force().size([width, height]);
+        var svg = d3.select("body").append("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+d3.xml("LogoBlack.svg", "image/svg+xml", function(error, xml) {
+  if (error) throw error;
+  var svgNode = xml
+                .getElementsByTagName("svg")[0];
+
+    console.log(svgNode);
+
+
+  draw(svgNode);
+
+  //FROM MBOSTOCK FORCE STATES BLOCK
+//   var circles = d3.select(svgNode).selectAll("circle")[0];
+//   var paths = d3.select(svgNode).selectAll("path")[0];
+//
+// console.log(circles,"circs")
+// console.log(paths,"paths")
+//
+//   var arr = [];
+//   var arrPaths = [];
+//
+//
+//   circles.forEach(function(s){
+//       var me = d3.select(s);
+//       // console.log(me.node());
+//       arr.push(me.node());
+//   })
+//
+//   paths.forEach(function(s){
+//       var me = d3.select(s);
+//       // console.log(me.node());
+//       arrPaths.push(me.node());
+//   })
+//   console.log(arr,"circs2")
+//   console.log(arrPaths,"paths2")
+//
+//
+//   arrPaths.forEach(function(d, i) {
+//       var me = d3.select(this);
+//       console.log(me.node());
+//     var centroid = getMyCentroid(me.node());
+//     console.log(centroid);
+//     centroid.x = centroid[0];
+//     console.log(centroid,"centroid")
+//     centroid.y = centroid[1];
+//     centroid.feature = d;
+//     nodes.push(centroid);
+//   // });
+//
+//   console.log(nodes,"nodes");
+//
+//
+//
+//   d3.geom.voronoi().links(nodes).forEach(function(link) {
+//       console.log(link);
+//      var dx = link.source.x - link.target.x,
+//          dy = link.source.y - link.target.y;
+//     link.distance = Math.sqrt(dx * dx + dy * dy);
+//     links.push(link);
+//   });
+//
+//   console.log(links,"links");
+//
+//   force
+//       .gravity(0)
+//       .nodes(nodes)
+//       .links(links)
+//       .linkDistance(function(d) { return d.distance; })
+//       .start();
+//
+//   var link = svg.selectAll("line")
+//       .data(links)
+//     .enter().append("line")
+//       .attr("x1", function(d) { return d.source.x; })
+//       .attr("y1", function(d) { return d.source.y; })
+//       .attr("x2", function(d) { return d.target.x; })
+//       .attr("y2", function(d) { return d.target.y; });
+//
+//   var node = svg.selectAll("g")
+//       .data(nodes)
+//     .enter().append("g")
+//       .attr("transform", function(d) { return "translate(" + -d.x + "," + -d.y + ")"; })
+//       .call(force.drag)
+//     .append("path")
+//       .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
+//       .attr("d", function(d) { return path(d.feature); });
+//
+//   force.on("tick", function(e) {
+//     link.attr("x1", function(d) { return d.source.x; })
+//         .attr("y1", function(d) { return d.source.y; })
+//         .attr("x2", function(d) { return d.target.x; })
+//         .attr("y2", function(d) { return d.target.y; });
+//
+//     node.attr("transform", function(d) {
+//       return "translate(" + d.x + "," + d.y + ")";
+//     });
+//   });
+//
+
+
+
+});
+
+
+function draw(svgNode) {
+
+    var path = d3.geo.path();
+
+
+    var circles = d3.select(svgNode).selectAll("circle");
+    var paths = d3.select(svgNode).selectAll("path");
+
+    var arr = [];
+    var arrPaths = [];
+
+
+    circles[0].forEach(function(s){
+        var me = d3.select(s);
+        console.log(me);
+        // console.log(me.node());
+        arr.push(me.node());
+    })
+
+    paths[0].forEach(function(s){
+        var me = d3.select(s);
+        var feature = {};
+
+        arrPaths.push(me.node());
+    })
+
+
+
+
+    console.log(links,"links");
+
+
+    var root = {};
+    root.radius = 100;
+    root.fixed = true;
+
+
+
+    var svg = d3.select("svg");
+
+    force = d3.layout.force()
+        // .charge(function(d, i) { return i ? 0 : -200; })
+        .charge(1.2)
+        .friction(.99)
+        .size([400, 400]);
+
+        // paths[0].forEach(function(d, i) {
+        //     // console.log(d);
+        //   if (d.id === 2 || d.id === 15 || d.id === 72) return;
+        //   var me = d3.select(d);// lower 48
+        //   var centroid = path.centroid(me);
+        //   console.log(centroid,"centerpoint")
+        //   console.log(d,"Rawd")
+        //   console.log(me.node().getBBox(),"nodeMe")
+        //   // nodes.push(getMyCentroid(me.node().getBBox()));
+        // });
+        //
+        //
+        d3.geom.voronoi().links(arr).forEach(function(link) {
+            console.log(link);
+          var dx = link.source.cx.baseVal.value - link.target.cx.baseVal.value,
+              dy = link.source.cy.baseVal.value - link.target.cy.baseVal.value;
+          link.distance = Math.sqrt(dx * dx + dy * dy);
+          links.push(link);
+        });
+
+
+
+    console.log(arr,"newCircles");
+    console.log(links,"links");
+    console.log(nodes,"nodes");
+
+force.nodes(arr).links(links);
+
+
+
+
+         var nodes = svg.selectAll("circle")
+              .data(arr)
+            .enter().append("circle")
+            .attr("class",function(d){
+                return d.classList[0];
+            })
+              .attr("r", function(d) {
+
+                  return d.r.baseVal.value * 3
+              });
+
+
+        var donePaths =  svg.selectAll("path")
+                      .data(arrPaths)
+                     .enter().append("path")
+                      .attr("d",function(d){
+                          var me = d3.select(d);
+                        //   console.log(d,"rawD");
+                          // console.log(me.attr("d"));
+                          return me.attr("d")
+                      })
+                      .attr("class",function(d){
+                          return d.classList[0];
+
+                      });
+
+                      features = [];
+
+var multis = svg.selectAll("path");
+console.log(multis,"mults")
+
+multis[0].forEach(function(d){
+    console.log(d);
+    var me = d3.select(d);
+    var feature = {};
+    feature.centroid = getMyCentroid(me);
+    features.push(feature);
+
+})
+
+var lineFunction = d3.svg.line()
+        .interpolate("basis");
+
+
+console.log(features);
+
+    console.log(voronoi(nodes));
+
+          force.on("tick", function(e) {
+            //   console.log(e);
+            var q = d3.geom.quadtree(nodes),
+                i = 0,
+                n = nodes.length;
+
+
+
+            while (++i < n) q.visit(collide(nodes));
+
+            nodes.attr("cx", function(d) { return d.x + 150; })
+                .attr("cy", function(d) { return d.y; });
+
+
+
+
+                //
+                if(e.alpha <= .0051){
+                    // console.log("yeeeee");
+                    svg.selectAll("circle").transition().duration(2000)
+                      .attr("cx", function(d) {return d.cx.baseVal.value; })
+                      .attr("cy", function(d) { return d.cy.baseVal.value; })
+                      .attr("r", function(d) {
+                          return d.r.baseVal.value});
+
+
+                  nodes.transition().delay(2000).duration(2000)
+                    .attr("cx", function(d) {return d.x + 150 })
+                    .attr("cy", function(d) { return d.y })
+                    .attr("r", function(d) {
+                        return d.r.baseVal.value * 3 });
+
+                        donePaths.transition().duration(2000)
+                          .attr("transform", "translate(" + -400 + ")");
+
+                          donePaths.transition().delay(2000).duration(2000)
+                            .attr("transform", "translate(" + 400 + ")");
+
+
+                        // force.resume();
+
+
+
+
+                }
+
+
+
+          });
+
+        //   svg.on("mousemove", function() {
+        //     // var p1 = d3.svg.mouse(this);  this line of code will report error
+        //     var p1 = d3.mouse(this);
+        //     root.px = p1[0];
+        //     root.py = p1[1];
+        //     force.resume();
+        //   });
+
+
+
+
+
+          force.start();
+
+
+        // console.log(circles,"circles");
+        // console.log(links,"links");
+
+}
+
+function getMyCentroid(bbox) {
+    console.log(bbox);
+    return [bbox.x + bbox.width/2, bbox.y + bbox.height/2];
+}
+
+
+
+
+
+</script>

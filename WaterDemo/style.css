@@ -13,7 +13,7 @@ section {
 
 
 /*Map background color*/
-div#map > svg , div#map2 > svg  { background-color: none; }
+div#map > svg , div#map2 > svg  { color: red; }
 
 
 
@@ -29,6 +29,39 @@ div#map > svg , div#map2 > svg  { background-color: none; }
 .q7-17 { fill:rgb(8,81,156) !important; }
 .q8-17 { fill:rgb(8,48,107) !important; }
 
+.voronoi path {
+  fill: none;
+  stroke: none;
+  pointer-events: all;
+}
+.cities {
+  fill: none;
+  stroke: #aaa;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  stroke-width: 1.5px;
+}
+
+.city--hover {
+  stroke: #000;
+}
+
+.focus text {
+  text-anchor: middle;
+  text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, 0 -1px 0 #fff, -1px 0 0 #fff;
+}
+
+path {
+    fill: none;
+    stroke: blue;
+}
+
+/*.voronoi path {
+  fill: none;
+  stroke:blue;
+  pointer-events: all;
+}*/
+
 
 /*Water use map*/
 .q0-9 { fill:rgb(247,251,255) !important; }
@@ -41,6 +74,8 @@ div#map > svg , div#map2 > svg  { background-color: none; }
 .q7-9 { fill:rgb(8,81,156) !important; }
 .q8-9 { fill:rgb(8,48,107) !important; }
 
+
+
 .counties > path {
     fill:none;
     stroke: none;
@@ -48,5 +83,5 @@ div#map > svg , div#map2 > svg  { background-color: none; }
 }
 
 .selected {
-    stroke: red !important;
+    fill: red !important;
 }

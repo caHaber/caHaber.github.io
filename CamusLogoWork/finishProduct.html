@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<style>
+body {
+    background-color: black;
+    font-family: monospace;
+    line-height: 2em;
+}
+
+circle {
+    color: white;
+    fill: white;
+}
+
+circle:hover {
+    fill:white;
+}
+
+path:hover {
+    fill:white;
+}
+
+.st9:hover {
+    fill:#1D76BB;
+}
+
+line {
+  stroke: none;
+}
+.controls {
+  position: fixed;
+  right: 10px;
+  top: 10px;
+  margin: 0;
+  padding-left: 8px;
+  padding-bottom: 5px;
+  color: white;
+}
+
+.controls li {
+  width: 400px;
+  list-style-type: none;
+}
+
+button {
+    font-family: monospace;
+    position: absolute;
+    top: 10px;
+    left:10px;
+}
+
+button.reset {
+    position: absolute;
+    top: 40px;
+    left:10px;
+}
+
+.controls div {
+  width: 200px;
+  float: right;
+}
+
+
+
+
+</style>
+<style type="text/css">
+	.st0{fill:#D7DE27;}
+	.st1{fill:#D91F5D;}
+	.st2{fill:#1D76BB;}
+	.st3{fill:#90298D;}
+	.st4{fill:#28A8E0;}
+	.st5{fill:#059347;}
+	.st6{fill:#F69321;}
+	.st7{fill:#3BB34A;}
+	.st8{fill:#F15B2A;}
+	.st9{fill:#FFFFFF;}
+
+</style>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+</head>
+<body>
+<button onclick="showLinks()">Show Force Links (awesome!)</button>
+<button onclick="addNodes()" class="button reset">reset</button>
+<ul class="controls">
+  <li>charge(<span class="value">-190</span>)<div id="charge"></div></li>
+  <li>linkDistance(<span class="value">30</span>)<div id="linkDistance"></div></li>
+  <li>linkStrength(<span class="value">1</span>)<div id="linkStrength"></div></li>
+  <li>gravity(<span class="value">0.1</span>)<div id="gravity"></div></li>
+  <li>friction(<span class="value">0.7</span>)<div id="friction"></div></li>
+  <li>theta(<span class="value">0.8</span>)<div id="theta"></div></li>
+</ul>
+<script src="//d3js.org/d3.v3.min.js"></script>
+<script src="//d3js.org/topojson.v1.min.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script> -->
+<!-- <script src="https://d3js.org/d3.v4.0.0-alpha.40.min.js"></script> -->
+
+<script>
+
+
+
+var width = 1000,
+    height = 800,
+    clone1;
+
+var path = d3.geo.path(),
+    force = d3.layout.force().size([width, height])
+
+        // force2 = d3.layout.force().size([width, height]);
+
+        var dotSide = 7,
+            dotSep   = 1,
+            logoXPadding = 2 * dotSide,
+            logoYPadding = 2 * dotSide,
+            h = Math.floor(logoXPadding / 2) - 0.5 * dotSide;
+            v = Math.floor(height - logoYPadding / 2) - 0.5 * dotSide;
+
+
+
+var params = {
+    charge: { min: -1000, max: 100, step: 5, value: -190 },
+    linkDistance: { min: 0, max: 1000, step: 5, value: 30 },
+    linkStrength: { min: 0, max: 1, step: 0.05, value: 1 },
+    gravity: { min: -1, max: 1, step: 0.05, value: 0.1 },
+    friction: { min: 0, max: 1, step: 0.05, value: 0.7 },
+    theta: { min: 0, max: 1, step: 0.05, value: 0.8 }
+};
+
+function onSlide(param) {
+    return function(e, ui) {
+        $(this).closest('li').find('.value').text(ui.value);
+        force[param](ui.value);
+        params[param].value = ui.value;
+        force.start();
+    };
+}
+
+$('.controls div').each(function() {
+    var param = $(this).attr('id');
+console.log(param);
+    $(this).slider({
+        slide: onSlide(param),
+        min: params[param].min,
+        max: params[param].max,
+        step: params[param].step,
+        value: params[param].value
+    });
+});
+
+
+
+    var nodes = [],
+        links = [];
+
+    var svgNode;
+
+    var flag = true;
+
+
+d3.xml("LogoBlack.svg", "image/svg+xml", function(error, xml) {
+  if (error) throw error;
+    svgNode = xml
+                .getElementsByTagName("svg")[0];
+
+    draw();
+});
+
+function draw() {
+
+    var nodes = [];
+    var links = [];
+
+
+    var svg = d3.select("body").append("svg")
+        .attr("width", width)
+        .attr("height", height);
+
+
+  // draw(svgNode);
+
+  //FROM MBOSTOCK FORCE STATES BLOCK
+  var circles = d3.select(svgNode).selectAll("circle")[0];
+  var paths = d3.select(svgNode).selectAll("path")[0];
+
+
+ var newPaths = svg.append("g").classed("oldPaths",true).selectAll("path")
+        .data(paths).enter()
+        .append("path")
+         .attr("d",function(d){
+             var me = d3.select(d);
+           //   console.log(d,"rawD");
+             // console.log(me.attr("d"));
+             return me.attr("d")
+         })
+         .attr("class",function(d){
+             return d.classList[0];
+         });
+
+
+          var oldCircles = svg.append("g").classed("oldCircles",true).selectAll("circle")
+                 .data(circles).enter()
+                 .append("circle")
+                  .attr("cx",function(d){
+                      var me = d3.select(d);
+                    //   console.log(d,"rawD");
+                      return me.attr("cx")
+                  })
+                  .attr("cy",function(d){
+                      var me = d3.select(d);
+                    //   console.log(d,"rawD");
+                      // console.log(me.attr("d"));
+                      return me.attr("cy")
+                  })
+                  .attr("r", function(d) {
+                      return d.r.baseVal.value})
+                  .attr("class",function(d){
+                      return d.classList[0];
+                  });
+
+
+  var arrCircles = [];
+  var arrPaths = [];
+
+
+
+
+
+  oldCircles[0].forEach(function(s){
+      var me = d3.select(s);
+      // console.log(me.node());
+      arrCircles.push(me.node());
+
+      var centroid = getMyCentroid(me.node())
+      if (centroid.some(isNaN)) return;
+        centroid.x = centroid[0];
+        centroid.y = centroid[1];
+        centroid.fixed = !0,
+
+        //DECIDE WHAT TO MAKE AS THE "FEATURE" cant get a real feature
+        centroid.feature = me.node();
+        centroid.class = me.attr("class");
+        nodes.push(centroid);
+
+  })
+
+  newPaths[0].forEach(function(s){
+      var me = d3.select(s);
+      // console.log(me.node());
+      arrPaths.push(me.node());
+      var centroid = getMyCentroid(me.node())
+      if (centroid.some(isNaN)) return;
+        centroid.x = centroid[0];
+        centroid.y = centroid[1];
+        // centroid.fixed = !0,
+
+        //DECIDE WHAT TO MAKE AS THE "FEATURE" cant get a real feature
+        centroid.feature = me.attr("d");
+        centroid.class = me.attr("class");
+        //
+
+      nodes.push(centroid);
+  })
+
+
+
+// var total = nodes.push(circles);
+// console.log(total,"both");
+
+  d3.geom.voronoi().links(nodes).forEach(function(link,i) {
+      if(i < 1) return;
+    var dx = link.source.x - link.target.x,
+        dy = link.source.y - link.target.y;
+    link.distance = Math.sqrt(dx * dx + dy * dy);
+    links.push(link);
+  });
+
+
+
+
+
+svg.select("g.oldPaths").remove();
+svg.select("g.oldCircles").remove();
+
+console.log(nodes);
+
+nodes.unshift({x: 1e4, y: 1e4}); // insert root node
+var root = nodes[0];
+root.radius = 2;
+root.fixed = true;
+
+force
+    //   .gravity(params.gravity.value)
+      .nodes(nodes)
+      .links(links)
+    //     .linkStrength(params.linkStrength.value)
+    //     .friction(params.friction.value)
+    //     .charge(function(d, i) { return i ? 0 : -200; })
+      .linkDistance(function(d,i) {if(i===0) return; return d.distance + 4; })
+
+
+      .gravity(0)
+    .charge(function(d, i) { return i ? 0 : -150; })
+        // .linkDistance(0.1)
+
+
+
+
+
+
+
+      .start();
+
+
+
+
+  // force2
+  //       .gravity(.05)
+  //       .nodes(arrCircles)
+  //       .charge(30)
+  //       .friction(1)
+          // .linkStrength(3.2)
+          // .friction(.1)
+          // .charge(100)
+        // .start();
+
+      var drag = force.drag()
+          .on("dragend", dragend)
+          .on("dragstart", dragstart);
+
+        //   var drag2 = force2.drag()
+        //       .on("dragend", dragend)
+        //       .on("dragstart", dragstart);
+    flag = false;
+
+
+  // var link = svg.selectAll("line")
+  //     .data(links)
+  //   .enter().append("line")
+  //     .attr("x1", function(d) { return d.source.x; })
+  //     .attr("y1", function(d) { return d.source.y; })
+  //     .attr("x2", function(d) { return d.target.x; })
+  //     .attr("y2", function(d) { return d.target.y; });
+
+  var node = svg.selectAll("g")
+      .data(nodes);
+
+    node.enter().append("g")
+      .attr("transform", function(d) {return "translate(" + -d.x + "," + -d.y + ")"; })
+      .call(drag)
+    .append("path")
+    //   .attr("transform", function(d,i) {if (typeof d != 'undefined')return; if(d.feature[0] === "M") return "translate(" + d.x + "," + d.y + ")"; })
+      .attr("d", function(d,i) { if(i === 0) return; if(d.feature[0] === "M") return d.feature ;})
+      .attr("class", function(d,i) {if(i === 0) return; if(d.feature[0] === "M") return d.class});
+
+
+    node = node.append("g")
+      .call(drag)
+     .append("circle")
+        .attr("cx", function(d,i) {if(i === 0) return; if(d.feature[0] !== "M") return d.feature.cx.baseVal.value; })
+        .attr("cy", function(d,i) {if(i === 0) return; if(d.feature[0] !== "M") return d.feature.cy.baseVal.value; })
+        .attr("r", function(d,i) {if(i === 0) return; if(d.feature[0] !== "M")  return d.feature.r.baseVal.value})
+        .attr("class",function(d,i){
+            if(i === 0) return;
+            if(d.feature[0] !== "M")
+            return d.feature.classList[0] + " " + "ball";
+        });
+
+
+    //  .on("dragstart",dragstart).on("dragend",dragend);
+
+    //   var endCircles = svg.selectAll("circle")
+    //        .data(arrCircles)
+    //      .enter().append("circle").call(drag2)
+    //      .attr("class",function(d){
+    //          return d.classList[0];
+    //      })
+    //      .attr("cx", function(d) {return d.cx.baseVal.value; })
+    //      .attr("cy", function(d) { return d.cy.baseVal.value; })
+    //      .attr("r", function(d) {
+    //          return d.r.baseVal.value});
+
+
+//http://bl.ocks.org/mbostock/3750558
+//Sticky force on the words/balls
+// d3.selectAll("circle.ball").classed("fixed",function(d)
+//     {d.fixed = true });
+//
+//  d3.selectAll("path.st9").classed("fixed",function(d)
+//     {d.fixed = true });
+
+
+//http://bl.ocks.org/espinielli/874de501ebf175d84fef PRU logo
+svg
+  .on("mousemove", mausIn)
+  .on("touchmove", mausIn)
+  .on("mouseout", mausOut)
+  .on("touchend", mausOut);
+
+function mausOut() {
+  var p1 = d3.mouse(this);
+  root.px = root.py = 1e4;
+  force.resume();
+}
+
+function mausIn() {
+  var p1 = d3.mouse(this);
+  root.px = p1[0];
+  root.py = p1[1];
+  force.resume();
+}
+
+
+  force.on("tick", function(e) {
+
+     var q = d3.geom.quadtree(nodes),
+    i = 0,
+    n = nodes.length;
+
+  // while (++i < n) q.visit(collide(nodes[i]));
+
+    // link.attr("x1", function(d) {
+    //     if(isNaN(d.y)) return;
+    //     if(isNaN(d.y)) return;
+    //     return d.source.x; })
+    //     .attr("y1", function(d) {
+    //         if(isNaN(d.y)) return;
+    //         if(isNaN(d.y)) return;
+    //         return d.source.y; })
+    //     .attr("x2", function(d) {
+    //         if(isNaN(d.y)) return;
+    //         if(isNaN(d.y)) return;
+    //         return d.target.x; })
+    //     .attr("y2", function(d) {
+    //         if(isNaN(d.y)) return;
+    //         if(isNaN(d.y)) return;
+    //         return d.target.y; });
+
+
+
+    d3.selectAll("path").attr("transform", function(d,i) {
+        if(isNaN(d.x) || isNaN(d.y)) return;
+        // if(d.radius === 100) return;/
+        // var me = d3.select(this);
+        //
+        // if(!coolFlag)
+        // console.log(me);
+        // coolFlag = true
+      return "translate(" + d.x + "," + d.y + ")";
+    });
+
+    d3.selectAll("circle").attr("transform", function(d,i) {
+        if(isNaN(d.x)) return;
+        if(isNaN(d.y)) return;
+      return "translate(" + d.x + "," + d.y + ")";
+    });
+
+
+    // if(e.alpha <= .0051){force.resume();}
+        // addNodes();
+
+    //END OF FORCE TICK
+  });
+
+  // force2.on("tick", function(e) {
+  //
+  //     var q = d3.geom.quadtree(endCircles),
+  //         i = 0,
+  //         n = endCircles.length;
+  //
+  //
+  //
+  //     while (++i < n) q.visit(collide(endCircles[i]));
+  //
+  //     svg.selectAll("circle")
+  //         .attr("cx", function(d) { return d.x; })
+  //         .attr("cy", function(d) { return d.y; });
+  //
+  //
+  //   if(e.alpha <= .0051){}
+  //       force2.resume();
+  //   //END OF FORCE TICK
+  // });
+
+
+  //END OF XML LOADING
+
+}
+
+var myVar = setInterval(addNodes, 20000);
+
+
+function getMyCentroid(element) {
+    var me = d3.select(element);
+    var bbox = me.node().getBBox();
+    return [bbox.x + bbox.width/2, bbox.y + bbox.height/2];
+}
+
+function dragstart(d) {
+    clone1 = JSON.parse(JSON.stringify(nodes));
+    // console.log(clone1);
+}
+
+function addNodes() {
+        d3.selectAll("svg")
+                .remove();
+         draw();
+}
+
+function showLinks() {
+    if (!flag) {
+        d3.selectAll("line").style("stroke","lightgray");
+        flag = true;
+    } else {
+        flag = false
+        d3.selectAll("line").style("stroke","none");
+    }
+}
+
+function dragend(d) {
+
+    // d3.selectAll("path")
+    // .attr("transform", function(d) {
+    //     console.log(d);
+    //   return "translate(" + (d[0] + "," + d[1] + ")";
+    // });
+
+    //   .attr("x", function(d) {console.log(d);return d[0]; })
+    //   .attr("y", function(d) { return d[1]; });
+    //
+    // clone1.forEach(function(n,i){
+    //     var me = d3.select(nodes[i]);
+    //
+    //     nodes[i].px = me[0][0].x;
+    //     nodes[i].py = me[0][0].y
+    //     nodes[i].x = me[0][0].px
+    //     nodes[i].y = me[0][0].py
+    //     force.nodes(nodes);
+    //     force.resume();
+
+        // d3.select(nodes[i]).attr("transform", function(d) {
+        //   return "translate(" + n[0] + "," + n[1] + ")";
+        // });
+    //
+    // });
+ }
+
+ function collide(node) {
+   var r = node.radius + 16,
+       nx1 = node.x - r,
+       nx2 = node.x + r,
+       ny1 = node.y - r,
+       ny2 = node.y + r;
+   return function(quad, x1, y1, x2, y2) {
+       if(x1 === NaN) return;
+       if(x2 === NaN) return;
+       if(y1 === NaN) return;
+       if(y2 === NaN) return;
+     if (quad.point && (quad.point !== node)) {
+       var x = node.x - quad.point.x,
+           y = node.y - quad.point.y,
+           l = Math.sqrt(x * x + y * y),
+           r = node.radius + quad.point.radius;
+       if (l < r) {
+         l = (l - r) / l * .5;
+         node.x -= x *= l;
+         node.y -= y *= l;
+         quad.point.x += x;
+         quad.point.y += y;
+       }
+     }
+     return x1 > nx2 || x2 < nx1 || y1 > ny2 || y2 < ny1;
+   };
+ }
+
+</script>

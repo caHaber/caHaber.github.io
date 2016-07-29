@@ -15,7 +15,7 @@ html, body {
     background-color:black;
 }
 
-.q8-17 { fill:rgb(247,251,255); }
+/*.q8-17 { fill:rgb(247,251,255); }
 .q7-17 { fill:rgb(222,235,247); }
 .q6-17 { fill:rgb(198,219,239); }
 .q5-17 { fill:rgb(158,202,225); }
@@ -23,12 +23,16 @@ html, body {
 .q3-17 { fill:rgb(66,146,198); }
 .q2-17 { fill:rgb(33,113,181); }
 .q1-17 { fill:rgb(8,81,156); }
-.q0-17 { fill:rgb(8,48,107); }
+.q0-17 { fill:rgb(8,48,107); }*/
 
 .stations, .stations svg {
   position: absolute;
 }
 
+.q-17 {
+    fill: lightblue !important;
+    stroke: blue;
+}
 /*.stations svg {
   left: 2000px;
   top: 2000px;
@@ -58,8 +62,9 @@ p#description {
 
 path {
     position: absolute;
-    fill:black;
-    stroke: none;
+    fill:whitesmoke;
+    stroke: whitesmoke;
+    stroke-width: .5px;
 }
 
 /*.Quakes g {
@@ -96,7 +101,7 @@ var width = 400,
 
 var quantize = d3.scale.quantize()
     .domain([0,14])
-    .range(d3.range(9).map(function(i) { return "q" + i + "-17"; }));
+    .range(d3.range(9).map(function(i) { return "q" + "-17"; }));
 
 
 var projection2 = d3.geo.albersUsa()
@@ -190,4 +195,4 @@ function comparatorMap(a,b){
 
 
 </script>
-<iframe src="map.html" height="400px">
+<!-- <iframe src="map.html" height="400px"> -->

@@ -83,6 +83,7 @@ button.reset {
 <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 </head>
 <body>
+    <div id="logoHolder"></div>
 <button onclick="showLinks()">Show Force Links (awesome!)</button>
 <button onclick="addNodes()" class="button reset">reset</button>
 <ul class="controls">
@@ -160,7 +161,7 @@ var path = d3.geo.path(),
     var flag = true;
 
 
-d3.xml("LogoBlack.svg", "image/svg+xml", function(error, xml) {
+d3.xml("LogoBlackMed.svg", "image/svg+xml", function(error, xml) {
   if (error) throw error;
     svgNode = xml
                 .getElementsByTagName("svg")[0];
@@ -290,23 +291,23 @@ console.log(nodes);
 
 nodes.unshift({x: 1e4, y: 1e4}); // insert root node
 var root = nodes[0];
-root.radius = 10;
+root.radius = 200;
 root.fixed = true;
 
 
 
 force
     //   .gravity(params.gravity.value)
-    //     .linkStrength(params.linkStrength.value)
-    //     .friction(params.friction.value)
+    .linkStrength(5)
+        .friction(1.01)
       .nodes(nodes)
       .links(links)
     .charge(function(d, i) { return i ? 0 : -200; })
       .linkDistance(function(d,i) {return d.distance; })
       .size([500,500])
+      .alpha(4)
 
-
-      .gravity(0)
+      .gravity(.00001)
     // .charge(function(d, i) { return i ? 0 : -150; })
         // .linkDistance(0.1)
 
@@ -341,13 +342,13 @@ force
     flag = false;
 
 
-  // var link = svg.selectAll("line")
-  //     .data(links)
-  //   .enter().append("line")
-  //     .attr("x1", function(d) { return d.source.x; })
-  //     .attr("y1", function(d) { return d.source.y; })
-  //     .attr("x2", function(d) { return d.target.x; })
-  //     .attr("y2", function(d) { return d.target.y; });
+  var link = svg.selectAll("line")
+      .data(links)
+    .enter().append("line")
+      .attr("x1", function(d) { return d.source.x; })
+      .attr("y1", function(d) { return d.source.y; })
+      .attr("x2", function(d) { return d.target.x; })
+      .attr("y2", function(d) { return d.target.y; });
 
   var node = svg.selectAll("g")
       .data(nodes);
@@ -400,6 +401,7 @@ force
 //http://bl.ocks.org/espinielli/874de501ebf175d84fef PRU logo
 svg
   .on("mousemove", mausIn)
+  .on("click", click)
   .on("touchmove", mausIn)
   .on("mouseout", mausOut)
   .on("touchend", mausOut);
@@ -417,6 +419,23 @@ function mausIn() {
   force.resume();
 }
 
+var clickF = false;
+function click(){
+
+    // force.gravity(-.01)
+
+    if(clickF) {
+        force
+        .linkDistance(function(d,i) {return d.distance})
+        clickF = false;
+    } else {
+        force
+        .linkDistance(function(d,i) {return d.distance*2; })
+        clickF = true
+    }
+    force.start();
+}
+
 
   force.on("tick", function(e) {
 
@@ -425,7 +444,11 @@ function mausIn() {
     n = nodes.length;
 
   while (++i < n) q.visit(collide(nodes[i]));
-
+  svg.selectAll(".line")
+  .attr("x1", function(d) { return d.source.x; })
+  .attr("y1", function(d) { return d.source.y; })
+  .attr("x2", function(d) { return d.target.x; })
+  .attr("y2", function(d) { return d.target.y; });
 
     d3.selectAll("path").attr("transform", function(d,i) {
         if(isNaN(d.x) || isNaN(d.y)) return;
