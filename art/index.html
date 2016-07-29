@@ -14,21 +14,21 @@ circle {
 <style type="text/css">
 
 /*For Image of Red/Dark grey */
-/*.st0{clip-path:url(#SVGID_2_);}
+.st0{clip-path:url(#SVGID_2_);}
 .st1{fill:#B0B3AD;}
 .st2{fill:#E1E8E6;}
 .st3{fill:#9DA19B;}
 .st4{fill:#C7CDC9;}
 .st5{fill:#19222F;}
-.st6{fill:#9D2D26;}*/
+.st6{fill:#9D2D26;}
 
 /*For Image of Red/Pink Road */
-.st0{fill:#E1E9E2;}
+/*.st0{fill:#E1E9E2;}
 .st1{fill:#D6DDD2;}
 .st2{fill:#452A29;}
 .st3{fill:#784848;}
 .st4{fill:#BB4946;}
-.st5{fill:#D4928F;}
+.st5{fill:#D4928F;}*/
 
 </style>
 </head>
@@ -51,7 +51,7 @@ var nodes = [],
     // .attr("width", width)
     // .attr("height", height);
 
-var image = "redPink.svg"
+var image = "pic.svg"
 
 d3.xml(image, "image/svg+xml", function(error, xml) {
   if (error) throw error;
@@ -117,7 +117,7 @@ svg.on("click",click);
         donePaths
            .transition()
            // .ease("elastic-out")
-           .ease("cubic-in-out")
+           .ease("cubic-out")
            .delay(function(d,i){return (Math.random() * 400) * 20})
            // .duration(500).attr("transform",function(d){return "translate(0,-1000)" + " scale(" + (Math.random()* (5 - .1) + .1) + ")"});
            // node.transition()
@@ -125,7 +125,7 @@ svg.on("click",click);
            .attr("transform",function(d){
                // return "translate(" + (Math.floor(Math.random() * 501) - 500) + ",-2700)" +
                 return "translate(" + (0) + ", 0)" +
-               " scale(" + (Math.random()* (10 - .00001) + .00001) + ")"
+               " scale(" + (Math.random()* (20 - .001) + .001) + ")"
                // "rotate(-180, " + d[0] + ", " + d[1] + ")";
            });
     }

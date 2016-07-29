@@ -140,6 +140,11 @@ span.high {
 
 span.high:hover{
     color: whitesmoke;
-
-
 }
+
+/*.text {
+  writing-mode: vertical-rl;
+  letter-spacing: .5em;
+  line-height: 1.2em;
+  text-orientation: upright;
+}*/
