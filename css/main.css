@@ -7,11 +7,15 @@ body {
     font-weight: 100 !important;
     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+41,000000+97 */
 background: #ffffff; /* Old browsers */
-opacity: .5;
-background: -moz-linear-gradient(top,  #ffffff 41%, #000000 97%); /* FF3.6-15 */
-background: -webkit-linear-gradient(top,  #ffffff 41%,#000000 97%); /* Chrome10-25,Safari5.1-6 */
-background: linear-gradient(to bottom,  #ffffff 41%,#000000 97%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+/*opacity: .5;*/
+/*background: -moz-linear-gradient(top,  #ffffff 41%, #000000 97%); */
+/* FF3.6-15*/
+/*background: -webkit-linear-gradient(top,  #ffffff 41%,#000000 97%); */
+/* Chrome10-25,Safari5.1-6 */
+/*background: linear-gradient(to bottom,  #ffffff 41%,#000000 97%); */
+/* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+/*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#000000',GradientType=0 ); */
+/* IE6-9 */
 }
 
 path.line {
@@ -43,6 +47,7 @@ svg {
 }
 
 h6,h5,h2{
+    color: black;
     font-weight: 100;
     writing-mode: vertical-rl;
     text-orientation: sideways-right;
@@ -51,6 +56,7 @@ h6,h5,h2{
 }
 
 h1 {
+    color: black;
     font-size: 3em;
     font-weight: 300;
     letter-spacing: -.1em;
