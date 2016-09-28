@@ -18,7 +18,7 @@
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,100' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" type="text/css">
 
-<link rel="shortcut icon" href="/img/logosrc.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="/img/logosrc.ico" type="image/x-icon" />
     <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
 
@@ -53,260 +53,23 @@
 
 </head>
 
-<script>
-
-
-
-var transDuration = 500;
-var newPath = d3.svg.line()
-    .x(function(d) { return d[0]; })
-    .y(function(d) { return d[1]; })
-    .interpolate("interpolate");
-
-    var forceFlag = false;
-
-
-function clearPaths(){
-    var pat = svg.selectAll("path");
-    pat.classed("pulse",false).classed("bounce",false).classed("tossing",false).classed("floating",false);
-    pat.style("pointer-events", "none")
-  .transition()
-    .duration(750)
-    .attr("transform", "translate(385,45)scale(0)")
-    .style("fill-opacity", 0)
-    .remove();
-
-}
-
-
-
-function pulse(){
-    var me = svg.selectAll("path.line.prev");
-    var c = svg.selectAll("circle");
-if(forceFlag){
-    if(c.classed("pulse")){
-        c.classed("pulse",false);
-    }
-    else if(c.classed("tossing")){
-        c.classed("tossing",false);
-        c.classed("pulse",true);
-
-    }
-    else if(c.classed("floating")){
-        c.classed("floating",false);
-        c.classed("pulse",true);
-    }
-    else if(c.classed("bounce")){
-        c.classed("bounce",false);
-        c.classed("pulse",true);
-
-    } else {
-        c.classed("pulse",true);
-    }
-}
-    if(me.classed("pulse")){
-        me.classed("pulse",false);
-    }
-    else if(me.classed("tossing")){
-        me.classed("tossing",false);
-        me.classed("pulse",true);
-
-    }
-    else if(me.classed("floating")){
-        me.classed("floating",false);
-        me.classed("pulse",true);
-    }
-    else if(me.classed("bounce")){
-        me.classed("bounce",false);
-        me.classed("pulse",true);
-
-    } else {
-        me.classed("pulse",true);
-    }
-
-}
-
-function bounce(){
-    var me = svg.selectAll("path.line.prev");
-
-    var circs = svg.selectAll("circle");
-
-if(forceFlag){
-
-
-    if(circs.classed("bounce")){
-        circs.classed("bounce",false);
-
-    }
-    else if(circs.classed("tossing")){
-        circs.classed("tossing",false);
-        circs.classed("bounce",true);
-    }
-    else if(circs.classed("floating")){
-        circs.classed("floating",false);
-        circs.classed("bounce",true);
-    }
-    else if(circs.classed("pulse")){
-        circs.classed("pulse",false);
-        circs.classed("bounce",true);
-    }
-    else { circs.classed("bounce",true); }
-}
-
-
-
-    if(me.classed("bounce")){
-        me.classed("bounce",false);
-
-    }
-    else if(me.classed("tossing")){
-        me.classed("tossing",false);
-        me.classed("bounce",true);
-    }
-    else if(me.classed("floating")){
-        me.classed("floating",false);
-        me.classed("bounce",true);
-    }
-    else if(me.classed("pulse")){
-        me.classed("pulse",false);
-        me.classed("bounce",true);
-    }
-    else { me.classed("bounce",true); }
-}
-
-
-
-function float(){
-        var me = svg.selectAll("path.line.prev");
-        var c = svg.selectAll("circle");
-if(forceFlag){
-        if(c.classed("floating")){
-            c.classed("floating",false);
-
-        }
-        else if(c.classed("tossing")){
-            c.classed("tossing",false);
-            c.classed("floating",true);
-
-        }
-        else if(c.classed("pulse")){
-            c.classed("pulse",false);
-            c.classed("floating",true);
-
-        }
-        else if(c.classed("bounce")){
-            c.classed("bounce",false);
-            c.classed("floating",true);
-
-        } else {
-            c.classed("floating",true);
-        }
-}
-
-        if(me.classed("floating")){
-            me.classed("floating",false);
-
-        }
-        else if(me.classed("tossing")){
-            me.classed("tossing",false);
-            me.classed("floating",true);
-
-        }
-        else if(me.classed("pulse")){
-            me.classed("pulse",false);
-            me.classed("floating",true);
-
-        }
-        else if(me.classed("bounce")){
-            me.classed("bounce",false);
-            me.classed("floating",true);
-
-        } else {
-            me.classed("floating",true);
-        }
-
-
-}
-
-function toss(){
-    var me = svg.selectAll("path.line.prev");
-    var c = svg.selectAll("circle");
-    if(forceFlag){
-
-
-        if(c.classed("tossing")){
-            c.classed("tossing",false);
-
-        }
-        else if(c.classed("floating")){
-            c.classed("floating",false);
-            c.classed("tossing",true);
-
-        }
-        else if(c.classed("pulse")){
-            c.classed("pulse",false);
-            c.classed("tossing",true);
-
-        }
-        else if(c.classed("bounce")){
-            c.classed("bounce",false);
-            c.classed("tossing",true);
-
-        } else {
-            c.classed("tossing",true);
-        }
-    }
-
-    if(me.classed("tossing")){
-        me.classed("tossing",false);
-
-    }
-    else if(me.classed("floating")){
-        me.classed("floating",false);
-        me.classed("tossing",true);
-
-    }
-    else if(me.classed("pulse")){
-        me.classed("pulse",false);
-        me.classed("tossing",true);
-
-    }
-    else if(me.classed("bounce")){
-        me.classed("bounce",false);
-        me.classed("tossing",true);
-
-    } else {
-        me.classed("tossing",true);
-    }
-}
-
-
-
-
-
-</script>
-
 <body id="page-top">
+    <svg width="960" height="960"></svg>
 
 
 
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-3">
-                <h1 class="text">Without the <span class="high">aesthetic</span>,
-                     the computer is but a <span class="high">mindless speed machine</span>,
-                     <span class="high">producing effects</span> without <span class="high">substance.</span>
-                     <br>
-                     <br>
-                     <hr>
-                     <h5> Paul Renner </h5>
-                     <hr>
-                     <br>
-                     <br>
-                     <br>
-                     <br>
+                <h1 class="text"> The Aesthetic
+                    <br>Free-Fall
                 </h1>
-                <section> </section>
+                     <hr>
+                     <h2>Casey Haber</h2>
+                     <br>
+                     <br>
+
+                <!-- <section> </section> -->
 
             </div>
         </div>
@@ -316,83 +79,11 @@ function toss(){
 
 
 
-    <div class="container pullDown">
-        <div class="row">
-            <div class="col-md-2 col-md-offset-0">
-                <div class="switch force">
-                    <h6> Bubbles!!! </h6>
-                  <label>
-                    Off
-                    <input type="checkbox">
-                    <span class="lever"></span>
-                    On
-                  </label>
-                </div>
-            </div>
-            <div class="col-md-2 col-md-offset-0">
-                <div class="switch mirror">
-                    <h6> Mirror Mode </h6>
-                  <label>
-                    Off
-                    <input type="checkbox">
-                    <span class="lever"></span>
-                    On
-                  </label>
-                </div>
-            </div>
-            <div class="col-md-4 col-md-offset-0">
-<div class="text-center">
-                    <div class="col-md-10 col-md-offset-0">
 
-                        <div clas="row">
-                            <a class="waves-effect waves-light btn-floating blue" onclick="pulse()"><i class="fa fa-heart" aria-hidden="true"></i></a>
-                            <a class="waves-effect waves-light btn-floating blue" onclick="float()"><i class="fa fa-arrows-v" aria-hidden="true"></i></a>
-                            <a class="waves-effect waves-light btn-floating blue" onclick="toss()"><i class="fa fa-leaf" aria-hidden="true"></i></a>
-                            <a class="waves-effect waves-light btn-floating blue" onclick="bounce()"><i class="fa fa-forumbee" aria-hidden="true"></i></a>
-                            <p> animations </p>
-                        </div>
-                        <a class="waves-effect waves-light btn red" onclick="clearPaths()"> CLEAR </a>
-
-                    </div>
-</div>
-
-            </div>
-            <div class="col-md-2 col-md-offset-0">
-                <p class="instruct"> Click to erase </p>
-            </div>
-<div class="col-md-2 col-md-offset-0">
-            <form action="#" id="radios">
-                <p>
-                  <input class="with-gap" name="group1" type="radio" id="basis" value="basis" checked/>
-                  <label class="label" for="basis">Normal</label>
-                </p>
-              <p>
-                <input class="with-gap" name="group1" type="radio" id="step-after" value="step-after" />
-                <label class="label" for="step-after">Stepped</label>
-              </p>
-            </form>
-</div>
-            <!-- <div class="col-md-6 col-md-offset-6">
-                <form action="sketch()">
-                    <p>
-                      <input type="checkbox" id="sketchy" class="filled-in"/>
-                      <label for="sketchy">Sketchy!</label>
-                    </p>
-                </form>
-            </div> -->
-
-        </div>
-    </div>
-    <!-- <div id="save">Submit Artistic Exploration to Casey Haber</div>
-    <div id="svgdataurl"> </div> -->
-<!-- <div class="blank">
-</div> -->
-    <section id="contact">
+    <!-- <section id="contact">
         <div class="container">
-
     </section>
-    <svg class="z-depth-4"></svg>
-    <section></section>
+    <section></section> -->
 <div class="container">
     <div class="row">
         <div class="col-md-12 col-md-offset-0 text-center">
@@ -406,11 +97,10 @@ function toss(){
 
             <i class="fa fa-envelope-o fa-3x wow bounceIn" data-wow-delay=".1s"></i>
             <p><a href="mailto:haber.casey@gmail.com">haber.casey@gmail.com</a></p>
+
             <!-- Start of SimpleHitCounter Code -->
-            <!-- Start of SimpleHitCounter Code -->
-            <div align="center"><a href="http://www.simplehitcounter.com" target="_blank"><img src="http://simplehitcounter.com/hit.php?uid=2122935&f=16777215&b=0" border="0" height="18" width="83" alt="web counter"></a><br><h6>Page Views</h6</div>
+            <!-- <div align="center"><a href="http://www.simplehitcounter.com" target="_blank"><img src="http://simplehitcounter.com/hit.php?uid=2122935&f=16777215&b=0" border="0" height="18" width="83" alt="web counter"></a><br><h6>Page Views</h6</div> -->
             <!-- End of SimpleHitCounter Code -->
-<!-- End of SimpleHitCounter Code -->
 
             </div>
         </div>
@@ -418,319 +108,7 @@ function toss(){
 </div>
 <section></section>
 
-    <script type="text/javascript">
 
-
-        var body = d3.select("body").node().getBoundingClientRect();
-        var interType = "basis";
-    var plotWidth = $( window ).width() - 100;
-    var plotHeight = $( window ).height();
-
-var allLines = d3.select("svg").selectAll("path.line");
-
-
-
-var color = '#FF9690';
-           $('#cp2').colorpicker({
-               color: '#FF9690',
-               container: true,
-               inline: true }).on('changeColor', function(ev) {
-      // Sets the new color while it is changing.
-     color = ev.color.toHex();
-    });
-
-            var prevLine;
-            var prevLine2;
-              var activeLine;
-              var activeLine2;
-
-
-
-              var renderPath = d3.svg.line()
-                  .x(function(d) { return d[0]; })
-                  .y(function(d) { return d[1]; })
-              var renderFlath = d3.svg.line()
-                  .x(function(d) { return -d[0] + plotWidth; })
-                  .y(function(d) { return d[1]; })
-
-                var flag = false;
-
-
-                d3.select(".mirror").on("change", function(){
-                    if (flag){
-                        flag = false;
-                    }else {
-                        flag = true;
-                    }
-                });
-
-                d3.select(".force").on("change", function(){
-                    if (forceFlag){
-                        forceFlag = false;
-                        svg.selectAll("circle")
-                        .transition()
-                          .duration(750)
-                          .attr("transform", "translate(385,45)scale(0)")
-                          .style("fill-opacity", 0)
-                          .remove();
-                    }else {
-                        drawCircles();
-                        forceFlag = true;
-                    }
-                });
-
-              d3.select("#step-after").on("change", function() {
-                      interType = "step-after";
-                      renderPath = d3.svg.line()
-                          .x(function(d) { return d[0]; })
-                          .y(function(d) { return d[1]; }).interpolate(interType);
-
-                      renderFlath = d3.svg.line()
-                          .x(function(d) { return -d[0] + plotWidth; })
-                          .y(function(d) { return d[1]}).interpolate(interType);
-
-                    });
-            d3.select("#basis").on("change", function() {
-                interType = "basis";
-                renderPath = d3.svg.line()
-                    .x(function(d) { return d[0]; })
-                    .y(function(d) { return d[1]; }).interpolate(interType);
-
-                renderFlath = d3.svg.line()
-                .x(function(d) { return -d[0] + plotWidth; })
-                .y(function(d) { return d[1]}).interpolate(interType);
-
-              });
-
-
-
-
-
-      var svg = d3.select("svg").attr("width",plotWidth).attr("height",plotHeight - 100)
-
-    //   var plot = svg.append("svg").attr("id","plot")
-      .attr("width",plotWidth).attr("height",plotHeight - 100)
-          .call(d3.behavior.drag()
-            .on("dragstart", dragstarted)
-            .on("drag", dragged)
-            .on("dragend", dragended));
-            var lines
-
-
-//GOOEY FILTER
-            // var defs = svg.append('defs');
-            // // .style("filter", "url(#gooey)")
-        	// var filter = defs.append('filter').attr('id','gooey')
-        	// filter.append('feGaussianBlur')
-        	// 	.attr('in','SourceGraphic')
-        	// 	.attr('stdDeviation','10')
-        	// 	.attr('result','blur');
-        	// filter.append('feColorMatrix')
-        	// 	.attr('in','blur')
-        	// 	.attr('mode','matrix')
-        	// 	.attr('values','1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9')
-        	// 	.attr('result','gooey');
-        	// filter.append('feComposite')
-        	// 	.attr('in','SourceGraphic')
-        	// 	.attr('in2','goo')
-        	// 	.attr('operator','atop');
-
-    var root,force;
-    var nodes = d3.range(150).map(function() { return {radius: Math.random() * 20 + 5}; });
-
-
-
-    function drawCircles(){
-
-        // https://bl.ocks.org/mbostock/3231298 Incredible
-
-
-                force = d3.layout.force()
-                    .gravity(.009)
-                    // .charge(function(d, i) { return i ? 0 : -2000; })
-                    .charge(1)
-                    .friction(.99)
-                    .nodes(nodes)
-                    .size([plotWidth, plotHeight]);
-
-                    var root = nodes[0];
-
-                    root.radius = 100;
-                    root.fixed = true;
-
-                    force.start();
-
-                    svg.selectAll("circle")
-                        .data(nodes.slice(1))
-                      .enter().append("circle")
-                        .attr("r", function(d) { return d.radius; })
-                        .style("fill",color);
-
-                    force.on("tick", function(e) {
-                      var q = d3.geom.quadtree(nodes),
-                          i = 0,
-                          n = nodes.length;
-
-                      while (++i < n) q.visit(collide(nodes[i]));
-
-                      svg.selectAll("circle")
-                          .attr("cx", function(d) { return d.x; })
-                          .attr("cy", function(d) { return d.y; });
-                    });
-
-
-
-    }
-
-
-
-
-
-      function dragstarted() {
-        activeLine = svg.append("path").datum([]).attr("class", "line");
-        activeLine2 = svg.append("path").datum([]).attr("class", "line");
-
-        // var nodes = d3.range(Math.random() * 100).map(function() { return {radius: Math.random() * 12 + 4}; });
-
-
-      }
-
-      function dragged() {
-
-          if(forceFlag){
-              var p1 = d3.mouse(this);
-              var root = nodes[0];
-                root.px = p1[0];
-                root.py = p1[1];
-                force.start();
-          }
-
-        // var color = getRandomColor();
-
-
-        activeLine.datum().push(d3.mouse(this));
-
-//Moving Force Circles
-
-
-        activeLine.attr("d", renderPath).on("click", click);
-
-    if(flag){
-        console.log(flag);
-        activeLine2.datum().push(d3.mouse(this));
-        activeLine2.attr("d",renderFlath).on("click", click);
-        activeLine2.transition().style("fill",color).style("stroke-width",6);
-        activeLine2.transition().style("fill",color).style("stroke-width",4);
-    }
-
-        activeLine.transition().style("fill",color).style("stroke-width",6);
-        activeLine.transition().style("fill",color).style("stroke-width",4);
-
-      }
-
-      function dragended() {
-
-
-
-        prevLine = activeLine;
-        prevLine2 = activeLine2;
-        svg.selectAll("path.line.prev").classed("prev",false);
-        prevLine.classed("prev",true);
-        prevLine2.classed("prev",true);
-        activeLine = null;
-        // if(forceFlag){
-        //     drawCircles();
-        // }
-
-
-
-      }
-
-      var myCanvas = document.getElementById('#canv');
-
-      function click(d) {
-        // this.parentNode.appendChild(this);
-
-        var me = d3.select(this);
-        if(me.classed("pulse")){
-            me.classed("pulse",false);
-        }
-        if(me.classed("tossing")){
-            me.classed("tossing",false);
-        }
-        if(me.classed("floating")){
-            me.classed("floating",false);
-        }
-        if(me.classed("bounce")){
-            me.classed("bounce",false);
-        }
-
-            me
-          .style("pointer-events", "none")
-        // .transition()
-        //   .duration(2750)
-        //   .attr("transform", "scale(0)rotate(180)")
-        .transition()
-          .duration(750)
-          .attr("transform", "translate(385,45)scale(0)")
-          .style("fill-opacity", 0)
-          .remove();
-    }
-
-
-
-function collide(node) {
-  var r = node.radius + 16,
-      nx1 = node.x - r,
-      nx2 = node.x + r,
-      ny1 = node.y - r,
-      ny2 = node.y + r;
-  return function(quad, x1, y1, x2, y2) {
-    if (quad.point && (quad.point !== node)) {
-      var x = node.x - quad.point.x,
-          y = node.y - quad.point.y,
-          l = Math.sqrt(x * x + y * y),
-          r = node.radius + quad.point.radius;
-      if (l < r) {
-        l = (l - r) / l * .5;
-        node.x -= x *= l;
-        node.y -= y *= l;
-        quad.point.x += x;
-        quad.point.y += y;
-      }
-    }
-    return x1 > nx2 || x2 < nx1 || y1 > ny2 || y2 < ny1;
-  };
-}
-
-    function getRandomColor() {
-      var length = 6;
-      var chars = '0123456789ABCDEF';
-      var hex = '#';
-      while(length--) hex += chars[(Math.random() * 16) | 0];
-      return hex;
-}
-
-
-    </script>
-
-    <script>
-
-    $('#cp2').css("visibility", 'hidden');
-
-
-    $(window).scroll(function() {
-        $('#cp2').each(function(){
-        var imagePos = $('svg').offset().top;
-
-        var topOfWindow = $(window).scrollTop();
-            if (imagePos < topOfWindow + 400) {
-                $(this).addClass("fadeIn");
-                $(this).css("visibility", 'visible');
-            }
-        });
-    });
-    </script>
 
 
     <!-- jQuery -->
@@ -743,6 +121,196 @@ function collide(node) {
     <script src="js/jquery.easing.min.js"></script>
     <script src="js/jquery.fittext.js"></script>
     <script src="js/wow.min.js"></script>
+
+
+    <script>
+
+
+
+    var nodes = [],
+        links = [],
+        width = 1500,
+        height = 1500;
+
+        var path = d3.geo.path(),
+            force = d3.layout.force().size([width, height]);
+        //     var svg = d3.select("body").append("svg")
+        // .attr("width", width)
+        // .attr("height", height);
+
+    var image = "img/ch.svg"
+    var flag = false;
+    d3.xml(image, "image/svg+xml", function(error, xml) {
+      if (error) throw error;
+      var svgNode = xml
+                    .getElementsByTagName("svg")[0];
+
+        // console.log(svgNode);
+
+
+      draw(svgNode);
+
+
+
+
+
+
+    function draw(svgNode) {
+
+
+
+        var paths = d3.select(svgNode).selectAll("path");
+
+        var arrPaths = [];
+
+
+        paths[0].forEach(function(s){
+            var me = d3.select(s);
+            var feature = {};
+
+            arrPaths.push(me.node());
+        })
+
+
+
+        var svg = d3.select("svg").attr("width","3500").attr("height","2000");
+
+
+
+    svg.append("text")
+        .text("Click")
+        .attr("x",200)
+        .attr("y",20);
+
+
+
+            var donePaths =  svg.selectAll("path")
+                          .data(arrPaths)
+                         .enter().append("path")
+                          .attr("d",function(d){
+                              var me = d3.select(d);
+                            //   console.log(d,"rawD");
+                              // console.log(me.attr("d"));
+                              return me.attr("d")
+                          })
+                          .attr("class",function(d){
+                            //   return d.classList[0];
+                            var run = ran((Math.random()* (8 - 0) + 0));
+                            // console.log("st"+run)
+                            return "st" + run;
+
+                          });
+
+                          features = [];
+
+    var animations = ["slideUp","slideLeft","slideDown","bounce","pulse","bigEntrance","hatch","tossing"];
+
+
+
+    svg.on("click",click);
+
+
+
+    //Attaches animations
+    // donePaths.on("mouseover",function(d){
+    //     var me = d3.select(this);
+    //     // me.style("fill","white");
+    //     // me.style("opacity",".5");
+    //     var run = ran((Math.random()* (7 - 0) + 0));
+    //     me.attr("class", function(s) {
+    //         // var me = d3.select(d);
+    //         // console.log(d3.select(d));
+    //         return animations[run];
+    //     });
+    //     // console.log(animations[run])
+    // })
+
+    function ran(x){
+        if (x >= 3 && x <4){
+            return 3
+        }
+        if (x >= 4 && x <5){
+            return 4
+        }
+        if (x >= 2 && x <3){
+            return 2
+        }
+        if (x >= 1 && x <2){
+            return 1
+        }
+        if (x >= 0 && x <1){
+            return 0
+        }
+        if (x >= 5 && x <6){
+            return 5
+        }
+        if (x >= 6 && x <7){
+            return 6
+        }
+        if (x >= 7 && x <8){
+            return 7
+        }
+        if (x >= 8 && x <9){
+            return 8
+        }
+    }
+
+        function click(){
+            if (flag == true){
+                flag = false;
+                reset();
+                return;
+
+            }
+            else {
+                flag = true;
+            }
+
+            donePaths
+               .transition()
+               // .ease("elastic-out")
+               .ease("cubic-out")
+               .delay(function(d,i){return (Math.random() * 400) * 20})
+               // .duration(500).attr("transform",function(d){return "translate(0,-1000)" + " scale(" + (Math.random()* (5 - .1) + .1) + ")"});
+               // node.transition()
+               .duration(5500)
+               .attr("transform",function(d){
+                   // return "translate(" + (Math.floor(Math.random() * 501) - 500) + ",-2700)" +
+                    return "translate(" + (0) + ", 0)" +
+                   " scale(" + (Math.random()* (20 - .001) + .001) + ")"
+                   // "rotate(-180, " + d[0] + ", " + d[1] + ")";
+               });
+
+
+        }
+
+    }
+
+    function reset() {
+        console.log("reset")
+        d3.selectAll("path").remove();
+        var svg = d3.select("svg");
+        draw(svgNode)
+
+
+    }
+
+
+    });
+
+
+    function getMyCentroid(bbox) {
+        // console.log(bbox);
+        return [bbox.x + bbox.width/2, bbox.y + bbox.height/2];
+    }
+
+
+
+
+
+
+
+    </script>
 
     <!-- Custom Theme JavaScript -->
     <script>

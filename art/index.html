@@ -4,7 +4,7 @@
 <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,100' rel='stylesheet' type='text/css'>
 <style>
 body {
-    background-color: black;
+    background-color: lightgrey;
     font-family: 'Roboto';
     font-weight: 100;
 }
@@ -13,32 +13,45 @@ body {
 <style type="text/css">
 
 text {
-    fill: white;
+    fill: red;
     letter-spacing: 2em;
 }
 
 /*For Image of Red/Dark grey */
-.st0{clip-path:url(#SVGID_2_);}
-.st1{fill:#B0B3AD;}
+/*.st0{clip-path:url(#SVGID_2_);}*/
+/*.st1{fill:#B0B3AD;}
 .st2{fill:#E1E8E6;}
 .st3{fill:#9DA19B;}
 .st4{fill:#C7CDC9;}
 .st5{fill:#19222F;}
-.st6{fill:#9D2D26;}
+.st6{fill:#9D2D26;}*/
 
 /*For Image of Red/Pink Road */
-/*.st0{fill:#E1E9E2;}
+.st0{fill:#E1E9E2;}
 .st1{fill:#D6DDD2;}
 .st2{fill:#452A29;}
 .st3{fill:#784848;}
 .st4{fill:#BB4946;}
-.st5{fill:#D4928F;}*/
+.st5{fill:#D4928F;}
+
+/*Added extra for ch pic*/
+.st6{fill:#4874fb;}
+.st7{fill:#52b0f5;}
+
+/*yellow*/
+/*.st0{fill:#A8ABB4;}
+.st1{fill:#B1B5C0;}
+.st2{fill:#9FA2AB;}
+.st3{fill:#846A2D;}
+.st4{fill:#AD9730;}
+.st5{fill:#ABA373;}*/
 
 </style>
 </head>
 <body>
-<script src="//d3js.org/d3.v3.min.js"></script>
-
+<!-- <script src="//d3js.org/d3.v3.min.js"></script> -->
+<script src="d3.min.js"></script>
+<link href='animations.css' rel='stylesheet' type='text/css'>
 <svg width="960" height="960"></svg>
 <script>
 
@@ -55,21 +68,21 @@ var nodes = [],
     // .attr("width", width)
     // .attr("height", height);
 
-var image = "pic.svg"
-
+var image = "ch.svg"
+var flag = false;
 d3.xml(image, "image/svg+xml", function(error, xml) {
   if (error) throw error;
   var svgNode = xml
                 .getElementsByTagName("svg")[0];
 
-    console.log(svgNode);
+    // console.log(svgNode);
 
 
   draw(svgNode);
 
 
 
-});
+
 
 
 function draw(svgNode) {
@@ -111,18 +124,80 @@ svg.append("text")
                           return me.attr("d")
                       })
                       .attr("class",function(d){
-                          return d.classList[0];
+                        //   return d.classList[0];
+                        var run = ran((Math.random()* (8 - 0) + 0));
+                        // console.log("st"+run)
+                        return "st" + run;
 
                       });
 
                       features = [];
 
+var animations = ["slideUp","slideLeft","slideDown","bounce","pulse","bigEntrance","hatch","tossing"];
 
 
 
 svg.on("click",click);
+var h1 = d3.select("h1")
+h1.on("click",click);
+
+
+
+//Attaches animations
+// donePaths.on("mouseover",function(d){
+//     var me = d3.select(this);
+//     // me.style("fill","white");
+//     // me.style("opacity",".5");
+//     var run = ran((Math.random()* (7 - 0) + 0));
+//     me.attr("class", function(s) {
+//         // var me = d3.select(d);
+//         // console.log(d3.select(d));
+//         return animations[run];
+//     });
+//     // console.log(animations[run])
+// })
+
+function ran(x){
+    if (x >= 3 && x <4){
+        return 3
+    }
+    if (x >= 4 && x <5){
+        return 4
+    }
+    if (x >= 2 && x <3){
+        return 2
+    }
+    if (x >= 1 && x <2){
+        return 1
+    }
+    if (x >= 0 && x <1){
+        return 0
+    }
+    if (x >= 5 && x <6){
+        return 5
+    }
+    if (x >= 6 && x <7){
+        return 6
+    }
+    if (x >= 7 && x <8){
+        return 7
+    }
+    if (x >= 8 && x <9){
+        return 8
+    }
+}
 
     function click(){
+        if (flag == true){
+            flag = false;
+            reset();
+            return;
+
+        }
+        else {
+            flag = true;
+        }
+
         donePaths
            .transition()
            // .ease("elastic-out")
@@ -137,14 +212,31 @@ svg.on("click",click);
                " scale(" + (Math.random()* (20 - .001) + .001) + ")"
                // "rotate(-180, " + d[0] + ", " + d[1] + ")";
            });
+
+
     }
 
 }
 
+function reset() {
+    console.log("reset")
+    d3.selectAll("svg").remove();
+    var svg = d3.select("body").append("svg").attr("width","3500").attr("height","2000");
+    draw(svgNode)
+
+
+}
+
+
+});
+
+
 function getMyCentroid(bbox) {
-    console.log(bbox);
+    // console.log(bbox);
     return [bbox.x + bbox.width/2, bbox.y + bbox.height/2];
 }
+
+
 
 
 

@@ -1,8 +1,18 @@
+html {
+    background-color: none;
+}
+
 body {
     font-family: 'Roboto',sans-serif;
     font-weight: 100 !important;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+41,000000+97 */
+background: #ffffff; /* Old browsers */
+opacity: .5;
+background: -moz-linear-gradient(top,  #ffffff 41%, #000000 97%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  #ffffff 41%,#000000 97%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom,  #ffffff 41%,#000000 97%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
 }
-
 
 path.line {
   fill: whitesmoke;
@@ -24,17 +34,28 @@ section#contact {
 }
 
 svg {
-    background-color: lightgrey;
-    stroke: lightgrey;
-    stroke-width: 1px;
+    background-color: none;
+    stroke: none;
+    stroke-width: none;
+    position: fixed;
+    top: 0px;
+    left: 0pxl
 }
 
-h6,h5{
+h6,h5,h2{
     font-weight: 100;
+    writing-mode: vertical-rl;
+    text-orientation: sideways-right;
+    letter-spacing: 2em;
+    padding-left: 30vw;
 }
 
 h1 {
-    font-size: 5em;
+    font-size: 3em;
+    font-weight: 300;
+    letter-spacing: -.1em;
+    padding-left: 20vw;
+    text-transform: uppercase;
 }
 
 h3 {
@@ -142,6 +163,16 @@ span.high:hover{
     color: whitesmoke;
 }
 
+.st0{fill:#E1E9E2;}
+.st1{fill:#D6DDD2;}
+.st2{fill:#452A29;}
+.st3{fill:#784848;}
+.st4{fill:#BB4946;}
+.st5{fill:#D4928F;}
+
+/*Added extra for ch pic*/
+.st6{fill:#4874fb;}
+.st7{fill:#52b0f5;}
 /*.text {
   writing-mode: vertical-rl;
   letter-spacing: .5em;
