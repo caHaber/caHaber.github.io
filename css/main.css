@@ -169,6 +169,8 @@ span.high:hover{
     color: whitesmoke;
 }
 
+
+/*Optional for use with svg*/
 .st0{fill:#E1E9E2;}
 .st1{fill:#D6DDD2;}
 .st2{fill:#452A29;}
@@ -176,9 +178,12 @@ span.high:hover{
 .st4{fill:#BB4946;}
 .st5{fill:#D4928F;}
 
-/*Added extra for ch pic*/
+
 .st6{fill:#4874fb;}
 .st7{fill:#52b0f5;}
+/*Added extra for ch pic*/
+
+
 /*.text {
   writing-mode: vertical-rl;
   letter-spacing: .5em;

@@ -139,7 +139,7 @@
         // .attr("height", height);
 
     var image = "img/ch.svg"
-    var flag = false;
+    var flag = true;
     d3.xml(image, "image/svg+xml", function(error, xml) {
       if (error) throw error;
       var svgNode = xml
@@ -190,16 +190,25 @@
                           .attr("d",function(d){
                               var me = d3.select(d);
                             //   console.log(d,"rawD");
-                              // console.log(me.attr("d"));
+
                               return me.attr("d")
                           })
-                          .attr("class",function(d){
-                            //   return d.classList[0];
-                            var run = ran((Math.random()* (8 - 0) + 0));
-                            // console.log("st"+run)
-                            return "st" + run;
+                          .attr("fill",function(d){
+                              return d3.select(d).attr("fill");
+                          })
+                          .attr("stroke",function(d){
+                                return d3.select(d).attr("stroke");
+                            });
 
-                          });
+                        //GIVES Random st class for color brewer pallets
+
+                        //   .attr("class",function(d){
+                        //     //   return d.classList[0];
+                        //     var run = ran((Math.random()* (8 - 0) + 0));
+                        //     // console.log("st"+run)
+                        //     return "st" + run;
+                          //
+                        //   });
 
                           features = [];
 
