@@ -27,10 +27,6 @@
   // var count_particles;
   // count_particles = document.querySelector('.js-count-particles');
 
-var particles;
-var interactivity;
-var lines;
-
   var fib = function(n) {
       var a = 0, b = 1, f = 1;
       for(var i = 2; i <= n; i++) {
@@ -41,12 +37,20 @@ var lines;
       return f;
   };
 
+  var recursive = function(n) {
+    if(n <= 2) {
+        return 1;
+    } else {
+        return this.recursive(n - 1) + this.recursive(n - 2);
+    }
+};
 
- 
+  var particles;
+  var interactivity;
 
 
 function ranC(){
-  return '#' +Math.floor(Math.random()*16777215).toString(16);
+  return '#' + Math.floor(Math.random() * 16777215).toString(16);
 
 }
 
@@ -62,18 +66,11 @@ function ranC(){
     interactivity.events.onhover.mode = "bubble";
 
     particles.line_linked.enable = true;
+    particles.line_linked.opacity = 1
+    // particles.line_linked.color = ranC();
 
+    particles.line_linked.color = '#E43e34';
 
-    //THIS IS SUPER AWESOME ROTATING RECTANGLES
-    particles.line_linked.width = 100;
-    particles.line_linked.opacity = 1;
-
-    particles.color.value = '#FFFFFF';
-  
-
-    particles.line_linked.color = '#FF7C55';
-
-    lines = particles.line_linked;
 
 
     console.log(interactivity.events);
@@ -82,47 +79,29 @@ function ranC(){
   }
 
 
-  var i = 4;
-  var flag = true;
-  var sense = 0;
+  var i = 0;
   update = function() {
 
     // if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) {
     //   count_particles.innerText = window.pJSDom[0].pJS.particles.array.length;
     // }
     
-    if(i === 16){
-      i = 4
-    }
-    
-
-    if(sense === 11){
-      sense = 0
+    if(i === 13){
+      i = 0
+      // console.log(pJSDom);
     }
     
     // particles.size.value = fib(i);
 
-  if (sense === 10){
-
     particles.array.forEach(function(p) { 
-      p.radius = fib(i);
-      if(flag){
-        console.log(p);
-      }
-      
 
-      flag=false;
+      p.radius = fib(i);
+
     });
 
-  }
+    particles.color.value = 'random';
 
-  sense++;
-  i++;
-
-    particles.line_linked.color = ranC();
-    // particles.color.value = ranC();
-
-   
+    i++;
 
 
 
