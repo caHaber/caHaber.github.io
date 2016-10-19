@@ -12,11 +12,11 @@
     <title>Draw Something</title>
 
     <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="css/animations.css" type="text/css">
+    <!-- <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"> -->
+    <!-- <link rel="stylesheet" href="css/animations.css" type="text/css"> -->
     <!-- Custom Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,100' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" type="text/css">
+    <!-- <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" type="text/css"> -->
 
     <link rel="shortcut icon" href="/img/logosrc.ico" type="image/x-icon" />
     <!-- Compiled and minified CSS -->
@@ -24,21 +24,24 @@
 
 
 <!-- Art Explosion Stylesheet -->
-<link rel="stylesheet" href="art/redPink.css" type="text/css">
+<!-- <link rel="stylesheet" href="art/redPink.css" type="text/css"> -->
 
 
 
     <!-- Plugin CSS -->
-<link rel="stylesheet" href="css/main.css" type="text/css">
-<link rel="stylesheet" href="css/materialize-colorpicker.min.css" type="text/css">
+<!-- <link rel="stylesheet" href="css/main.css" type="text/css"> -->
+<!-- <link rel="stylesheet" href="css/materialize-colorpicker.min.css" type="text/css"> -->
 
 
     <!-- Custom CSS -->
     <!-- <link rel="stylesheet" href="css/creative.css" type="text/css"> -->
-    <script src="js/jquery.js"></script>
+    <script src="../js/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
-    <script src="js/materialize-colorpicker.min.js"></script>
+    <!-- <script src="js/materialize-colorpicker.min.js"></script> -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r79/three.min.js">
+
+    </script>
 
 
 
@@ -115,12 +118,12 @@
 
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+    <!-- <script src="js/bootstrap.min.js"></script> -->
 
     <!-- Plugin JavaScript -->
-    <script src="js/jquery.easing.min.js"></script>
-    <script src="js/jquery.fittext.js"></script>
-    <script src="js/wow.min.js"></script>
+    <!-- <script src="js/jquery.easing.min.js"></script> -->
+    <!-- <script src="js/jquery.fittext.js"></script> -->
+    <!-- <script src="js/wow.min.js"></script> -->
 
 
     <script>
@@ -138,8 +141,16 @@
         // .attr("width", width)
         // .attr("height", height);
 
-    var image = "img/ch.svg"
+    var image = "../img/ch.svg"
     var flag = true;
+
+    var camera, renderer, controls, scene = new THREE.Scene();
+    var width = window.innerWidth, height = window.innerHeight;
+
+    camera = new THREE.PerspectiveCamera(40, width/height , 1, 10000);
+    camera.position.z = 3000;
+    camera.setLens(30);
+
     d3.xml(image, "image/svg+xml", function(error, xml) {
       if (error) throw error;
       var svgNode = xml
@@ -185,20 +196,21 @@
 
 
             var donePaths =  svg.selectAll("path")
-                          .data(arrPaths)
-                         .enter().append("path")
-                          .attr("d",function(d){
-                              var me = d3.select(d);
-                            //   console.log(d,"rawD");
-
-                              return me.attr("d")
-                          })
-                          .attr("fill",function(d){
-                              return d3.select(d).attr("fill");
-                          })
-                          .attr("stroke",function(d){
-                                return d3.select(d).attr("stroke");
-                            });
+                          .data(arrPaths);
+                        //  .enter();
+                        //  .append("path")
+                        //   .attr("d",function(d){
+                        //       var me = d3.select(d);
+                        //     //   console.log(d,"rawD");
+                         //
+                        //       return me.attr("d")
+                        //   })
+                        //   .attr("fill",function(d){
+                        //       return d3.select(d).attr("fill");
+                        //   })
+                        //   .attr("stroke",function(d){
+                        //         return d3.select(d).attr("stroke");
+                        //     });
 
                         //GIVES Random st class for color brewer pallets
 
@@ -215,8 +227,8 @@
     var animations = ["slideUp","slideLeft","slideDown","bounce","pulse","bigEntrance","hatch","tossing"];
 
 
-
-    svg.on("click",click);
+donePaths.each(objectify);
+    // svg.on("click",click);
 
 
 
@@ -264,46 +276,39 @@
         }
     }
 
-    setTimeout(function() {
-        animate();
-    }, 1000);
-
         function click(){
-            // if (flag == true){
-            //     flag = false;
+            if (flag == true){
+                flag = false;
                 reset();
-                // return;
+                return;
 
-            // }
-            // else {
-            //     flag = true;
-            // }
+            }
+            else {
+                flag = true;
+            }
+            console.log("yo");
+
+            donePaths
+               .transition()
+               // .ease("elastic-out")
+               .ease("cubic-out")
+               .delay(function(d,i){return (Math.random() * 400) * 20})
+               // .duration(500).attr("transform",function(d){return "translate(0,-1000)" + " scale(" + (Math.random()* (5 - .1) + .1) + ")"});
+               // node.transition()
+               .duration(5500)
+               .attr("transform",function(d){
+                   // return "translate(" + (Math.floor(Math.random() * 501) - 500) + ",-2700)" +
+                    return "translate(" + (0) + ", 0)" +
+                   " scale(" + (Math.random()* (20 - .001) + .001) + ")"
+                   // "rotate(-180, " + d[0] + ", " + d[1] + ")";
+               });
+
 
         }
 
-function animate() {
-    console.log("yo");
-    donePaths
-       .transition()
-       // .ease("elastic-out")
-       .ease("cubic-out")
-       .delay(function(d,i){return (Math.random() * 400) * 20})
-       // .duration(500).attr("transform",function(d){return "translate(0,-1000)" + " scale(" + (Math.random()* (5 - .1) + .1) + ")"});
-       // node.transition()
-       .duration(5500)
-       .attr("transform",function(d){
-           // return "translate(" + (Math.floor(Math.random() * 501) - 500) + ",-2700)" +
-            return "translate(" + (0) + ", 0)" +
-           " scale(" + (Math.random()* (20 - .001) + .001) + ")"
-           // "rotate(-180, " + d[0] + ", " + d[1] + ")";
-       });
-}
-
-
-
-
-
-
+        setTimeout(function() {
+            click();
+        }, 1000);
 
 
     }
@@ -332,7 +337,11 @@ function animate() {
 
 
 
-
+ function objectify(d) {
+   var object = new THREE.CSS3DObject(this);
+   object.position = d.random.position;
+   scene.add(object);
+ }
 
 
 

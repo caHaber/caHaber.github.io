@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>particles.js</title>
+  <meta name="description" content="particles.js is a lightweight JavaScript library for creating particles.">
+  <meta name="author" content="Vincent Garreau" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" media="screen" href="style.css">
+</head>
+<body>
+
+<!-- count particles -->
+<!-- <div class="count-particles">
+  <span class="js-count-particles"></span> particles
+</div>
+ -->
+<!-- particles.js container -->
+<div id="particles-js"></div>
+
+<!-- scripts -->
+<script src="particles.js"></script>
+<script src="app.js"></script>
+
+<!-- stats.js -->
+<script>
+  // var count_particles;
+  // count_particles = document.querySelector('.js-count-particles');
+
+  var fib = function(n) {
+      var a = 0, b = 1, f = 1;
+      for(var i = 2; i <= n; i++) {
+          f = a + b;
+          a = b;
+          b = f;
+      }
+      return f;
+  };
+
+  var recursive = function(n) {
+    if(n <= 2) {
+        return 1;
+    } else {
+        return this.recursive(n - 1) + this.recursive(n - 2);
+    }
+};
+
+  var particles;
+  var interactivity;
+
+
+function ranC(){
+  return '#' + Math.floor(Math.random() * 16777215).toString(16);
+
+}
+
+
+
+
+  function init(update, requestAnimationFrame){
+    particles = window.pJSDom[0].pJS.particles;
+    interactivity = window.pJSDom[0].pJS.interactivity;
+    window.pJSDom[0].pJS.retina_detect = true;
+    // console.log(interactivity);
+    interactivity.events.onhover.enable = true;
+    interactivity.events.onhover.mode = "bubble";
+
+    particles.line_linked.enable = true;
+    particles.line_linked.opacity = 1
+    // particles.line_linked.color = ranC();
+
+    particles.line_linked.color = '#E43e34';
+
+
+
+    console.log(interactivity.events);
+
+    requestAnimationFrame(update);;
+  }
+
+
+  var i = 0;
+  update = function() {
+
+    // if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) {
+    //   count_particles.innerText = window.pJSDom[0].pJS.particles.array.length;
+    // }
+    
+    if(i === 13){
+      i = 0
+      // console.log(pJSDom);
+    }
+    
+    // particles.size.value = fib(i);
+
+    particles.array.forEach(function(p) { 
+
+      p.radius = fib(i);
+
+    });
+
+    particles.color.value = 'random';
+
+    i++;
+
+
+
+
+
+    requestAnimationFrame(update);
+  };
+
+
+
+</script>
+
+</body>
+</html>
