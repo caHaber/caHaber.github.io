@@ -46,23 +46,44 @@ svg {
     left: 0pxl
 }
 
-h6,h5,h2{
-    color: black;
-    font-weight: 100;
-    writing-mode: vertical-rl;
-    text-orientation: sideways-right;
-    letter-spacing: 2em;
-    padding-left: 30vw;
+.top {
+pointer-events:none;
+
 }
 
-h1 {
+h6,h5,h2{
+
     color: black;
-    font-size: 3em;
     font-weight: 300;
-    letter-spacing: -.1em;
-    padding-left: 20vw;
-    text-transform: uppercase;
+    /*writing-mode: vertical-rl;*/
+    /*text-orientation: sideways-right;*/
+    letter-spacing: 1.2em;
+    padding-left: 30vw;
+   
 }
+
+
+
+h1 {
+    pointer-events: all;
+    color: black;
+    margin-bottom: -25px !important;
+    font-size: 1.5em;
+    font-weight: 100;
+    letter-spacing: -.1em;
+    /*padding-left: 20vw;*/
+    text-transform: uppercase;
+    transition: all 1.5s;
+}
+
+h1:hover{
+  letter-spacing: 1em;
+  /*font-weight: 300;*/
+  font-size: 2em;
+  line-height: -1em;
+  text-orientation: upright;
+}
+
 
 h3 {
     font-weight: 100;
@@ -121,12 +142,68 @@ div.colorpicker-alpha{
     visibility: hidden;
 }
 
+
+
 a.git, a:link {
-    color: grey;
+    transition: all 0.3s ease;
+    color: white;
 }
 
+.icons {
+  position: fixed;
+  bottom: -18px;
+  left: 10vw;
+}
+
+
+/*http://tobiasahlin.com/blog/css-trick-animating-link-underlines/*/
+a.git:before {
+  content: "";
+  position: absolute;
+  width: 50%;
+  height: 2px;
+  bottom: 50%;
+  left: 25%;
+  background-color: #FF7C55;
+  visibility: hidden;
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transition: all 0.3s ease-in-out 0s;
+  transition: all 0.3s ease-in-out 0s;
+}
+
+a.git:hover:before {
+  visibility: visible;
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1);
+}
+
+a.mail:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #FF7C55;
+  visibility: hidden;
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transition: all 0.3s ease-in-out 0s;
+  transition: all 0.3s ease-in-out 0s;
+}
+
+a.mail:hover:before {
+  visibility: visible;
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1);
+}
+
+
+
 a.git:hover, a:hover {
-    color: maroon;
+    font-size: 1.7em;
+    color: #FF7C55;
     text-decoration: none;
 
 }
@@ -183,6 +260,27 @@ span.high:hover{
 .st7{fill:#52b0f5;}
 /*Added extra for ch pic*/
 
+
+canvas{
+  display:block;
+  vertical-align:bottom;
+}
+
+#particles-js{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: slategrey;
+  background-image: url('');
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+}
+
+
+/*.text{
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+}*/
 
 /*.text {
   writing-mode: vertical-rl;

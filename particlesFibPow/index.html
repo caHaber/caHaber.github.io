@@ -33,10 +33,6 @@ $("body").mousemove(function(e) {
     mouseY = e.pageY;
 })
 
-$("body").click(function(e) {
-  console.log(e.pageX,e.pageY)
-});
-
 var mouseX = 0;
     mouseY = 0;
 
@@ -48,6 +44,7 @@ var mouseX = 0;
           a = b;
           b = f;
       }
+      if (n < 0) f = -f;
 
       return f;
   };
@@ -115,37 +112,24 @@ var lines;
     // particles.size.value = fib(i);
 
 
-// if (sense <= 50){
+if (sense <= 50){
     particles.array.forEach(function(p) { 
-      // p.vx = p.vx - Math.log(fib(i)) * .001;
-      // p.vy = p.vy - Math.log(fib(i)) * .001;
+      p.vx = p.vx - Math.log(fib(i)) * .001;
+      p.vy = p.vy - Math.log(fib(i)) * .001;
 
-      p.x = p.x + fib(mouseX*.01);
-      p.y = p.y + fib(mouseY*.01);
-    p.color.value = 'random';
-      // p.radius = p.radius + (fib(i) - fib(i - 1));
-      // p.opacity = (Math.random() * 1) + 0;
-
-      // particles.array.splice(p, 1);
-
-        if(sense === 50){
-          console.log(p);
+        // if(sense === 50){
+        //   console.log(p);
           
-        }
+        // }
 
       
     });
-// } 
-// else {
-//   particles.array.forEach(function(p) { 
-//     p.color.value = 'random';
-
-
-
-//   });
-
-//    // particles.color.value = '#9C1729';
-// }
+} 
+else {
+  particles.array.forEach(function(p) { 
+    p.color.value = 'random';
+  });
+}
 
 
     i++;

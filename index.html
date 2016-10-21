@@ -24,21 +24,17 @@
 
 
 <!-- Art Explosion Stylesheet -->
-<link rel="stylesheet" href="art/redPink.css" type="text/css">
+    <!-- <link rel="stylesheet" href="art/redPink.css" type="text/css"> -->
 
 
 
     <!-- Plugin CSS -->
-<link rel="stylesheet" href="css/main.css" type="text/css">
-<link rel="stylesheet" href="css/materialize-colorpicker.min.css" type="text/css">
-
+    <link rel="stylesheet" href="css/main.css" type="text/css">
 
     <!-- Custom CSS -->
     <!-- <link rel="stylesheet" href="css/creative.css" type="text/css"> -->
     <script src="js/jquery.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
-    <script src="js/materialize-colorpicker.min.js"></script>
 
 
 
@@ -54,17 +50,18 @@
 </head>
 
 <body id="page-top">
-    <svg width="960" height="960"></svg>
+    <div id="particles-js"></div>
 
 
-
-    <div class="container">
+    <br>
+    <br>
+    <div class="container top">
         <div class="row">
-            <div class="col-md-8 col-md-offset-3">
-                <h1 class="text"> The Aesthetic
-                    <br>Free-Fall
+            <div class="col-md-10 col-md-offset-2">
+                <h1 class="text"> An Adventure of Aesthetic Realization and Utilization.
+                    <br>
                 </h1>
-                     <hr>
+                     <!-- <hr> -->
                      <h2>Casey Haber</h2>
                      <br>
                      <br>
@@ -84,19 +81,17 @@
         <div class="container">
     </section>
     <section></section> -->
-<div class="container">
+<div class="container icons">
     <div class="row">
-        <div class="col-md-4 col-md-offset-8 text-center">
+        <div class="col-md-1 col-md-offset-0 text-center">
             <!-- <div id="cp2" class="inl-bl"></div> -->
             <div>
                 <!-- <h3> Casey Haber </h3> -->
 
             <i class="fa fa-github fa-3x wow bounceIn"></i>
             <p><a class="git" href="http://www.github.com/caHaber" target="_blank">caHaber</a></p>
-
-
             <i class="fa fa-envelope-o fa-3x wow bounceIn" data-wow-delay=".1s"></i>
-            <p><a href="mailto:haber.casey@gmail.com">haber.casey@gmail.com</a></p>
+            <p><a class="mail" href="mailto:haber.casey@gmail.com">haber.casey@gmail.com</a></p>
 
             <!-- Start of SimpleHitCounter Code -->
             <!-- <div align="center"><a href="http://www.simplehitcounter.com" target="_blank"><img src="http://simplehitcounter.com/hit.php?uid=2122935&f=16777215&b=0" border="0" height="18" width="83" alt="web counter"></a><br><h6>Page Views</h6</div> -->
@@ -106,7 +101,7 @@
         </div>
     </div>
 </div>
-<section></section>
+<!-- <section></section> -->
 
 
 
@@ -116,225 +111,138 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/particles/particles.js"></script>
+    <script src="js/particles/app.js"></script>
 
     <!-- Plugin JavaScript -->
-    <script src="js/jquery.easing.min.js"></script>
-    <script src="js/jquery.fittext.js"></script>
-    <script src="js/wow.min.js"></script>
+<!--     // <script src="js/jquery.easing.min.js"></script>
+    // <script src="js/jquery.fittext.js"></script>
+    // <script src="js/wow.min.js"></script> -->
 
 
     <script>
+          // var count_particles;
+  // count_particles = document.querySelector('.js-count-particles');
+
+$("body").mousemove(function(e) {
+    mouseX = e.pageX;
+    mouseY = e.pageY;
+})
+
+var mouseX = 0;
+    mouseY = 0;
 
 
+  var fib = function(n) {
+      var a = 0, b = 1, f = 1;
+      for(var i = 2; i <= n; i++) {
+          f = a + b;
+          a = b;
+          b = f;
+      }
+      if (n < 0) f = -f;
 
-    var nodes = [],
-        links = [],
-        width = 1500,
-        height = 1500;
-
-        var path = d3.geo.path(),
-            force = d3.layout.force().size([width, height]);
-        //     var svg = d3.select("body").append("svg")
-        // .attr("width", width)
-        // .attr("height", height);
-
-    var image = "img/ch.svg"
-    var flag = true;
-    d3.xml(image, "image/svg+xml", function(error, xml) {
-      if (error) throw error;
-      var svgNode = xml
-                    .getElementsByTagName("svg")[0];
-
-        // console.log(svgNode);
+      return f;
+  };
 
 
-      draw(svgNode);
+ 
 
 
+function ranC(){
+  return '#' +Math.floor(Math.random()*16777215).toString(16);
 
-
-
-
-    function draw(svgNode) {
-
-
-
-        var paths = d3.select(svgNode).selectAll("path");
-
-        var arrPaths = [];
-
-
-        paths[0].forEach(function(s){
-            var me = d3.select(s);
-            var feature = {};
-
-            arrPaths.push(me.node());
-        })
-
-
-
-        var svg = d3.select("svg").attr("width","3500").attr("height","2000");
-
-
-
-    svg.append("text")
-        .text("Click")
-        .attr("x",200)
-        .attr("y",20);
-
-
-
-            var donePaths =  svg.selectAll("path")
-                          .data(arrPaths)
-                         .enter().append("path")
-                          .attr("d",function(d){
-                              var me = d3.select(d);
-                            //   console.log(d,"rawD");
-
-                              return me.attr("d")
-                          })
-                          .attr("fill",function(d){
-                              return d3.select(d).attr("fill");
-                          })
-                          .attr("stroke",function(d){
-                                return d3.select(d).attr("stroke");
-                            });
-
-                        //GIVES Random st class for color brewer pallets
-
-                        //   .attr("class",function(d){
-                        //     //   return d.classList[0];
-                        //     var run = ran((Math.random()* (8 - 0) + 0));
-                        //     // console.log("st"+run)
-                        //     return "st" + run;
-                          //
-                        //   });
-
-                          features = [];
-
-    var animations = ["slideUp","slideLeft","slideDown","bounce","pulse","bigEntrance","hatch","tossing"];
-
-
-
-    svg.on("click",click);
-
-
-
-    //Attaches animations
-    // donePaths.on("mouseover",function(d){
-    //     var me = d3.select(this);
-    //     // me.style("fill","white");
-    //     // me.style("opacity",".5");
-    //     var run = ran((Math.random()* (7 - 0) + 0));
-    //     me.attr("class", function(s) {
-    //         // var me = d3.select(d);
-    //         // console.log(d3.select(d));
-    //         return animations[run];
-    //     });
-    //     // console.log(animations[run])
-    // })
-
-    function ran(x){
-        if (x >= 3 && x <4){
-            return 3
-        }
-        if (x >= 4 && x <5){
-            return 4
-        }
-        if (x >= 2 && x <3){
-            return 2
-        }
-        if (x >= 1 && x <2){
-            return 1
-        }
-        if (x >= 0 && x <1){
-            return 0
-        }
-        if (x >= 5 && x <6){
-            return 5
-        }
-        if (x >= 6 && x <7){
-            return 6
-        }
-        if (x >= 7 && x <8){
-            return 7
-        }
-        if (x >= 8 && x <9){
-            return 8
-        }
-    }
-
-    setTimeout(function() {
-        animate();
-    }, 1000);
-
-        function click(){
-            // if (flag == true){
-            //     flag = false;
-                reset();
-                // return;
-
-            // }
-            // else {
-            //     flag = true;
-            // }
-
-        }
-
-function animate() {
-    console.log("yo");
-    donePaths
-       .transition()
-       // .ease("elastic-out")
-       .ease("cubic-out")
-       .delay(function(d,i){return (Math.random() * 400) * 20})
-       // .duration(500).attr("transform",function(d){return "translate(0,-1000)" + " scale(" + (Math.random()* (5 - .1) + .1) + ")"});
-       // node.transition()
-       .duration(5500)
-       .attr("transform",function(d){
-           // return "translate(" + (Math.floor(Math.random() * 501) - 500) + ",-2700)" +
-            return "translate(" + (0) + ", 0)" +
-           " scale(" + (Math.random()* (20 - .001) + .001) + ")"
-           // "rotate(-180, " + d[0] + ", " + d[1] + ")";
-       });
 }
 
 
+var particles;
+var interactivity;
+var lines;
+
+  function init(update, requestAnimationFrame){
+    particles = window.pJSDom[0].pJS.particles;
+    interactivity = window.pJSDom[0].pJS.interactivity;
+    window.pJSDom[0].pJS.retina_detect = false;
+    // console.log(interactivity);
+    interactivity.events.onhover.enable = true;
+    interactivity.events.onhover.mode = "bubble";
+
+    particles.line_linked.enable = true;
 
 
+    //THIS IS SUPER AWESOME ROTATING RECTANGLES
+    particles.line_linked.width = 100;
+    particles.line_linked.opacity = 1;
+
+    particles.color.value = '#FFFFFF';
+  
+
+    particles.line_linked.color = '#FF7C55';
+
+    lines = particles.line_linked;
 
 
+    requestAnimationFrame(update);;
+  }
 
 
+  var i = 4;
+  // var iflag = false;
+  // var flag = true;
+  var sense = 0;
+  update = function() {
+
+    // if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) {
+    //   count_particles.innerText = window.pJSDom[0].pJS.particles.array.length;
+    // }
+    
+    if(i === 10){
+      iflag = 4;
     }
+    
 
-    function reset() {
-        console.log("reset")
-        d3.selectAll("path").remove();
-        var svg = d3.select("svg");
-        draw(svgNode)
-
-
-    }
+    // if(sense === 151){
+    //   sense = 0
+    // }
+    
+    // particles.size.value = fib(i);
 
 
+if (sense <= 50){
+    particles.array.forEach(function(p) { 
+      p.vx = p.vx + Math.log(fib(i)) * .001;
+      p.vy = p.vy + Math.log(fib(i)) * .001;
 
+        // if(sense === 50){
+        //   console.log(p);
+          
+        // }
+
+      
     });
+} 
+else {
+  particles.array.forEach(function(p) { 
+    p.color.value = 'random';
+  });
+}
+
+
+    i++;
+  
+
+  sense++;
+  
+    // particles.color.value = ranC();
+
+   
 
 
 
 
-    function getMyCentroid(bbox) {
-        // console.log(bbox);
-        return [bbox.x + bbox.width/2, bbox.y + bbox.height/2];
-    }
- //1 second
 
-
-
-
-
-
+    requestAnimationFrame(update);
+  };
 
 
     </script>

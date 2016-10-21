@@ -7,7 +7,6 @@
   <meta name="author" content="Vincent Garreau" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <link rel="stylesheet" media="screen" href="style.css">
-  <script src="jquery-1.12.4.min.js"></script>
 </head>
 <body>
 
@@ -28,18 +27,9 @@
   // var count_particles;
   // count_particles = document.querySelector('.js-count-particles');
 
-$("body").mousemove(function(e) {
-    mouseX = e.pageX;
-    mouseY = e.pageY;
-})
-
-$("body").click(function(e) {
-  console.log(e.pageX,e.pageY)
-});
-
-var mouseX = 0;
-    mouseY = 0;
-
+var particles;
+var interactivity;
+var lines;
 
   var fib = function(n) {
       var a = 0, b = 1, f = 1;
@@ -48,7 +38,6 @@ var mouseX = 0;
           a = b;
           b = f;
       }
-
       return f;
   };
 
@@ -62,14 +51,12 @@ function ranC(){
 }
 
 
-var particles;
-var interactivity;
-var lines;
+
 
   function init(update, requestAnimationFrame){
     particles = window.pJSDom[0].pJS.particles;
     interactivity = window.pJSDom[0].pJS.interactivity;
-    window.pJSDom[0].pJS.retina_detect = false;
+    window.pJSDom[0].pJS.retina_detect = true;
     // console.log(interactivity);
     interactivity.events.onhover.enable = true;
     interactivity.events.onhover.mode = "bubble";
@@ -89,13 +76,14 @@ var lines;
     lines = particles.line_linked;
 
 
+    console.log(interactivity.events);
+
     requestAnimationFrame(update);;
   }
 
 
   var i = 4;
-  // var iflag = false;
-  // var flag = true;
+  var flag = true;
   var sense = 0;
   update = function() {
 
@@ -104,55 +92,38 @@ var lines;
     // }
     
     if(i === 10){
-      iflag = 4;
+      i = 4
     }
     
 
-    // if(sense === 151){
-    //   sense = 0
-    // }
+    if(sense === 151){
+      sense = 0
+    }
     
     // particles.size.value = fib(i);
 
+  if (sense === 150){
 
-// if (sense <= 50){
+    window.pJSDom[0].pJS.canvas.ctx.lineWidth = i;
+
+
     particles.array.forEach(function(p) { 
-      // p.vx = p.vx - Math.log(fib(i)) * .001;
-      // p.vy = p.vy - Math.log(fib(i)) * .001;
-
-      p.x = p.x + fib(mouseX*.01);
-      p.y = p.y + fib(mouseY*.01);
-    p.color.value = 'random';
-      // p.radius = p.radius + (fib(i) - fib(i - 1));
-      // p.opacity = (Math.random() * 1) + 0;
-
-      // particles.array.splice(p, 1);
-
-        if(sense === 50){
-          console.log(p);
-          
-        }
-
+      p.x = p.x * fib(i) * 1000;
+      if(flag){
+        console.log();
+        console.log(p);
+      }
       
+
+      flag=false;
     });
-// } 
-// else {
-//   particles.array.forEach(function(p) { 
-//     p.color.value = 'random';
+
+  }
 
 
-
-//   });
-
-//    // particles.color.value = '#9C1729';
-// }
-
-
-    i++;
-  
 
   sense++;
-  
+  i++;
     // particles.color.value = ranC();
 
    
