@@ -15,7 +15,14 @@
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="css/animations.css" type="text/css">
     <!-- Custom Fonts -->
+
+
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,100' rel='stylesheet' type='text/css'>
+<!-- <link href="https://fonts.googleapis.com/css?family=Rubik:300,400" rel="stylesheet"> -->
+
+
+
+    
     <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" type="text/css">
 
     <link rel="shortcut icon" href="/img/logosrc.ico" type="image/x-icon" />
@@ -123,11 +130,14 @@
     <script>
           // var count_particles;
   // count_particles = document.querySelector('.js-count-particles');
-
 $("body").mousemove(function(e) {
     mouseX = e.pageX;
     mouseY = e.pageY;
 })
+
+// $("body").click(function(e) {
+//   console.log(e.pageX,e.pageY)
+// });
 
 var mouseX = 0;
     mouseY = 0;
@@ -140,7 +150,6 @@ var mouseX = 0;
           a = b;
           b = f;
       }
-      if (n < 0) f = -f;
 
       return f;
   };
@@ -189,7 +198,7 @@ var lines;
   var i = 4;
   // var iflag = false;
   // var flag = true;
-  var sense = 0;
+  // var sense = 0;
   update = function() {
 
     // if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) {
@@ -208,10 +217,18 @@ var lines;
     // particles.size.value = fib(i);
 
 
-if (sense <= 50){
+// if (sense <= 50){
     particles.array.forEach(function(p) { 
-      p.vx = p.vx + Math.log(fib(i)) * .001;
-      p.vy = p.vy + Math.log(fib(i)) * .001;
+      // p.vx = p.vx - Math.log(fib(i)) * .001;
+      // p.vy = p.vy - Math.log(fib(i)) * .001;
+
+      p.x = p.x + fib(mouseX*.01);
+      p.y = p.y + fib(mouseY*.01);
+    p.color.value = 'random';
+      // p.radius = p.radius + (fib(i) - fib(i - 1));
+      // p.opacity = (Math.random() * 1) + 0;
+
+      // particles.array.splice(p, 1);
 
         // if(sense === 50){
         //   console.log(p);
@@ -220,18 +237,23 @@ if (sense <= 50){
 
       
     });
-} 
-else {
-  particles.array.forEach(function(p) { 
-    p.color.value = 'random';
-  });
-}
+// } 
+// else {
+//   particles.array.forEach(function(p) { 
+//     p.color.value = 'random';
+
+
+
+//   });
+
+//    // particles.color.value = '#9C1729';
+// }
 
 
     i++;
   
 
-  sense++;
+  // sense++;
   
     // particles.color.value = ranC();
 
@@ -243,7 +265,6 @@ else {
 
     requestAnimationFrame(update);
   };
-
 
     </script>
 
