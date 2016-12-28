@@ -4,7 +4,7 @@
   "description": "Google d3 chart test",
   "main": "index.js",
   "scripts": {
-    "start" : "index.js",
+    "start": "index.js",
     "test": "testing"
   },
   "keywords": [
@@ -12,5 +12,8 @@
     "Practice"
   ],
   "author": "caHaber",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "google-trends-api": "^3.0.1"
+  }
 }
