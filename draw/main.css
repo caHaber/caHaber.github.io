@@ -1,0 +1,279 @@
+html {
+    background-color: none;
+}
+
+body {
+    font-family: 'Roboto',sans-serif;
+    font-weight: 100 !important;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+41,000000+97 */
+background: #ffffff; /* Old browsers */
+/*opacity: .5;*/
+/*background: -moz-linear-gradient(top,  #ffffff 41%, #000000 97%); */
+/* FF3.6-15*/
+/*background: -webkit-linear-gradient(top,  #ffffff 41%,#000000 97%); */
+/* Chrome10-25,Safari5.1-6 */
+/*background: linear-gradient(to bottom,  #ffffff 41%,#000000 97%); */
+/* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+/*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#000000',GradientType=0 ); */
+/* IE6-9 */
+}
+
+path.line {
+  fill: whitesmoke;
+  stroke: black;
+  stroke-width: 2px;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+circle{
+    stroke:none;
+}
+
+section#contact {
+    /*width: auto;
+    height: auto;
+    margin: 0 auto;*/
+    position: fixed !important;
+}
+
+svg {
+    background-color: none;
+    stroke: none;
+    stroke-width: none;
+    position: fixed;
+    top: 0px;
+    left: 0pxl
+}
+
+.top {
+pointer-events:none;
+
+}
+
+h6,h5,h2{
+
+    color: black;
+    font-weight: 300;
+    /*writing-mode: vertical-rl;*/
+    /*text-orientation: sideways-right;*/
+    letter-spacing: 1.2em;
+    padding-left: 30vw;
+
+}
+
+
+
+h1 {
+    pointer-events: all;
+    color: black;
+    margin-bottom: -25px !important;
+    font-size: 1.5em;
+    font-weight: 100;
+    letter-spacing: -.1em;
+    /*padding-left: 20vw;*/
+    text-transform: uppercase;
+    transition: all 1.5s;
+}
+
+h1:hover{
+  letter-spacing: 1em;
+  /*font-weight: 300;*/
+  font-size: 2em;
+  line-height: -1em;
+  text-orientation: upright;
+}
+
+
+h3 {
+    font-weight: 100;
+}
+
+div#cp2 {
+    position: fixed;
+    z-index: 999;
+    bottom: 20px;;
+    left: 20px;
+}
+
+
+div.blank {
+    width: auto;
+    height: 50px;
+}
+
+a.btn-floating {
+    margin: 3px;
+}
+
+a.btn {
+    margin: 2px;;
+}
+
+.btn, .btn-large, .btn-flat {
+    padding: 0 .5rem !important;
+
+ }
+
+ a.btn.amber {color: grey }
+  a.btn.cyan {color: grey }
+   a.btn.grey {color: grey }
+    a.btn.transparent {color: grey }
+
+
+
+p.instruct {
+    font-size: 1.5em;
+    padding-top: 10px;
+}
+
+#radios {
+    /*position: fixed;
+    top: 20px;
+    right: 20px;*/
+}
+
+.label {
+    font-weight: 100;
+    color: black;
+}
+
+div.colorpicker-alpha{
+    visibility: hidden;
+}
+
+
+
+a.git, a:link {
+    transition: all 0.3s ease;
+    color: white;
+}
+
+.icons {
+  position: fixed;
+  bottom: -18px;
+  left: 10vw;
+}
+
+
+/*http://tobiasahlin.com/blog/css-trick-animating-link-underlines/*/
+a.git:before {
+  content: "";
+  position: absolute;
+  width: 50%;
+  height: 2px;
+  bottom: 50%;
+  left: 25%;
+  background-color: #FF7C55;
+  visibility: hidden;
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transition: all 0.3s ease-in-out 0s;
+  transition: all 0.3s ease-in-out 0s;
+}
+
+a.git:hover:before {
+  visibility: visible;
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1);
+}
+
+a.mail:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #FF7C55;
+  visibility: hidden;
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transition: all 0.3s ease-in-out 0s;
+  transition: all 0.3s ease-in-out 0s;
+}
+
+a.mail:hover:before {
+  visibility: visible;
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1);
+}
+
+
+
+a.git:hover, a:hover {
+    font-size: 1.7em;
+    color: #FF7C55;
+    text-decoration: none;
+
+}
+
+
+.colorpicker .colorpicker-saturation {
+  width: 50px;
+  height: 50px;
+}
+.colorpicker .colorpicker-hue,
+.colorpicker .colorpicker-alpha {
+  width: 10px;
+  height: 50px;
+}
+.colorpicker .colorpicker-color,
+.colorpicker .colorpicker-color div{
+  height: 10px;
+}
+
+.colorpicker.colorpicker-with-alpha {
+    min-width: 80px !important;
+}
+
+svg {
+    margin-left: 50px;
+    margin-top: 100px;
+}
+
+section {
+    height: 300px;
+    width: auto;
+}
+
+span.high {
+    transition: color 1.5s;
+    -webkit-transition: color 1.5s;
+
+}
+
+span.high:hover{
+    color: whitesmoke;
+}
+
+
+/*Optional for use with svg*/
+.st0{fill:#E1E9E2;}
+.st1{fill:#D6DDD2;}
+.st2{fill:#452A29;}
+.st3{fill:#784848;}
+.st4{fill:#BB4946;}
+.st5{fill:#D4928F;}
+
+
+.st6{fill:#4874fb;}
+.st7{fill:#52b0f5;}
+/*Added extra for ch pic*/
+
+
+canvas{
+  display:block;
+  vertical-align:bottom;
+}
+
+#particles-js{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: slategrey;
+  background-image: url('');
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+}
