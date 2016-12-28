@@ -1,21 +1,22 @@
 html {
-    background-color: none;
+
 }
 
 body {
     font-family: 'Roboto',sans-serif;
     font-weight: 100 !important;
     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+41,000000+97 */
-background: #ffffff; /* Old browsers */
-/*opacity: .5;*/
-/*background: -moz-linear-gradient(top,  #ffffff 41%, #000000 97%); */
-/* FF3.6-15*/
-/*background: -webkit-linear-gradient(top,  #ffffff 41%,#000000 97%); */
-/* Chrome10-25,Safari5.1-6 */
-/*background: linear-gradient(to bottom,  #ffffff 41%,#000000 97%); */
-/* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-/*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#000000',GradientType=0 ); */
-/* IE6-9 */
+    background: #3388b3; /* Old browsers */
+    color: #3388b3;
+    /*opacity: .5;*/
+    /*background: -moz-linear-gradient(top,  #ffffff 41%, #000000 97%); */
+    /* FF3.6-15*/
+    /*background: -webkit-linear-gradient(top,  #ffffff 41%,#000000 97%); */
+    /* Chrome10-25,Safari5.1-6 */
+    /*background: linear-gradient(to bottom,  #ffffff 41%,#000000 97%); */
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    /*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#000000',GradientType=0 ); */
+    /* IE6-9 */
 }
 
 path.line {
@@ -47,7 +48,10 @@ svg {
 }
 
 .top {
-pointer-events:none;
+position: fixed;
+top: 20vh;
+z-index: 999;
+pointer-events: none;
 
 }
 
@@ -57,9 +61,10 @@ h6,h5,h2{
     font-weight: 300;
     /*writing-mode: vertical-rl;*/
     /*text-orientation: sideways-right;*/
-    letter-spacing: 1.2em;
+    letter-spacing: .5em;
+    line-height: 1.8em;
     padding-left: 30vw;
-   
+
 }
 
 
@@ -76,55 +81,17 @@ h1 {
     transition: all 1.5s;
 }
 
-h1:hover{
+/*h1:hover{
   letter-spacing: 1em;
   /*font-weight: 300;*/
   font-size: 2em;
   line-height: -1em;
   text-orientation: upright;
-}
+}*/
 
 
 h3 {
     font-weight: 100;
-}
-
-div#cp2 {
-    position: fixed;
-
-    bottom: 20px;;
-    left: 20px;
-}
-
-
-div.blank {
-    width: auto;
-    height: 50px;
-}
-
-a.btn-floating {
-    margin: 3px;
-}
-
-a.btn {
-    margin: 2px;;
-}
-
-.btn, .btn-large, .btn-flat {
-    padding: 0 .5rem !important;
-
- }
-
- a.btn.amber {color: grey }
-  a.btn.cyan {color: grey }
-   a.btn.grey {color: grey }
-    a.btn.transparent {color: grey }
-
-
-
-p.instruct {
-    font-size: 1.5em;
-    padding-top: 10px;
 }
 
 #radios {
@@ -146,13 +113,12 @@ div.colorpicker-alpha{
 
 a.git, a:link {
     transition: all 0.3s ease;
-    color: white;
 }
 
 .icons {
   position: fixed;
-  bottom: -18px;
-  left: 10vw;
+  top: 3vh;
+  left: 5vw;
 }
 
 
@@ -164,10 +130,12 @@ a.git:before {
   height: 2px;
   bottom: 50%;
   left: 25%;
-  background-color: #FF7C55;
+  background-color: #a9dbe2;
   visibility: hidden;
   -webkit-transform: scaleX(0);
   transform: scaleX(0);
+  -webkit-transform: scaleY(0);
+  transform: scaleY(0);
   -webkit-transition: all 0.3s ease-in-out 0s;
   transition: all 0.3s ease-in-out 0s;
 }
@@ -176,56 +144,69 @@ a.git:hover:before {
   visibility: visible;
   -webkit-transform: scaleX(1);
   transform: scaleX(1);
+  -webkit-transform: scaleY(100);
+  transform: scaleY(400);
 }
 
 a.mail:before {
   content: "";
   position: absolute;
-  width: 100%;
+
+  width: 40%;
   height: 2px;
-  bottom: 0;
+  bottom: -20vw;
   left: 0;
-  background-color: #FF7C55;
+  background-color: #a9dbe2;
   visibility: hidden;
-  -webkit-transform: scaleX(0);
-  transform: scaleX(0);
+  -webkit-transform: scaleX(3);
+  transform: scaleX(3);
+  -webkit-transform: scaleY(10);
+  transform: scaleY(10);
   -webkit-transition: all 0.3s ease-in-out 0s;
   transition: all 0.3s ease-in-out 0s;
 }
 
 a.mail:hover:before {
   visibility: visible;
-  -webkit-transform: scaleX(1);
-  transform: scaleX(1);
+  -webkit-transform: scaleX(3);
+  transform: scaleX(3);
+  -webkit-transform: scaleY(100);
+  transform: scaleY(100);
+}
+
+a.react:before {
+    content: "";
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    bottom: 50%;
+    left: 25%;
+    background-color: #a9dbe2;
+    visibility: hidden;
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    -webkit-transform: scaleY(0);
+    transform: scaleY(0);
+    -webkit-transition: all 1s ease-in-out 0s;
+    transition: all 1s ease-in-out 0s;
+}
+
+a.react:hover:before {
+    visibility: visible;
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+    -webkit-transform: scaleY(100);
+    transform: scaleY(100);
 }
 
 
 
 a.git:hover, a:hover {
     font-size: 1.7em;
-    color: #FF7C55;
     text-decoration: none;
 
 }
 
-
-.colorpicker .colorpicker-saturation {
-  width: 50px;
-  height: 50px;
-}
-.colorpicker .colorpicker-hue,
-.colorpicker .colorpicker-alpha {
-  width: 10px;
-  height: 50px;
-}
-.colorpicker .colorpicker-color,
-.colorpicker .colorpicker-color div{
-  height: 10px;
-}
-
-.colorpicker.colorpicker-with-alpha {
-    min-width: 80px !important;
-}
 
 svg {
     margin-left: 50px;
@@ -247,20 +228,6 @@ span.high:hover{
 }
 
 
-/*Optional for use with svg*/
-.st0{fill:#E1E9E2;}
-.st1{fill:#D6DDD2;}
-.st2{fill:#452A29;}
-.st3{fill:#784848;}
-.st4{fill:#BB4946;}
-.st5{fill:#D4928F;}
-
-
-.st6{fill:#4874fb;}
-.st7{fill:#52b0f5;}
-/*Added extra for ch pic*/
-
-
 canvas{
   display:block;
   vertical-align:bottom;
@@ -268,23 +235,22 @@ canvas{
 
 #particles-js{
   position: fixed;
-  width: 100%;
-  height: 100%;
-  background-color: slategrey;
+  width: 67vw;
+  height: 110%;
+  top: -5vh;
+  right: 0;
+
+  background-color: #7f88d2;
   background-image: url('');
   background-size: cover;
   background-position: 50% 50%;
   background-repeat: no-repeat;
 }
 
-
-/*.text{
-  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
-}*/
-
-/*.text {
-  writing-mode: vertical-rl;
-  letter-spacing: .5em;
-  line-height: 1.2em;
-  text-orientation: upright;
-}*/
+.left-panel {
+    width: 33vw !important;
+    height: 1000px;
+    left: 0;
+    position: fixed;
+    background-color: whitesmoke;
+}

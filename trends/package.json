@@ -1,0 +1,16 @@
+{
+  "name": "trends",
+  "version": "1.0.0",
+  "description": "Google d3 chart test",
+  "main": "index.js",
+  "scripts": {
+    "start" : "index.js",
+    "test": "testing"
+  },
+  "keywords": [
+    "Work",
+    "Practice"
+  ],
+  "author": "caHaber",
+  "license": "ISC"
+}
