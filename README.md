@@ -2,13 +2,18 @@
 
 #Casey Haber's Website#
 
-##Fork and build a creative exploration!
-##Send me your art-piece!
+## Experiments in my own learning and understanding of the web infrastructure
 
-### Tools 
+[Homepage Live](http://www.cahaber.me)
 
-[Bootstrap](http://getbootstrap.com/) framework created by [Mark Otto](https://twitter.com/mdo) and [Jacob Thorton](https://twitter.com/fat).
 
+### Tools
 [D3](https://d3js.org/) javascript library created by [Mike Bostock](https://bl.ocks.org/mbostock).
 
+[React Framework](https://facebook.github.io/react/)
+
+[Three.js](https://threejs.org/)
+
 [Materialize](http://materializecss.com/) Front-end framework for material design.
+
+[Bootstrap](http://getbootstrap.com/)
