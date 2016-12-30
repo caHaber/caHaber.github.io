@@ -94,12 +94,6 @@ h3 {
     font-weight: 100;
 }
 
-#radios {
-    /*position: fixed;
-    top: 20px;
-    right: 20px;*/
-}
-
 .label {
     font-weight: 100;
     color: black;
@@ -111,7 +105,9 @@ div.colorpicker-alpha{
 
 
 
-a.git, a:link {
+a:link {
+    /*padding-top:75px;
+    z-index: 999;*/
     transition: all 0.3s ease;
 }
 
@@ -124,34 +120,35 @@ a.git, a:link {
 
 /*http://tobiasahlin.com/blog/css-trick-animating-link-underlines/*/
 a.git:before {
+  pointer-events: none;
   content: "";
   position: absolute;
-  width: 50%;
-  height: 2px;
-  bottom: 50%;
-  left: 25%;
+  width: 200px;
+  height: 100px;
+  bottom: 0vh;
+  right: 0px;
   background-color: #a9dbe2;
-  visibility: hidden;
-  -webkit-transform: scaleX(0);
-  transform: scaleX(0);
-  -webkit-transform: scaleY(0);
-  transform: scaleY(0);
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1);
+  -webkit-transform: scaleY(1);
+  transform: scaleY(1);
   -webkit-transition: all 0.3s ease-in-out 0s;
   transition: all 0.3s ease-in-out 0s;
 }
 
 a.git:hover:before {
+  right: 100px;
+  bottom: -20vh;
   visibility: visible;
   -webkit-transform: scaleX(1);
   transform: scaleX(1);
-  -webkit-transform: scaleY(100);
-  transform: scaleY(400);
+  -webkit-transform: scaleY(1);
+  transform: scaleY(1);
 }
 
 a.mail:before {
   content: "";
   position: absolute;
-
   width: 40%;
   height: 2px;
   bottom: -20vw;
