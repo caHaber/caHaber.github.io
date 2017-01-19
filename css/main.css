@@ -3,8 +3,9 @@ html {
 }
 
 body {
-    font-family: 'Roboto',sans-serif;
-    font-weight: 100 !important;
+    font-family: "Futura", "Trebuchet MS", Arial, sans-serif;
+	/*font-size: 24px;*/
+	font-variant: normal;
     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+41,000000+97 */
     background: #3388b3; /* Old browsers */
     color: #3388b3;
@@ -58,12 +59,12 @@ pointer-events: none;
 h6,h5,h2{
 
     color: black;
-    font-weight: 300;
+    font-weight: 100;
     /*writing-mode: vertical-rl;*/
     /*text-orientation: sideways-right;*/
     letter-spacing: .5em;
-    line-height: 1.8em;
-    padding-left: 30vw;
+    line-height: .5em;
+    /*padding-left: 15vw;*/
 
 }
 
@@ -81,14 +82,6 @@ h1 {
     transition: all 1.5s;
 }
 
-/*h1:hover{
-  letter-spacing: 1em;
-  /*font-weight: 300;*/
-  font-size: 2em;
-  line-height: -1em;
-  text-orientation: upright;
-}*/
-
 
 h3 {
     font-weight: 100;
@@ -105,13 +98,15 @@ div.colorpicker-alpha{
 
 
 
-a:link {
+a {
     /*padding-top:75px;
     z-index: 999;*/
     transition: all 0.3s ease;
+    color:black;
 }
 
 .icons {
+    color: grey;
   position: fixed;
   top: 3vh;
   left: 5vw;
@@ -250,4 +245,32 @@ canvas{
     left: 0;
     position: fixed;
     background-color: whitesmoke;
+}
+
+.right-panel {
+    z-index: 999;
+    width: 33vw !important;
+    height: 110vh;
+    right: 0px;
+    position: fixed;
+    background-color: white;
+}
+
+p.bio {
+    padding-top: 20px;
+    font-family: "Trebuchet MS", Arial, sans-serif;
+	color: black;
+    font-weight: 100;
+	font-variant: thin;
+    width: 23vw;
+    /*margin-right: 70vw;*/
+}
+
+@media only screen and (max-width: 1024px) {
+    .small, .right-panel {
+        display: none;
+    }
+    .left-panel {
+        width: 100vw !important;
+    }
 }
