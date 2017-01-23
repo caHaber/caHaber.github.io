@@ -34,6 +34,7 @@
     <!-- <link rel="stylesheet" href="art/redPink.css" type="text/css"> -->
 
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.4.3/d3.min.js"></script>
 
     <!-- Plugin CSS -->
     <link rel="stylesheet" href="css/main.css" type="text/css">
@@ -67,6 +68,19 @@
 
 
     <div id="particles-js">
+        <div class="biodiv">
+        <p class="bio">
+            I am a developer, designer and with most emphasis; aspiring educationalist.
+            I spend most of my time experimenting with the web.
+            The majority of that time spent creating Data Visualizations with d3 and javascript.
+             My prior experience in Graphic Design allowed for Data Visualization to quickly become my passion as I loved the intersection of code, art and composition. Data Visualization inspires true exploration of knowledge in a methodologically rigorous manner.
+            I will be completing my Bachelors of Computer Science at the University of San Francisco next spring, with a Graphic Design minor already completed.
+        </p>
+        <div class="pic">
+            <img class="gitPic" src="img/git.png"/>
+            <p class="pic"> This is info bout pic</p>
+        </div>
+        </div>
     </div>
 
     <br>
@@ -100,27 +114,27 @@
             <div>
                 <!-- <h3> Casey Haber </h3> -->
 
-            <i class="fa fa-github fa-3x wow bounceIn"></i>
-            <p><a class="git" href="http://www.github.com/caHaber" target="_blank">caHaber</a></p>
-            <i class="fa fa-envelope-o fa-3x wow bounceIn" data-wow-delay=".1s"></i>
-            <p><a class="mail" href="mailto:haber.casey@gmail.com">haber.casey@gmail.com</a></p>
-            <i class="fa fa-bar-chart fa-3x wow bounceIn" data-wow-delay=".1s"></i>
-            <p><a class="react" href="https://reactd3.herokuapp.com/">D3ReactDemo</a></p>
-            <i class="fa fa-bar-chart fa-3x wow bounceIn" data-wow-delay=".1s"></i>
-            <p><a class="react" href="http://www.cahaber.me/SUYI">DataVizFinal</a></p>
+            <i class="fa fa-github fa-2x wow bounceIn"></i>
+            <p class="link"><a class="git" href="http://www.github.com/caHaber" target="_blank">caHaber</a></p>
+            <br>
+            <i class="fa fa-envelope-o fa-2x wow bounceIn" data-wow-delay=".1s"></i>
+            <p class="link"><a class="mail" href="mailto:haber.casey@gmail.com">haber.casey@gmail.com</a></p>
+            <br>
+            <i class="fa fa-bar-chart fa-2x wow bounceIn" data-wow-delay=".1s"></i>
+            <p class="link"><a class="react" href="https://reactd3.herokuapp.com/">D3ReactDemo</a></p>
+            <br>
+            <i class="fa fa-bar-chart fa-2x wow bounceIn" data-wow-delay=".1s"></i>
+            <p class="link"><a class="react" href="http://www.cahaber.me/SUYI">DataVizFinal</a></p>
+            <br>
+            <i class="fa fa-bar-chart fa-2x wow bounceIn"></i>
+            <p class="link"><a class="react" href="https://github-reactd3.herokuapp.com/" target="_blank">Github Explorer</a></p>
 <div>
 
-        <p class="bio">
-            I am a developer, designer and with most emphasis; aspiring educationalist.
-            I spend most of my time experimenting with the web.
-            The majority of that time spent creating Data Visualizations with d3 and javascript.
-             My prior experience in Graphic Design allowed for Data Visualization to quickly become my passion as I loved the intersection of code, art and composition. Data Visualization inspires true exploration of knowledge in a methodologically rigorous manner.
-            I will be completing my Bachelors of Computer Science at the University of San Francisco next spring, with a Graphic Design minor already completed.
-        </p>
+
         <br>
          <!-- <hr> -->
-         <h2>CASEY</h2>
-         <h2>HABER</h2>
+         <h2 class="first">CASEY</h2>
+         <h2 class="last">HABER</h2>
          <br>
          <br>
 </div>
@@ -132,6 +146,33 @@
 
     </div>
 </div>
+<script>
+
+    const git = '.git'
+
+    $(git).mouseenter( function (){
+        mouseover({param: git})
+    }).mouseleave( function(){
+        mouseout({param: git})
+    });
+
+    function mouseover(event){ $(event.param + 'Pic').fadeIn(); }
+    function mouseout(event){ $(event.param + 'Pic').fadeOut(); }
+
+
+    function click(d){
+        d3.select(".first").transition().duration(5000).style("font-size","1em");
+    }
+
+    $(document).ready(moveUp);
+
+    function moveUp(){
+        d3.select(".first")
+            .transition().duration(2000).style("padding-top","100px")
+            .transition().duration(1000).style("padding-top","250px");
+    }
+
+</script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>

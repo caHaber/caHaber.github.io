@@ -99,22 +99,48 @@ div.colorpicker-alpha{
 
 
 a {
-    /*padding-top:75px;
-    z-index: 999;*/
     transition: all 0.3s ease;
     color:black;
 }
 
+.link {
+    display: inline !important;
+}
+
 .icons {
-    color: grey;
+  color: grey;
   position: fixed;
   top: 3vh;
   left: 5vw;
 }
+ .fa {
+     line-height: 1.3em;
+ }
 
+ .gitPic {
+     padding-top: 80px;
+    padding-left: 20px;
+     width: 75%;
+     height: auto;
+     position: relative;
+ }
+
+ .pic {
+     display: none;
+ }
+
+ .first {
+     padding-left: 3px;
+     font-size: 1em;
+     padding-top: 800px;
+ }
+
+ .picInfo {
+    position: relative;
+ }
 
 /*http://tobiasahlin.com/blog/css-trick-animating-link-underlines/*/
-a.git:before {
+/*a.git:before {
   pointer-events: none;
   content: "";
   position: absolute;
@@ -142,6 +168,7 @@ a.git:hover:before {
 }
 
 a.mail:before {
+pointer-events: none;
   content: "";
   position: absolute;
   width: 40%;
@@ -167,6 +194,7 @@ a.mail:hover:before {
 }
 
 a.react:before {
+    pointer-events: none;
     content: "";
     position: absolute;
     width: 50%;
@@ -189,12 +217,12 @@ a.react:hover:before {
     transform: scaleX(1);
     -webkit-transform: scaleY(100);
     transform: scaleY(100);
-}
+}*/
 
 
 
 a.git:hover, a:hover {
-    font-size: 1.7em;
+    font-size: 1.65em;
     text-decoration: none;
 
 }
@@ -258,11 +286,15 @@ canvas{
 
 p.bio {
     padding-top: 20px;
+    padding-left: 20px;
     font-family: "Trebuchet MS", Arial, sans-serif;
-	color: black;
+	color: whitesmoke;
     font-weight: 100;
 	font-variant: thin;
-    width: 23vw;
+    width: 38vw;
+    position: fixed;
+    line-height: 2em;
+    bottom: 0px;
     /*margin-right: 70vw;*/
 }
 
