@@ -17,9 +17,13 @@
     <!-- Custom Fonts -->
 
 
-    <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,100' rel='stylesheet' type='text/css'>
+    <!-- <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,100' rel='stylesheet' type='text/css'> -->
 <!-- <link href="https://fonts.googleapis.com/css?family=Rubik:300,400" rel="stylesheet"> -->
 
+<!-- <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400" rel="stylesheet"> -->
+
+<!-- <link href="https://fonts.googleapis.com/css?family=Sahitya" rel="stylesheet"> -->
+<link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond:300,400" rel="stylesheet">
 
 
 
@@ -63,23 +67,25 @@
 
             </div>
 
+
+
             <!-- <div class="right-panel">
             </div> -->
 
 
     <div id="particles-js">
+
         <div class="biodiv">
-        <p class="bio">
-            I am a developer, designer and with most emphasis; aspiring educationalist.
-            I spend most of my time experimenting with the web.
-            The majority of that time spent creating Data Visualizations with d3 and javascript.
-             My prior experience in Graphic Design allowed for Data Visualization to quickly become my passion as I loved the intersection of code, art and composition. Data Visualization inspires true exploration of knowledge in a methodologically rigorous manner.
-            I will be completing my Bachelors of Computer Science at the University of San Francisco next spring, with a Graphic Design minor already completed.
+        <p class="bio topP">
+            I am a designer and developer who makes tools that inspire and enable everyday people. I have fallen in love with the endless experimentation that the modern web ecosystem provides. I am inspired by our ever increasing ability to transfer experiences. Human narratives will allow true understanding and empathy within society. Data Visualization exploration and presentation is the start of a journey to create better organization and communication between all people.
+</p>
+            <p class="bio mid">
+The majority of my time is spent creating Data Visualizations with d3.js. I love the intersection of code, design and information. Data Visualization inspires exploration of knowledge in a methodologically rigorous manner. I spent years as a graphic designer and although I enjoyed the processes involved, my passion was not fully present. I will be completing my Bachelors of Computer Science at the University of San Francisco in the Spring of 2017, with a Graphic Design minor already completed.
+</p>
+        <p class="bio bot">
+
+My name is Casey and I enjoy helping others learn.
         </p>
-        <div class="pic">
-            <img class="gitPic" src="img/git.png"/>
-            <p class="pic"> This is info bout pic</p>
-        </div>
         </div>
     </div>
 
@@ -128,10 +134,10 @@
             <br>
             <i class="fa fa-bar-chart fa-2x wow bounceIn"></i>
             <p class="link"><a class="react" href="https://github-reactd3.herokuapp.com/" target="_blank">Github Explorer</a></p>
-<div>
+<div class="name">
 
 
-        <br>
+            <br>
          <!-- <hr> -->
          <h2 class="first">CASEY</h2>
          <h2 class="last">HABER</h2>
@@ -164,12 +170,50 @@
         d3.select(".first").transition().duration(5000).style("font-size","1em");
     }
 
-    $(document).ready(moveUp);
+    $(document).ready(init);
+
+    function init(){
+        moveUp();
+        pUp();
+        pDown();
+        // fly();
+    }
 
     function moveUp(){
-        d3.select(".first")
-            .transition().duration(2000).style("padding-top","100px")
-            .transition().duration(1000).style("padding-top","250px");
+        d3.select(".name")
+            .transition().duration(2000).style("bottom","20vh");
+            // .transition().delay(3000).style("bottom",'90vh');
+
+    }
+
+    function pUp(){
+        d3.select(".topP")
+        .transition().duration(2000).style("bottom","55vh")
+    }
+
+    function pDown(){
+        d3.select(".bot")
+            .transition().duration(2000).style("bottom","10vh")
+    }
+
+    function fly() {
+          setTimeout(
+            function() {
+             d3.select(".name")
+                .transition().duration(2000).style("padding-left","100vh");
+
+            // d3.select(".last")
+            //     .transition().duration(2000).style("padding-left","100vh")
+
+            // d3.select(".first").transition().delay(5000).duration(2000).style("bottom","-20vh")
+
+            d3.select(".name")
+                .transition().delay(5000).duration(2000).style("padding-top","20vh");
+;
+
+            d3.select(".first")
+            d3.select(".last")
+        }, 3000);
     }
 
 </script>
