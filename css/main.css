@@ -300,25 +300,47 @@ p.bio {
 font-family: 'Cormorant Garamond', serif;
 
 	color: whitesmoke;
-    font-weight: 300;
+    font-weight: 100;
     letter-spacing: .05em;
-    font-size: 1em;
-    width: 40vw;
+    font-size: .8em;
+    width: 35vw;
     position: fixed;
-    line-height: 1.3em;
+    line-height: 1.2em;
     bottom: 30vh;
     /*margin-right: 70vw;*/
 }
 
 p.bot {
-    width: 20vw;
+
+    width: 30vw;
 }
 
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 1023px) {
     .small, .right-panel {
         display: none;
     }
     p.bio {
+        width: 55vw;
+        font-size: .8em;
+    }
+}
+
+@media only screen and (min-width: 2024px) {
+    .small, .right-panel {
+        display: none;
+    }
+    p.bio {
+        width: 55vw;
+        font-size: 2em;
+    }
+}
+
+@media only screen and (max-width: 624px) {
+    .small, .right-panel {
+        display: none;
+    }
+    p.bio {
+            width: 55vw;
         font-size: .5em;
     }
 }
