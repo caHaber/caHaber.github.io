@@ -302,8 +302,8 @@ font-family: 'Cormorant Garamond', serif;
 	color: whitesmoke;
     font-weight: 300;
     letter-spacing: .05em;
-    font-size: 1.1em;
-    width: 50vw;
+    font-size: 1em;
+    width: 40vw;
     position: fixed;
     line-height: 1.3em;
     bottom: 30vh;
@@ -314,11 +314,11 @@ p.bot {
     width: 20vw;
 }
 
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 700px) {
     .small, .right-panel {
         display: none;
     }
     p.bio {
-        font-size: .8em;
+        font-size: .5em;
     }
 }
