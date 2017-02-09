@@ -109,10 +109,11 @@ a {
 }
 
 .icons {
-  color: grey;
+  color: #3388b3;
   position: fixed;
   top: 3vh;
   left: 5vw;
+
 }
  .fa {
      line-height: 1.3em;
@@ -139,87 +140,6 @@ a {
  .picInfo {
     position: relative;
  }
-
-/*http://tobiasahlin.com/blog/css-trick-animating-link-underlines/*/
-/*a.git:before {
-  pointer-events: none;
-  content: "";
-  position: absolute;
-  width: 200px;
-  height: 100px;
-  bottom: 0vh;
-  right: 0px;
-  background-color: #a9dbe2;
-  -webkit-transform: scaleX(1);
-  transform: scaleX(1);
-  -webkit-transform: scaleY(1);
-  transform: scaleY(1);
-  -webkit-transition: all 0.3s ease-in-out 0s;
-  transition: all 0.3s ease-in-out 0s;
-}
-
-a.git:hover:before {
-  right: 100px;
-  bottom: -20vh;
-  visibility: visible;
-  -webkit-transform: scaleX(1);
-  transform: scaleX(1);
-  -webkit-transform: scaleY(1);
-  transform: scaleY(1);
-}
-
-a.mail:before {
-pointer-events: none;
-  content: "";
-  position: absolute;
-  width: 40%;
-  height: 2px;
-  bottom: -20vw;
-  left: 0;
-  background-color: #a9dbe2;
-  visibility: hidden;
-  -webkit-transform: scaleX(3);
-  transform: scaleX(3);
-  -webkit-transform: scaleY(10);
-  transform: scaleY(10);
-  -webkit-transition: all 0.3s ease-in-out 0s;
-  transition: all 0.3s ease-in-out 0s;
-}
-
-a.mail:hover:before {
-  visibility: visible;
-  -webkit-transform: scaleX(3);
-  transform: scaleX(3);
-  -webkit-transform: scaleY(100);
-  transform: scaleY(100);
-}
-
-a.react:before {
-    pointer-events: none;
-    content: "";
-    position: absolute;
-    width: 50%;
-    height: 50%;
-    bottom: 50%;
-    left: 25%;
-    background-color: #a9dbe2;
-    visibility: hidden;
-    -webkit-transform: scaleX(0);
-    transform: scaleX(0);
-    -webkit-transform: scaleY(0);
-    transform: scaleY(0);
-    -webkit-transition: all 1s ease-in-out 0s;
-    transition: all 1s ease-in-out 0s;
-}
-
-a.react:hover:before {
-    visibility: visible;
-    -webkit-transform: scaleX(1);
-    transform: scaleX(1);
-    -webkit-transform: scaleY(100);
-    transform: scaleY(100);
-}*/
-
 
 
 a.git:hover, a:hover {
@@ -288,6 +208,7 @@ canvas{
 
 .name {
     position: fixed;
+    pointer-events: none;
 }
 
 p.bio {
