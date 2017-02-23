@@ -87,7 +87,12 @@ h1 {
     letter-spacing: -.1em;
     /*padding-left: 20vw;*/
     text-transform: uppercase;
-    transition: all 1.5s;
+    -webkit-transition:  all 1.5;
+    -moz-transition: all 1.5;
+    -ms-transition:  all 1.5;
+    -o-transition: all 1.5;
+    transition: all 1.5;
+
 }
 
 
@@ -107,14 +112,24 @@ div.colorpicker-alpha{
 
 
 a.git {
+    -webkit-transition:  all .3s ease;
+    -moz-transition: all .3s ease;
+    -ms-transition:  all .3s ease;
+    -o-transition: all 0.3s ease;
     transition: all 0.3s ease;
     color:black;
 }
 
 a.textL {
-    transition: all 0.4s ease;
     color:black;
-    text-decoration: none;
+    border-bottom: 1px solid transparent;
+  /* ^- the important bit. RGB 192,192,192 is the same as #C0C0C0*/
+
+  -webkit-transition:  all .8s ease;
+  -moz-transition:  all .8s ease;
+  -ms-transition:  all .8s ease;
+  -o-transition:  all .8s ease;
+  transition:  all .8s ease;
 }
 
 .link {
@@ -126,6 +141,7 @@ a.textL {
   position: fixed;
   top: 3vh;
   left: 5vw;
+  width: 500px;
 
 }
  .fa {
@@ -165,7 +181,7 @@ a.git:hover {
 a.textL:hover {
     font-size: 1em;
     color: white;
-    text-decoration: underline;
+    border-bottom: 1px solid white;
 }
 
 
@@ -201,7 +217,7 @@ canvas{
   width: 20vw;
   height: 110%;
   top: -5vh;
-  right: 14vw;
+  right: 24vw;
 
   background-color: #3388b3;
   background-image: url('');
@@ -233,6 +249,22 @@ canvas{
     pointer-events: none;
 }
 
+.reactInfo {
+    background-color: #3388b3;
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23654598' fill-opacity='0.4' fill-rule='evenodd'/%3E%3C/svg%3E");
+
+    position: fixed;
+    width: 33vw;
+    height: 105vh;
+    /*top: 5vh;*/
+    left: 33vw;
+    /*background-color: whitesmoke;*/
+    display: none;
+    /*z-index: 999;*/
+    color: black;
+}
+
+
 p.bio {
 
     padding-top: 20px;
@@ -246,16 +278,11 @@ font-family: 'Cormorant Garamond', serif;
     font-weight: 100;
     letter-spacing: .05em;
     font-size: .8em;
-    width: 25vw;
+    width: 40vw;
     position: fixed;
     line-height: 1.2em;
     bottom: 30vh;
     /*margin-right: 70vw;*/
-}
-
-p.bio {
-
-    width: 30vw;
 }
 
 @media only screen and (max-width: 1000px) {
@@ -263,7 +290,7 @@ p.bio {
         display: none;
     }
     p.bio {
-        width: 30vw;
+        width: 40vw;
         font-size: .7em;
     }
 }
@@ -273,7 +300,7 @@ p.bio {
         display: none;
     }
     p.bio {
-        width: 25vw;
+        width: 40vw;
         font-size: 1.3em;
     }
 }
@@ -283,7 +310,23 @@ p.bio {
         display: none;
     }
     p.bio {
-            width: 25vw;
-        font-size: .35em;
+            width: 40vw;
+        font-size: .7em;
     }
+@media only screen and (max-width: 724px) {
+    .small, .right-panel {
+        display: none;
+    }
+    p.bio {
+            width: 40vw;
+        font-size: .4em;
+    }
+    @media only screen and (max-width: 524px) {
+        .small, .right-panel {
+            display: none;
+        }
+        p.bio {
+                width: 40vw;
+            font-size: .2em;
+        }
 }
