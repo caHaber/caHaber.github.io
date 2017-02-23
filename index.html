@@ -16,12 +16,10 @@
     <link rel="stylesheet" href="css/animations.css" type="text/css">
     <!-- Custom Fonts -->
 
-
-    <!-- <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,100' rel='stylesheet' type='text/css'> -->
+    <!-- Other testing fonts -->
+<!-- <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,100' rel='stylesheet' type='text/css'> -->
 <!-- <link href="https://fonts.googleapis.com/css?family=Rubik:300,400" rel="stylesheet"> -->
-
 <!-- <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400" rel="stylesheet"> -->
-
 <!-- <link href="https://fonts.googleapis.com/css?family=Sahitya" rel="stylesheet"> -->
 <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond:100,300" rel="stylesheet">
 
@@ -31,11 +29,11 @@
 
     <link rel="shortcut icon" href="/img/logosrc.ico" type="image/x-icon" />
     <!-- Compiled and minified CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
 
 
 <!-- Art Explosion Stylesheet -->
-    <!-- <link rel="stylesheet" href="art/redPink.css" type="text/css"> -->
+<!-- <link rel="stylesheet" href="art/redPink.css" type="text/css"> -->
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.4.3/d3.min.js"></script>
@@ -62,6 +60,9 @@
 </head>
 
 <body id="page-top">
+        <div class='reactInfo'>
+            <p> Info and description </p>
+        </div>
 
             <div class="left-panel">
 
@@ -121,7 +122,7 @@ My name is Casey and I enjoy making things for people.
     <div class="row">
 
             <!-- <div id="cp2" class="inl-bl"></div> -->
-            <div>
+            <div class="iconDiv">
                 <!-- <h3> Casey Haber </h3> -->
 
             <i class="fa fa-github fa-2x wow bounceIn"></i>
@@ -134,17 +135,21 @@ My name is Casey and I enjoy making things for people.
             <p class="link"><a class="git" href="/img/CaseyHaber_Resume.pdf" target="_blank">&thinsp; CV</a></p>
             <br>
             <i class="fa fa-bar-chart fa-2x wow bounceIn" data-wow-delay=".1s"></i>
-            <p class="link"><a class="git" href="https://reactd3.herokuapp.com/">D3ReactDemo</a></p>
-            <br>
-            <i class="fa fa-bar-chart fa-2x wow bounceIn" data-wow-delay=".1s"></i>
             <p class="link"><a class="git" href="http://www.cahaber.me/SUYI">DataVizFinal</a></p>
             <br>
+            <i class="fa fa-bar-chart fa-2x wow bounceIn" data-wow-delay=".1s"></i>
+            <p class="link"><a class="git react" href="https://reactd3.herokuapp.com/">D3 ReactDemo</a></p>
+            <br>
             <i class="fa fa-bar-chart fa-2x wow bounceIn"></i>
-            <p class="link"><a class="git" href="https://github-reactd3.herokuapp.com/" target="_blank">Github Explorer</a></p>
+            <p class="link"><a class="git react" href="https://housing-market.herokuapp.com/" target="_blank">Render(D3|React)</a></p>
+            <br>
+            <i class="fa fa-bar-chart fa-2x wow bounceIn"></i>
+            <p class="link"><a class="git react" href="https://github-reactd3.herokuapp.com/" target="_blank">Github Explorer</a></p>
             <br>
             <i class="fa fa-paint-brush fa-2x wow bounceIn"></i>
             <p class="link"><a class="git" href="/draw" target="_blank">&thinsp;Draw!</a></p>
             <br>
+
 
             <p class="notes">The demo's above are d3.js demos, check the hidden links on my github for other experiments.
             </p>
@@ -168,21 +173,18 @@ My name is Casey and I enjoy making things for people.
 </div>
 <script>
 
-    const git = '.git'
+    // const pic = '.react'
+    //
+    // $(pic).mouseenter(function (event){
+    //     mouseover(event)
+    // }).mouseleave( function(event){
+    //     mouseout(event)
+    // });
+    //
+    // function mouseover(event){ $('.reactInfo').fadeIn('fast'); }
+    // function mouseout(event){ $('.reactInfo').fadeOut('fast'); }
 
-    $(git).mouseenter( function (){
-        mouseover({param: git})
-    }).mouseleave( function(){
-        mouseout({param: git})
-    });
 
-    function mouseover(event){ $(event.param + 'Pic').fadeIn(); }
-    function mouseout(event){ $(event.param + 'Pic').fadeOut(); }
-
-
-    function click(d){
-        d3.select(".first").transition().duration(5000).style("font-size","1em");
-    }
 
     $(document).ready(init);
 
