@@ -106,9 +106,15 @@ div.colorpicker-alpha{
 
 
 
-a {
+a.git {
     transition: all 0.3s ease;
     color:black;
+}
+
+a.textL {
+    transition: all 0.4s ease;
+    color:black;
+    text-decoration: none;
 }
 
 .link {
@@ -149,10 +155,17 @@ a {
  }
 
 
-a.git:hover, a:hover {
+a.git:hover {
     font-size: 1.65em;
+    color: grey;
     text-decoration: none;
 
+}
+
+a.textL:hover {
+    font-size: 1em;
+    color: white;
+    text-decoration: underline;
 }
 
 
@@ -240,18 +253,18 @@ font-family: 'Cormorant Garamond', serif;
     /*margin-right: 70vw;*/
 }
 
-p.bot {
+p.bio {
 
     width: 30vw;
 }
 
-@media only screen and (max-width: 1023px) {
+@media only screen and (max-width: 1000px) {
     .small, .right-panel {
         display: none;
     }
     p.bio {
-        width: 25vw;
-        font-size: .8em;
+        width: 30vw;
+        font-size: .7em;
     }
 }
 
@@ -261,16 +274,16 @@ p.bot {
     }
     p.bio {
         width: 25vw;
-        font-size: 2em;
+        font-size: 1.3em;
     }
 }
 
-@media only screen and (max-width: 624px) {
+@media only screen and (max-width: 924px) {
     .small, .right-panel {
         display: none;
     }
     p.bio {
             width: 25vw;
-        font-size: .5em;
+        font-size: .35em;
     }
 }
