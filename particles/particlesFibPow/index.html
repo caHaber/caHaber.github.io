@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>particles.js</title>
+  <meta name="description" content="particles.js is a lightweight JavaScript library for creating particles.">
+  <meta name="author" content="Vincent Garreau" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" media="screen" href="style.css">
+  <script src="jquery-1.12.4.min.js"></script>
+</head>
+<body>
+
+<!-- count particles -->
+<!-- <div class="count-particles">
+  <span class="js-count-particles"></span> particles
+</div>
+ -->
+<!-- particles.js container -->
+<div id="particles-js"></div>
+
+<!-- scripts -->
+<script src="particles.js"></script>
+<script src="app.js"></script>
+
+<!-- stats.js -->
+<script>
+  // var count_particles;
+  // count_particles = document.querySelector('.js-count-particles');
+
+$("body").mousemove(function(e) {
+    mouseX = e.pageX;
+    mouseY = e.pageY;
+})
+
+var mouseX = 0;
+    mouseY = 0;
+
+
+  var fib = function(n) {
+      var a = 0, b = 1, f = 1;
+      for(var i = 2; i <= n; i++) {
+          f = a + b;
+          a = b;
+          b = f;
+      }
+      if (n < 0) f = -f;
+
+      return f;
+  };
+
+
+ 
+
+
+function ranC(){
+  return '#' +Math.floor(Math.random()*16777215).toString(16);
+
+}
+
+
+var particles;
+var interactivity;
+var lines;
+
+  function init(update, requestAnimationFrame){
+    particles = window.pJSDom[0].pJS.particles;
+    interactivity = window.pJSDom[0].pJS.interactivity;
+    window.pJSDom[0].pJS.retina_detect = false;
+    // console.log(interactivity);
+    interactivity.events.onhover.enable = true;
+    interactivity.events.onhover.mode = "bubble";
+
+    particles.line_linked.enable = true;
+
+
+    //THIS IS SUPER AWESOME ROTATING RECTANGLES
+    particles.line_linked.width = 100;
+    particles.line_linked.opacity = 1;
+
+    particles.color.value = '#FFFFFF';
+  
+
+    particles.line_linked.color = '#FF7C55';
+
+    lines = particles.line_linked;
+
+
+    requestAnimationFrame(update);;
+  }
+
+
+  var i = 4;
+  // var iflag = false;
+  // var flag = true;
+  var sense = 0;
+  update = function() {
+
+    // if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) {
+    //   count_particles.innerText = window.pJSDom[0].pJS.particles.array.length;
+    // }
+    
+    if(i === 10){
+      iflag = 4;
+    }
+    
+
+    // if(sense === 151){
+    //   sense = 0
+    // }
+    
+    // particles.size.value = fib(i);
+
+
+if (sense <= 50){
+    particles.array.forEach(function(p) { 
+      p.vx = p.vx - Math.log(fib(i)) * .001;
+      p.vy = p.vy - Math.log(fib(i)) * .001;
+
+        // if(sense === 50){
+        //   console.log(p);
+          
+        // }
+
+      
+    });
+} 
+else {
+  particles.array.forEach(function(p) { 
+    p.color.value = 'random';
+  });
+}
+
+
+    i++;
+  
+
+  sense++;
+  
+    // particles.color.value = ranC();
+
+   
+
+
+
+
+
+    requestAnimationFrame(update);
+  };
+
+
+
+</script>
+
+</body>
+</html>

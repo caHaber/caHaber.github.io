@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>particles.js</title>
+  <meta name="description" content="particles.js is a lightweight JavaScript library for creating particles.">
+  <meta name="author" content="Vincent Garreau" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" media="screen" href="style.css">
+</head>
+<body>
+
+<!-- count particles -->
+<!-- <div class="count-particles">
+  <span class="js-count-particles"></span> particles
+</div>
+ -->
+<!-- particles.js container -->
+<div id="particles-js"></div>
+
+<!-- scripts -->
+<script src="particles.js"></script>
+<script src="app.js"></script>
+
+<!-- stats.js -->
+<script>
+  // var count_particles;
+  // count_particles = document.querySelector('.js-count-particles');
+
+var particles;
+var interactivity;
+var lines;
+
+  var fib = function(n) {
+      var a = 0, b = 1, f = 1;
+      for(var i = 2; i <= n; i++) {
+          f = a + b;
+          a = b;
+          b = f;
+      }
+      return f;
+  };
+
+
+ 
+
+
+function ranC(){
+  return '#' +Math.floor(Math.random()*16777215).toString(16);
+
+}
+
+
+
+
+  function init(update, requestAnimationFrame){
+    particles = window.pJSDom[0].pJS.particles;
+    interactivity = window.pJSDom[0].pJS.interactivity;
+    window.pJSDom[0].pJS.retina_detect = true;
+    // console.log(interactivity);
+    interactivity.events.onhover.enable = true;
+    interactivity.events.onhover.mode = "bubble";
+
+    particles.line_linked.enable = true;
+
+
+    //THIS IS SUPER AWESOME ROTATING RECTANGLES
+    particles.line_linked.width = 100;
+    particles.line_linked.opacity = 1;
+
+    particles.color.value = '#FFFFFF';
+  
+
+    particles.line_linked.color = '#FF7C55';
+
+    lines = particles.line_linked;
+
+
+    console.log(interactivity.events);
+
+    requestAnimationFrame(update);;
+  }
+
+
+  var i = 4;
+  var flag = true;
+  var sense = 0;
+  update = function() {
+
+    // if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) {
+    //   count_particles.innerText = window.pJSDom[0].pJS.particles.array.length;
+    // }
+    
+    if(i === 10){
+      i = 4
+    }
+    
+
+    if(sense === 151){
+      sense = 0
+    }
+    
+    // particles.size.value = fib(i);
+
+  if (sense === 150){
+
+    window.pJSDom[0].pJS.canvas.ctx.lineWidth = i;
+
+
+    particles.array.forEach(function(p) { 
+      p.x = p.x * fib(i) * 1000;
+      if(flag){
+        console.log();
+        console.log(p);
+      }
+      
+
+      flag=false;
+    });
+
+  }
+
+
+
+  sense++;
+  i++;
+    // particles.color.value = ranC();
+
+   
+
+
+
+
+
+    requestAnimationFrame(update);
+  };
+
+
+
+</script>
+
+</body>
+</html>
