@@ -141,9 +141,10 @@ span.high:hover{
     color: white;
     font-weight: 100;
     font-family: 'Raleway', sans-serif;
-    font-size: 1.6em;
+    font-size: 1.4em;
     letter-spacing: .01em;
     line-height: 2.1em;
+    /* padding: 50px 100px 50px 100px; */
 }
 .name {
     position: fixed;
@@ -151,8 +152,7 @@ span.high:hover{
 }
 
 .paraT{
-    padding-top: 10px;
-    
+    padding: 50px 100px 50px 100px;   
 }
 
 
@@ -183,5 +183,10 @@ span.high:hover{
         font-size: 10em;
         line-height: .9em;
     }
+
+    .paraT{
+        padding: 10px 5px 10px 5px;   
+    }
+    
     
 }
