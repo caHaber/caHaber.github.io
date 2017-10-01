@@ -6,7 +6,7 @@
 </head>
 <body>
 <script src="//d3js.org/d3.v3.min.js"></script>
-
+<link rel="stylesheet" href="redPink.css" type="text/css">
 <svg width="960" height="960"></svg>
 <script>
 
@@ -23,7 +23,7 @@ var nodes = [],
     // .attr("width", width)
     // .attr("height", height);
 
-var image = "redPink.svg"
+var image = "/art/redPink.svg"
 
 d3.xml(image, "image/svg+xml", function(error, xml) {
   if (error) throw error;

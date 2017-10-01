@@ -39,45 +39,47 @@
           var flag = 0;
           var i;
           cor = [];
-          for (i = 0; i < 100; i++) {
-            var width = ((Math.random() * .25) + 0);
-            var height = ((Math.random() * .5) + 0);
+          for (i = 0; i < 33; i++) {
+            var width = ((Math.random() * .25) + 10);
+            var height = ((Math.random() * .5) + 10);
 
             var value = Math.random() * 0xFF | 0;
             var grayscale = (value << 16) | (value << 8) | value;
             var c = '#' + grayscale.toString(16);
             
-            var d = ((Math.random() * 3) + -1);
-            var f = ((Math.random() * 3) + -1);
-            var e = ((Math.random() * 3) + -1);
+            var d = ((Math.random() * 40) + 20);
+            var f = ((Math.random() * 30) + 20);
+            var e = ((Math.random() * 30) + 20);
             var colRan = '#' + Math.floor(Math.random() * 16777215).toString(16);
             cor.push([width, height, c, d,f,e,colRan]);
             flag++;
-            if (flag > 99) callback(cor);
+            if (flag > 33) callback(cor);
           }
 
         }
 
         var loadData = function(cor) {
-              var cubes = d3.select("a-scene").selectAll("a-curvedimage")
+              var cubes = d3.select("a-scene").selectAll("a-cube")
                 .data(cor)
                   .enter()
-                  .append("a-curvedimage")
-                  .attr("src","ch_cutout.png")
-                  .attr("position", function(d){
-                    return d[3] + " " + d[4] + " " + d[5]
+                  .append("a-cube")
+                  // .attr("translate", function(d){
+                  //   return d[3] + " " + d[4] + " " + d[5]
+                  // })
+                  .attr("translate", function(d){
+                    return 0 + " " + 0 + " " + -5
                   })
-                  .attr("radius", function(d) {
+                  .attr("width", function(d) {
                     return d[0]
                   })
                   .attr("height",function(d){
                     return d[1]
                   })
-                  .attr("theta-length",function(d){
+                  .attr("depth",function(d){
                     return d[0]
                   });
 
-/*
+
               cubes.transition().delay(1000).duration(5000)
                 .attr("color",function(d){
                     return d[6]
@@ -87,7 +89,7 @@
                   })
                   .attr("height",function(d){
                     return d[4]
-                  });*/
+                  });
 
 
 
