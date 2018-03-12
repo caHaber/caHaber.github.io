@@ -28,11 +28,13 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <script src="https://d3js.org/d3-color.v1.min.js"></script>
-    <script src="https://d3js.org/d3-interpolate.v1.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/p5.js"></script>
+
+
 </head>
 
-<body id="page-top">
+<body id="page-top" style="margin: 0px;">
 
 
 <div class="container-fluid" id="main">
@@ -43,8 +45,8 @@
         <div class="col-md-12 col-md-offset-0">
 
 
-            <canvas id="myCanvas">
-            </canvas>
+            <!-- <canvas id="myCanvas">
+            </canvas> -->
             
 
 
@@ -61,138 +63,13 @@
 
 
 
-
+<script  src="./draw.js"></script>
 <script>
 
-window.onload = init;
-
-var canvasWidth = document.body.clientWidth;
-var canvasHeight = document.body.clientHeight;
-var lineSegs = [];
-var canvas,context;
-var mouse = {x: 0, y: 0};
-var xhr = new XMLHttpRequest();
-var currentPos = {x:0, y:0};
-
-var URL = 'http://localhost:3000'
-
-function init(){
-    console.log("js initiated");
-    initCanvas();
-    addListeners();
-}
+// window.onload = init;
 
 
-window.addEventListener("resize", function(event) {
-    canvasWidth = document.body.clientWidth;
-    canvasHeight = document.body.clientHeight;
-    initCanvas();
-})
-
-moveListener = (e,cav) => {
-        mouse.x = e.pageX - cav.offsetLeft;
-        mouse.y = e.pageY - cav.offsetTop;
-
-}
-
-touchMoveListener = (ev) =>  {
-    ev.preventDefault();
-}
-
-
-addListeners = () => {
-    canvas.addEventListener('mousemove', function(e) { moveListener(e,this) }, false);
-
-
-    
-     canvas.addEventListener('mousedown', function(e) {
-        context.beginPath();
-        context.moveTo(mouse.x, mouse.y);
-
-        canvas.addEventListener('mousemove', onPaint, false);
-    }, false);
-
-    canvas.addEventListener('mouseup', function(e) {
-        sendLineData(JSON.stringify(lineSegs));
-        canvas.removeEventListener('mousemove', onPaint, false);
-        console.log(lineSegs, "LineSEGS");
-    }, false);
-
-}
-
-sendLineData = (segments) => {
-    var xhr = new XMLHttpRequest();
-        xhr.open("POST", URL, true);
-        xhr.setRequestHeader('Content-Type', 'application/json');
-        xhr.send(JSON.stringify({
-            segments: lineSegs
-        }));
-
-}
-
-var interpolateY; 
-var interpolateY; 
-
-onPaint = () => {
-    
-    interpolateX = d3.interpolate(currentPos.x, mouse.x);
-    interpolateY = d3.interpolate(currentPos.y, mouse.y);
-    context.beginPath();
-    // for (var i = 0; i <= 1; i= i+.007){
-        // context.lineTo(, interpolateY(i));
-    context.quadraticCurveTo(mouse.x, mouse.y, interpolateX(.5), interpolateY(.5));
-    context.stroke();
-    // }
-
-
-    // context.lineTo(mouse.x, mouse.y);
-    currentPos = mouse;
-    lineSegs.push( {x: mouse.x, y: mouse.y} );
-    
-};
-
-initCanvas = () => {
-    canvas = document.getElementById("myCanvas");
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    context = canvas.getContext("2d");
-    console.log(context, "Drawn");
-
-    context.lineJoin = 'round';
-    context.lineCap = 'round';
-    context.lineWidth = 5;
-    context.fillStyle = 'whitesmoke';
-    context.fillRect(0, 0, window.innerWidth, window.innerHeight);
-}
-
-// createCanvas = () => {
-//   const canvas = document.createElement('canvas');
-//   const context = canvas.getContext('2d');
-//   return { canvas, context };
-// }
-
-resize = (canvas) => {
-  // Desired width and height in pixels
-  const width = 256;
-  const height = 256;
- 
-  // Device screen density, e.g. MacBook Pro is @2x
-  const pixelRatio = window.devicePixelRatio;
-  
-  // Scale it up by pixel ratio for higher density screens
-  canvas.width = width * pixelRatio;
-  canvas.height = height * pixelRatio;
- 
-  // Set the style to the desired size so that it scales back down
-  canvas.style.width = `${width}px`;
-  canvas.style.height = `${height}px`;
-
-  return { width, height, pixelRatio };
-}
-
-  // Create the canvas and context
-
-
+function init(){}
 
 
 </script>
