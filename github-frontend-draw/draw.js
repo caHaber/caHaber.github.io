@@ -5,19 +5,21 @@ var colorPicked;
 var path = {lineSegs: [], width: null, height: null, strokeColor: null, strokeWidth: 10};
 
 var xhr = new XMLHttpRequest();
-var URL = 'http://localhost:3000'
+var URL
+// ='http://localhost:3000'
+= 'http://50.1.86.208:3000/';
 
 
 var pallete = [
-    '#DAF7A6',
-    '#FFC300',
-    '#FF5733',
-    '#C70039',
-    '#900C3F',
-    '#581845',
+    '#E6E6E6',
+    '#909090',
+    '#2A2A2A',
+    '#C1F6BE',
+    '#BEDAFF',
+    '#17B8FE',
     '#40EDC8',
-    '#E29FEC',
-    '#B6C4FA'];
+    '#FF8235',
+    '#FF85B8'];
 
 
 function setup() {
