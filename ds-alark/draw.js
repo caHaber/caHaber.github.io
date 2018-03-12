@@ -6,8 +6,8 @@ var path = {lineSegs: [], width: null, height: null, strokeColor: null, strokeWi
 
 var xhr = new XMLHttpRequest();
 var URL
-='http://localhost:3000';
-// = 'http://50.1.86.208:3000/';
+// ='http://localhost:3000';
+= 'http://50.1.86.208:3000/';
 
 
 var pallete = [
