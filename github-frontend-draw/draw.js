@@ -97,7 +97,7 @@ function touchEnded() {
  }
 
 
-sendLineData = () => {
+function sendLineData () {
         console.log(path);
         var xhr = new XMLHttpRequest();
         xhr.open("POST", URL, true);
