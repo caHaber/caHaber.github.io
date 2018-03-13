@@ -1,10 +1,13 @@
 
-var selectionComplete = 0;
-var colorPicked;
-// Line seg is mouseX, mouseY, pmouseX, pmouseY
-var path = {lineSegs: [], width: null, height: null, strokeColor: null, strokeWidth: 10};
 
 var xhr = new XMLHttpRequest();
+var selectionComplete = 0;
+var colorPicked;
+
+// Line seg is {mouseX, mouseY, pmouseX, pmouseY}
+var path = {lineSegs: [], width: null, height: null, strokeColor: null, strokeWidth: 10};
+
+// For local development you must run the post server and the website
 var URL
 // ='http://localhost:3000';
 = 'http://50.1.86.208:3000/';
@@ -24,14 +27,11 @@ var pallete = [
 
 function setup() {
    createCanvas(windowWidth, windowHeight); 
-//    strokeWeight(+path.strokeWidth)
-//    stroke(path.strokeColor);
    path.height = windowHeight;
    path.width = windowWidth;
    strokeWeight(0);
    drawColorChoices();
    strokeWeight(+path.strokeWidth);
-//    noDraw();
    noLoop();
 }
 
@@ -82,8 +82,7 @@ function touchMoved() {
       pmouseX = mouseX;
       pmouseY = mouseY;
    } 
-   path.lineSegs.push({x:mouseX, y:mouseY, px:pmouseX, py: pmouseY})
-//    console.log(mouseX, mouseY, pmouseX, pmouseY);
+   path.lineSegs.push({x:mouseX, y:mouseY, px:pmouseX, py: pmouseY});
    line(mouseX, mouseY, pmouseX, pmouseY);
    pmouseX = mouseX;
    pmouseY = mouseY;

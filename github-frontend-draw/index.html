@@ -70,13 +70,13 @@
 
 (function (window) {
 
-if ((/Macintosh/gi).test(navigator.userAgent) && (/Chrome|Safari|Firefox/gi).test(navigator.userAgent)) {
+    if ((/Macintosh/gi).test(navigator.userAgent) && (/Chrome|Safari|Firefox/gi).test(navigator.userAgent)) {
 
-    history.pushState(null, null, location.href);
-    window.onpopstate = function(event) {
-        history.go(1);
-    };
-}
+        history.pushState(null, null, location.href);
+        window.onpopstate = function(event) {
+            history.go(1);
+        };
+    }
 
 }(this));
 
