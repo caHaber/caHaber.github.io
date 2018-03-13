@@ -15,7 +15,7 @@ var URL
 
 var pallete =
 //Random Colors
-//  ['#E6E6E6','#909090','#2A2A2A','#C1F6BE','#BEDAFF','#17B8FE','#40EDC8','#FF8235','#FF85B8'];
+//['#E6E6E6','#909090','#2A2A2A','#C1F6BE','#BEDAFF','#17B8FE','#40EDC8','#FF8235','#FF85B8'];
 //Color brewer set 9 qualitative set
  ['#8dd3c7','#ffffb3','#bebada','#fb8072','#80b1d3','#fdb462','#b3de69','#fccde5','#d9d9d9'];
 
@@ -33,8 +33,15 @@ function setup() {
 
 var circleSize = 0;
 
+var firstLoop = 0;
+
 function draw(){
-    
+    //I hate p5 first loop conditional exit for tiny black circle
+    if(!firstLoop){
+        firstLoop = 1;
+        return;
+    }
+
     ellipse(windowWidth/2,windowHeight/2,circleSize,circleSize);
 
     if(circleSize > windowWidth *1.315 && circleSize > windowHeight*1.315){
@@ -43,6 +50,7 @@ function draw(){
         clear();
 
         circleSize = 0;
+        drawStarterLine();
         noLoop();
     }
    
@@ -68,12 +76,18 @@ function touchStarted() {
     if(!selectionComplete) {
         colorPicked = get(mouseX,mouseY);
         stroke(colorPicked[0],colorPicked[1],colorPicked[2],colorPicked[3]);
+       
         fill("white");
         loop();
         return false;
     }
     path.lineSegs = [];
     return false;
+}
+
+function drawStarterLine(){
+    line(windowWidth/8, windowHeight/2, 0, windowHeight/2);
+    line(windowWidth - windowWidth/8, windowHeight/2, windowWidth, windowHeight/2);
 }
 
 var start,end, time;
