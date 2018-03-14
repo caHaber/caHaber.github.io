@@ -5,7 +5,7 @@ var selectionComplete = 0;
 var colorPicked;
 
 // Line seg is {mouseX, mouseY, pmouseX, pmouseY}
-var path = {lineSegs: [], width: null, height: null, strokeColor: null, strokeWidth: 10};
+var path = {lineSegs: [], width: null, height: null, strokeColor: null, strokeWidth: 7};
 
 // For local development you must run the post server and the website
 var URL
@@ -16,9 +16,9 @@ var URL
 var pallete =
 //Random Colors
 //['#E6E6E6','#909090','#2A2A2A','#C1F6BE','#BEDAFF','#17B8FE','#40EDC8','#FF8235','#FF85B8'];
-//Color brewer set 9 qualitative set
- ['#8dd3c7','#ffffb3','#bebada','#fb8072','#80b1d3','#fdb462','#b3de69','#fccde5','#d9d9d9'];
-
+//Color brewer set 9 qualitative sets
+//  ['#8dd3c7','#ffffb3','#bebada','#fb8072','#80b1d3','#fdb462','#b3de69','#fccde5','#d9d9d9'];
+ ['#e41a1c','#377eb8','#4daf4a','#984ea3','#ff7f00','#ffff33','#a65628','#f781bf','#999999'];
 
 
 function setup() {
@@ -36,7 +36,7 @@ var circleSize = 0;
 var firstLoop = 0;
 
 function draw(){
-    //I hate p5 first loop conditional exit for tiny black circle
+    //I hate p5 -> first loop conditional exit for tiny black circle
     if(!firstLoop){
         firstLoop = 1;
         return;
@@ -50,7 +50,9 @@ function draw(){
         clear();
 
         circleSize = 0;
+        setPen("black",4);
         drawStarterLine();
+        setPen(colorPicked,+path.strokeWidth);
         noLoop();
     }
    
@@ -128,7 +130,7 @@ function sendLineData () {
         var xhr = new XMLHttpRequest();
         xhr.open("POST", URL, true);
         xhr.setRequestHeader('Content-Type', 'application/json');
-        path.lineSegs = JSON.stringify(path.lineSegs);
+        // path.lineSegs = path.lineSegs;
         path.strokeColor = colorPicked;
 
         xhr.onreadystatechange = function() {//Call a function when the state changes.
@@ -141,4 +143,10 @@ function sendLineData () {
         }
 
         xhr.send(JSON.stringify(path));
+}
+
+
+function setPen(color, width){
+    strokeWeight(width);
+    stroke(color);
 }
