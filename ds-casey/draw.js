@@ -5,7 +5,7 @@ var selectionComplete = 0;
 var colorPicked;
 var strokePicked;
 var button;
-
+var canvas;
 // Line seg is {mouseX, mouseY, pmouseX, pmouseY}
 var path = {lineSegs: [], width: null, height: null, strokeColor: null, strokeWidth: 7};
 
@@ -65,7 +65,7 @@ var sent = 0;
 // '#FFFFFF'];
 
 function setup() {
-   createCanvas(windowWidth, windowHeight); 
+   canvas = createCanvas(windowWidth, windowHeight); 
    path.height = windowHeight;
    path.width = windowWidth;
    strokeWeight(0);
@@ -149,8 +149,8 @@ function drawStarterLine(){
     line(windowWidth - windowWidth/8, windowHeight/2, windowWidth, windowHeight/2);
 
     if(sent === 0){
-        addButton(button, '<span>Draw!</span>', bgNext, windowWidth * .7, windowHeight * .8, 'btn');
-        addButton(button, '<span>Clear!</span>', bgClear, windowWidth * .1, windowHeight * .8, 'btn red');
+        addButton(button, '<span>Send!</span>', bgNext, windowWidth * .7, windowHeight * .8, 'btn');
+        addButton(button, '<span>Clear</span>', bgClear, windowWidth * .1, windowHeight * .8, 'btn red');
     }
 
     setPen(colorPicked,+path.strokeWidth);
@@ -274,6 +274,7 @@ function addButton(b, content, action, width, height, clss){
 function bgNext(){
     sent++;
     sendLineData();
+    bgClear();
 }
 
 function bgClear(){
