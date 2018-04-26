@@ -71,11 +71,12 @@ html {
 }
 
 .btn.orange {
-  background-color: #e67e22;
+  background-color: lightblue;
+  border-radius: 80%;
 }
 
 .btn.orange:hover, .btn.orange:focus {
-  background-color: #d35400;
+  background-color: lightblue;
 }
 
 .btn.red {
@@ -85,3 +86,16 @@ html {
 .btn.red:hover, .btn.red:focus {
   background-color: #c0392b;
 }
+
+.hidden {
+  display: none;
+}
+
+.btn.exit {
+  padding: 0 !important;
+}
+
+/* #main {
+  width: 100% !important;
+  height: 100% !important;
+} */

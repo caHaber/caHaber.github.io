@@ -1,10 +1,10 @@
 
 
 var xhr = new XMLHttpRequest();
-var selectionComplete = 0;
 var colorPicked;
 var strokePicked;
-var button;
+var button1,button2,button0;
+var popup;
 var canvas;
 // Line seg is {mouseX, mouseY, pmouseX, pmouseY}
 var path = {lineSegs: [], width: null, height: null, strokeColor: null, strokeWidth: 7};
@@ -15,8 +15,20 @@ var URL
 = 'http://50.1.86.208:3000/';
 
 
-var pallete = ['#fc331c','#ff8f00','#edff5b','#52e000','#00b22c','#00c4da','#4643bb','#610c8c','#d223fe','#e5e3e3','#777777','#AAAAAA'];
-shuffleA(pallete);
+var pallete = [
+'#ff8f00'
+,'#fc331c' 
+,'#edff5b'
+,'#777777'
+,'#d223fe'
+,'#00b22c'
+,'#00c4da'
+,'#e5e3e3'
+,'#610c8c'
+,'#52e000' 
+,'#4643bb' 
+,'#AAAAAA'];
+// shuffleA(pallete);
 
 var sent = 0;
 
@@ -71,11 +83,20 @@ function setup() {
    strokeWeight(0);
    drawColorChoices();
    strokeWeight(+path.strokeWidth);
+   var popup = select("body");
+   var exit = createButton("Exit");
+   exit.position(width/2 , 20);
+//    exit.mousePressed(action);
+   exit.addClass("btn");
+   exit.addClass("hidden");
+   exit.addClass("exit");
+   exit.mousePressed(hidePopup);
+   popup.child(exit);
    noLoop();
 }
 
 var circleSize = 0;
-
+var selectionComplete = 0;
 var firstLoop = 0;
 
 function draw(){
@@ -91,9 +112,9 @@ function draw(){
         if (sent > 0){
             drawStarterLine();
             noLoop();
-        }else {
-            selectionComplete = 1;
+        }else {  
             drawStage();
+            selectionComplete = 1;
             noLoop();
         }
 
@@ -148,11 +169,11 @@ function drawStarterLine(){
     line(windowWidth/8, windowHeight/2, 0, windowHeight/2);
     line(windowWidth - windowWidth/8, windowHeight/2, windowWidth, windowHeight/2);
 
-    if(sent === 0){
-        addButton(button, '<span>Send!</span>', bgNext, windowWidth * .7, windowHeight * .8, 'btn');
-        addButton(button, '<span>Clear</span>', bgClear, windowWidth * .1, windowHeight * .8, 'btn red');
+    if(selectionComplete === 0){
+        addButton(button0, '<span>Send!</span>', bgNext, windowWidth * .78, windowHeight * .8, 'btn');
+        addButton(button1, '<span>Clear</span>', bgClear, windowWidth * 0, windowHeight * .8, 'btn red');
+        addButton(button2, '<span>info</span>', bgInfo, windowWidth * .43, windowHeight * .8, 'btn orange');
     }
-
     setPen(colorPicked,+path.strokeWidth);
 
 }
@@ -240,8 +261,18 @@ function touchEnded() {
  }
 
 function success(){
-    // loop();
-} 
+    secondStage = 2;
+    circleSize = 0;
+    path.lineSegs = [];
+    loop();
+}
+
+function fail() {
+    secondStage = 2;
+    circleSize = 0;
+    path.lineSegs = [];
+    loop();
+}
 
 function sendLineData () {
 
@@ -258,7 +289,7 @@ function sendLineData () {
                //Flash Success!!
                success();
             } else {
-               //Flash Failure!!
+               fail()
             }
         }
         xhr.send(JSON.stringify(path));
@@ -269,20 +300,58 @@ function addButton(b, content, action, width, height, clss){
     b.position(width , height);
     b.mousePressed(action);
     b.addClass(clss);
+    b.addClass("control");
+}
+
+function hidePopup(){
+    var p = select(".popup")
+    p.addClass("hidden");
+
+    var b = select(".exit")
+    b.addClass("hidden");
+
+
+    var buttons = selectAll(".control");   
+    for (var i = 0; i < buttons.length; i++) {
+        buttons[i].removeClass("hidden");
+    } 
+    canvas.removeClass("hidden");
 }
 
 function bgNext(){
     sent++;
     sendLineData();
-    bgClear();
+    clear();
+    loop();
+}
+
+
+function bgInfo(){
+    //TODO popup with info
+    // d = createDiv("<h1> Swag </h1>")
+    var p = select(".popup")
+    p.removeClass("hidden");
+
+    var b = select(".exit")
+    b.removeClass("hidden");
+
+    var buttons = selectAll(".control");   
+    for (var i = 0; i < buttons.length; i++) {
+        buttons[i].addClass("hidden");
+    } 
+    canvas.addClass("hidden");
+    // button0.addClass("hidden");
+    // button1.addClass("hidden");
+    // button2.addClass("hidden");
+    // canvas.addClass("hidden");
 }
 
 function bgClear(){
     clear();
-    secondStage = 2;
-    circleSize = 0;
     path.lineSegs = [];
-    loop();
+    // loop();
+    // bgClear();
+    drawStarterLine();
     // sendLineData();
 }
 
