@@ -84,14 +84,24 @@ function setup() {
    drawColorChoices();
    strokeWeight(+path.strokeWidth);
    var popup = select("body");
-   var exit = createButton("Exit");
-   exit.position(width/2 , 20);
-//    exit.mousePressed(action);
+   var exit = createButton("<span>Close</span>");
+   exit.position(0 , height * .8);
    exit.addClass("btn");
+   exit.addClass("red");
    exit.addClass("hidden");
    exit.addClass("exit");
    exit.mousePressed(hidePopup);
    popup.child(exit);
+
+   var link = createButton("<span>Visuals</span>");
+   link.position(width - 68 , height * .8);
+   link.addClass("btn");
+//    exit.addClass("red");
+   link.addClass("hidden");
+   link.addClass("exit");
+   link.mousePressed(linkToVisuals);
+   popup.child(link);
+
    noLoop();
 }
 
@@ -170,9 +180,9 @@ function drawStarterLine(){
     line(windowWidth - windowWidth/8, windowHeight/2, windowWidth, windowHeight/2);
 
     if(selectionComplete === 0){
-        addButton(button0, '<span>Send!</span>', bgNext, windowWidth * .78, windowHeight * .8, 'btn');
-        addButton(button1, '<span>Clear</span>', bgClear, windowWidth * 0, windowHeight * .8, 'btn red');
-        addButton(button2, '<span>info</span>', bgInfo, windowWidth * .43, windowHeight * .8, 'btn orange');
+        addButton(button0, '<span>Send</span>', bgNext, windowWidth -56, windowHeight * .8, 'btn');
+        addButton(button1, '<span>Clear</span>', bgClear, 0, windowHeight * .8, 'btn red');
+        addButton(button2, '<span>info</span>', bgInfo, windowWidth * .45, windowHeight * .8, 'btn orange');
     }
     setPen(colorPicked,+path.strokeWidth);
 
@@ -307,8 +317,10 @@ function hidePopup(){
     var p = select(".popup")
     p.addClass("hidden");
 
-    var b = select(".exit")
-    b.addClass("hidden");
+    var b = selectAll(".exit")
+    for (var i = 0; i < b.length; i++) {
+        b[i].addClass("hidden");
+    } 
 
 
     var buttons = selectAll(".control");   
@@ -332,18 +344,17 @@ function bgInfo(){
     var p = select(".popup")
     p.removeClass("hidden");
 
-    var b = select(".exit")
-    b.removeClass("hidden");
+    var b = selectAll(".exit")
+    for (var i = 0; i < b.length; i++) {
+        b[i].removeClass("hidden");
+    } 
 
     var buttons = selectAll(".control");   
     for (var i = 0; i < buttons.length; i++) {
         buttons[i].addClass("hidden");
     } 
     canvas.addClass("hidden");
-    // button0.addClass("hidden");
-    // button1.addClass("hidden");
-    // button2.addClass("hidden");
-    // canvas.addClass("hidden");
+
 }
 
 function bgClear(){
@@ -353,6 +364,10 @@ function bgClear(){
     // bgClear();
     drawStarterLine();
     // sendLineData();
+}
+
+function linkToVisuals(){
+    window.location.replace("http://50.1.86.208:3000/?p=casey");
 }
 
 //HELPER METHODS
@@ -372,3 +387,4 @@ function shuffleA(a) {
 function pathEmpty(){
     return path.lineSegs.length === 0 ? true : false 
 }
+
