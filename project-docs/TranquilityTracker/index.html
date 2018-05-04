@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Personal Website">
+    <meta name="author" content="Casey Haber">
+
+    <title>Casey Haber's Personal Site</title>
+
+    <link rel="stylesheet" href="/css/animations.css" type="text/css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css">
+
+    <!-- Custom Font -->
+    <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond:100,300" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+
+    <link rel="shortcut icon" href="/img/logosrc.ico" type="image/x-icon" />
+
+    <!-- Main CSS-->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" href="/css/main.css" type="text/css">
+    <link rel="stylesheet" href="./style.css" type="text/css">
+    <style>
+    h1 {
+    /* pointer-events: all; */
+    /* color: black; */
+        margin-bottom: -25px !important;
+    }
+
+    .docs {
+        border-top-color: black;
+        border-top-style: solid;
+        border-top-width: 1px;
+        padding-top: 15px;
+
+    }
+
+    .desc {
+        color: black;
+        font-family: 'Raleway';
+        font-size: 1.4em;
+    }
+
+    .subT {
+        color: grey;
+        font-size: 3.5em; 
+    }
+
+    .sub {
+        color: grey;
+    }
+
+    .titlebox {
+        line-height: 1em;
+        font-size: 1.5em;
+    }
+
+    .block{
+        margin-top: 50px; 
+    }
+
+
+    @media only screen and (max-width: 600px) {
+        /* Removes seperation line on mobile */
+        .docs {
+            border-top:1px;
+        }
+    }
+
+    .procpic {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    a.proj {
+        color: lightcoral;
+        padding: 10px;
+        background-color: black;
+        /* letter-spacing: .1em; */
+    }
+
+    a.proj:hover {
+        color: white;
+    }
+
+    </style>
+
+
+
+</head>
+
+<body id="page-top">
+
+
+<div class="container-fluid">
+
+
+    <div class="row">
+
+        <div class="col-md-2 col-md-offset-2 titlebox">
+            <h1>Tranquility Tracker <span class="sub">Documentation</span></h1>
+            <br>
+            <hr>
+            <h1 class=""><a class="git proj" href="http://cahaber.me/ds-casey/" target="_blank">Try me out!</a></h1>
+        </div>
+
+
+        <div class="col-md-6 docs">
+            <div class="block col-md-12">
+                    <h3 class="subT"> Overview </h3>
+                    <p class="desc">
+                            This mobile interface is a journal is a for tracking your levels of mind. Open the web-based drawing pad, pick a color, thickness and draw a wave that resembles your current level of tranquility, however calm or anxious that may be. The visual page (inside the info menu) allows you to interpret your mindset and inspect the patterns of your tension over the past month. A better understanding of the mental patterns in your day-to-day will allow you to live a more positive life. This project is MOBILE INTERACTION ONLY.
+                    </p>
+                    <!-- <img src="img/Artboard.png" class="img-responsive">     -->
+            </div>
+            <div class="block col-md-12">
+                    <h3 class="subT"> Initial Experiments </h3>
+                    <p class="desc">
+                            We did not know if this type of anxiety tracking would be insightful, so we began this project by tracking our tranquility with a simple sketching app. We settled on the iPhone notes app as our initial drawing pad. 
+                        </p>
+                    <div class="col-md-5 col-md-offset-3">  
+                         <img src="img/originalSetup.jpg" class="procpic img-responsive">   
+                    </div> 
+                    <div class="col-md-12">
+                        <p class="desc">
+                                Our initial experiments were excellent and we could quickly understand our “signals” with increasing accuracy and meaning. This meant that as you track your mood, you start to build your own mental scales and legends. We wanted to keep the expressiveness of drawing in the experiment so we did not go with a strict meaning to your signal (see initial concept image below.)
+                            </p>
+                    </div>
+                    <div class="col-md-12 col-md-offset-0">  
+                            <img src="img/waveSketch.jpg" class="procpic img-responsive">   
+                    </div> 
+            </div>
+            <div class="block col-md-12">
+                    <h3 class="subT"> Drawing Pad Prototype </h3>
+                    <p class="desc">
+                            The goal was to create a quick as possible record of your current tranquility level. Thus, I wanted to create an interface where you don’t think too much about the pen choices and drawing choices. Once you choose your color and pen width you must continue with those choices (This is to take mental load off of the user as they attempt a difficult problem; representing your anxiety with one line.) See my initial mockups for the drawing interface below.
+                        </p>
+                    <div class="col-md-5 col-md-offset-1">  
+                         <img src="img/Mockup1.png" class="procpic img-responsive">   
+                    </div> 
+                    <div class="col-md-5 col-md-offset-right-1">  
+                            <img src="img/Mockup2.png" class="procpic img-responsive">   
+                       </div> 
+                       <div class="col-md-5 col-md-offset-1">  
+                            <img src="img/Mockup3.png" class="procpic img-responsive">   
+                       </div> 
+                       <div class="col-md-5 col-md-offset-right-1">  
+                            <img src="img/Mockup4.png" class="procpic img-responsive">   
+                       </div>
+                       <p class="desc">
+                            I thought the initial choice system delivered in the ways that I wanted; quick and not too many options. But there were multiple issues. First, the colors were horrible for representing anxiety. Second, the pen sizes didn’t equate to the actual drawing width as well as I would have liked (I later found out that implementing this sample line, in the top right figure, was super difficult and was taking more time than I wanted to spend on this feature.) The first running version was identical to these mockups, but without the control buttons, instead the line would automatically be sent off and then the drawing pad would erase.        
+                        </p>    
+            </div>
+
+            <div class="block col-md-12">
+                    <h3 class="subT"> Visualization Prototype <br> &#38; Final Interface </h3>
+                    <p class="desc">
+                            The visualization page is the hub for exploring your tranquility signals. I created a calendar view with touch interaction, so the entirety of this project is a mobile interface. I also abandoned the pen width selection of my protoype (see final choice below) for a more simple and gut reaction interface. 
+                        </p>
+                    <div class="col-md-10 col-md-offset-1 col-md-offset-right-1">  
+                         <img src="img/Artboard.png" class="procpic img-responsive">   
+                    </div> 
+                    <p class="desc">
+                            The final iteration of the drawing app is shown below. The colors were changed to a better range of different anxieties and feelings. The pen width selection was changed to also create a spur of the moment decision process.  I would like to iterate on the buttons, as I liked my protoype buttons more, but the functionality of those buttons was messing up the application.
+                        </p>   
+                       <div class="col-md-10 col-md-offset-1 col-md-offset-right-1">  
+                            <img src="img/Artboard3.png" class="procpic img-responsive">   
+                       </div> 
+
+                    <p class="desc">
+                            This is the info page where you can access the visualizations for tracking your tranquility.
+                        </p>      
+                       <div class="col-md-10 col-md-offset-1 col-md-offset-right-1">  
+                            <img src="img/Artboard2.png" class="procpic img-responsive">   
+                       </div> 
+                    
+                       <!-- <p class="desc">
+                            I thought the initial choice system delivered in the ways that I wanted; quick and not too many options. But there were multiple issues. First, the colors were horrible for representing anxiety. Second, the pen sizes didn’t equate to the actual drawing width as well as I would have liked (I later found out that implementing this sample line, in the top right figure, was super difficult and was taking more time than I wanted to spend on this feature.) The first running version was identical to these mockups, but without the control buttons, instead the line would automatically be sent off and then the drawing pad would erase.        
+                        </p>     -->
+            </div>
+
+            <div class="block col-md-12">
+                    <h3 class="subT"> Implementation <br> &#38; Infrastructure </h3>
+                    <p class="desc">
+                            This project consists of two parts. The first part is the drawing pad application. This is a statically hosted web page that currently resides at [github-drawing link]. Once I edit that file to iterate on the pad, I call a deploy that copies the new iteration over to the specific directories for each test user (Casey, Dom, Clark, Noopur.) I chose this dev strategy because it opened me up to focus on the user flow and interface instead of scalability. 
+                        </p> <br>
+                        <p class="desc">
+                                The next portion of this project was the backend server that collects data from the front-end drawing pad application. Since I am a student and did not want to run up and bills on AWS of GCP, I chose to use my own raspberry pi. I connected my pi to my home router and used port forwarding to direct POST and GET requests to my raspberry pi. I used node and npm to build a small server for accepting these requests. On a post request from the page, my server saves the line data into a sqlite database. On receiving a GET request, the page will render your calendar view on the server side using d3 in a node environment. This page gets returned with some extra javascript and d3 that  allows for more interactivity. The code for the express server is <a href="https://github.com/caHaber/drawing-post-server">here.</a> </p> 
+                        <br>
+                        <br>
+                        <p class="desc">
+                            Please contact me for questions and inquiries!!!
+                        </p>
+                        <br>
+                        <hr>  
+                    <!-- <div class="col-md-10 col-md-offset-1 col-md-offset-right-1">  
+                         <img src="img/Artboard.png" class="procpic img-responsive">   
+                    </div>  -->
+                   
+                    
+                       <!-- <p class="desc">
+                            I thought the initial choice system delivered in the ways that I wanted; quick and not too many options. But there were multiple issues. First, the colors were horrible for representing anxiety. Second, the pen sizes didn’t equate to the actual drawing width as well as I would have liked (I later found out that implementing this sample line, in the top right figure, was super difficult and was taking more time than I wanted to spend on this feature.) The first running version was identical to these mockups, but without the control buttons, instead the line would automatically be sent off and then the drawing pad would erase.        
+                        </p>     -->
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+
+
+
+<script>
+
+
+
+window.onload = init;
+var app;
+
+function init(){
+
+    app = document.getElementById('titleDiv');
+
+
+    // var typewriter = new Typewriter(app, {
+    //     loop: false,
+    //     animateCursor:false,
+    //     cursor: ''
+    // });
+    
+
+    // typewriter.typeString('CASEY HABER')
+    //     .pauseFor(2500)
+    //     .start(); 
+
+
+    // setTimeout( function(){fadeOut(app)}, 2000);    
+
+}
+
+function fadeOut(el) {
+    el.className += " animated fadeOut";
+    setTimeout( function(){document.getElementById('main').className += " animated fadeInLeft";}, 1000);
+}
+
+
+
+</script>
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-77910929-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+
+</body>
+
+</html>
