@@ -12,6 +12,7 @@ body {
 }
 
 .content{
+	display: none;
     background-color: darkgray;
     margin-bottom: 50px;
 }
