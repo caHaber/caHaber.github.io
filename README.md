@@ -1,6 +1,6 @@
 
 
-#Casey Haber's Website#
+# Casey Haber's Website
 
 ## Experiments in my own learning and understanding of the web infrastructure
 
@@ -10,7 +10,7 @@
 ### Tools
 [D3](https://d3js.org/) javascript library created by [Mike Bostock](https://bl.ocks.org/mbostock).
 
-[React Framework](https://facebook.github.io/react/)
+[React](https://facebook.github.io/react/)
 
 [Three.js](https://threejs.org/)
 
