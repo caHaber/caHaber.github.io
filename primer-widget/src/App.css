@@ -1,0 +1,195 @@
+
+#root {
+  display: block;
+}
+
+.ink-step {
+    float: left;
+    width: 32px;
+    margin: 0;
+    padding: 10px 0px;
+    background: #f0f0f0;
+    border: 2px solid #FFF;
+    border-left: none;
+    font-size: 12px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #555;
+    cursor: pointer;
+    -webkit-transition: background .5s;
+    -moz-transition: background .5s;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.ink-step:hover {
+  background: #ddd;
+  color: #000;
+}
+
+.ink-step-active {
+  background: #D6D6D6;
+  color: #000;
+  font-weight: bold;
+}
+
+.ink-stepper {
+  list-style-type: none;
+  position: absolute;
+  left: 500px;
+  top:50px;
+  margin: 0;
+  padding: 0;
+} 
+
+.ink-stepper-next {
+  width: 70px;
+}
+
+.country {
+  transition: all .5s;
+  stroke: white;
+  pointer-events: none;
+}
+.unselected {
+  fill-opacity: .15;
+}
+.connection {
+  stroke-opacity: 0.15;
+}
+
+.average{
+  fill: white;
+  stroke-width: 2px;
+
+}
+.voronoi{
+  /* stroke: white; */
+  opacity: 0;
+}
+
+.tooltip {
+  pointer-events: none;
+  position: absolute;
+}
+svg {
+  position: absolute;
+  top: 0;
+  left:0;
+}
+
+
+
+/* Took tooltip css from NYT */
+/* https://static01.nyt.com/newsgraphics/2013/09/19/breastcancer/c49766a33a706a92fc65296888db96181ca6b3f0/styles/tooltip.css */
+#g-tip {
+  position: absolute;
+  display: none;
+  box-shadow: 0 4px 8px rgba(0,0,0,.2);
+  width: 200px;
+  height: 100px;
+  background-color: white;
+  border: solid 1px #ddd;
+
+}
+
+#g-tip {
+  font-size: .5em;
+}
+#g-tip {
+  position: absolute;
+  pointer-events: none;
+  width: 200px;
+  font-size: 11px;
+  opacity: 1;
+  display: none;
+}
+
+#g-tip.hidden {
+  -webkit-transition: opacity 0.15s linear;
+  -moz-transition: opacity 0.15s linear;
+  -o-transition: opacity 0.15s linear;
+  opacity: 0;
+}
+
+#g-tip.hidden-ie {
+  display: none;
+}
+
+#g-graphic.cartogram #g-tip {
+  height: 50px;
+}
+
+#g-graphic.cartogram #g-tip-incidences,
+#g-graphic.cartogram #g-tip-ratio {
+  display: none;
+}
+
+#g-graphic.scatterplot #g-tip {
+  height: 90px;
+}
+
+#g-graphic.scatterplot #g-tip-incidences,
+#g-graphic.scatterplot #g-tip-ratio {
+  display: inherit;
+}
+
+#g-tip .g-tip-background {
+  position: absolute;
+  box-shadow: 0 4px 8px rgba(0,0,0,.2);
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  border: solid 1px #ddd;
+}
+
+#g-tip .g-tip-content {
+  position: absolute;
+  padding: 8px;
+  padding-right: 6px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  line-height: 1.1;
+}
+
+#g-tip .g-tip-caret {
+  position: absolute;
+  bottom: -5.5px;
+  fill: #fff;
+  stroke: none;
+}
+
+#g-tip .g-tip-title {
+  font-size: 10.5px;
+  font-weight: bold;
+  margin-bottom: 4px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+#g-tip .g-tip-metric {
+  clear: right;
+  padding: 3px 0;
+}
+
+.g-tip-metric + .g-tip-metric {
+  border-top: solid 1px #eee;
+}
+
+#g-tip .g-tip-metric-name {
+  color: #777;
+}
+
+#g-tip .g-tip-metric-value {
+  color: #333;
+  font-weight: 600;
+  float: right;
+}
+
+
