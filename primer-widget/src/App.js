@@ -7,10 +7,20 @@ import * as d3 from 'd3'
 //  The on page stepper is made out of the parent component <Stepper/> and a pure react component <StepComponent/> for each list element.
 //  Usage is as follows
 /* <Stepper 
-    scenes={this.state.scenes}        // An array of "scene" objects, any json accepted but beware that component does not catch no-key errors dealing with metaDataFormat function
-    index={this.state.index}          // Current scene index tracking
-    changeStep={this.changeStep}      // Function to trigger on a scene selections
-    metaDataFormat={this.metaDataFormat}/> // OPTIONAL: Function for selected metadata and format to display on active scene. No data will be rendered if null.
+    scenes={this.state.scenes}        // An array of "scene" objects: any json accepted but beware that component does not catch no-key errors dealing with metaDataFormat function
+                                      // OR : props.scenes can be Int and will then be initialized as a stepper with no scene_metadata
+    index={this.state.index}          // Int: Starting scene index 
+                                      // IF NULL: Scenes start at 0 
+    metaDataFormat={this.metaDataFormat}> // OPTIONAL: <function> to format scene metadata. scene_metadata will get pass down via the scene_metadata props. 
+                                             Will format below Stepper Component. See example below.
+
+    All Child Components will get access to two props:
+    props.scene : Current scene index
+    props.scene_metadata : All scene data that is originally passed to Stepper.
+    <Component/>
+  
+
+</Stepper
   */
 // 
 // 
@@ -19,11 +29,19 @@ const StepComponent = ({onClick, value, isChecked}) => {
 }
 class Stepper extends Component{
       state = {
-          scenes: this.props.scenes,
+          scenes: typeof this.props.scenes === 'object' ? this.props.scenes : [...Array(this.props.scenes)],
+          index: this.props.index !== null ? this.props.index : 0
       }
+
+      changeStep = (index) => {
+        this.setState({index})
+      }
+      childrenWithProps = () => React.Children.map(this.props.children, child =>
+        React.cloneElement(child, { scene: this.state.index, scene_metadata:this.state.scenes })
+      );
       render(){
 
-        if(this.props.index < 0 || this.props.index >= this.state.scenes.length){ 
+        if(this.state.index < 0 || this.state.index >= this.state.scenes.length){ 
           console.error("Stepper render failed due to index out of bound exception");  
           return null
         };
@@ -34,21 +52,24 @@ class Stepper extends Component{
         };
 
         return (
-         <div className="stepper">
+          <>
+         {this.childrenWithProps()}
+         <div className="stepper">     
             <ul className={'ink-stepper'}>
-              {[...Array(this.state.scenes.length)].map((d,i) => <StepComponent onClick={this.props.changeStep} key={i} value={i} isChecked={i === this.props.index ? true : false}/>)}
-              <li onClick={() => this.props.index !== this.state.scenes.length -1 ? this.props.changeStep(this.props.index + 1) : this.props.changeStep(0)}
+              {[...Array(this.state.scenes.length)].map((d,i) => <StepComponent onClick={this.changeStep} key={i} value={i} isChecked={i === this.state.index ? true : false}/>)}
+              <li onClick={() => this.state.index !== this.state.scenes.length -1 ? this.changeStep(this.state.index + 1) : this.changeStep(0)}
                 className={"ink-stepper-next ink-step"}>Next &nbsp;&nbsp;
                 <img src="https://static01.nyt.com/packages/images/newsgraphics/lib/maps/next-arrow.png" width="8" height="10" alt=""></img>
               </li>
             </ul>
             {this.props.metaDataFormat && <div className="metadata">
-              {this.props.metaDataFormat(this.state.scenes[this.props.index])}
+              {this.props.metaDataFormat(this.state.scenes[this.state.index])}
             </div>}
          </div>
+
+         </>
           )
       }
-
 }
 // End of Stepper Component
 
@@ -251,7 +272,7 @@ class VizContainer extends Component {
   }
   
   render(){
-      return <svg width={this.props.width} height={this.props.height}>
+      return <svg width={this.props.width} height={this.props.height} onMouseLeave={this.hideTooltip}>
 
               <g 
                 transform={`translate(${this.margin},0)`} 
@@ -288,11 +309,11 @@ class VizContainer extends Component {
                         } else {
                           this.hideTooltip() 
                         }
-                      }} 
+                      }}
                       className={"voronoi"} 
                       d={"M" + d.join(",") + "Z" }/>
               )}
-            </svg>
+            </svg >
   }
 }
 
@@ -301,27 +322,25 @@ class App extends Component {
                     {title:"Second scene", subtitle: "Lorem ipsum"},
                     {title:"Third scene", subtitle: "Lorem ipsum"},
                     {title:"Fourth scene", subtitle: "Lorem ipsum"},
-                    {title:"Fifth scene", subtitle: "Lorem ipsum"}],
-            index: 0}
+                    {title:"Fifth scene", subtitle: "Lorem ipsum"}]}
 
   metaDataFormat = (scene) => {
       return <><h4>{scene.title}</h4>
               <p> {scene.subtitle}</p></>
   } 
 
-  changeStep = (index) => {
-    this.setState({index})
-  }
 
   render() {
     return (
-    <div className="App">
-        <VizContainer width={945} height={625} scene={this.state.index}/>
-        <Stepper 
-          scenes={this.state.scenes} 
-          index={this.state.index} 
-          changeStep={this.changeStep}
-          metaDataFormat={this.metaDataFormat}/>
+    <div className="App">      
+      <Stepper 
+        scenes={this.state.scenes} 
+        index={0}
+        metaDataFormat={this.metaDataFormat}> 
+
+          <VizContainer width={945} height={625}/>
+
+      </Stepper>
         <div  id={"g-tip"}></div>
     </div>
   );
