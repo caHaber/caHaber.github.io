@@ -11,7 +11,7 @@
     background: #f0f0f0;
     border: 2px solid #FFF;
     border-left: none;
-    font-size: 12px;
+    font-size: 10px;
     text-align: center;
     text-transform: uppercase;
     color: #555;
@@ -35,13 +35,19 @@
   font-weight: bold;
 }
 
-.ink-stepper {
-  list-style-type: none;
+.stepper {
+  width: 100%;
   position: absolute;
   left: 500px;
   top:50px;
+}
+
+.ink-stepper {
+  list-style-type: none;
+  position: absolute;
   margin: 0;
   padding: 0;
+
 } 
 
 .ink-stepper-next {
@@ -80,7 +86,9 @@ svg {
   left:0;
 }
 
-
+.metadata {
+  padding-top: 30px;
+}
 
 /* Took tooltip css from NYT */
 /* https://static01.nyt.com/newsgraphics/2013/09/19/breastcancer/c49766a33a706a92fc65296888db96181ca6b3f0/styles/tooltip.css */
@@ -88,23 +96,14 @@ svg {
   position: absolute;
   display: none;
   box-shadow: 0 4px 8px rgba(0,0,0,.2);
-  width: 200px;
-  height: 100px;
+  width: 160px;
+  height: 80px;
+  font-size: 10px;
   background-color: white;
   border: solid 1px #ddd;
-
-}
-
-#g-tip {
-  font-size: .5em;
-}
-#g-tip {
-  position: absolute;
-  pointer-events: none;
-  width: 200px;
-  font-size: 11px;
   opacity: 1;
-  display: none;
+  pointer-events: none;
+
 }
 
 #g-tip.hidden {
@@ -118,18 +117,7 @@ svg {
   display: none;
 }
 
-#g-graphic.cartogram #g-tip {
-  height: 50px;
-}
 
-#g-graphic.cartogram #g-tip-incidences,
-#g-graphic.cartogram #g-tip-ratio {
-  display: none;
-}
-
-#g-graphic.scatterplot #g-tip {
-  height: 90px;
-}
 
 #g-graphic.scatterplot #g-tip-incidences,
 #g-graphic.scatterplot #g-tip-ratio {
@@ -154,18 +142,19 @@ svg {
   box-sizing: border-box;
   width: 100%;
   height: 100%;
-  line-height: 1.1;
+  line-height: 1.1em;
 }
+
 
 #g-tip .g-tip-caret {
   position: absolute;
-  bottom: -5.5px;
-  fill: #fff;
+  top: 80px;
+  fill: white;
   stroke: none;
 }
 
 #g-tip .g-tip-title {
-  font-size: 10.5px;
+  font-size: 11.5px;
   font-weight: bold;
   margin-bottom: 4px;
   white-space: nowrap;
